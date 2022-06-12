@@ -14,6 +14,7 @@ namespace Features.Character.Scripts
         
         [Header("Dependencies")]
         [SerializeField] private Rigidbody2D _rigidbody;
+        [SerializeField] private Animator _animator;
 
         #endregion
 
@@ -23,10 +24,17 @@ namespace Features.Character.Scripts
         {
             var deltaTime = Time.fixedDeltaTime;
 
-            if (math.any(_movementInput != float2.zero))
+            var isMoving = math.any(_movementInput != float2.zero);
+
+            if (isMoving)
             {
                 _rigidbody.MovePosition(_rigidbody.position + (Vector2)(_movementInput * _moveSpeed * deltaTime));
+                
+                _animator.SetFloat("Horizontal", _movementInput.x);
+                _animator.SetFloat("Vertical", _movementInput.y);
             }
+            
+            _animator.SetBool("Move", isMoving);
         }
 
         #endregion
