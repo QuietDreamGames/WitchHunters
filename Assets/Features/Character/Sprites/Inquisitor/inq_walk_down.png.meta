@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a762b568aa20a644489cc9b30cad796a
+guid: a0ae1358f00fd484eba7212227909db1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inquisitor_walk_down_0
+      name: inq_walk_down_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44834faaf22e8b34a8d921999045d2c5
-      internalID: 878430232
+      spriteID: 9e702d926e375ca48871574eb3ad412e
+      internalID: 530866472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inquisitor_walk_down_1
+      name: inq_walk_down_1
       rect:
         serializedVersion: 2
         x: 220
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10cf3d03df8a5134180f84183611909f
-      internalID: -769204066
+      spriteID: e152eccc81402554e86f81f107e78745
+      internalID: -2076253544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inquisitor_walk_down_2
+      name: inq_walk_down_2
       rect:
         serializedVersion: 2
         x: 440
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8451db56204046043a0fd25303f0b377
-      internalID: -912138307
+      spriteID: 849f1406c9b81b94b9bf0fc5eb312e4a
+      internalID: -428340723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inquisitor_walk_down_3
+      name: inq_walk_down_3
       rect:
         serializedVersion: 2
         x: 660
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 310c32c234d8edf4b8e5798332ad0e5a
-      internalID: 1308734656
+      spriteID: 12cb1021b972e574cbbf219a56889edb
+      internalID: 1023006463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inquisitor_walk_down_4
+      name: inq_walk_down_4
       rect:
         serializedVersion: 2
         x: 880
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28c984045a89a5c4d883c4d5105dca2b
-      internalID: 326278951
+      spriteID: 3299b0d5c4ebef34da8d17de3459a9d5
+      internalID: 67053689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inquisitor_walk_down_5
+      name: inq_walk_down_5
       rect:
         serializedVersion: 2
         x: 1100
@@ -223,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edf67320f6ca8ae428e926d9112776d2
-      internalID: -2140883526
+      spriteID: 97fc1a76649c1f849bc256583a09a04d
+      internalID: 2000703749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inquisitor_walk_down_6
+      name: inq_walk_down_6
       rect:
         serializedVersion: 2
         x: 1320
@@ -244,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c44b7a5db9d3abc419b65b26552f530b
-      internalID: 1747458391
+      spriteID: 7e9eb6c884a54104fbdadf902f0979f0
+      internalID: -161849030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inquisitor_walk_down_7
+      name: inq_walk_down_7
       rect:
         serializedVersion: 2
         x: 1540
@@ -265,14 +265,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09fb0d61cfbb3294bb8b66aa8d609d4d
-      internalID: -1225850109
+      spriteID: ff27f11cb8d046444a3afdc481096c39
+      internalID: 1931799572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inquisitor_walk_down_8
+      name: inq_walk_down_8
       rect:
         serializedVersion: 2
         x: 1760
@@ -286,8 +286,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d3912bc3d205954e96c6abe534c4f52
-      internalID: 418815888
+      spriteID: fcdff9d28cddd6a4cb9b145b03675005
+      internalID: -1343039385
       vertices: []
       indices: 
       edges: []
@@ -303,15 +303,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      inquisitor_walk_down_5: -2140883526
-      inquisitor_walk_down_7: -1225850109
-      inquisitor_walk_down_4: 326278951
-      inquisitor_walk_down_0: 878430232
-      inquisitor_walk_down_2: -912138307
-      inquisitor_walk_down_6: 1747458391
-      inquisitor_walk_down_8: 418815888
-      inquisitor_walk_down_3: 1308734656
-      inquisitor_walk_down_1: -769204066
+      inq_walk_down_5: 2000703749
+      inq_walk_down_8: -1343039385
+      inq_walk_down_0: 530866472
+      inq_walk_down_4: 67053689
+      inq_walk_down_7: 1931799572
+      inq_walk_down_2: -428340723
+      inq_walk_down_3: 1023006463
+      inq_walk_down_1: -2076253544
+      inq_walk_down_6: -161849030
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
