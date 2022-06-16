@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 64e2cf1ce33cb0e4ba3a6ed8df617f25
+guid: a7c55f2a571ad8d4abd629ba0165b86a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inq_walk_right 1_0
+      name: inq_walk_up_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 220
-        height: 192
+        height: 200
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af79e65e2245e7b4782349477af7690a
-      internalID: 823356364
+      spriteID: 4f20ef4fe2f107b49adadff1ac9f33cf
+      internalID: 499488805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_walk_right 1_1
+      name: inq_walk_up_1
       rect:
         serializedVersion: 2
         x: 220
         y: 0
         width: 220
-        height: 192
+        height: 200
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcb7e66bc60b67c4098d6bb748cd45b6
-      internalID: -426388839
+      spriteID: 9f503a441714b384587c5d4b98442f62
+      internalID: 360386244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_walk_right 1_2
+      name: inq_walk_up_2
       rect:
         serializedVersion: 2
         x: 440
         y: 0
         width: 220
-        height: 192
+        height: 200
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89cb949ce1ec1f64a9976427271c1639
-      internalID: -830157802
+      spriteID: 8baf9deb8dcd5964da833ffc42a18486
+      internalID: 90512621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_walk_right 1_3
+      name: inq_walk_up_3
       rect:
         serializedVersion: 2
         x: 660
         y: 0
         width: 220
-        height: 192
+        height: 200
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a8a8ad09c1ad5a4fa9e9197c91c3897
-      internalID: 1594194009
+      spriteID: 29c7a56c45490ad46b1d8f6ac21b6bcf
+      internalID: -1912719492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_walk_right 1_4
+      name: inq_walk_up_4
       rect:
         serializedVersion: 2
         x: 880
         y: 0
         width: 220
-        height: 192
+        height: 200
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15cf5e4dfd1067d44ab2acc8ef250412
-      internalID: 281458712
+      spriteID: efa802e195c1c134f9d8499e73ada47b
+      internalID: -1593472373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_walk_right 1_5
+      name: inq_walk_up_5
       rect:
         serializedVersion: 2
         x: 1100
         y: 0
         width: 220
-        height: 192
+        height: 200
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,20 +223,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4bdd0f675e401344b894a81ad6abee2
-      internalID: 768703082
+      spriteID: eda8d6defaed2a84db8245211a8f4c58
+      internalID: -899981207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_walk_right 1_6
+      name: inq_walk_up_6
       rect:
         serializedVersion: 2
         x: 1320
         y: 0
         width: 220
-        height: 192
+        height: 200
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,20 +244,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82f7e08572c574c43a5ed17cbbbd2d0f
-      internalID: -984785669
+      spriteID: bd1c5ab9f9e50854c987e35cf263f8b0
+      internalID: -1608597053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_walk_right 1_7
+      name: inq_walk_up_7
       rect:
         serializedVersion: 2
         x: 1540
         y: 0
         width: 220
-        height: 192
+        height: 200
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,8 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dfc7f449d6aac841afc67c192a357bc
-      internalID: 1383107245
+      spriteID: 6e2498827da629942a1a72a95ff7d1f6
+      internalID: -326291666
       vertices: []
       indices: 
       edges: []
@@ -282,14 +282,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      inq_walk_right 1_2: -830157802
-      inq_walk_right 1_3: 1594194009
-      inq_walk_right 1_1: -426388839
-      inq_walk_right 1_5: 768703082
-      inq_walk_right 1_6: -984785669
-      inq_walk_right 1_7: 1383107245
-      inq_walk_right 1_4: 281458712
-      inq_walk_right 1_0: 823356364
+      inq_walk_up_5: -899981207
+      inq_walk_up_3: -1912719492
+      inq_walk_up_7: -326291666
+      inq_walk_up_2: 90512621
+      inq_walk_up_0: 499488805
+      inq_walk_up_1: 360386244
+      inq_walk_up_6: -1608597053
+      inq_walk_up_4: -1593472373
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
