@@ -1,11 +1,14 @@
 using System;
+using Features.Character.Components;
+using Features.InputSystem.Components;
+using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Features.Character.Scripts
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IConvertGameObjectToEntity
     {
         #region Serialize data
 
@@ -15,6 +18,10 @@ namespace Features.Character.Scripts
         [Header("Dependencies")]
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Animator _animator;
+
+        [Header("TEST")] 
+        [SerializeField] private AnimationClip _animation;
+        [SerializeField] private PlayerInput _player;
 
         #endregion
 
@@ -53,5 +60,12 @@ namespace Features.Character.Scripts
         }
 
         #endregion
+
+        public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
+        {
+            dstManager.AddSharedComponentData(entity, new PlayerInputWrapper { Value = _player });
+            dstManager.AddComponentData(entity, new Movement { Value = float2.zero });
+
+        }
     }
 }
