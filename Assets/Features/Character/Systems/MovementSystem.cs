@@ -21,7 +21,10 @@ namespace Features.Character.Systems
         
         public void Execute(ref Translation translation, in Movement movement, in Speed speed)
         {
-            translation.Value += new float3(movement.Value * speed.Value * DeltaTime, 0);
+            if (movement.Enable)
+            {
+                translation.Value += new float3(movement.Direction * speed.Value * DeltaTime, 0);
+            }
         }
     }
 }

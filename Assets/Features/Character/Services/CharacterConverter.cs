@@ -40,7 +40,11 @@ namespace Features.Character.Services
             var speed = new Speed { Value = _speed };
             dstManager.AddComponentData(entity, speed);
 
-            var movement = new Movement { Value = float2.zero };
+            var movement = new Movement
+            {
+                Direction = new float2(1, 0), 
+                Enable = false
+            };
             dstManager.AddComponentData(entity, movement);
         }
 

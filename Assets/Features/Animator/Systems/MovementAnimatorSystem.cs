@@ -15,14 +15,9 @@ namespace Features.Animator.Systems
                 .WithAll<Movement, AnimatorWrapper, AnimatorConfiguration>()
                 .ForEach((in AnimatorWrapper animator, in Movement movement, in AnimatorConfiguration conf) =>
                 {
-                    var moving = math.any(movement.Value != float2.zero);
-                    animator.Value.SetBool(conf.Moving, moving);
-
-                    if (moving)
-                    {
-                        animator.Value.SetFloat(conf.Horizontal, movement.Value.x);
-                        animator.Value.SetFloat(conf.Vertical, movement.Value.y);
-                    }
+                    animator.Value.SetFloat(conf.Horizontal, movement.Direction.x); 
+                    animator.Value.SetFloat(conf.Vertical, movement.Direction.y);
+                    animator.Value.SetBool(conf.Moving, movement.Enable);
                 })
                 .WithoutBurst()
                 .Run();
