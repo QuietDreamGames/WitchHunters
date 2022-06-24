@@ -42,7 +42,7 @@ namespace Features.Character.Services
 
             var movement = new Movement
             {
-                Direction = new float2(1, 0), 
+                Direction = new float3(1, 0, 0),
                 Enable = false
             };
             dstManager.AddComponentData(entity, movement);

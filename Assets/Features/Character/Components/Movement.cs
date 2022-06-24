@@ -7,7 +7,7 @@ namespace Features.Character.Components
     [BurstCompile]
     public struct Movement : IComponentData
     {
-        public float2 Direction;
+        public float3 Direction;
         public bool Enable;
     }
 }

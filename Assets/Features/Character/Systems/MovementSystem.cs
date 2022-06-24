@@ -23,7 +23,7 @@ namespace Features.Character.Systems
         {
             if (movement.Enable)
             {
-                translation.Value += new float3(movement.Direction * speed.Value * DeltaTime, 0);
+                translation.Value += movement.Direction * speed.Value * DeltaTime;
             }
         }
     }
