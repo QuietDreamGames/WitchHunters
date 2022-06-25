@@ -2,14 +2,19 @@ using Features.Character.Components;
 using Features.InputSystem.Components;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Physics.Authoring;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Collider = Features.Collision.Components.Collider;
 
 namespace Features.Character.Services
 {
     public class CharacterConverter : MonoBehaviour, IConvertGameObjectToEntity
     {
         #region Serializable data
+
+        [Header("Collider")] 
+        [SerializeField] private PhysicsShapeAuthoring _physicsShape;
 
         [Header("Speed Data")] 
         [SerializeField] private float _speed = 2f;
@@ -46,6 +51,13 @@ namespace Features.Character.Services
                 Enable = false
             };
             dstManager.AddComponentData(entity, movement);
+
+            var physicsBox = _physicsShape.GetBoxProperties();
+            var collider = new Collider
+            {
+                Size = physicsBox.Size
+            };
+            dstManager.AddComponentData(entity, collider);
         }
 
         #endregion
