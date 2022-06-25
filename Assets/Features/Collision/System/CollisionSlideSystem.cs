@@ -50,6 +50,9 @@ namespace Features.Collision.System
         
         public void Execute(in Translation translation, ref Movement movement, in Speed speed, in Collider collider)
         {
+            if (!movement.Enable)
+                return;
+            
             var rayStart = translation.Value;
 
             var (rayEndHorizontal1, rayEndHorizontal2) =
@@ -64,6 +67,7 @@ namespace Features.Collision.System
             
             movement.Direction.x = moveX ? 0 : movement.Direction.x;
             movement.Direction.y = moveY ? 0 : movement.Direction.y;
+            movement.Enable = math.any(movement.Direction != float3.zero);
         }
 
         private (float3, float3) GetRayEnd(float3 rayStart, float3 halfCollider, in Movement movement, in Speed speed,
