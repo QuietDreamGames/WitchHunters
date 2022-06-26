@@ -15,6 +15,8 @@ namespace Features.UI.CharacterHealth
         private void UpdateHUDHealthBarData()
         {
             RequireSingletonForUpdate<HUDHealthBarUIData>();
+            if (!HasSingleton<HUDHealthBarUIData>())
+                return;
             
             var hudHealthBarUIEntity = GetSingletonEntity<HUDHealthBarUIData>();
             var hudHealthBarUIData = EntityManager.GetComponentData<HUDHealthBarUIData>(hudHealthBarUIEntity);
