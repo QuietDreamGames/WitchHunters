@@ -47,6 +47,12 @@ namespace Features.Character.Services
                 Value = _maxHealth
             };
             dstManager.AddComponentData(entity, health);
+
+            var damage = new Damage
+            {
+                Value = 0f
+            };
+            dstManager.AddComponentData(entity, damage);
             
             var speed = new Speed { Value = _speed };
             dstManager.AddComponentData(entity, speed);
