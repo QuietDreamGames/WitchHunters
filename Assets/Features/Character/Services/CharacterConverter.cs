@@ -43,7 +43,7 @@ namespace Features.Character.Services
 
             var health = new Health
             {
-                InitialValue = _maxHealth,
+                MaxValue = _maxHealth,
                 Value = _maxHealth
             };
             dstManager.AddComponentData(entity, health);
