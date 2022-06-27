@@ -1,4 +1,5 @@
 using Features.Character.Components;
+using Features.HealthSystem.Components;
 using Features.InputSystem.Components;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -12,6 +13,9 @@ namespace Features.Character.Services
     public class CharacterConverter : MonoBehaviour, IConvertGameObjectToEntity
     {
         #region Serializable data
+
+        [Header("Health Data")]
+        [SerializeField] private float _maxHealth = 100f;
 
         [Header("Collider")] 
         [SerializeField] private PhysicsShapeAuthoring _physicsShape;
@@ -41,6 +45,19 @@ namespace Features.Character.Services
                 AttackActionID = _attackActionID
             };
             dstManager.AddSharedComponentData(entity, playerInputConfiguration);
+
+            var health = new Health
+            {
+                MaxValue = _maxHealth,
+                Value = _maxHealth
+            };
+            dstManager.AddComponentData(entity, health);
+
+            var damage = new Damage
+            {
+                Value = 0f
+            };
+            dstManager.AddComponentData(entity, damage);
             
             var speed = new Speed { Value = _speed };
             dstManager.AddComponentData(entity, speed);

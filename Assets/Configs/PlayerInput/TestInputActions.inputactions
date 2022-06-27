@@ -1,0 +1,34 @@
+{
+    "name": "TestInputActions",
+    "maps": [
+        {
+            "name": "Test",
+            "id": "9b1531c8-b9e1-4315-8c4c-225ca824e9ec",
+            "actions": [
+                {
+                    "name": "ApplyDamage",
+                    "type": "Button",
+                    "id": "64a69bf6-bd7d-4733-b5e6-473244eb3be5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c8879a2f-c168-4694-954d-805275dd5d76",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ApplyDamage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
