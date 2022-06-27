@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75a52fd727949f45b36d3d7ad23a253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _physicsShape: {fileID: 3060734947632182269}
   _speed: 2.35
   _moveActionID: Move
   _attackActionID: Attack
