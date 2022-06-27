@@ -17,8 +17,8 @@ namespace Features.InputSystem.Systems
                 .ForEach(
                     (ref Movement movement, in PlayerInputWrapper input, in PlayerInputConfiguration conf) =>
                     {
-                        float2 direction = input.Value.actions[conf.MoveActionID].ReadValue<Vector2>();
-                        movement.Enable = math.any(direction != float2.zero);
+                        var direction = new float3(input.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
+                        movement.Enable = math.any(direction != float3.zero);
                         
                         if (movement.Enable)
                         {

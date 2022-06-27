@@ -3,8 +3,10 @@ using Features.HealthSystem.Components;
 using Features.InputSystem.Components;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Physics.Authoring;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Collider = Features.Collision.Components.Collider;
 
 namespace Features.Character.Services
 {
@@ -14,6 +16,9 @@ namespace Features.Character.Services
 
         [Header("Health Data")]
         [SerializeField] private float _maxHealth = 100f;
+
+        [Header("Collider")] 
+        [SerializeField] private PhysicsShapeAuthoring _physicsShape;
 
         [Header("Speed Data")] 
         [SerializeField] private float _speed = 2f;
@@ -59,10 +64,17 @@ namespace Features.Character.Services
 
             var movement = new Movement
             {
-                Direction = new float2(1, 0), 
+                Direction = new float3(1, 0, 0),
                 Enable = false
             };
             dstManager.AddComponentData(entity, movement);
+
+            var physicsBox = _physicsShape.GetBoxProperties();
+            var collider = new Collider
+            {
+                Size = physicsBox.Size
+            };
+            dstManager.AddComponentData(entity, collider);
         }
 
         #endregion
