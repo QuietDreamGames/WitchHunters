@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 950f6ee99c7be134c9271c26d77c04c0
+guid: f7ee54bf063a43443a87c5de4a393700
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 192
+  spritePixelsToUnits: 196
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -128,211 +128,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inq_attack_1_up_0
+      name: creep1_walk_right_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcc6986b73f23ce479e136899d19ae63
-      internalID: -810574396
+      spriteID: 3001fce070f3a0f4d899e456b088618e
+      internalID: 69761602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_attack_1_up_1
+      name: creep1_walk_right_1
       rect:
         serializedVersion: 2
         x: 400
         y: 0
         width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a553d5974fde48144b24c53080e8b807
-      internalID: -54649382
+      spriteID: 7240a76776718ca459099ae83de18dfb
+      internalID: 1849597686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_attack_1_up_2
+      name: creep1_walk_right_2
       rect:
         serializedVersion: 2
         x: 800
         y: 0
         width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2c5a242050c38b4ba7d44d5efda13ec
-      internalID: 707305621
+      spriteID: 59b833b34195d5d4a9f320df2c50cd14
+      internalID: -897131555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_attack_1_up_3
+      name: creep1_walk_right_3
       rect:
         serializedVersion: 2
         x: 1200
         y: 0
         width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74ea92ae0affc0c4787f144d3d1cf820
-      internalID: -43588405
+      spriteID: 91a338a7845f83641b172a9eb78e8dbc
+      internalID: 922740547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_attack_1_up_4
+      name: creep1_walk_right_4
       rect:
         serializedVersion: 2
         x: 1600
         y: 0
         width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fc84783ef22e97489271ed28525a4bd
-      internalID: 476878791
+      spriteID: 6130def86ffd3f84ab4eccdacd554a48
+      internalID: 1732003862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_attack_1_up_5
+      name: creep1_walk_right_5
       rect:
         serializedVersion: 2
         x: 2000
         y: 0
         width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c1ecd405eceb954e83bfaa653da83c2
-      internalID: -1887575577
+      spriteID: 25615ecb50955a243a297bed090ec759
+      internalID: -962602544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_attack_1_up_6
+      name: creep1_walk_right_6
       rect:
         serializedVersion: 2
         x: 2400
         y: 0
         width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a246b44d10146c419210501fa96feed
-      internalID: -1444093412
+      spriteID: 6c8f067e248390f4c8203dfd2da40398
+      internalID: 777205954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_attack_1_up_7
+      name: creep1_walk_right_7
       rect:
         serializedVersion: 2
         x: 2800
         y: 0
         width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0163e6455ca18e4a85be06f596a7286
-      internalID: 1886182929
+      spriteID: a017e431b83824a44be6a197de72d45a
+      internalID: 465366304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inq_attack_1_up_8
+      name: creep1_walk_right_8
       rect:
         serializedVersion: 2
         x: 3200
         y: 0
         width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0de91a739ce62ba468b0206913c507ee
-      internalID: 1358265878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: inq_attack_1_up_9
-      rect:
-        serializedVersion: 2
-        x: 3600
-        y: 0
-        width: 400
-        height: 411
-      alignment: 9
-      pivot: {x: 0.5, y: 0.365}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 167a3c339313e7b40b5395c70c02890b
-      internalID: 341083556
+      spriteID: 10cc871a0188fb243a6ebc3da6a9659d
+      internalID: -2056317320
       vertices: []
       indices: 
       edges: []
@@ -348,16 +327,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      inq_attack_1_up_9: 341083556
-      inq_attack_1_up_1: -54649382
-      inq_attack_1_up_4: 476878791
-      inq_attack_1_up_5: -1887575577
-      inq_attack_1_up_0: -810574396
-      inq_attack_1_up_8: 1358265878
-      inq_attack_1_up_3: -43588405
-      inq_attack_1_up_7: 1886182929
-      inq_attack_1_up_2: 707305621
-      inq_attack_1_up_6: -1444093412
+      creep1_walk_right_6: 777205954
+      creep1_walk_right_4: 1732003862
+      creep1_walk_right_5: -962602544
+      creep1_walk_right_7: 465366304
+      creep1_walk_right_8: -2056317320
+      creep1_walk_right_1: 1849597686
+      creep1_walk_right_0: 69761602
+      creep1_walk_right_2: -897131555
+      creep1_walk_right_3: 922740547
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
