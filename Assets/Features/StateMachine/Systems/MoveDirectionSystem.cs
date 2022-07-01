@@ -1,14 +1,18 @@
 ﻿using Features.Character.Components;
 using Features.StateMachine.Components;
 using Features.StateMachine.Components.Core;
+using Features.StateMachine.Systems;
 using Features.StateMachine.Systems.Core;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Jobs;
 using Unity.Mathematics;
 
+[assembly: RegisterGenericJobType(typeof(MoveDirectionSystem.ExecuteNodesJob<MoveDirection, MoveDirectionSystem.Processor>))]
 namespace Features.StateMachine.Systems
 {
-    public partial class MoveDirectionSystem : SequenceExecutorSystem<MoveDirection, MoveDirectionSystem.Processor>
+    public partial class MoveDirectionSystem : NodeExecutorSystem<MoveDirection, MoveDirectionSystem.Processor>
     {
         protected override Processor PrepareProcessor()
         {
@@ -18,6 +22,7 @@ namespace Features.StateMachine.Systems
             };
         }
 
+        [BurstCompile]
         public struct Processor : INodeProcessor<MoveDirection>
         {
             [ReadOnly] public ComponentDataFromEntity<Movement> AllMovements;

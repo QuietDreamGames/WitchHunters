@@ -1,4 +1,6 @@
-﻿using Features.StateMachine.Components.Core;
+﻿using Features.StateMachine.Components;
+using Features.StateMachine.Components.Core;
+using Features.StateMachine.Systems;
 using Features.StateMachine.Systems.Core;
 using Unity.Burst;
 using Unity.Collections;
@@ -7,7 +9,7 @@ using Unity.Jobs;
 
 namespace Features.StateMachine.Systems.Core
 {
-    public abstract partial class SequenceExecutorSystem<TNodeFilter, TProcessor> : SystemBase
+    public abstract partial class NodeExecutorSystem<TNodeFilter, TProcessor> : SystemBase
         where TNodeFilter : struct, INodeComponent 
         where TProcessor : struct, INodeProcessor<TNodeFilter>
     {
@@ -33,15 +35,15 @@ namespace Features.StateMachine.Systems.Core
             {
                 NodeComponentType = GetComponentTypeHandle<NodeComponent>(),
                 NodeFilterType = GetComponentTypeHandle<TNodeFilter>(),
+                AllAgents = GetComponentDataFromEntity<NodeAgent>(),
                 IsActionFilterHasArray = IsActionFilterHasArray,
                 Processor = PrepareProcessor()
             };
-            
-            job.Schedule(_query);
 
+            Dependency = job.Schedule(_query, Dependency);
         }
 
-        public struct ExecuteNodesJob<TNodeFilterJob, TProcessorJob> : IJobEntityBatch
+        public struct ExecuteNodesJob<TNodeFilterJob, TProcessorJob> : IJobEntityBatchWithIndex
             where TNodeFilterJob : struct, INodeComponent 
             where TProcessorJob : struct, INodeProcessor<TNodeFilterJob>
         {
@@ -51,10 +53,9 @@ namespace Features.StateMachine.Systems.Core
             public bool IsActionFilterHasArray;
             public TProcessorJob Processor;
 
-            [NativeDisableParallelForRestriction] 
             public ComponentDataFromEntity<NodeAgent> AllAgents;
 
-            public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
+            public void Execute(ArchetypeChunk batchInChunk, int batchIndex, int indexOfFirstEntityInQuery)
             {
                 var nodes = batchInChunk.GetNativeArray(NodeComponentType);
                 var nodeFilters = IsActionFilterHasArray 
@@ -75,12 +76,12 @@ namespace Features.StateMachine.Systems.Core
                     if (IsActionFilterHasArray)
                     {
                         var nodeFilter = nodeFilters[i];
-                        ExecuteNode(ref node, ref nodeFilter, 0, i);
+                        ExecuteNode(ref node, ref nodeFilter, indexOfFirstEntityInQuery, i);
                         nodeFilters[i] = nodeFilter;
                     }
                     else
                     {
-                        ExecuteNode(ref node, ref defaultActionFilter, 0, i);
+                        ExecuteNode(ref node, ref defaultActionFilter, indexOfFirstEntityInQuery, i);
                     }
 
                     if (node.Result == NodeResult.Failed)
@@ -123,7 +124,7 @@ namespace Features.StateMachine.Systems.Core
             // Routines like calling AddJobHandleForProducer() may be placed here
         }
 
-        protected virtual bool ShouldScheduleParallel => true;
+        protected virtual bool ShouldScheduleParallel { get; set; } = true;
 
         protected ref readonly EntityQuery Query => ref _query;
     }
