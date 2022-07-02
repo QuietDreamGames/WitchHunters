@@ -9,17 +9,20 @@ using UnityEngine;
 namespace Features.InputSystem.Systems
 {
     [UpdateBefore(typeof(MovementSystem))]
-    public class CharacterInputSystem : SystemBase
+    public partial class CharacterInputSystem : SystemBase
     {
         protected override void OnUpdate()
         {
+            
+            
             Entities
-                .WithAll<InputInterpreter, Movement>()
+                .WithAll<CharacterInput, Movement>()
                 .ForEach(
-                    (ref Movement movement, in InputInterpreter input, in PlayerInputConfiguration conf) =>
+                    (CharacterInput input, ref Movement movement, in InputConfiguration conf) =>
                     {
                         //var direction = new float3(input.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
-                        var direction = new float3(input.GetAxis(conf.MoveActionID));
+                        
+                        var direction = new float3(input.Value.GetAxis(conf.MoveActionID));
                         movement.Enable = math.any(direction != float3.zero);
                         
                         if (movement.Enable)
@@ -29,6 +32,26 @@ namespace Features.InputSystem.Systems
                     })
                 .WithoutBurst()
                 .Run();
+            
+            //Attack
+            
+            // Entities
+            //     .WithAll<InputInterpreter, Movement>()
+            //     .ForEach(
+            //         (ref Movement movement, in InputInterpreter input, in PlayerInputConfiguration conf) =>
+            //         {
+            //             //var direction = new float3(input.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
+            //             var direction = new float3(input.GetAxis(conf.MoveActionID));
+            //             movement.Enable = math.any(direction != float3.zero);
+            //             
+            //             if (movement.Enable)
+            //             {
+            //                 movement.Direction = direction;
+            //             }
+            //         })
+            //     .WithoutBurst()
+            //     .Run();
+             
         }
     }
 }

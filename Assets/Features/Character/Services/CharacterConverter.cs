@@ -1,6 +1,7 @@
 using Features.Character.Components;
 using Features.HealthSystem.Components;
 using Features.InputSystem.Components;
+using Features.InputSystem.Services;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics.Authoring;
@@ -36,15 +37,21 @@ namespace Features.Character.Services
 
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            var playerInputWrapper = new PlayerInputWrapper { Value = _playerInput };
-            dstManager.AddSharedComponentData(entity, playerInputWrapper);
+            // var playerInputWrapper = new PlayerInputWrapper { Value = _playerInput };
+            // dstManager.AddSharedComponentData(entity, playerInputWrapper);
 
-            var playerInputConfiguration = new PlayerInputConfiguration
+            var characterInput = new CharacterInput
+            {
+                Value = new InputInterpreter()
+            };
+            dstManager.AddComponentData(entity, characterInput);
+
+            var inputConfiguration = new InputConfiguration
             {
                 MoveActionID = _moveActionID,
                 AttackActionID = _attackActionID
             };
-            dstManager.AddSharedComponentData(entity, playerInputConfiguration);
+            dstManager.AddSharedComponentData(entity, inputConfiguration);
 
             var health = new Health
             {

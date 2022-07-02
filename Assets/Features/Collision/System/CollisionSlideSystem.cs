@@ -15,7 +15,7 @@ using RaycastHit = Unity.Physics.RaycastHit;
 namespace Features.Collision.System
 {
     [AlwaysUpdateSystem]
-    [UpdateAfter(typeof(PlayerInputSystem))]
+    [UpdateAfter(typeof(CharacterInputSystem))]
     [UpdateBefore(typeof(MovementSystem))]
     public partial class CollisionSlideSystem : SystemBase
     {
