@@ -1,23 +1,25 @@
 ﻿using Features.Character.Components;
 using Features.Character.Systems;
 using Features.InputSystem.Components;
+using Features.InputSystem.Services;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
 namespace Features.InputSystem.Systems
 {
-    [UpdateBefore(typeof(CharacterInputSystem))]
-    public partial class PlayerInputSystem : SystemBase
+    [UpdateBefore(typeof(MovementSystem))]
+    public class CharacterInputSystem : SystemBase
     {
         protected override void OnUpdate()
         {
             Entities
-                .WithAll<PlayerInputWrapper, PlayerInputConfiguration, Movement>()
+                .WithAll<InputInterpreter, Movement>()
                 .ForEach(
-                    (ref Movement movement, in PlayerInputWrapper input, in PlayerInputConfiguration conf) =>
+                    (ref Movement movement, in InputInterpreter input, in PlayerInputConfiguration conf) =>
                     {
-                        var direction = new float3(input.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
+                        //var direction = new float3(input.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
+                        var direction = new float3(input.GetAxis(conf.MoveActionID));
                         movement.Enable = math.any(direction != float3.zero);
                         
                         if (movement.Enable)
