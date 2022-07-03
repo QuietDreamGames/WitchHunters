@@ -7,7 +7,7 @@ using Unity.Jobs;
 namespace Features.StateMachine.Systems.Core
 {
     public abstract partial class NodeExecutorSystem<TNodeFilter, TProcessor> : SystemBase
-        where TNodeFilter : struct, INodeComponent 
+        where TNodeFilter : struct, IComponentData, INode 
         where TProcessor : struct, INodeProcessor<TNodeFilter>
     {
         private EntityQuery _query;
@@ -44,7 +44,7 @@ namespace Features.StateMachine.Systems.Core
 
         [BurstCompile]
         public struct ExecuteNodesJob<TNodeFilterJob, TProcessorJob> : IJobEntityBatchWithIndex
-            where TNodeFilterJob : struct, INodeComponent 
+            where TNodeFilterJob : struct, IComponentData, INode 
             where TProcessorJob : struct, INodeProcessor<TNodeFilterJob>
         {
             [NativeDisableParallelForRestriction] 
@@ -97,14 +97,14 @@ namespace Features.StateMachine.Systems.Core
                 depthBasedIndexes.Dispose();
             }
 
-            private void ExecuteNode(ref NodeComponent nodeComponent, ref TNodeFilterJob actionFilter,
+            private void ExecuteNode(ref NodeComponent nodeComponent, ref TNodeFilterJob nodeFilter,
                 int indexOfFirstEntityInQuery, int iterIndex)
             {
                 if (!nodeComponent.Started)
                 {
                     nodeComponent.Result = Processor.Start(nodeComponent.RootEntity,
                         nodeComponent.AgentEntity,
-                        ref actionFilter,
+                        ref nodeFilter,
                         indexOfFirstEntityInQuery,
                         iterIndex);
                     nodeComponent.Started = true;
@@ -117,7 +117,7 @@ namespace Features.StateMachine.Systems.Core
 
                 nodeComponent.Result = Processor.Update(nodeComponent.RootEntity,
                     nodeComponent.AgentEntity,
-                    ref actionFilter,
+                    ref nodeFilter,
                     indexOfFirstEntityInQuery,
                     iterIndex);
             }

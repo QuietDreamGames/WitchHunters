@@ -2,7 +2,7 @@
 
 namespace Features.StateMachine.Components.Core
 {
-    public interface INodeComponent : IComponentData
+    public interface INode
     {
         
     }

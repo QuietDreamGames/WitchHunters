@@ -5,7 +5,7 @@ using Unity.Entities;
 namespace Features.StateMachine.Components
 {
 	[BurstCompile]
-	public struct Sequence : INodeComponent
+	public struct Sequence : IComponentData, INode
 	{
 		public readonly Entity Entity;
 		public readonly int NodeCount;

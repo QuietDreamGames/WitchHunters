@@ -46,7 +46,7 @@ namespace Features.StateMachine.Services
 
         private static void PrepareSequenceAction<T>(ref EntityManager dstManager, 
             in Entity rootEntity, in Entity agentEntity, int actionIndex, int depthIndex, T actionFilter) 
-            where T : struct, INodeComponent
+            where T : struct, IComponentData, INode
         {
             var node = dstManager.CreateEntity(typeof(NodeComponent), typeof(T));
             dstManager.AddComponentData(node, new NodeComponent(rootEntity, agentEntity, actionIndex, depthIndex));
