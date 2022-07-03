@@ -8,19 +8,23 @@ namespace Features.StateMachine.Components.Core
     {
         public readonly Entity RootEntity;
         public readonly Entity AgentEntity;
+        
         public readonly int ActionIndex;
+        public readonly int DepthIndex;
  
         public NodeResult Result;
      
         public bool IsExec;
         public bool Started;
  
-        public NodeComponent(Entity rootEntity, Entity agentEntity, int actionIndex) : this()
+        public NodeComponent(Entity rootEntity, Entity agentEntity, int actionIndex, int depthIndex) : this()
         {
             RootEntity = rootEntity;
             AgentEntity = agentEntity;
+            
             ActionIndex = actionIndex;
-
+            DepthIndex = depthIndex;
+            
             Result = NodeResult.Success;
 
             IsExec = false;

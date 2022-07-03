@@ -1,7 +1,4 @@
-﻿using Features.StateMachine.Components;
-using Features.StateMachine.Components.Core;
-using Features.StateMachine.Systems;
-using Features.StateMachine.Systems.Core;
+﻿using Features.StateMachine.Components.Core;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -67,9 +64,12 @@ namespace Features.StateMachine.Systems.Core
 
                 Processor.BeforeChunkIteration(batchInChunk, batchIndex);
 
+                var depthBasedIndexes = GetDepthBasedIndexes(nodes);
+
                 for (int i = 0; i < batchInChunk.Count; i++)
                 {
-                    var node = nodes[i];
+                    var index = depthBasedIndexes[i];
+                    var node = nodes[index];
                     if (!node.IsExec)
                     {
                         continue;
@@ -93,6 +93,8 @@ namespace Features.StateMachine.Systems.Core
 
                     nodes[i] = node;
                 }
+
+                depthBasedIndexes.Dispose();
             }
 
             private void ExecuteNode(ref NodeComponent nodeComponent, ref TNodeFilterJob actionFilter,
@@ -119,6 +121,32 @@ namespace Features.StateMachine.Systems.Core
                     indexOfFirstEntityInQuery,
                     iterIndex);
             }
+
+            private NativeArray<int> GetDepthBasedIndexes(NativeArray<NodeComponent> nodes)
+            {
+                var depthBasedIndexes = new NativeArray<int>(nodes.Length, Allocator.Temp);
+                for (int i = 0; i < depthBasedIndexes.Length; i++)
+                {
+                    depthBasedIndexes[i] = i;
+                }
+                
+                // TODO: Change to faster descending sorting method
+                for (int i = 0; i < depthBasedIndexes.Length - 1; i++)
+                {
+                    for (int j = i + 1; j < depthBasedIndexes.Length; j++)
+                    {
+                        var a = depthBasedIndexes[i];
+                        var b = depthBasedIndexes[j];
+                        
+                        if (nodes[a].DepthIndex < nodes[b].DepthIndex)
+                        {
+                            (depthBasedIndexes[i], depthBasedIndexes[j]) = (depthBasedIndexes[j], depthBasedIndexes[i]);
+                        }
+                    }
+                }
+  
+                return depthBasedIndexes;
+            } 
         }
 
         protected abstract TProcessor PrepareProcessor();
