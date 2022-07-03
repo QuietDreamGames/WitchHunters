@@ -92,7 +92,7 @@ namespace Features.StateMachine.Systems
 						if (node.AgentEntity != sequenceComponent.Entity)
 							continue;
 
-						var isCurrentNode = sequenceComponent.CurrentNodeIndex == node.ActionIndex;
+						var isCurrentNode = sequenceComponent.CurrentNodeIndex == node.ChildIndex;
 						if (isCurrentNode)
 						{
 							if (node.IsExec == false)
@@ -148,7 +148,8 @@ namespace Features.StateMachine.Systems
 						if (node.AgentEntity != sequenceComponent.Entity)
 							continue;
 
-						if (node.ActionIndex != sequenceComponent.CurrentNodeIndex)
+						var isCurrentNode = sequenceComponent.CurrentNodeIndex == node.ChildIndex;
+						if (isCurrentNode == false)
 							continue;
 
 						return (true, node);

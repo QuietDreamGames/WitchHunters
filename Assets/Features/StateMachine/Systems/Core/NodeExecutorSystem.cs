@@ -12,13 +12,13 @@ namespace Features.StateMachine.Systems.Core
     {
         private EntityQuery _query;
 
-        protected bool IsActionFilterHasArray;
+        protected bool IsNodeFilterHasArray;
 
         protected override void OnCreate()
         {
             _query = PrepareQuery();
 
-            IsActionFilterHasArray = !TypeManager.GetTypeInfo(TypeManager.GetTypeIndex<TNodeFilter>()).IsZeroSized;
+            IsNodeFilterHasArray = !TypeManager.GetTypeInfo(TypeManager.GetTypeIndex<TNodeFilter>()).IsZeroSized;
         }
 
         protected virtual EntityQuery PrepareQuery()
@@ -32,7 +32,7 @@ namespace Features.StateMachine.Systems.Core
             {
                 NodeComponentType = GetComponentTypeHandle<NodeComponent>(),
                 NodeFilterType = GetComponentTypeHandle<TNodeFilter>(),
-                IsActionFilterHasArray = IsActionFilterHasArray,
+                IsNodeFilterHasArray = IsNodeFilterHasArray,
                 Processor = PrepareProcessor()
             };
 
@@ -51,16 +51,16 @@ namespace Features.StateMachine.Systems.Core
             public ComponentTypeHandle<NodeComponent> NodeComponentType;
             public ComponentTypeHandle<TNodeFilterJob> NodeFilterType;
 
-            public bool IsActionFilterHasArray;
+            public bool IsNodeFilterHasArray;
             public TProcessorJob Processor;
 
             public void Execute(ArchetypeChunk batchInChunk, int batchIndex, int indexOfFirstEntityInQuery)
             {
                 var nodes = batchInChunk.GetNativeArray(NodeComponentType);
-                var nodeFilters = IsActionFilterHasArray 
+                var nodeFilters = IsNodeFilterHasArray 
                     ? batchInChunk.GetNativeArray(NodeFilterType) 
                     : default;
-                TNodeFilterJob defaultActionFilter = default;
+                TNodeFilterJob defaultNodeFilter = default;
 
                 Processor.BeforeChunkIteration(batchInChunk, batchIndex);
 
@@ -75,7 +75,7 @@ namespace Features.StateMachine.Systems.Core
                         continue;
                     }
 
-                    if (IsActionFilterHasArray)
+                    if (IsNodeFilterHasArray)
                     {
                         var nodeFilter = nodeFilters[index];
                         ExecuteNode(ref node, ref nodeFilter, indexOfFirstEntityInQuery, i);
@@ -83,7 +83,7 @@ namespace Features.StateMachine.Systems.Core
                     }
                     else
                     {
-                        ExecuteNode(ref node, ref defaultActionFilter, indexOfFirstEntityInQuery, i);
+                        ExecuteNode(ref node, ref defaultNodeFilter, indexOfFirstEntityInQuery, i);
                     }
 
                     if (node.Result is NodeResult.Success or NodeResult.Failed)
