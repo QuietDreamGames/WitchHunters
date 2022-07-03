@@ -77,9 +77,9 @@ namespace Features.StateMachine.Systems.Core
 
                     if (IsActionFilterHasArray)
                     {
-                        var nodeFilter = nodeFilters[i];
+                        var nodeFilter = nodeFilters[index];
                         ExecuteNode(ref node, ref nodeFilter, indexOfFirstEntityInQuery, i);
-                        nodeFilters[i] = nodeFilter;
+                        nodeFilters[index] = nodeFilter;
                     }
                     else
                     {
@@ -91,7 +91,7 @@ namespace Features.StateMachine.Systems.Core
                         node.IsExec = false;
                     }
 
-                    nodes[i] = node;
+                    nodes[index] = node;
                 }
 
                 depthBasedIndexes.Dispose();
