@@ -4,7 +4,6 @@ using Features.StateMachine.Components.Core;
 using Features.StateMachine.Systems;
 using Features.StateMachine.Systems.Core;
 using Unity.Burst;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -16,26 +15,32 @@ namespace Features.StateMachine.Systems
     {
         protected override Processor PrepareProcessor()
         {
+            ShouldScheduleParallel = false;
+            
             return new Processor
             {
-                AllMovements = GetComponentDataFromEntity<Movement>(), DeltaTime = UnityEngine.Time.deltaTime
+                AllMovements = GetComponentDataFromEntity<Movement>(), 
+                DeltaTime = UnityEngine.Time.deltaTime
             };
         }
 
         [BurstCompile]
         public struct Processor : INodeProcessor<MoveDirection>
         {
-            [ReadOnly] public ComponentDataFromEntity<Movement> AllMovements;
+            public ComponentDataFromEntity<Movement> AllMovements;
 
             public float DeltaTime;
-
+            
             public void BeforeChunkIteration(ArchetypeChunk batchInChunk, int batchIndex)
             {
                 
             }
 
-            public NodeResult Start(in Entity agentEntity, ref MoveDirection nodeComponent,
-                int indexOfFirstEntityInQuery, int iterIndex)
+            public NodeResult Start(in Entity rootEntity,
+                in Entity agentEntity,
+                ref MoveDirection nodeComponent,
+                int indexOfFirstEntityInQuery,
+                int iterIndex)
             {
                 var duration = nodeComponent.Time;
                 nodeComponent.CurrentTime = duration;
@@ -43,22 +48,32 @@ namespace Features.StateMachine.Systems
                 return NodeResult.Running;
             }
 
-            public NodeResult Update(in Entity agentEntity, ref MoveDirection nodeComponent,
-                int indexOfFirstEntityInQuery, int iterIndex)
+            public NodeResult Update(in Entity rootEntity,
+                in Entity agentEntity,
+                ref MoveDirection nodeComponent,
+                int indexOfFirstEntityInQuery,
+                int iterIndex)
             {
                 nodeComponent.CurrentTime -= DeltaTime;
 
                 if (nodeComponent.CurrentTime < 0)
-                {
+                { 
+                    ChangeMovementDirection(in rootEntity, float3.zero);
                     return NodeResult.Success;
                 }
 
-                var movement = AllMovements[agentEntity];
-                movement.Direction = nodeComponent.Direction;
-                movement.Enable = math.any(movement.Direction != float3.zero);
-                AllMovements[agentEntity] = movement;
-
+                ChangeMovementDirection(in rootEntity, nodeComponent.Direction);
                 return NodeResult.Running;
+            }
+
+            private void ChangeMovementDirection(in Entity rootEntity, float3 direction)
+            {
+                var movement = AllMovements[rootEntity];
+                
+                movement.Direction = direction;
+                movement.Enable = math.any(movement.Direction != float3.zero);
+                
+                AllMovements[rootEntity] = movement;
             }
         }
     }

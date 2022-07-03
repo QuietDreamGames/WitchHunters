@@ -1,9 +1,12 @@
+using Unity.Burst;
 using Unity.Entities;
 
 namespace Features.StateMachine.Components.Core
 {
-    public struct NodeComponent : IComponentData 
+    [BurstCompile]
+    public struct NodeComponent : IComponentData
     {
+        public readonly Entity RootEntity;
         public readonly Entity AgentEntity;
         public readonly int ActionIndex;
  
@@ -12,10 +15,16 @@ namespace Features.StateMachine.Components.Core
         public bool IsExec;
         public bool Started;
  
-        public NodeComponent(Entity agentEntity, int actionIndex) : this()
+        public NodeComponent(Entity rootEntity, Entity agentEntity, int actionIndex) : this()
         {
+            RootEntity = rootEntity;
             AgentEntity = agentEntity;
             ActionIndex = actionIndex;
+
+            Result = NodeResult.Success;
+
+            IsExec = false;
+            Started = false;
         }
     }
 }

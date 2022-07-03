@@ -35,25 +35,27 @@ namespace Features.StateMachine.Systems.Core
             {
                 NodeComponentType = GetComponentTypeHandle<NodeComponent>(),
                 NodeFilterType = GetComponentTypeHandle<TNodeFilter>(),
-                AllAgents = GetComponentDataFromEntity<NodeAgent>(),
                 IsActionFilterHasArray = IsActionFilterHasArray,
                 Processor = PrepareProcessor()
             };
 
-            Dependency = job.Schedule(_query, Dependency);
+            var jobHandle = ShouldScheduleParallel
+                ? job.ScheduleParallel(_query, Dependency)
+                : job.Schedule(_query, Dependency);
+            Dependency = jobHandle;
         }
 
+        [BurstCompile]
         public struct ExecuteNodesJob<TNodeFilterJob, TProcessorJob> : IJobEntityBatchWithIndex
             where TNodeFilterJob : struct, INodeComponent 
             where TProcessorJob : struct, INodeProcessor<TNodeFilterJob>
         {
+            [NativeDisableParallelForRestriction] 
             public ComponentTypeHandle<NodeComponent> NodeComponentType;
             public ComponentTypeHandle<TNodeFilterJob> NodeFilterType;
 
             public bool IsActionFilterHasArray;
             public TProcessorJob Processor;
-
-            public ComponentDataFromEntity<NodeAgent> AllAgents;
 
             public void Execute(ArchetypeChunk batchInChunk, int batchIndex, int indexOfFirstEntityInQuery)
             {
@@ -84,16 +86,12 @@ namespace Features.StateMachine.Systems.Core
                         ExecuteNode(ref node, ref defaultActionFilter, indexOfFirstEntityInQuery, i);
                     }
 
-                    if (node.Result == NodeResult.Failed)
+                    if (node.Result is NodeResult.Success or NodeResult.Failed)
                     {
-                        node.Started = false;
+                        node.IsExec = false;
                     }
 
                     nodes[i] = node;
-
-                    var agent = AllAgents[node.AgentEntity];
-                    agent.LastResult = node.Result;
-                    AllAgents[node.AgentEntity] = agent;
                 }
             }
 
@@ -102,18 +100,24 @@ namespace Features.StateMachine.Systems.Core
             {
                 if (!nodeComponent.Started)
                 {
-                    nodeComponent.Result = Processor.Start(nodeComponent.AgentEntity, ref actionFilter,
-                        indexOfFirstEntityInQuery, iterIndex);
+                    nodeComponent.Result = Processor.Start(nodeComponent.RootEntity,
+                        nodeComponent.AgentEntity,
+                        ref actionFilter,
+                        indexOfFirstEntityInQuery,
+                        iterIndex);
                     nodeComponent.Started = true;
 
-                    if (nodeComponent.Result == NodeResult.Success || nodeComponent.Result == NodeResult.Failed)
+                    if (nodeComponent.Result is NodeResult.Success or NodeResult.Failed)
                     {
                         return;
                     }
                 }
 
-                nodeComponent.Result = Processor.Update(nodeComponent.AgentEntity, ref actionFilter,
-                    indexOfFirstEntityInQuery, iterIndex);
+                nodeComponent.Result = Processor.Update(nodeComponent.RootEntity,
+                    nodeComponent.AgentEntity,
+                    ref actionFilter,
+                    indexOfFirstEntityInQuery,
+                    iterIndex);
             }
         }
 

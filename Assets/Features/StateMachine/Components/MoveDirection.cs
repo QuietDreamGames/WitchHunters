@@ -1,8 +1,10 @@
 ﻿using Features.StateMachine.Components.Core;
+using Unity.Burst;
 using Unity.Mathematics;
 
 namespace Features.StateMachine.Components
 {
+    [BurstCompile]
     public struct MoveDirection: INodeComponent 
     {
         public readonly float3 Direction;
