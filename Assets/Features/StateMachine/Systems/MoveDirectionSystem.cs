@@ -37,7 +37,7 @@ namespace Features.StateMachine.Systems
             }
 
             public NodeResult Start(in Entity rootEntity,
-                in Entity agentEntity,
+                in Entity nodeEntity,
                 ref MoveDirection nodeComponent,
                 int indexOfFirstEntityInQuery,
                 int iterIndex)
@@ -49,7 +49,7 @@ namespace Features.StateMachine.Systems
             }
 
             public NodeResult Update(in Entity rootEntity,
-                in Entity agentEntity,
+                in Entity nodeEntity,
                 ref MoveDirection nodeComponent,
                 int indexOfFirstEntityInQuery,
                 int iterIndex)

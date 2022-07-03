@@ -32,6 +32,7 @@ namespace Features.StateMachine.Systems.Core
             {
                 NodeComponentType = GetComponentTypeHandle<NodeComponent>(),
                 NodeFilterType = GetComponentTypeHandle<TNodeFilter>(),
+                EntityType = GetEntityTypeHandle(),
                 IsNodeFilterHasArray = IsNodeFilterHasArray,
                 Processor = PrepareProcessor()
             };
@@ -50,6 +51,9 @@ namespace Features.StateMachine.Systems.Core
             [NativeDisableParallelForRestriction] 
             public ComponentTypeHandle<NodeComponent> NodeComponentType;
             public ComponentTypeHandle<TNodeFilterJob> NodeFilterType;
+            
+            [ReadOnly]
+            public EntityTypeHandle EntityType;
 
             public bool IsNodeFilterHasArray;
             public TProcessorJob Processor;
@@ -57,6 +61,7 @@ namespace Features.StateMachine.Systems.Core
             public void Execute(ArchetypeChunk batchInChunk, int batchIndex, int indexOfFirstEntityInQuery)
             {
                 var nodes = batchInChunk.GetNativeArray(NodeComponentType);
+                var entities = batchInChunk.GetNativeArray(EntityType);
                 var nodeFilters = IsNodeFilterHasArray 
                     ? batchInChunk.GetNativeArray(NodeFilterType) 
                     : default;
@@ -70,6 +75,8 @@ namespace Features.StateMachine.Systems.Core
                 {
                     var index = depthBasedIndexes[i];
                     var node = nodes[index];
+                    var entity = entities[index];
+                    
                     if (!node.IsExec)
                     {
                         continue;
@@ -78,12 +85,12 @@ namespace Features.StateMachine.Systems.Core
                     if (IsNodeFilterHasArray)
                     {
                         var nodeFilter = nodeFilters[index];
-                        ExecuteNode(ref node, ref nodeFilter, indexOfFirstEntityInQuery, i);
+                        ExecuteNode(in entity, ref node, ref nodeFilter, indexOfFirstEntityInQuery, i);
                         nodeFilters[index] = nodeFilter;
                     }
                     else
                     {
-                        ExecuteNode(ref node, ref defaultNodeFilter, indexOfFirstEntityInQuery, i);
+                        ExecuteNode(in entity, ref node, ref defaultNodeFilter, indexOfFirstEntityInQuery, i);
                     }
 
                     if (node.Result is NodeResult.Success or NodeResult.Failed)
@@ -97,13 +104,16 @@ namespace Features.StateMachine.Systems.Core
                 depthBasedIndexes.Dispose();
             }
 
-            private void ExecuteNode(ref NodeComponent nodeComponent, ref TNodeFilterJob nodeFilter,
-                int indexOfFirstEntityInQuery, int iterIndex)
+            private void ExecuteNode(in Entity nodeEntity,
+                ref NodeComponent nodeComponent,
+                ref TNodeFilterJob nodeFilter,
+                int indexOfFirstEntityInQuery,
+                int iterIndex)
             {
                 if (!nodeComponent.Started)
                 {
-                    nodeComponent.Result = Processor.Start(nodeComponent.RootEntity,
-                        nodeComponent.AgentEntity,
+                    nodeComponent.Result = Processor.Start(in nodeComponent.RootEntity,
+                        in nodeEntity,
                         ref nodeFilter,
                         indexOfFirstEntityInQuery,
                         iterIndex);
@@ -115,8 +125,8 @@ namespace Features.StateMachine.Systems.Core
                     }
                 }
 
-                nodeComponent.Result = Processor.Update(nodeComponent.RootEntity,
-                    nodeComponent.AgentEntity,
+                nodeComponent.Result = Processor.Update(in nodeComponent.RootEntity,
+                    in nodeEntity,
                     ref nodeFilter,
                     indexOfFirstEntityInQuery,
                     iterIndex);

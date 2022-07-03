@@ -8,12 +8,12 @@ namespace Features.StateMachine.Components.Core
     {
         void BeforeChunkIteration(ArchetypeChunk batchInChunk, int batchIndex);
         NodeResult Start(in Entity rootEntity,
-            in Entity agentEntity,
+            in Entity nodeEntity,
             ref T nodeComponent,
             int indexOfFirstEntityInQuery,
             int iterIndex);
         NodeResult Update(in Entity rootEntity,
-            in Entity agentEntity,
+            in Entity nodeEntity,
             ref T nodeComponent,
             int indexOfFirstEntityInQuery,
             int iterIndex);

@@ -40,19 +40,19 @@ namespace Features.StateMachine.Systems
             }
 
 			public NodeResult Start(in Entity rootEntity,
-				in Entity agentEntity,
+				in Entity sequenceEntity,
 				ref Sequence sequenceComponent,
 				int indexOfFirstEntityInQuery,
 				int iterIndex)
 			{
 				sequenceComponent.CurrentNodeIndex = 0;
-				Runner(in sequenceComponent);
+				Runner(in sequenceEntity, in sequenceComponent);
 
 				return NodeResult.Running;
 			}
 
 			public NodeResult Update(in Entity rootEntity,
-				in Entity agentEntity,
+				in Entity sequenceEntity,
 				ref Sequence sequenceComponent,
 				int indexOfFirstEntityInQuery,
 				int iterIndex)
@@ -60,7 +60,7 @@ namespace Features.StateMachine.Systems
 				NodeComponent child;
 				bool ok;
 
-				(ok, child) = GetCurrentChild(in sequenceComponent);
+				(ok, child) = GetCurrentChild(in sequenceEntity, in sequenceComponent);
 				if (!ok)
 				{
 					return NodeResult.Failed;
@@ -73,12 +73,12 @@ namespace Features.StateMachine.Systems
 					return result;
 				}
 
-				Runner(in sequenceComponent);
+				Runner(in sequenceEntity, in sequenceComponent);
 
 				return NodeResult.Running;
 			}
 
-			private void Runner(in Sequence sequenceComponent)
+			private void Runner(in Entity sequenceEntity, in Sequence sequenceComponent)
 			{
 				for (int j = 0; j < AllNodesChunks.Length; j++)
 				{
@@ -89,7 +89,7 @@ namespace Features.StateMachine.Systems
 					{
 						var node = allNodes[i];
                 					
-						if (node.AgentEntity != sequenceComponent.Entity)
+						if (node.AgentEntity != sequenceEntity)
 							continue;
 
 						var isCurrentNode = sequenceComponent.CurrentNodeIndex == node.ChildIndex;
@@ -134,7 +134,7 @@ namespace Features.StateMachine.Systems
 				return NodeResult.Success;
 			}
 			
-			private (bool, NodeComponent) GetCurrentChild(in Sequence sequenceComponent)
+			private (bool, NodeComponent) GetCurrentChild(in Entity sequenceEntity, in Sequence sequenceComponent)
 			{
 				for (int j = 0; j < AllNodesChunks.Length; j++)
 				{
@@ -145,7 +145,7 @@ namespace Features.StateMachine.Systems
 					{
 						var node = allNodes[i];
 					
-						if (node.AgentEntity != sequenceComponent.Entity)
+						if (node.AgentEntity != sequenceEntity)
 							continue;
 
 						var isCurrentNode = sequenceComponent.CurrentNodeIndex == node.ChildIndex;

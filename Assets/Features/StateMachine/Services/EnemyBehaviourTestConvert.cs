@@ -40,7 +40,7 @@ namespace Features.StateMachine.Services
             PrepareSequenceAction(ref dstManager, in entity, in sEntity, actionCount, 1, new MoveDirection(new float3(0, -1, 0), 5));
             ++actionCount;
             
-            dstManager.AddComponentData(sEntity, new Sequence(sEntity, actionCount));
+            dstManager.AddComponentData(sEntity, new Sequence(actionCount));
             dstManager.AddComponentData(sEntity, new NodeComponent(entity, entity, 0, 0) {IsExec = true});
         }
 
