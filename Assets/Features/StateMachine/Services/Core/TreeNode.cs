@@ -7,23 +7,7 @@ namespace Features.StateMachine.Services.Core
     {
         public INode Node;
         public TreeNode[] Children;
-
-        public TreeNode(INode node)
-        {
-            Node = node;
-            Children = default;
-        }
-
-        public TreeNode(INode node, TreeNode child)
-        {
-            Node = node;
-            Children = new[] { child };
-        }
         
-        public TreeNode(INode node, TreeNode[] children)
-        {
-            Node = node;
-            Children = children;
-        }
+        public string Description;
     }
 }

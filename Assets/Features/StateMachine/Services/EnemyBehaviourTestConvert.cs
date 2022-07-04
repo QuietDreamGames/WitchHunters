@@ -27,21 +27,25 @@ namespace Features.StateMachine.Services
 
             var treeEntry = new TreeNode
             {
+                Description = "BT root",
                 Node = new Sequence(3),
                 Children = new []
                 {
                     new TreeNode
                     {
+                        Description = "move up",
                         Node = new MoveDirection(new float3(0, 1, 0), 4),
                         Children = default
                     },
                     new TreeNode
                     {
+                        Description = "fck go back!",
                         Node = new Sequence(1),
                         Children = new []
                         {
                             new TreeNode
                             {
+                                Description = "go down",
                                 Node = new MoveDirection(new float3(0, -1, 0), 2),
                                 Children = default
                             }
@@ -49,22 +53,25 @@ namespace Features.StateMachine.Services
                     },
                     new TreeNode
                     {
+                        Description = "horizontal movement",
                         Node = new Sequence(2),
                         Children = new []
                         {
                             new TreeNode
                             {
+                                Description = "and left",
                                 Node = new MoveDirection(new float3(-1, 0, 0), 5),
                                 Children = default
                             },
                             new TreeNode
                             {
+                                Description = "and right",
                                 Node = new MoveDirection(new float3(1, 0, 0), 5),
                                 Children = default
                             },
                         } 
                     }
-                }
+                },
             };
 
             TreeNodeUtils.ConvertToEntity(in entity, ref dstManager, treeEntry);
