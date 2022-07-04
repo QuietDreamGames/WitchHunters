@@ -1,7 +1,8 @@
 ﻿using Features.StateMachine.Components;
 using Features.StateMachine.Components.Core;
-using Features.StateMachine.Systems;
+using Features.StateMachine.Components.Nodes.Composite;
 using Features.StateMachine.Systems.Core;
+using Features.StateMachine.Systems.Nodes.Composite;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
@@ -9,7 +10,7 @@ using Unity.Entities;
 using Unity.Jobs;
 
 [assembly: RegisterGenericJobType(typeof(SequenceSystem.ExecuteNodesJob<Sequence, SequenceSystem.Processor>))]
-namespace Features.StateMachine.Systems
+namespace Features.StateMachine.Systems.Nodes.Composite
 {
 	public partial class SequenceSystem : NodeExecutorSystem<Sequence, SequenceSystem.Processor>
 	{

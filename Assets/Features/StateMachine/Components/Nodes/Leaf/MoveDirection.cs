@@ -3,7 +3,7 @@ using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 
-namespace Features.StateMachine.Components
+namespace Features.StateMachine.Components.Nodes.Leaf
 {
     [BurstCompile]
     public struct MoveDirection: IComponentData, INode 

@@ -1,6 +1,8 @@
 ﻿using Features.Character.Components;
 using Features.StateMachine.Components;
 using Features.StateMachine.Components.Core;
+using Features.StateMachine.Components.Nodes.Composite;
+using Features.StateMachine.Components.Nodes.Leaf;
 using Features.StateMachine.Services.Core;
 using Unity.Entities;
 using Unity.Mathematics;

@@ -1,15 +1,16 @@
 ﻿using Features.Character.Components;
 using Features.StateMachine.Components;
 using Features.StateMachine.Components.Core;
-using Features.StateMachine.Systems;
+using Features.StateMachine.Components.Nodes.Leaf;
 using Features.StateMachine.Systems.Core;
+using Features.StateMachine.Systems.Nodes.Leaf;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 
 [assembly: RegisterGenericJobType(typeof(MoveDirectionSystem.ExecuteNodesJob<MoveDirection, MoveDirectionSystem.Processor>))]
-namespace Features.StateMachine.Systems
+namespace Features.StateMachine.Systems.Nodes.Leaf
 {
     public partial class MoveDirectionSystem : NodeExecutorSystem<MoveDirection, MoveDirectionSystem.Processor>
     {

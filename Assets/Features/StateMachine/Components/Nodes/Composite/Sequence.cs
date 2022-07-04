@@ -2,7 +2,7 @@
 using Unity.Burst;
 using Unity.Entities;
 
-namespace Features.StateMachine.Components
+namespace Features.StateMachine.Components.Nodes.Composite
 {
 	[BurstCompile]
 	public struct Sequence : IComponentData, INode
