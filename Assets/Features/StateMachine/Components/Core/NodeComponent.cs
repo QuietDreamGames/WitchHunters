@@ -17,7 +17,7 @@ namespace Features.StateMachine.Components.Core
         public bool IsExec;
         public bool Started;
  
-        public NodeComponent(Entity rootEntity, Entity agentEntity, int childIndex, int depthIndex) : this()
+        public NodeComponent(Entity rootEntity, Entity agentEntity, int childIndex, int depthIndex, bool isExec) : this()
         {
             RootEntity = rootEntity;
             AgentEntity = agentEntity;
@@ -27,7 +27,7 @@ namespace Features.StateMachine.Components.Core
             
             Result = NodeResult.Success;
 
-            IsExec = false;
+            IsExec = isExec;
             Started = false;
         }
     }
