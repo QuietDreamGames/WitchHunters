@@ -34,8 +34,8 @@ namespace Features.StateMachine.Services
                 {
                     new TreeNode
                     {
-                        Description = "inverter test for selector",
-                        Node = new Inverter(),
+                        Description = "failer test for selector",
+                        Node = new Failer(),
                         Children = new []
                         {
                             new TreeNode
@@ -48,8 +48,8 @@ namespace Features.StateMachine.Services
                     },
                     new TreeNode
                     {
-                        Description = "inverter test for selector",
-                        Node = new Inverter(),
+                        Description = "succeeder test for selector",
+                        Node = new Succeeder(),
                         Children = new []
                         {
                             new TreeNode
