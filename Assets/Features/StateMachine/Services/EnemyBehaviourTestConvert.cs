@@ -1,7 +1,6 @@
 ﻿using Features.Character.Components;
-using Features.StateMachine.Components;
-using Features.StateMachine.Components.Core;
 using Features.StateMachine.Components.Nodes.Composite;
+using Features.StateMachine.Components.Nodes.Decorator;
 using Features.StateMachine.Components.Nodes.Leaf;
 using Features.StateMachine.Services.Core;
 using Unity.Entities;
@@ -27,7 +26,7 @@ namespace Features.StateMachine.Services
             };
             dstManager.AddComponentData(entity, speed);
 
-            var treeEntry = new TreeNode
+            var mainNode = new TreeNode
             {
                 Description = "BT root",
                 Node = new Sequence(3),
@@ -76,7 +75,14 @@ namespace Features.StateMachine.Services
                 },
             };
 
-            TreeNodeUtils.ConvertToEntity(in entity, ref dstManager, treeEntry);
+            var loopNode = new TreeNode
+            {
+                Description = "repeat forever",
+                Node = new Repeater(RepeaterType.Forever),
+                Children = new[] { mainNode }
+            };
+
+            TreeNodeUtils.ConvertToEntity(in entity, ref dstManager, loopNode);
         }
     }
 }
