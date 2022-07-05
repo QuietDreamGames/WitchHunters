@@ -29,28 +29,44 @@ namespace Features.StateMachine.Services
             var mainNode = new TreeNode
             {
                 Description = "BT root",
-                Node = new Sequence(3),
+                Node = new Selector(3),
                 Children = new []
                 {
                     new TreeNode
                     {
-                        Description = "move up",
-                        Node = new MoveDirection(new float3(0, 1, 0), 4),
-                        Children = default
-                    },
-                    new TreeNode
-                    {
-                        Description = "fck go back!",
-                        Node = new Sequence(1),
+                        Description = "inverter test for selector",
+                        Node = new Inverter(),
                         Children = new []
                         {
                             new TreeNode
                             {
-                                Description = "go down",
-                                Node = new MoveDirection(new float3(0, -1, 0), 2),
+                                Description = "move up",
+                                Node = new MoveDirection(new float3(0, 1, 0), 4),
                                 Children = default
-                            }
-                        }
+                            }, 
+                        },
+                    },
+                    new TreeNode
+                    {
+                        Description = "inverter test for selector",
+                        Node = new Inverter(),
+                        Children = new []
+                        {
+                            new TreeNode
+                            {
+                                Description = "fck go back!",
+                                Node = new Sequence(1),
+                                Children = new []
+                                {
+                                    new TreeNode
+                                    {
+                                        Description = "go down",
+                                        Node = new MoveDirection(new float3(0, -1, 0), 2),
+                                        Children = default
+                                    }
+                                }
+                            }, 
+                        },
                     },
                     new TreeNode
                     {
