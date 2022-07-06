@@ -6,6 +6,7 @@ using Features.StateMachine.Services.Core;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
+using LogType = Features.StateMachine.Components.Nodes.Leaf.LogType;
 
 namespace Features.StateMachine.Services
 {
@@ -98,7 +99,45 @@ namespace Features.StateMachine.Services
                 Children = new[] { mainNode }
             };
 
-            TreeNodeUtils.ConvertToEntity(in entity, ref dstManager, loopNode);
+            var logBranch = new TreeNode
+            {
+                Description = "reapeat 2 forever",
+                Node = new Repeater(RepeaterType.Success),
+                Children = new[]
+                {
+                    new TreeNode
+                    { 
+                        Description  = "wait loop seq",
+                        Node = new Sequence(2),
+                        Children = new []
+                        {
+                            new TreeNode
+                            {
+                                Description = "Wait for 3 sec", 
+                                Node = new Wait(3),
+                            },
+                            new TreeNode
+                            {
+                                Description = "log some shit message ",
+                                Node = new Log("shit message", LogType.Simple),
+                            }
+                        }
+                    },
+                }
+            };
+
+            var parallelNode = new TreeNode
+            {
+                Description = "parallel",
+                Node = new Parallel(2, ParallelType.Selector),
+                Children = new[]
+                {
+                    loopNode,
+                    logBranch
+                }
+            };
+
+            TreeNodeUtils.ConvertToEntity(in entity, ref dstManager, parallelNode);
         }
     }
 }
