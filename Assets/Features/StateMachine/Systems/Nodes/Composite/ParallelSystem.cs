@@ -2,6 +2,7 @@
 using Features.StateMachine.Components.Nodes.Composite;
 using Features.StateMachine.Systems.Core;
 using Features.StateMachine.Systems.Nodes.Composite;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
@@ -12,17 +13,18 @@ namespace Features.StateMachine.Systems.Nodes.Composite
 {
     public partial class ParallelSystem : NodeExecutorSystem<Parallel, ParallelSystem.Processor>
 	{
-		protected override Processor PrepareProcessor()
+		protected override ParallelSystem.Processor PrepareProcessor()
 		{
 			var allNodesQuery = GetEntityQuery(typeof(NodeComponent));
 			
-			return new Processor
+			return new ParallelSystem.Processor
 			{
 				NodeComponentType = GetComponentTypeHandle<NodeComponent>(),
 				AllNodesChunks = allNodesQuery.CreateArchetypeChunkArray(Allocator.TempJob),
 			};
 		}
-
+		
+		[BurstCompile]
 		public struct Processor : INodeProcessor<Parallel>
 		{
 			[NativeDisableContainerSafetyRestriction]

@@ -2,6 +2,7 @@
 using Features.StateMachine.Components.Nodes.Leaf;
 using Features.StateMachine.Systems.Core;
 using Features.StateMachine.Systems.Nodes.Leaf;
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Jobs;
 
@@ -17,7 +18,8 @@ namespace Features.StateMachine.Systems.Nodes.Leaf
                 DeltaTime = UnityEngine.Time.deltaTime
             };
         }
-
+        
+        [BurstCompile]
         public struct Processor : INodeProcessor<Wait>
         {
             public float DeltaTime;

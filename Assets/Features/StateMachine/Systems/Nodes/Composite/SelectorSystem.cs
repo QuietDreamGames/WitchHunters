@@ -13,11 +13,11 @@ namespace Features.StateMachine.Systems.Nodes.Composite
 {
     public partial class SelectorSystem : NodeExecutorSystem<Selector, SelectorSystem.Processor>
     {
-        protected override Processor PrepareProcessor()
+        protected override SelectorSystem.Processor PrepareProcessor()
 		{
 			var allNodesQuery = GetEntityQuery(typeof(NodeComponent));
 			
-			return new Processor
+			return new SelectorSystem.Processor
 			{
 				NodeComponentType = GetComponentTypeHandle<NodeComponent>(),
 				AllNodesChunks = allNodesQuery.CreateArchetypeChunkArray(Allocator.TempJob),

@@ -14,11 +14,11 @@ namespace Features.StateMachine.Systems.Nodes.Leaf
 {
     public partial class MoveDirectionSystem : NodeExecutorSystem<MoveDirection, MoveDirectionSystem.Processor>
     {
-        protected override Processor PrepareProcessor()
+        protected override MoveDirectionSystem.Processor PrepareProcessor()
         {
             ShouldScheduleParallel = false;
             
-            return new Processor
+            return new MoveDirectionSystem.Processor
             {
                 AllMovements = GetComponentDataFromEntity<Movement>(), 
                 DeltaTime = UnityEngine.Time.deltaTime
