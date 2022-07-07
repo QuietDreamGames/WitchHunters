@@ -9,10 +9,12 @@ namespace Features.Animator.Services
         #region Serializable data
 
         [Header("Animator Configuration")] 
-        [SerializeField] private string _movingParam = "Moving";
+        [SerializeField] private string _movingParam = "Move";
 
         [SerializeField] private string _horizontalParam = "Horizontal";
         [SerializeField] private string _verticalParam = "Vertical";
+        
+        [SerializeField] private string _attackParam = "Attack";
         
         [Header("Animator")] 
         [SerializeField] private UnityEngine.Animator _animator;
@@ -31,9 +33,11 @@ namespace Features.Animator.Services
                 Moving = _movingParam,
                 
                 Horizontal = _horizontalParam,
-                Vertical = _verticalParam
+                Vertical = _verticalParam,
+                
+                Attack = _attackParam
             };
-            dstManager.AddSharedComponentData(entity, configuration);
+            dstManager.AddComponentData(entity, configuration);
         }
         
         #endregion

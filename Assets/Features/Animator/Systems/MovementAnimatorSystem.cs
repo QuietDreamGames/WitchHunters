@@ -15,9 +15,9 @@ namespace Features.Animator.Systems
                 .WithAll<Movement, AnimatorWrapper, AnimatorConfiguration>()
                 .ForEach((in AnimatorWrapper animator, in Movement movement, in AnimatorConfiguration conf) =>
                 {
-                    animator.Value.SetFloat(conf.Horizontal, movement.Direction.x); 
-                    animator.Value.SetFloat(conf.Vertical, movement.Direction.y);
-                    animator.Value.SetBool(conf.Moving, movement.Enable);
+                    animator.Value.SetFloat(conf.Horizontal.ToString(), movement.Direction.x); 
+                    animator.Value.SetFloat(conf.Vertical.ToString(), movement.Direction.y);
+                    animator.Value.SetBool(conf.Moving.ToString(), movement.Enable);
                 })
                 .WithoutBurst()
                 .Run();
@@ -31,11 +31,11 @@ namespace Features.Animator.Systems
                 {
                     if (movement.Enable)
                     {
-                        animator.Value.SetFloat(conf.Horizontal, movement.Direction.x);
-                        animator.Value.SetFloat(conf.Vertical, movement.Direction.y);
+                        animator.Value.SetFloat(conf.Horizontal.ToString(), movement.Direction.x);
+                        animator.Value.SetFloat(conf.Vertical.ToString(), movement.Direction.y);
                     }
                     
-                    animator.Value.SetBool(conf.Moving, movement.Enable);
+                    animator.Value.SetBool(conf.Moving.ToString(), movement.Enable);
                 })
                 .WithoutBurst()
                 .Run();

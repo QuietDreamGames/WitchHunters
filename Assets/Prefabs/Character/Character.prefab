@@ -103,7 +103,6 @@ MonoBehaviour:
   _speed: 2.35
   _moveActionID: Move
   _attackActionID: Attack
-  _playerInput: {fileID: 0}
 --- !u!114 &3060734947632182146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +131,7 @@ MonoBehaviour:
   _movingParam: Move
   _horizontalParam: Horizontal
   _verticalParam: Vertical
+  _attackParam: Attack
   _animator: {fileID: 3060734947688086314}
 --- !u!114 &3060734947632182268
 MonoBehaviour:

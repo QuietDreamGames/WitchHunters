@@ -27,9 +27,6 @@ namespace Features.Character.Services
         [Header("Player Input Configuration")] 
         [SerializeField] private string _moveActionID = "Move";
         [SerializeField] private string _attackActionID = "Attack";
-        
-        [Header("Player Input Wrapper")]
-        [SerializeField] private PlayerInput _playerInput;
 
         #endregion
 

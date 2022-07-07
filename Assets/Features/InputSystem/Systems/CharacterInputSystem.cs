@@ -13,8 +13,6 @@ namespace Features.InputSystem.Systems
     {
         protected override void OnUpdate()
         {
-            
-            
             Entities
                 .WithAll<CharacterInput, Movement>()
                 .ForEach(
@@ -35,22 +33,21 @@ namespace Features.InputSystem.Systems
             
             //Attack
             
-            // Entities
-            //     .WithAll<InputInterpreter, Movement>()
-            //     .ForEach(
-            //         (ref Movement movement, in InputInterpreter input, in PlayerInputConfiguration conf) =>
-            //         {
-            //             //var direction = new float3(input.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
-            //             var direction = new float3(input.GetAxis(conf.MoveActionID));
-            //             movement.Enable = math.any(direction != float3.zero);
-            //             
-            //             if (movement.Enable)
-            //             {
-            //                 movement.Direction = direction;
-            //             }
-            //         })
-            //     .WithoutBurst()
-            //     .Run();
+            Entities
+                .WithAll<CharacterInput, Movement>()
+                .ForEach(
+                    ( CharacterInput input, ref Movement movement, in InputConfiguration conf) =>
+                    {
+                        var direction = new float3(input.Value.GetAxis(conf.MoveActionID));
+                        movement.Enable = math.any(direction != float3.zero);
+                        
+                        if (movement.Enable)
+                        {
+                            //movement.Direction = direction;
+                        }
+                    })
+                .WithoutBurst()
+                .Run();
              
         }
     }

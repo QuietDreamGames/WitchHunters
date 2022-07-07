@@ -10,26 +10,34 @@ namespace Features.InputSystem.Systems
     [UpdateBefore(typeof(CharacterInputSystem))]
     public partial class PlayerInputSystem : SystemBase
     {
-        private PlayerInputComponent _playerInputComponent;
-            
-        protected override void OnStartRunning()
-        {
-            RequireSingletonForUpdate<PlayerInputComponent>();
-            var playerInputEntity = GetSingletonEntity<PlayerInputComponent>();
-            _playerInputComponent = EntityManager.GetComponentData<PlayerInputComponent>(playerInputEntity);
-        }
+        // private PlayerInputComponent _playerInputComponent;
+        //     
+        // protected override void OnStartRunning()
+        // {
+        //     RequireSingletonForUpdate<PlayerInputComponent>();
+        //     var playerInputEntity = GetSingletonEntity<PlayerInputComponent>();
+        //     _playerInputComponent = EntityManager.GetComponentData<PlayerInputComponent>(playerInputEntity);
+        // }
 
         protected override void OnUpdate()
         {
+            RequireSingletonForUpdate<PlayerInputComponent>();
+            var playerInputEntity = GetSingletonEntity<PlayerInputComponent>();
+            var playerInputComponent = EntityManager.GetComponentData<PlayerInputComponent>(playerInputEntity);
+            
             Entities
                 .WithAll<CharacterInput, InputConfiguration, PlayerTag>()
                 .ForEach(
                     (CharacterInput characterInput, in InputConfiguration conf) =>
                     {
                         var direction =
-                            new float3(_playerInputComponent.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
+                            new float3(playerInputComponent.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
+
+                        var isAttack = playerInputComponent.Value.actions[conf.AttackActionID].WasPressedThisFrame();
 
                         characterInput.Value.SetAxis(conf.MoveActionID, direction);
+                        
+                        characterInput.Value.SetKey(conf.AttackActionID, isAttack);
                     })
                 .WithoutBurst()
                 .Run();

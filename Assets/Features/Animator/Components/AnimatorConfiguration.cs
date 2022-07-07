@@ -1,29 +1,16 @@
-using System;
+using Unity.Collections;
 using Unity.Entities;
-using UnityEngine;
 
 namespace Features.Animator.Components
 {
-    public struct AnimatorConfiguration : ISharedComponentData, IEquatable<AnimatorConfiguration>
+    public struct AnimatorConfiguration : IComponentData
     {
-        public string Moving;
+        public FixedString32Bytes Moving;
 
-        public string Horizontal;
-        public string Vertical;
+        public FixedString32Bytes Horizontal;
+        public FixedString32Bytes Vertical;
 
-        public bool Equals(AnimatorConfiguration other)
-        {
-            return Moving == other.Moving && Horizontal == other.Horizontal && Vertical == other.Vertical;
-        }
+        public FixedString32Bytes Attack;
 
-        public override bool Equals(object obj)
-        {
-            return obj is AnimatorConfiguration other && Equals(other);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Moving, Horizontal, Vertical);
-        }
     }
 }
