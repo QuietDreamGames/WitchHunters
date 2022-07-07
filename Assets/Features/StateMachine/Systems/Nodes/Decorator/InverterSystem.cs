@@ -1,6 +1,7 @@
 ﻿using Features.StateMachine.Components.Core;
 using Features.StateMachine.Components.Nodes.Decorator;
 using Features.StateMachine.Systems.Core;
+using Features.StateMachine.Systems.Core.SystemGroups;
 using Features.StateMachine.Systems.Nodes.Decorator;
 using Unity.Burst;
 using Unity.Collections;
@@ -11,6 +12,7 @@ using Unity.Jobs;
 [assembly: RegisterGenericJobType(typeof(InverterSystem.ExecuteNodesJob<Inverter, InverterSystem.Processor>))]
 namespace Features.StateMachine.Systems.Nodes.Decorator
 {
+	[UpdateInGroup(typeof(DecoratorNodeSystemGroup))]
     public class InverterSystem : NodeExecutorSystem<Inverter, InverterSystem.Processor>
 	{
 		protected override InverterSystem.Processor PrepareProcessor()

@@ -3,6 +3,7 @@ using Features.StateMachine.Components;
 using Features.StateMachine.Components.Core;
 using Features.StateMachine.Components.Nodes.Leaf;
 using Features.StateMachine.Systems.Core;
+using Features.StateMachine.Systems.Core.SystemGroups;
 using Features.StateMachine.Systems.Nodes.Leaf;
 using Unity.Burst;
 using Unity.Entities;
@@ -12,6 +13,7 @@ using Unity.Mathematics;
 [assembly: RegisterGenericJobType(typeof(MoveDirectionSystem.ExecuteNodesJob<MoveDirection, MoveDirectionSystem.Processor>))]
 namespace Features.StateMachine.Systems.Nodes.Leaf
 {
+	[UpdateInGroup(typeof(LeafNodeSystemGroup))]
     public partial class MoveDirectionSystem : NodeExecutorSystem<MoveDirection, MoveDirectionSystem.Processor>
     {
         protected override MoveDirectionSystem.Processor PrepareProcessor()

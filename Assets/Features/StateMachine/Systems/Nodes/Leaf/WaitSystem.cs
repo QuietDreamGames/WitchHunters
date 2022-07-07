@@ -1,6 +1,7 @@
 ﻿using Features.StateMachine.Components.Core;
 using Features.StateMachine.Components.Nodes.Leaf;
 using Features.StateMachine.Systems.Core;
+using Features.StateMachine.Systems.Core.SystemGroups;
 using Features.StateMachine.Systems.Nodes.Leaf;
 using Unity.Burst;
 using Unity.Entities;
@@ -9,6 +10,7 @@ using Unity.Jobs;
 [assembly: RegisterGenericJobType(typeof(WaitSystem.ExecuteNodesJob<Wait, WaitSystem.Processor>))]
 namespace Features.StateMachine.Systems.Nodes.Leaf
 {
+	[UpdateInGroup(typeof(LeafNodeSystemGroup))]
     public partial class WaitSystem : NodeExecutorSystem<Wait, WaitSystem.Processor>
     {
         protected override WaitSystem.Processor PrepareProcessor()

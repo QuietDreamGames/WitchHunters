@@ -3,6 +3,7 @@ using Features.StateMachine.Components.Core;
 using Features.StateMachine.Components.Nodes.Leaf;
 using Features.StateMachine.Services.Core;
 using Features.StateMachine.Systems.Core;
+using Features.StateMachine.Systems.Core.SystemGroups;
 using Features.StateMachine.Systems.Nodes.Leaf;
 using Unity.Burst;
 using Unity.Collections;
@@ -14,6 +15,7 @@ using LogType = Features.StateMachine.Components.Nodes.Leaf.LogType;
 [assembly: RegisterGenericJobType(typeof(LogSystem.ExecuteNodesJob<Log, LogSystem.Processor>))]
 namespace Features.StateMachine.Systems.Nodes.Leaf
 {
+	[UpdateInGroup(typeof(LeafNodeSystemGroup))]
     public partial class LogSystem : NodeExecutorSystem<Log, LogSystem.Processor>
     {
         protected override LogSystem.Processor PrepareProcessor()

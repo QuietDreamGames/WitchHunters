@@ -1,6 +1,7 @@
 ﻿using Features.StateMachine.Components.Core;
 using Features.StateMachine.Components.Nodes.Composite;
 using Features.StateMachine.Systems.Core;
+using Features.StateMachine.Systems.Core.SystemGroups;
 using Features.StateMachine.Systems.Nodes.Composite;
 using Unity.Burst;
 using Unity.Collections;
@@ -11,6 +12,7 @@ using Unity.Jobs;
 [assembly: RegisterGenericJobType(typeof(ParallelSystem.ExecuteNodesJob<Parallel, ParallelSystem.Processor>))]
 namespace Features.StateMachine.Systems.Nodes.Composite
 {
+	[UpdateInGroup(typeof(CompositeNodeSystemGroup))]
     public partial class ParallelSystem : NodeExecutorSystem<Parallel, ParallelSystem.Processor>
 	{
 		protected override ParallelSystem.Processor PrepareProcessor()

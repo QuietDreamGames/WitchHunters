@@ -2,6 +2,7 @@
 using Features.StateMachine.Components.Nodes.Composite;
 using Features.StateMachine.Components.Nodes.Decorator;
 using Features.StateMachine.Systems.Core;
+using Features.StateMachine.Systems.Core.SystemGroups;
 using Features.StateMachine.Systems.Nodes.Decorator;
 using Unity.Burst;
 using Unity.Collections;
@@ -12,6 +13,7 @@ using Unity.Jobs;
 [assembly: RegisterGenericJobType(typeof(RepeaterSystem.ExecuteNodesJob<Repeater, RepeaterSystem.Processor>))]
 namespace Features.StateMachine.Systems.Nodes.Decorator
 {
+	[UpdateInGroup(typeof(DecoratorNodeSystemGroup))]
     public class RepeaterSystem : NodeExecutorSystem<Repeater, RepeaterSystem.Processor>
 	{
 		protected override RepeaterSystem.Processor PrepareProcessor()
