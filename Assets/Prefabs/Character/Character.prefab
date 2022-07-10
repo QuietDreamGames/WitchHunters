@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 3060734947632182264}
   - component: {fileID: 3060734947632182146}
   - component: {fileID: 3060734947632182145}
+  - component: {fileID: 477937468623706932}
   - component: {fileID: 3060734947632182268}
   - component: {fileID: 3060734947632182269}
   - component: {fileID: 6117519940679713771}
@@ -133,6 +134,19 @@ MonoBehaviour:
   _verticalParam: Vertical
   _attackParam: Attack
   _animator: {fileID: 3060734947688086314}
+--- !u!114 &477937468623706932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060734947632182266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f88acec0e843ff87e98aab0601818c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soAutoattacksInfo: {fileID: 11400000, guid: b9a481103469d7e499a0ed71fef7e79f, type: 2}
 --- !u!114 &3060734947632182268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,7 +461,7 @@ Animator:
   m_GameObject: {fileID: 3060734947688086309}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 94a8362f183c1b14ebad518a19c1461f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 573d3c5f802e52046ac92a0430e5f598, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

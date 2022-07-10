@@ -62,7 +62,7 @@ namespace Features.Character.Services
                 Value = 0f
             };
             dstManager.AddComponentData(entity, damage);
-            
+
             var speed = new Speed { Value = _speed };
             dstManager.AddComponentData(entity, speed);
 

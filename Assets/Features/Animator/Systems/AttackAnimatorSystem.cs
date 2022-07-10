@@ -3,11 +3,11 @@ using Features.Character.Components;
 using Features.Character.Systems;
 using Features.InputSystem.Systems;
 using Unity.Entities;
+using UnityEngine;
 
 namespace Features.Animator.Systems
 {
-    [UpdateAfter(typeof(CharacterInputSystem))]
-    [UpdateBefore(typeof(MovementSystem))]
+    [UpdateAfter(typeof(AttackSystem))]
     public partial class AttackAnimatorSystem : SystemBase
     {
         private EntityQuery _query;
@@ -42,18 +42,15 @@ namespace Features.Animator.Systems
 
         protected override void OnUpdate()
         {
-            
-            
             Entities
-                .WithStoreEntityQueryInField(ref _query)
+                .WithAll<AnimatorWrapper, Attack, AnimatorConfiguration>()
                 .ForEach((ref Movement movement, in AnimatorWrapper animator, in Attack attack,  in AnimatorConfiguration conf) =>
                 {
-                    if (attack.Enable)
-                    {
-                        animator.Value.SetBool(conf.Attack.ToString(), true);
-                    }
+                    animator.Value.SetBool(conf.Attack.ToString(), attack.Enable);
 
-                    movement.Enable = false;
+                    Debug.Log($"{conf.AttackId.ToString()} - {attack.CurrentAttackId}");
+                    
+                    animator.Value.SetInteger(conf.AttackId.ToString(), attack.CurrentAttackId);
                 })
                 .WithoutBurst()
                 .Run();

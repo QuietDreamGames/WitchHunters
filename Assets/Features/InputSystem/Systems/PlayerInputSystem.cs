@@ -33,11 +33,12 @@ namespace Features.InputSystem.Systems
                         var direction =
                             new float3(playerInputComponent.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
 
-                        var isAttack = playerInputComponent.Value.actions[conf.AttackActionID].WasPressedThisFrame();
+                        var isAttack = playerInputComponent.Value.actions[conf.AttackActionID].IsPressed();
 
                         characterInput.Value.SetAxis(conf.MoveActionID, direction);
                         
                         characterInput.Value.SetKey(conf.AttackActionID, isAttack);
+                        
                     })
                 .WithoutBurst()
                 .Run();

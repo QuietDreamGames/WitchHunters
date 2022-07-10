@@ -11,6 +11,7 @@ namespace Features.Animator.Components
         public FixedString32Bytes Vertical;
 
         public FixedString32Bytes Attack;
+        public FixedString32Bytes AttackId;
 
     }
 }

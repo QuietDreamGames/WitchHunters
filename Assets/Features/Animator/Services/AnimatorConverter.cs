@@ -15,6 +15,7 @@ namespace Features.Animator.Services
         [SerializeField] private string _verticalParam = "Vertical";
         
         [SerializeField] private string _attackParam = "Attack";
+        [SerializeField] private string _attackIdParam = "AttackId";
         
         [Header("Animator")] 
         [SerializeField] private UnityEngine.Animator _animator;
@@ -35,7 +36,8 @@ namespace Features.Animator.Services
                 Horizontal = _horizontalParam,
                 Vertical = _verticalParam,
                 
-                Attack = _attackParam
+                Attack = _attackParam,
+                AttackId = _attackIdParam,
             };
             dstManager.AddComponentData(entity, configuration);
         }

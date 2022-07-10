@@ -36,12 +36,13 @@ namespace Features.InputSystem.Systems
             Entities
                 .WithAll<CharacterInput, Movement>()
                 .ForEach(
-                    ( CharacterInput input, ref Movement movement, in InputConfiguration conf) =>
+                    ( CharacterInput input, ref Attack attack, in InputConfiguration conf) =>
                     {
-                        var direction = new float3(input.Value.GetAxis(conf.MoveActionID));
-                        movement.Enable = math.any(direction != float3.zero);
+                        var isAttackInput = input.Value.GetKey(conf.AttackActionID);
+
+                        attack.Enable = isAttackInput;
                         
-                        if (movement.Enable)
+                        if (attack.Enable)
                         {
                             //movement.Direction = direction;
                         }
