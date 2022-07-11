@@ -1,10 +1,8 @@
-﻿using Features.Character.Components;
-using Features.StateMachine.Components.Nodes.Composite;
+﻿using Features.StateMachine.Components.Nodes.Composite;
 using Features.StateMachine.Components.Nodes.Decorator;
 using Features.StateMachine.Components.Nodes.Leaf;
 using Features.StateMachine.Services.Core;
 using Unity.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 using LogType = Features.StateMachine.Components.Nodes.Leaf.LogType;
 
@@ -14,130 +12,109 @@ namespace Features.StateMachine.Services
     {
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            var movement = new Movement
+            var genericIdleState = new TreeNode
             {
-                Direction = float3.zero,
-                Enable = false
-            };
-            dstManager.AddComponentData(entity, movement);
-
-            var speed = new Speed
-            {
-                Value = 1,
-            };
-            dstManager.AddComponentData(entity, speed);
-
-            var mainNode = new TreeNode
-            {
-                Description = "BT root",
-                Node = new Selector(3),
-                Children = new []
-                {
-                    new TreeNode
-                    {
-                        Description = "failer test for selector",
-                        Node = new Failer(),
-                        Children = new []
-                        {
-                            new TreeNode
-                            {
-                                Description = "move up",
-                                Node = new MoveDirection(new float3(0, 1, 0), 4),
-                                Children = default
-                            }, 
-                        },
-                    },
-                    new TreeNode
-                    {
-                        Description = "succeeder test for selector",
-                        Node = new Succeeder(),
-                        Children = new []
-                        {
-                            new TreeNode
-                            {
-                                Description = "fck go back!",
-                                Node = new Sequence(1),
-                                Children = new []
-                                {
-                                    new TreeNode
-                                    {
-                                        Description = "go down",
-                                        Node = new MoveDirection(new float3(0, -1, 0), 2),
-                                        Children = default
-                                    }
-                                }
-                            }, 
-                        },
-                    },
-                    new TreeNode
-                    {
-                        Description = "horizontal movement",
-                        Node = new Sequence(2),
-                        Children = new []
-                        {
-                            new TreeNode
-                            {
-                                Description = "and left",
-                                Node = new MoveDirection(new float3(-1, 0, 0), 5),
-                                Children = default
-                            },
-                            new TreeNode
-                            {
-                                Description = "and right",
-                                Node = new MoveDirection(new float3(1, 0, 0), 5),
-                                Children = default
-                            },
-                        } 
-                    }
-                },
-            };
-
-            var loopNode = new TreeNode
-            {
-                Description = "repeat forever",
-                Node = new Repeater(RepeaterType.Forever),
-                Children = new[] { mainNode }
-            };
-
-            var logBranch = new TreeNode
-            {
-                Description = "reapeat 2 forever",
-                Node = new Repeater(RepeaterType.Success),
+                Description = "idle pattern",
+                Node = new Parallel(2, ParallelType.Selector),
                 Children = new[]
                 {
                     new TreeNode
                     { 
-                        Description  = "wait loop seq",
-                        Node = new Sequence(2),
+                        Description  = "repeatedly get target for leave idle",
+                        Node = new Repeater(RepeaterType.Success),
                         Children = new []
                         {
-                            new TreeNode
-                            {
-                                Description = "Wait for 3 sec", 
-                                Node = new Wait(3),
+                            new TreeNode 
+                            { 
+                                Description = "get target in distance", 
+                                Node = new GetClosestPlayer(3.75f) 
                             },
-                            new TreeNode
-                            {
-                                Description = "log some shit message ",
-                                Node = new Log("shit message", LogType.Simple),
-                            }
                         }
                     },
+                    // some idling behaviour
                 }
             };
 
-            var parallelNode = new TreeNode
+            var genericMoveState = new TreeNode
             {
-                Description = "parallel",
+                Description = "move pattern",
                 Node = new Parallel(2, ParallelType.Selector),
                 Children = new[]
                 {
-                    loopNode,
-                    logBranch
+                    new TreeNode
+                    { 
+                        Description  = "repeatedly get target for chasing",
+                        Node = new Repeater(RepeaterType.Failed),
+                        Children = new []
+                        {
+                            new TreeNode 
+                            { 
+                                Description = "get target in distance", 
+                                Node = new GetClosestPlayer(4) 
+                            },
+                        }
+                    },
+                    new TreeNode
+                    {
+                        Description = "move to target",
+                        Node = new MoveToTarget(.25f, 2)
+                    }
                 }
             };
 
-            TreeNodeUtils.ConvertToEntity(in entity, ref dstManager, parallelNode);
+            var genericAttackState = new TreeNode
+            {
+                Description = "attack pattern",
+                Node = new Parallel(2, ParallelType.Sequence),
+                Children = new[]
+                {
+                    new TreeNode 
+                    { 
+                        Description = "get target in distance", 
+                        Node = new GetClosestPlayer(1) 
+                    },
+                    new TreeNode
+                    {
+                        Description = "attack debug test",
+                        Node = new Sequence(2),
+                        Children = new[]
+                        {
+                            new TreeNode
+                            {
+                                Description = "wait for debug",
+                                Node = new Wait(1),
+                            },
+                            new TreeNode
+                            {
+                                Description = "attack debug",
+                                Node = new Log("attack", LogType.Simple)
+                            }
+                        }
+                    }
+                }
+            };
+
+            var genericEnemyBehaviour = new TreeNode
+            {
+                Description = "generic behaviour repeater",
+                Node = new Repeater(RepeaterType.Forever),
+                Children = new []
+                {
+                    new TreeNode
+                    {
+                        Description = "generic behaviour states",
+                        Node = new Selector(3),
+                        Children = new []
+                        {
+                            genericAttackState,
+                            genericMoveState,
+                            genericIdleState
+                        },
+                    },
+                },
+            };
+
+            TreeNodeUtils.ConvertToEntity(in entity, ref dstManager, genericEnemyBehaviour);
         }
     }
 }
