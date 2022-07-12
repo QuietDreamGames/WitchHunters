@@ -1,6 +1,7 @@
 ﻿using Features.Character.Components;
 using Features.Character.Services;
 using Features.InputSystem.Systems;
+using Unity.Burst;
 using Unity.Entities;
 
 namespace Features.Character.Systems
@@ -12,64 +13,74 @@ namespace Features.Character.Systems
         protected override void OnUpdate()
         {
             var deltaTime = Time.DeltaTime;
-            
-            Entities
-                .WithAll<Attack, Autoattacks>()
-                .ForEach((ref Autoattacks autoattacks, ref Attack attack) => //always `ref` for blobs!
-                {
-                    // ref AutoattackInfo[] autoattackInfos = autoattacks.Value.;
 
-                    if (attack.Cooldown > 0)
-                    {
-                        attack.Cooldown -= deltaTime;
-                        attack.Enable = false;
-                    }
-                    else if (attack.Cooldown > -1)
-                    {
-                        attack.Cooldown -= deltaTime;
-                    }
-                    else
-                    {
-                        attack.CurrentAttackId = 0;
-                        attack.NextAttackId = 0;
-                    }
+            Dependency = new AutoAttackJob { DeltaTime = deltaTime }.ScheduleParallel(Dependency);
+            Dependency = new MovementDisableJob().ScheduleParallel(Dependency);
+        }
+        
+        [BurstCompile]
+        public partial struct AutoAttackJob : IJobEntity
+        {
+            public float DeltaTime;
+
+            private void Execute(ref Autoattacks autoAttacks, ref Attack attack, ref AttackOverlapBox attackOverlapBox)
+            {
+                if (attack.Cooldown > 0)
+                {
+                    attack.Cooldown -= DeltaTime;
+                    attack.Enable = false;
+                }
+                else if (attack.Cooldown > -1)
+                {
+                    attack.Cooldown -= DeltaTime;
+                }
+                else
+                {
+                    attack.CurrentAttackId = 0;
+                    attack.NextAttackId = 0;
+                }
+                
+                ref var autoAttackInfos = ref autoAttacks.Value.Value.AutoattackInfos;
                     
-                    if (attack.Enable) // here its just a new attack
-                    {
-                        ref var autoattackInfos = ref autoattacks.Value.Value.AutoattackInfos;
-                        
-                        attack.CurrentAttackId = attack.NextAttackId;
-                        attack.NextAttackId += 1;
-
-                        if (attack.NextAttackId >= autoattackInfos.Length)
-                            attack.NextAttackId = 0;
-
-                        ref var currentAttackInfo = ref autoattackInfos[attack.CurrentAttackId];
-                        
-                        attack.Cooldown = currentAttackInfo.Time;
-                        attack.Damage = currentAttackInfo.BaseDamage;
-                        
-                        //Spawn collider somewhere here I guess
-
-                    }
-                })
-                .WithBurst()
-                .Run();
-            
-            
-            
-            
-            Entities
-                .WithAll<Movement, Attack>()
-                .ForEach((ref Movement movement, in Attack attack) =>
+                if (attack.Enable) // here its just a new attack
                 {
-                    if (attack.Cooldown > 0)
-                        movement.Enable = false;
-                })
-                .WithBurst()
-                .Run();
-            
-            
+                    attack.CurrentAttackId = attack.NextAttackId;
+                    attack.NextAttackId += 1;
+
+                    if (attack.NextAttackId >= autoAttackInfos.Length)
+                        attack.NextAttackId = 0;
+
+                    attack.Cooldown = autoAttackInfos[attack.CurrentAttackId].Time;
+                    attack.Damage = autoAttackInfos[attack.CurrentAttackId].BaseDamage;
+                        
+                    //Spawn collider somewhere here I guess
+                }
+                
+                ref var currentAttackInfo = ref autoAttackInfos[attack.CurrentAttackId];
+
+                var timeFromAttackStart = currentAttackInfo.Time - attack.Cooldown;
+
+                if (timeFromAttackStart > currentAttackInfo.ColliderStartTime && timeFromAttackStart < currentAttackInfo.ColliderStopTime)
+                {
+                    attack.IsAttackCollider = true;
+                }
+                else
+                {
+                    attack.IsAttackCollider = false;
+                }
+            }
+        }
+        
+        [BurstCompile]
+        public partial struct MovementDisableJob : IJobEntity
+        {
+            private void Execute(ref Movement movement, in Attack attack)
+            {
+                if (attack.Cooldown > 0)
+                {
+                    movement.Enable = false;
+                }
+            }
         }
     }
 }

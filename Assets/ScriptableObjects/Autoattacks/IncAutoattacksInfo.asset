@@ -14,11 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoattackInfos:
   - Id: 0
-    Time: 0.48
+    Time: 0.47
     BaseDamage: 10
+    ColliderRectPos1:
+      x: 0
+      y: 0
+    ColliderRectPos2:
+      x: 0
+      y: 0
+    ColliderStartTime: 0
+    ColliderStopTime: 0
   - Id: 1
-    Time: 0.59
+    Time: 0.588
     BaseDamage: 10
+    ColliderRectPos1:
+      x: 0
+      y: 0
+    ColliderRectPos2:
+      x: 0
+      y: 0
+    ColliderStartTime: 0
+    ColliderStopTime: 0
   - Id: 2
-    Time: 0.54
+    Time: 0.51
     BaseDamage: 10
+    ColliderRectPos1:
+      x: 0
+      y: 0
+    ColliderRectPos2:
+      x: 1
+      y: 1
+    ColliderStartTime: 0.1
+    ColliderStopTime: 0.2
