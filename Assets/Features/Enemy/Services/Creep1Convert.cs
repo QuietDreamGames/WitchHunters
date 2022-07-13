@@ -16,6 +16,8 @@ namespace Features.Enemy.Services
         [Header("Creep1 data")]
         
         [SerializeField] private string _attackAnimationName = "Attack1";
+        [SerializeField] private float _attackAnimationTime = 1f;
+        
         [SerializeField] private float _moveSpeed = 2;
 
         #endregion
@@ -77,8 +79,21 @@ namespace Features.Enemy.Services
                         {
                             new TreeNode
                             {
-                                Description = "attack animation",
-                                Node = new PlayAnimation(_attackAnimationName),
+                                Description = "play animation and wait animation end",
+                                Node = new Sequence(2),
+                                Children = new[]
+                                {
+                                    new TreeNode
+                                    {
+                                        Description = "attack animation",
+                                        Node = new PlayAnimation(_attackAnimationName),
+                                    },
+                                    new TreeNode
+                                    {
+                                        Description = "wait animation end",
+                                        Node = new Wait(_attackAnimationTime),
+                                    },
+                                },
                             },
                             new TreeNode
                             {
