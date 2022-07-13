@@ -62,11 +62,12 @@ namespace Features.Character.Systems
 
                 if (timeFromAttackStart > currentAttackInfo.ColliderStartTime && timeFromAttackStart < currentAttackInfo.ColliderStopTime)
                 {
-                    attack.IsAttackCollider = true;
+                    attackOverlapBox.Enable = true;
+                    
                 }
                 else
                 {
-                    attack.IsAttackCollider = false;
+                    attackOverlapBox.Enable = false;
                 }
             }
         }
