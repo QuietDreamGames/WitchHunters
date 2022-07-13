@@ -1,15 +1,24 @@
 using Features.Character.Components;
+using Features.HealthSystem.Components;
 using Features.InputSystem.Components;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Physics.Authoring;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Collider = Features.Collision.Components.Collider;
 
 namespace Features.Character.Services
 {
     public class CharacterConverter : MonoBehaviour, IConvertGameObjectToEntity
     {
         #region Serializable data
+
+        [Header("Health Data")]
+        [SerializeField] private float _maxHealth = 100f;
+
+        [Header("Collider")] 
+        [SerializeField] private PhysicsShapeAuthoring _physicsShape;
 
         [Header("Speed Data")] 
         [SerializeField] private float _speed = 2f;
@@ -36,6 +45,19 @@ namespace Features.Character.Services
                 AttackActionID = _attackActionID
             };
             dstManager.AddSharedComponentData(entity, playerInputConfiguration);
+
+            var health = new Health
+            {
+                MaxValue = _maxHealth,
+                Value = _maxHealth
+            };
+            dstManager.AddComponentData(entity, health);
+
+            var damage = new Damage
+            {
+                Value = 0f
+            };
+            dstManager.AddComponentData(entity, damage);
             
             var speed = new Speed { Value = _speed };
             dstManager.AddComponentData(entity, speed);
@@ -46,6 +68,13 @@ namespace Features.Character.Services
                 Enable = false
             };
             dstManager.AddComponentData(entity, movement);
+
+            var physicsBox = _physicsShape.GetBoxProperties();
+            var collider = new Collider
+            {
+                Size = physicsBox.Size
+            };
+            dstManager.AddComponentData(entity, collider);
         }
 
         #endregion

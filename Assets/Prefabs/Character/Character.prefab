@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 3060734947632182145}
   - component: {fileID: 3060734947632182268}
   - component: {fileID: 3060734947632182269}
+  - component: {fileID: 6117519940679713771}
   - component: {fileID: 3060734947632182147}
   m_Layer: 0
   m_Name: Entity
@@ -97,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75a52fd727949f45b36d3d7ad23a253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _physicsShape: {fileID: 3060734947632182269}
   _speed: 2.35
   _moveActionID: Move
   _attackActionID: Attack
@@ -324,6 +327,18 @@ MonoBehaviour:
         Tag07: 0
     m_SerializedVersion: 1
   m_SerializedVersion: 1
+--- !u!114 &6117519940679713771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060734947632182266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9e2122c60b5314780656d698d95fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3060734947632182147
 MonoBehaviour:
   m_ObjectHideFlags: 0
