@@ -3,7 +3,6 @@ using Features.BehaviourTree.Components.Nodes.Leaf;
 using Features.BehaviourTree.Systems.Core;
 using Features.BehaviourTree.Systems.Nodes.Leaf;
 using Features.Character.Components;
-using Features.StateMachine.Systems.Core;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;

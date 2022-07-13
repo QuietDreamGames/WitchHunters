@@ -4,7 +4,6 @@ using Features.BehaviourTree.Systems.Core;
 using Features.BehaviourTree.Systems.Core.SystemGroups;
 using Features.BehaviourTree.Systems.Nodes.Leaf;
 using Features.Character.Components;
-using Features.StateMachine.Systems.Core;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Jobs;

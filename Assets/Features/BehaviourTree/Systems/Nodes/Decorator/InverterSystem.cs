@@ -3,7 +3,6 @@ using Features.BehaviourTree.Components.Nodes.Decorator;
 using Features.BehaviourTree.Systems.Core;
 using Features.BehaviourTree.Systems.Core.SystemGroups;
 using Features.BehaviourTree.Systems.Nodes.Decorator;
-using Features.StateMachine.Systems.Core;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
