@@ -26,13 +26,19 @@ namespace Features.BehaviourTree.Services
         protected abstract TreeNode GetMoveState();
         protected abstract TreeNode GetAttackState();
 
+        protected abstract void AddIndividualComponentsData(in Entity entity,
+            ref EntityManager dstManager,
+            GameObjectConversionSystem conversionSystem);
+        
         #endregion
         
         #region IConvertGameObjectToEntity implementation
 
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            AddComponentsData(in entity, ref dstManager);
+            AddGeneralComponentsData(in entity, ref dstManager, conversionSystem);
+            
+            AddIndividualComponentsData(in entity, ref dstManager, conversionSystem);
             
             AddBehaviourTreeData(in entity, ref dstManager);
         }
@@ -56,7 +62,9 @@ namespace Features.BehaviourTree.Services
 
         #region Private methods
 
-        private void AddComponentsData(in Entity entity, ref EntityManager dstManager)
+        private void AddGeneralComponentsData(in Entity entity,
+            ref EntityManager dstManager,
+            GameObjectConversionSystem conversionSystem)
         {
             dstManager.AddComponentData(entity, new Movement());
             dstManager.AddComponentData(entity, new Speed());

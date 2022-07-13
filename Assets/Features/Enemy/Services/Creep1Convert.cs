@@ -1,11 +1,13 @@
 ﻿using Features.BehaviourTree.Components.Nodes.Composite;
 using Features.BehaviourTree.Components.Nodes.Decorator;
 using Features.BehaviourTree.Components.Nodes.Leaf;
+using Features.BehaviourTree.Services;
 using Features.BehaviourTree.Services.Core;
+using Unity.Entities;
 using UnityEngine;
 using LogType = Features.BehaviourTree.Components.Nodes.Leaf.LogType;
 
-namespace Features.BehaviourTree.Services
+namespace Features.Enemy.Services
 {
     public class Creep1Convert : AGenericEnemyConvert
     {
@@ -105,6 +107,13 @@ namespace Features.BehaviourTree.Services
                     },
                 },
             };
+        }
+
+        protected override void AddIndividualComponentsData(in Entity entity, 
+            ref EntityManager dstManager,
+            GameObjectConversionSystem conversionSystem)
+        {
+            
         }
 
         #endregion
