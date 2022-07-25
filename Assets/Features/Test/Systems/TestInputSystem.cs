@@ -26,15 +26,15 @@ namespace Features.Test.Systems
                 .WithoutBurst()
                 .Run();
 
-            Entities.WithAll<Damage>().ForEach((ref Damage damage) =>
-            {
-                damage.Enable = applyDamage;
-                        
-                if (damage.Enable)
-                {
-                    damage.Value = 5f;
-                }
-            }).WithBurst().Run();
+            // Entities.WithAll<Damage>().ForEach((ref Damage damage) =>
+            // {
+            //     damage.Enable = applyDamage;
+            //             
+            //     if (damage.Enable)
+            //     {
+            //         damage.Value = 5f;
+            //     }
+            // }).WithBurst().Run();
         }
     }
 }

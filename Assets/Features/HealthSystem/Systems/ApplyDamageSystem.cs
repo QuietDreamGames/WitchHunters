@@ -13,20 +13,20 @@ namespace Features.HealthSystem.Systems
         protected override void OnUpdate()
         {
 
-            Entities.WithAll<Damage, Health>().ForEach((Entity e, ref Health health, ref Damage damage) =>
-            {
-                if (!damage.Enable) return;
-                
-                health.Value -= damage.Value;
-
-                if (health.Value <= 0f)
-                {
-                    Debug.Log(EntityManager.AddComponent(e, typeof(DeathFlag)));
-                }
-
-                damage.Enable = false;
-
-            }).WithoutBurst().WithStructuralChanges().Run();
+            // Entities.WithAll<Damage, Health>().ForEach((Entity e, ref Health health, ref Damage damage) =>
+            // {
+            //     if (!damage.Enable) return;
+            //     
+            //     health.Value -= damage.Value;
+            //
+            //     if (health.Value <= 0f)
+            //     {
+            //         Debug.Log(EntityManager.AddComponent(e, typeof(DeathFlag)));
+            //     }
+            //
+            //     damage.Enable = false;
+            //
+            // }).WithoutBurst().WithStructuralChanges().Run();
         }
     }
 }

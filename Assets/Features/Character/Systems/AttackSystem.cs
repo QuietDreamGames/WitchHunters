@@ -3,6 +3,7 @@ using Features.Character.Services;
 using Features.InputSystem.Systems;
 using Unity.Burst;
 using Unity.Entities;
+using UnityEngine;
 
 namespace Features.Character.Systems
 {
@@ -48,8 +49,9 @@ namespace Features.Character.Systems
                     attack.NextAttackId += 1;
 
                     if (attack.NextAttackId >= autoAttackInfos.Length)
+                    {
                         attack.NextAttackId = 0;
-
+                    }
                     attack.Cooldown = autoAttackInfos[attack.CurrentAttackId].Time;
                     attack.Damage = autoAttackInfos[attack.CurrentAttackId].BaseDamage;
                         

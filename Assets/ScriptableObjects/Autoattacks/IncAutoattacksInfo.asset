@@ -33,8 +33,8 @@ MonoBehaviour:
     ColliderRectPos2:
       x: 0
       y: 0
-    ColliderStartTime: 0
-    ColliderStopTime: 0
+    ColliderStartTime: 0.3
+    ColliderStopTime: 0.4
   - Id: 2
     Time: 0.51
     BaseDamage: 10

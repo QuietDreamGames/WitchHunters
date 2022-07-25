@@ -8,7 +8,8 @@ namespace Features.Character.Components
     public struct AttackOverlapBox : IComponentData
     {
         public bool Enable;
-        public float2 Position1;
-        public float2 Position2;
+        public float Width;
+        public float Height;
+        public float2 OffsetXY;
     }
 }

@@ -57,11 +57,13 @@ namespace Features.Character.Services
             };
             dstManager.AddComponentData(entity, health);
 
-            var damage = new Damage
-            {
-                Value = 0f
-            };
-            dstManager.AddComponentData(entity, damage);
+            var damageTag = new DamageableTag();
+            dstManager.AddComponentData(entity, damageTag);
+
+            dstManager.AddBuffer<Damage>(entity);
+
+            var autoAttackOverlapBox = new AttackOverlapBox();
+            dstManager.AddComponentData(entity, autoAttackOverlapBox);
 
             var speed = new Speed { Value = _speed };
             dstManager.AddComponentData(entity, speed);

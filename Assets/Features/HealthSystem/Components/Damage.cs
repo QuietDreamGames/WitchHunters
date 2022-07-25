@@ -2,9 +2,12 @@
 
 namespace Features.HealthSystem.Components
 {
-    public struct Damage : IComponentData
+    [InternalBufferCapacity(16)]
+    public struct Damage : IBufferElementData
     {
+        public int SourceEntityId;
+        public bool Enabled;
         public float Value;
-        public bool Enable;
+        public float Cooldown; // cooldown of invisibility from this damage source
     }
 }
