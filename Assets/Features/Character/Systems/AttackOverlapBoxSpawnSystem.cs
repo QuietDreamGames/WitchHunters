@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Features.Character.Components;
+﻿using Features.Character.Components;
 using Features.Collision.System;
 using Features.Collision.Utils;
 using Features.HealthSystem.Components;
@@ -29,71 +28,87 @@ namespace Features.Character.Systems
         {
             _collisionWorld = _physicsWorld.PhysicsWorld.CollisionWorld;
 
-            Dependency = new AttackAllEntitiesInOverlapBox {CollisionWorld = _collisionWorld /*, EntityManager = EntityManager*/}.Schedule(Dependency);
+            var job = new AttackAllEntitiesInOverlapBox
+            {
+                CollisionWorld = _collisionWorld, 
+                EntityManager = EntityManager
+            }.ScheduleParallel();
+            
+            job.Complete();
         }
         
-        //[BurstCompile]
         public partial struct AttackAllEntitiesInOverlapBox : IJobEntity
         {
             [ReadOnly] public CollisionWorld CollisionWorld;
-            // [ReadOnly] public EntityManager EntityManager;
+            [ReadOnly] public EntityManager EntityManager;
             
-            
-            private void Execute(ref AttackOverlapBox attackOverlapBox, ref Translation translation, in Attack attack)
+            private void Execute(ref AttackOverlapBox attackOverlapBox, in Translation translation, ref Attack attack)
             {
-                // if (!attackOverlapBox.Enable)
-                //     return;
-                //
-                // var localMinXY = new float3(attackOverlapBox.OffsetXY.x - attackOverlapBox.Width / 2f,
-                //     attackOverlapBox.OffsetXY.y - attackOverlapBox.Height / 2f, 0f);
-                //
-                // var localMaxXY = new float3(attackOverlapBox.OffsetXY.x + attackOverlapBox.Width / 2f,
-                //     attackOverlapBox.OffsetXY.y + attackOverlapBox.Height / 2f, 0f);
-                
-                // var aabb = new Aabb();
-                //
-                // aabb.Min = new float3(localMinXY + translation.Value);
-                // aabb.Max = new float3(localMaxXY + translation.Value);
-                //
-                // var filter = new CollisionFilter
-                // {
-                //     BelongsTo = (uint)CollisionLayers.Player,
-                //     CollidesWith = (uint)CollisionLayers.Enemy
-                // };
-                //
-                // var aabbInput = new OverlapAabbInput
-                // {
-                //     Aabb = aabb,
-                //     Filter = filter
-                // };
+                if (!attackOverlapBox.Enable)
+                    return;
 
-                // var hits = new NativeList<int>();
-                //
-                // var result = CollisionWorld.OverlapAabb(aabbInput, ref hits);
-                //
-                // if (!result) return;
-                //
-                // foreach (var entityId in hits)
-                // {
-                //     var entity = CollisionWorld.Bodies[entityId].Entity;
-                //     if (EntityManager.HasComponent<DamageableTag>(entity))
-                //     {
-                //         var damages = EntityManager.GetBuffer<Damage>(entity);
-                //         var isNew = true;
-                //         foreach (var damage in damages)
-                //         {
-                //             if (damage.SourceEntityId != entityId) continue;
-                //             isNew = false;
-                //             break;
-                //         }
-                //     
-                //         if (isNew)
-                //         {
-                //             damages.Add(
-                //                 new Damage { SourceEntityId = entityId, Value = attack.Damage, Enabled = true, Cooldown = attack.Cooldown });
-                //         }
-                //     }
-                // }
+                var localMinX = attackOverlapBox.OffsetXY.x - attackOverlapBox.Width / 2f;
+                var localMinY = attackOverlapBox.OffsetXY.y - attackOverlapBox.Height / 2f;
+                var localMinXY = new float3(localMinX, localMinY, 0f);
+                
+                var localMaxX = attackOverlapBox.OffsetXY.x + attackOverlapBox.Width / 2f;
+                var localMaxY = attackOverlapBox.OffsetXY.y + attackOverlapBox.Height / 2f;
+                var localMaxXY = new float3(localMaxX,  localMaxY, 0f);
+                
+                var aabb = new Aabb()
+                {
+                    Min = new float3(localMinXY + translation.Value),
+                    Max = new float3(localMaxXY + translation.Value)
+                };
+
+                var filter = new CollisionFilter
+                {
+                    BelongsTo = (uint)CollisionLayers.Player,
+                    CollidesWith = (uint)CollisionLayers.Enemy
+                };
+                
+                var aabbInput = new OverlapAabbInput
+                {
+                    Aabb = aabb,
+                    Filter = filter
+                };
+
+                var hits = new NativeList<int>();
+                
+                var result = CollisionWorld.OverlapAabb(aabbInput, ref hits);
+                
+                if (!result) 
+                    return;
+                
+                foreach (var entityId in hits)
+                {
+                    var entity = CollisionWorld.Bodies[entityId].Entity;
+                    if (EntityManager.HasComponent<DamageableTag>(entity))
+                    {
+                        var damages = EntityManager.GetBuffer<Damage>(entity);
+                        var isNew = true;
+                        
+                        foreach (var damage in damages)
+                        {
+                            if (damage.SourceEntityId != entityId) continue;
+                            isNew = false;
+                            break;
+                        }
+                    
+                        if (isNew)
+                        {
+                            var damage = new Damage
+                            {
+                                SourceEntityId = entityId, 
+                                Value = attack.Damage, 
+                                Enabled = true, 
+                                Cooldown = attack.Cooldown
+                            };
+
+                            damages.Add(damage);
+                        }
+                    }
+                }
 
             }
         }
