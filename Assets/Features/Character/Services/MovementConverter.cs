@@ -10,6 +10,7 @@ namespace Features.Character.Services
 
         [Header("GO Movement")] 
         [SerializeField] private Rigidbody2D _rigidbody2D;
+        [SerializeField] private ContactFilter2D _filter;
 
         #endregion
 
@@ -19,6 +20,9 @@ namespace Features.Character.Services
         {
             var rigidbody2DWrapper = new Rigidbody2DWrapper(_rigidbody2D);
             dstManager.AddComponentData(entity, rigidbody2DWrapper);
+
+            var filterWrapper = new ContactFilter2DWrapper(_filter);
+            dstManager.AddComponentData(entity, filterWrapper);
         }
 
         #endregion
