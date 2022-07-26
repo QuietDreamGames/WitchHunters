@@ -20,22 +20,66 @@ namespace Features.Character.Systems
         private BuildPhysicsWorld _physicsWorld;
         private CollisionWorld _collisionWorld;
 
+        private CollisionFilter _friendlyFilter;
+        private CollisionFilter _enemyFilter;
+
+        private EntityQuery _friendlyQuery;
+        private EntityQuery _enemyQuery;
+
         protected override void OnCreate()
         {
             _physicsWorld = World.GetOrCreateSystem<BuildPhysicsWorld>();
+            
+            _friendlyFilter = new CollisionFilter
+            {
+                BelongsTo = (uint)CollisionLayers.Player,
+                CollidesWith = (uint)CollisionLayers.Enemy
+            };
+            
+            _enemyFilter = new CollisionFilter
+            {
+                BelongsTo = (uint)CollisionLayers.Enemy,
+                CollidesWith = (uint)CollisionLayers.Player
+            };
+
+            var friendlyQueryDesc = new EntityQueryDesc
+            {
+                //None = new ComponentType[] { typeof(Enemy) },
+                Any = new ComponentType[] { typeof(PlayerTag)}, //, ComponentType.ReadOnly<FriendlyTag>() },
+                All = new ComponentType[] { typeof(AttackOverlapBox), typeof(Attack), ComponentType.ReadOnly<Translation>() }
+            };
+            _friendlyQuery = GetEntityQuery(friendlyQueryDesc);
+            
+            var enemyQueryDesc = new EntityQueryDesc
+            {
+                None = new ComponentType[] { typeof(PlayerTag) }, //, ComponentType.ReadOnly<FriendlyTag>() },
+                //Any = new ComponentType[] { typeof(Enemy) },
+                All = new ComponentType[] { typeof(AttackOverlapBox), typeof(Attack), ComponentType.ReadOnly<Translation>() }
+                
+            };
+            _enemyQuery = GetEntityQuery(enemyQueryDesc);
         }
         
         protected override void OnUpdate()
         {
             _collisionWorld = _physicsWorld.PhysicsWorld.CollisionWorld;
 
-            var job = new AttackAllEntitiesInOverlapBox
+            var attackAllEnemies = new AttackAllEntitiesInOverlapBox
             {
                 CollisionWorld = _collisionWorld, 
-                EntityManager = EntityManager
-            }.Schedule();
+                EntityManager = EntityManager,
+                Filter = _friendlyFilter
+            }.Schedule(_friendlyQuery);
             
-            job.Complete();
+            var attackAllFriends = new AttackAllEntitiesInOverlapBox
+            {
+                CollisionWorld = _collisionWorld, 
+                EntityManager = EntityManager,
+                Filter = _enemyFilter
+            }.Schedule(_enemyQuery);
+            
+            attackAllEnemies.Complete();
+            attackAllFriends.Complete();
         }
         
         [BurstCompile]
@@ -43,6 +87,7 @@ namespace Features.Character.Systems
         {
             [ReadOnly] public CollisionWorld CollisionWorld;
             public EntityManager EntityManager;
+            public CollisionFilter Filter;
             
             private void Execute(ref AttackOverlapBox attackOverlapBox, in Translation translation, ref Attack attack)
             {
@@ -63,29 +108,17 @@ namespace Features.Character.Systems
                     Max = new float3(localMaxXY + translation.Value)
                 };
 
-                //Debug.Log($"Attack min coords:{aabb.Min}, attack max coords: {aabb.Max}");
-
-                var filter = new CollisionFilter
-                {
-                    BelongsTo = (uint)CollisionLayers.Player,
-                    CollidesWith = (uint)CollisionLayers.Enemy
-                };
-                
                 var aabbInput = new OverlapAabbInput
                 {
                     Aabb = aabb,
-                    Filter = filter
+                    Filter = Filter
                 };
 
                 var hits = new NativeList<int>(16, Allocator.Temp);
                 
                 var result = CollisionWorld.OverlapAabb(aabbInput, ref hits);
-                
-                if (!result)
-                {
-                    //Debug.Log("no hits");
-                    return;
-                }
+
+                if (!result) return;
                 
                 foreach (var entityId in hits)
                 {
@@ -100,7 +133,7 @@ namespace Features.Character.Systems
                         SourceEntityId = entityId, 
                         Value = attack.Damage, 
                         Enabled = true, 
-                        Cooldown = 1f
+                        Cooldown = 0.1f
                     };
 
                     damages.Add(damage);

@@ -41,11 +41,6 @@ namespace Features.InputSystem.Systems
                         var isAttackInput = input.Value.GetKey(conf.AttackActionID);
 
                         attack.Enable = isAttackInput;
-                        
-                        if (attack.Enable)
-                        {
-                            //movement.Direction = direction;
-                        }
                     })
                 .WithoutBurst()
                 .Run();
