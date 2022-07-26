@@ -9,6 +9,7 @@ using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Physics.Systems;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Features.Character.Systems
 {
@@ -32,21 +33,22 @@ namespace Features.Character.Systems
             {
                 CollisionWorld = _collisionWorld, 
                 EntityManager = EntityManager
-            }.ScheduleParallel();
+            }.Schedule();
             
             job.Complete();
         }
         
+        
         public partial struct AttackAllEntitiesInOverlapBox : IJobEntity
         {
             [ReadOnly] public CollisionWorld CollisionWorld;
-            [ReadOnly] public EntityManager EntityManager;
+            public EntityManager EntityManager;
             
             private void Execute(ref AttackOverlapBox attackOverlapBox, in Translation translation, ref Attack attack)
             {
                 if (!attackOverlapBox.Enable)
                     return;
-
+                
                 var localMinX = attackOverlapBox.OffsetXY.x - attackOverlapBox.Width / 2f;
                 var localMinY = attackOverlapBox.OffsetXY.y - attackOverlapBox.Height / 2f;
                 var localMinXY = new float3(localMinX, localMinY, 0f);
@@ -61,6 +63,8 @@ namespace Features.Character.Systems
                     Max = new float3(localMaxXY + translation.Value)
                 };
 
+                Debug.Log($"Attack min coords:{aabb.Min}, attack max coords: {aabb.Max}");
+
                 var filter = new CollisionFilter
                 {
                     BelongsTo = (uint)CollisionLayers.Player,
@@ -73,44 +77,49 @@ namespace Features.Character.Systems
                     Filter = filter
                 };
 
-                var hits = new NativeList<int>();
+                var hits = new NativeList<int>(16, Allocator.Temp);
                 
                 var result = CollisionWorld.OverlapAabb(aabbInput, ref hits);
                 
-                if (!result) 
+                if (!result)
+                {
+                    Debug.Log("no hits");
                     return;
+                }
                 
                 foreach (var entityId in hits)
                 {
                     var entity = CollisionWorld.Bodies[entityId].Entity;
-                    if (EntityManager.HasComponent<DamageableTag>(entity))
-                    {
-                        var damages = EntityManager.GetBuffer<Damage>(entity);
-                        var isNew = true;
-                        
-                        foreach (var damage in damages)
-                        {
-                            if (damage.SourceEntityId != entityId) continue;
-                            isNew = false;
-                            break;
-                        }
+                    if (!EntityManager.HasComponent<DamageableTag>(entity)) continue;
                     
-                        if (isNew)
-                        {
-                            var damage = new Damage
-                            {
-                                SourceEntityId = entityId, 
-                                Value = attack.Damage, 
-                                Enabled = true, 
-                                Cooldown = attack.Cooldown
-                            };
+                    var damages = EntityManager.GetBuffer<Damage>(entity);
+                    if (!IsDamageSourceNew(damages, entityId)) continue;
+                    
+                    var damage = new Damage
+                    {
+                        SourceEntityId = entityId, 
+                        Value = attack.Damage, 
+                        Enabled = true, 
+                        Cooldown = attack.Cooldown
+                    };
 
-                            damages.Add(damage);
-                        }
-                    }
+                    damages.Add(damage);
                 }
 
             }
+            
+            private bool IsDamageSourceNew(DynamicBuffer<Damage> damages, int entityId)
+            {
+                for (var index = 0; index < damages.Length; index++)
+                {
+                    var damage = damages[index];
+                    if (damage.SourceEntityId != entityId) continue;
+                    return false;
+                }
+                return true;
+            }
         }
+
+        
     }
 }

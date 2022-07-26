@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -11,8 +12,11 @@ namespace Features.Character.Services
         public float Time;
         public float BaseDamage;
 
-        public float2 ColliderRectPos1;
-        public float2 ColliderRectPos2;
+        public float ColliderWidth;
+        public float ColliderHeight;
+
+        public float2 OffsetXY;
+
         public float ColliderStartTime;
         public float ColliderStopTime;
         

@@ -65,7 +65,9 @@ namespace Features.Character.Systems
                 if (timeFromAttackStart > currentAttackInfo.ColliderStartTime && timeFromAttackStart < currentAttackInfo.ColliderStopTime)
                 {
                     attackOverlapBox.Enable = true;
-                    
+                    attackOverlapBox.Height = currentAttackInfo.ColliderHeight;
+                    attackOverlapBox.Width = currentAttackInfo.ColliderWidth;
+                    attackOverlapBox.OffsetXY = currentAttackInfo.OffsetXY;
                 }
                 else
                 {

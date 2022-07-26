@@ -10,7 +10,7 @@ namespace Features.Character.Services
     {
         #region Serializable data
 
-        
+
         [SerializeField] private SOAutoattacksInfo _soAutoattacksInfo;
 
         #endregion
@@ -28,21 +28,21 @@ namespace Features.Character.Services
 
             var autoattacks = new Autoattacks
             {
-                Value = CreateAutoattackInfos()    
+                Value = CreateAutoattackInfos()
             };
-            
+
             dstManager.AddComponentData(entity, autoattacks);
 
 
         }
-        
+
         private BlobAssetReference<AutoattackInfoPool> CreateAutoattackInfos()
         {
             var builder = new BlobBuilder(Allocator.Temp);
             ref AutoattackInfoPool autoattackInfos = ref builder.ConstructRoot<AutoattackInfoPool>();
 
             var numAutoattacks = _soAutoattacksInfo.AutoattackInfos.Length;
-            
+
             BlobBuilderArray<AutoattackInfo> arrayBuilder = builder.Allocate(
                 ref autoattackInfos.AutoattackInfos,
                 numAutoattacks
@@ -59,12 +59,13 @@ namespace Features.Character.Services
             builder.Dispose();
             return result;
         }
-
-
-        }
-
-
-
+        
         #endregion
+
     }
+
+
+
+    
+}
     
