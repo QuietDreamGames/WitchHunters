@@ -11,9 +11,9 @@ namespace Features.Character.Systems
         {
             Entities
                 .WithAll<Translation, CompanionFollower>()
-                .ForEach((in Translation translation, in CompanionFollower companion) => 
+                .ForEach((ref Translation translation, in CompanionFollower companion) => 
                 { 
-                    companion.Value.position = translation.Value;
+                    translation.Value = companion.Value.position;
                 })
                 .WithoutBurst()
                 .Run();
