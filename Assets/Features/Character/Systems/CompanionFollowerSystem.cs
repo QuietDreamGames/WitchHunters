@@ -1,9 +1,11 @@
 using Features.Character.Components;
+using Features.Character.Systems.SystemGroups;
 using Unity.Entities;
 using Unity.Transforms;
 
 namespace Features.Character.Systems
 {
+    [UpdateInGroup(typeof(GameObjectSyncGroup))]
     [UpdateAfter(typeof(MovementSystem))]
     public partial class CompanionFollowerSystem : SystemBase
     {

@@ -1,6 +1,6 @@
 using Features.Character.Components;
 using Features.Character.Systems;
-using Features.InputSystem.Systems;
+using Features.Character.Systems.SystemGroups;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Features.Collision.System
 {
     [AlwaysUpdateSystem]
-    [UpdateAfter(typeof(PlayerInputSystem))]
+    [UpdateInGroup(typeof(GameObjectSyncGroup))]
     [UpdateBefore(typeof(MovementSystem))]
     public partial class CollisionSlideSystem : SystemBase
     {

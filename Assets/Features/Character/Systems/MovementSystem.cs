@@ -1,9 +1,12 @@
-﻿using Features.Character.Components;
+﻿using Features.Animator.Systems;
+using Features.Character.Components;
+using Features.Character.Systems.SystemGroups;
 using Unity.Entities;
 using UnityEngine;
 
 namespace Features.Character.Systems
 {
+    [UpdateInGroup(typeof(GameObjectSyncGroup))]
     public partial class MovementSystem : SystemBase
     {
         protected override void OnUpdate()
