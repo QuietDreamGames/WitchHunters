@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4897983970542318250}
   - component: {fileID: 5067887749818659710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.15}
+  m_Size: {x: 0.25, y: 0.105}
   m_EdgeRadius: 0
 --- !u!1 &3060734946378949207
 GameObject:
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 3060734946378949206}
   - component: {fileID: 3060734946378949205}
   - component: {fileID: 1199217086719512636}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 3060734947632182145}
   - component: {fileID: 6117519940679713771}
   - component: {fileID: 3060734947632182147}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Entity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,6 +210,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 1199217086719512636}
+  _filter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 2048
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!114 &3060734947632182145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +276,7 @@ GameObject:
   - component: {fileID: 3060734947688086308}
   - component: {fileID: 3060734947688086315}
   - component: {fileID: 3060734947688086314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3060734947688086309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.059, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1335, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
