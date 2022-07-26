@@ -2,7 +2,9 @@
 using Features.HealthSystem.Components;
 using Features.UI.CharacterHealth;
 using Unity.Burst;
+using Unity.Collections;
 using Unity.Entities;
+using Unity.Physics;
 using UnityEngine;
 
 namespace Features.HealthSystem.Systems
@@ -12,21 +14,65 @@ namespace Features.HealthSystem.Systems
     {
         protected override void OnUpdate()
         {
+            var ecb = new EntityCommandBuffer(Allocator.TempJob);
+            
+            var applyDamageJob  = new ApplyDamageJob{EntityManager = EntityManager, EntityCommandBuffer = ecb, DeltaTime = Time.DeltaTime}.Schedule();
+            applyDamageJob.Complete();
+            ecb.Playback(EntityManager);
+            ecb.Dispose();
+        }
+        
+        [BurstCompile]
+        public partial struct ApplyDamageJob : IJobEntity
+        {
+            public EntityManager EntityManager;
+            public EntityCommandBuffer EntityCommandBuffer;
+            
+            public float DeltaTime;
+            private void Execute(Entity e, ref Health health, DamageableTag damageableTag) //, in DynamicBuffer<Damage> damages)
+            {
+                var damages = EntityManager.GetBuffer<Damage>(e);
 
-            // Entities.WithAll<Damage, Health>().ForEach((Entity e, ref Health health, ref Damage damage) =>
-            // {
-            //     if (!damage.Enable) return;
-            //     
-            //     health.Value -= damage.Value;
-            //
-            //     if (health.Value <= 0f)
-            //     {
-            //         Debug.Log(EntityManager.AddComponent(e, typeof(DeathFlag)));
-            //     }
-            //
-            //     damage.Enable = false;
-            //
-            // }).WithoutBurst().WithStructuralChanges().Run();
+                for (var i = 0; i < damages.Length; i++)
+                {
+                    if (!damages[i].Enabled)
+                    {
+                        var  tmp = damages[i].Cooldown;
+                        tmp -= DeltaTime;
+
+                        damages[i] = new Damage
+                        {
+                            SourceEntityId = damages[i].SourceEntityId,
+                            Cooldown = tmp,
+                            Enabled = false
+                        };
+
+                        if (damages[i].Cooldown <= 0)
+                        {
+                            damages.RemoveAt(i);
+                            i--;
+                        }
+                        continue;
+                    }
+                    
+                    health.Value -= damages[i].Value;
+                    damages[i] = new Damage
+                    {
+                        SourceEntityId = damages[i].SourceEntityId,
+                        Cooldown = damages[i].Cooldown,
+                        Enabled = false
+                    };
+
+                    if (health.Value <= 0f)
+                    {
+                        EntityCommandBuffer.AddComponent<DeathFlag>(e);
+                        return;
+                    }
+                
+                    
+                    
+                }
+            }
         }
     }
 }

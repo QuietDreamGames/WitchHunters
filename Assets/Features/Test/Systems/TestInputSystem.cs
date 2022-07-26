@@ -11,20 +11,20 @@ namespace Features.Test.Systems
     {
         protected override void OnUpdate()
         {
-            bool applyDamage = false;
-            
-            Entities
-                .WithAll<TestInputWrapper, TestInputConfiguration>()
-                .ForEach(
-                    (in TestInputWrapper input, in TestInputConfiguration conf) =>
-                    { 
-                        applyDamage  = input.Value.actions[conf.ApplyDamageActionID].WasPressedThisFrame();
-                        if (!applyDamage) return;
-                        
-                        Debug.Log($"{conf.ApplyDamageActionID} input was pressed");
-                    })
-                .WithoutBurst()
-                .Run();
+            // bool applyDamage = false;
+            //
+            // Entities
+            //     .WithAll<TestInputWrapper, TestInputConfiguration>()
+            //     .ForEach(
+            //         (in TestInputWrapper input, in TestInputConfiguration conf) =>
+            //         { 
+            //             applyDamage  = input.Value.actions[conf.ApplyDamageActionID].WasPressedThisFrame();
+            //             if (!applyDamage) return;
+            //             
+            //             Debug.Log($"{conf.ApplyDamageActionID} input was pressed");
+            //         })
+            //     .WithoutBurst()
+            //     .Run();
 
             // Entities.WithAll<Damage>().ForEach((ref Damage damage) =>
             // {

@@ -38,7 +38,7 @@ namespace Features.Character.Systems
             job.Complete();
         }
         
-        
+        [BurstCompile]
         public partial struct AttackAllEntitiesInOverlapBox : IJobEntity
         {
             [ReadOnly] public CollisionWorld CollisionWorld;
@@ -63,7 +63,7 @@ namespace Features.Character.Systems
                     Max = new float3(localMaxXY + translation.Value)
                 };
 
-                Debug.Log($"Attack min coords:{aabb.Min}, attack max coords: {aabb.Max}");
+                //Debug.Log($"Attack min coords:{aabb.Min}, attack max coords: {aabb.Max}");
 
                 var filter = new CollisionFilter
                 {
@@ -83,7 +83,7 @@ namespace Features.Character.Systems
                 
                 if (!result)
                 {
-                    Debug.Log("no hits");
+                    //Debug.Log("no hits");
                     return;
                 }
                 
@@ -100,7 +100,7 @@ namespace Features.Character.Systems
                         SourceEntityId = entityId, 
                         Value = attack.Damage, 
                         Enabled = true, 
-                        Cooldown = attack.Cooldown
+                        Cooldown = 1f
                     };
 
                     damages.Add(damage);
