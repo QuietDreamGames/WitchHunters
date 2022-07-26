@@ -1,8 +1,6 @@
 ﻿using Features.Character.Components;
-using Unity.Burst;
 using Unity.Entities;
-using Unity.Mathematics;
-using Unity.Transforms;
+using UnityEngine;
 
 namespace Features.Character.Systems
 {
@@ -10,20 +8,27 @@ namespace Features.Character.Systems
     {
         protected override void OnUpdate()
         {
-            new MoveJob { DeltaTime = Time.DeltaTime }.ScheduleParallel();
+            new MoveJob
+            {
+                DeltaTime = Time.fixedDeltaTime
+            }.Run();
         }
     }
     
-    [BurstCompile]
     public partial struct MoveJob : IJobEntity
     {
         public float DeltaTime;
         
-        public void Execute(ref Translation translation, in Movement movement, in Speed speed)
+        public void Execute(Rigidbody2DWrapper rigidbody2D, in Movement movement, in Speed speed)
         {
             if (movement.Enable)
             {
-                translation.Value += movement.Direction * speed.Value * DeltaTime;
+                var velocity = movement.Direction * speed.Value * DeltaTime;
+                rigidbody2D.Value.velocity = new Vector2(velocity.x, velocity.y);
+            }
+            else
+            {
+                rigidbody2D.Value.velocity = Vector2.zero;
             }
         }
     }

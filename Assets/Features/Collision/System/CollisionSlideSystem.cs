@@ -31,11 +31,13 @@ namespace Features.Collision.System
         {
             _collisionWorld = _physicsWorld.PhysicsWorld.CollisionWorld;
 
-            new CollisionJob
+            var job = new CollisionJob
             {
                 CollisionWorld = _collisionWorld,
                 DeltaTime = Time.DeltaTime
             }.ScheduleParallel();
+            
+            job.Complete();
         }
     }
 
