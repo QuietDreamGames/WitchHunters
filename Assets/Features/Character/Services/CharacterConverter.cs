@@ -74,13 +74,6 @@ namespace Features.Character.Services
                 Enable = false
             };
             dstManager.AddComponentData(entity, movement);
-
-            var physicsBox = _physicsShape.GetBoxProperties();
-            var collider = new Collider
-            {
-                Size = physicsBox.Size
-            };
-            dstManager.AddComponentData(entity, collider);
         }
 
         #endregion

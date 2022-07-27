@@ -4,23 +4,18 @@ using UnityEngine;
 
 namespace Features.Character.Components
 {
-    public struct CompanionFollower : ISharedComponentData, IEquatable<CompanionFollower>
+    public class CompanionFollower : IComponentData
     {
         public Transform Value;
 
-        public bool Equals(CompanionFollower other)
+        public CompanionFollower()
         {
-            return Equals(Value, other.Value);
+            Value = default;
         }
 
-        public override bool Equals(object obj)
+        public CompanionFollower(Transform value)
         {
-            return obj is CompanionFollower other && Equals(other);
-        }
-
-        public override int GetHashCode()
-        {
-            return (Value != null ? Value.GetHashCode() : 0);
+            Value = value;
         }
     }
 }
