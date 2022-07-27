@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 4293066990853695052}
   - component: {fileID: 987032000771224365}
   - component: {fileID: 3060734947632182145}
+  - component: {fileID: 2897284986136107151}
   - component: {fileID: 6117519940679713771}
   - component: {fileID: 3060734947632182147}
   m_Layer: 10
@@ -183,7 +184,6 @@ MonoBehaviour:
   _speed: 100
   _moveActionID: Move
   _attackActionID: Attack
-  _playerInput: {fileID: 0}
 --- !u!114 &4293066990853695052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +239,22 @@ MonoBehaviour:
   _movingParam: Move
   _horizontalParam: Horizontal
   _verticalParam: Vertical
+  _attackParam: Attack
+  _attackIdParam: AttackId
   _animator: {fileID: 3060734947688086314}
+--- !u!114 &2897284986136107151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060734947632182266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f88acec0e843ff87e98aab0601818c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soAutoattacksInfo: {fileID: 11400000, guid: b9a481103469d7e499a0ed71fef7e79f, type: 2}
 --- !u!114 &6117519940679713771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +375,7 @@ Animator:
   m_GameObject: {fileID: 3060734947688086309}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 94a8362f183c1b14ebad518a19c1461f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 573d3c5f802e52046ac92a0430e5f598, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
