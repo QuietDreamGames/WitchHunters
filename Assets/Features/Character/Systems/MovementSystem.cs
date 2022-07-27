@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Features.Character.Systems
 {
-    [UpdateInGroup(typeof(GameObjectSyncGroup))]
+    [UpdateInGroup(typeof(GameObjectSyncGroup), OrderFirst = true)]
     public partial class MovementSystem : SystemBase
     {
         protected override void OnUpdate()
