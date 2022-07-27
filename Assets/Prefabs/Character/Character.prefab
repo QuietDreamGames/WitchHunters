@@ -60,8 +60,10 @@ GameObject:
   - component: {fileID: 3060734947632182264}
   - component: {fileID: 3060734947632182146}
   - component: {fileID: 3060734947632182145}
+  - component: {fileID: 477937468623706932}
   - component: {fileID: 3060734947632182268}
   - component: {fileID: 3060734947632182269}
+  - component: {fileID: 6117519940679713771}
   - component: {fileID: 3060734947632182147}
   m_Layer: 0
   m_Name: Entity
@@ -97,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75a52fd727949f45b36d3d7ad23a253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 100
   _physicsShape: {fileID: 3060734947632182269}
   _speed: 2.35
   _moveActionID: Move
   _attackActionID: Attack
-  _playerInput: {fileID: 0}
 --- !u!114 &3060734947632182146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +132,21 @@ MonoBehaviour:
   _movingParam: Move
   _horizontalParam: Horizontal
   _verticalParam: Vertical
+  _attackParam: Attack
   _animator: {fileID: 3060734947688086314}
+--- !u!114 &477937468623706932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060734947632182266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f88acec0e843ff87e98aab0601818c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soAutoattacksInfo: {fileID: 11400000, guid: b9a481103469d7e499a0ed71fef7e79f, type: 2}
 --- !u!114 &3060734947632182268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +341,18 @@ MonoBehaviour:
         Tag07: 0
     m_SerializedVersion: 1
   m_SerializedVersion: 1
+--- !u!114 &6117519940679713771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060734947632182266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9e2122c60b5314780656d698d95fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3060734947632182147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +445,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.1224489, y: 0.97959185}
+  m_Size: {x: 1.1458334, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -433,7 +461,7 @@ Animator:
   m_GameObject: {fileID: 3060734947688086309}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 94a8362f183c1b14ebad518a19c1461f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 573d3c5f802e52046ac92a0430e5f598, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
