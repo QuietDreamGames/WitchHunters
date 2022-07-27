@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 623363227201221738}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Creep1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623363227201221740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.342, y: 1.207, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43,6 +43,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6899939358380540392}
   - component: {fileID: 5722165270958187515}
+  - component: {fileID: 6739429562476369125}
+  - component: {fileID: 8103341699316324863}
   - component: {fileID: 4026883465869211089}
   - component: {fileID: 2910111227892117402}
   - component: {fileID: 7947895590650347851}
@@ -81,6 +83,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _companion: {fileID: 623363227201221738}
+--- !u!114 &6739429562476369125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422389617160847596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c300af344fb54726be4531fd0fff85fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movingParam: Move
+  _horizontalParam: Horizontal
+  _verticalParam: Vertical
+  _animator: {fileID: 3986158668971712753}
+--- !u!114 &8103341699316324863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422389617160847596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f37297e3014b628907dbf97c30d5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AwareDistance: 4
+  AttackDistance: 0.5
+  _attackAnimationName: Attack1
+  _attackAnimationTime: 0.625
+  _moveSpeed: 2.55
 --- !u!114 &4026883465869211089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +182,7 @@ MonoBehaviour:
   m_ShapeType: 0
   m_PrimitiveCenter:
     x: 0
-    y: 0
+    y: -0.125
     z: 0
   m_PrimitiveSize:
     x: 0.25
@@ -314,7 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4190658809460968046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

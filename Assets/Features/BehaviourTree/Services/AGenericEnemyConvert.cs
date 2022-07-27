@@ -20,6 +20,12 @@ namespace Features.BehaviourTree.Services
 
         #endregion
 
+        #region Private fields
+
+        private const float ERROR_DISTANCE = 0.25f;
+
+        #endregion
+        
         #region Virtual methods
 
         protected abstract TreeNode GetIdleState();
@@ -119,8 +125,6 @@ namespace Features.BehaviourTree.Services
         private TreeNode CombineIdleState(TreeNode idleState, 
             float awareDistance)
         {
-            const float error = 0.25f;
-            
             return new TreeNode
             {
                 Description = "idle pattern",
@@ -136,7 +140,7 @@ namespace Features.BehaviourTree.Services
                             new TreeNode 
                             { 
                                 Description = "get target in distance", 
-                                Node = new GetClosestPlayer(awareDistance - error) 
+                                Node = new GetClosestPlayer(awareDistance - ERROR_DISTANCE) 
                             },
                         }
                     },
@@ -185,7 +189,7 @@ namespace Features.BehaviourTree.Services
                     new TreeNode 
                     { 
                         Description = "get target in distance", 
-                        Node = new GetClosestPlayer(attackDistance) 
+                        Node = new GetClosestPlayer(attackDistance + ERROR_DISTANCE) 
                     },
                             
                     attackState
