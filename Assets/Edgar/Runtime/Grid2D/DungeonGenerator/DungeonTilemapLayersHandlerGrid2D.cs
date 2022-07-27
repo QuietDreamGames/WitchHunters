@@ -32,6 +32,7 @@ namespace Edgar.Unity
         {
             var tilemapObject = new GameObject(name);
             tilemapObject.transform.SetParent(parentObject.transform);
+            tilemapObject.layer = parentObject.layer;
             var tilemap = tilemapObject.AddComponent<Tilemap>();
             var tilemapRenderer = tilemapObject.AddComponent<TilemapRenderer>();
             tilemapRenderer.sortingOrder = sortingOrder;

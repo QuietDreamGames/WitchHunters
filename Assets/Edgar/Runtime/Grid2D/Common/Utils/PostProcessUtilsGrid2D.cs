@@ -113,6 +113,7 @@ namespace Edgar.Unity
                 // Initialize GameObject that will hold tilemaps
                 tilemapsRoot = new GameObject(GeneratorConstantsGrid2D.TilemapsRootName);
                 tilemapsRoot.transform.parent = level.RootGameObject.transform;
+                tilemapsRoot.layer = level.RootGameObject.layer;
 
                 if (mode == TilemapLayersStructureModeGrid2D.Default)
                 {
