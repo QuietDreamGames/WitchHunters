@@ -1,9 +1,11 @@
 ﻿using Features.Animator.Components;
 using Features.Character.Components;
+using Features.Character.Systems.SystemGroups;
 using Unity.Entities;
 
 namespace Features.Animator.Systems
 {
+    [UpdateInGroup(typeof(GameObjectSyncGroup))]
     public partial class PlayNextAnimationSystem : SystemBase
     {
         protected override void OnUpdate()

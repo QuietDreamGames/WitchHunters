@@ -1,11 +1,13 @@
 ﻿using Features.Animator.Components;
 using Features.Character.Components;
 using Features.Character.Systems;
+using Features.Character.Systems.SystemGroups;
 using Unity.Entities;
 using Unity.Mathematics;
 
 namespace Features.Animator.Systems
 {
+    [UpdateInGroup(typeof(GameObjectSyncGroup))]
     [UpdateAfter(typeof(MovementSystem))]
     public partial class MovementAnimatorSystem : SystemBase
     {
