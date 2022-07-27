@@ -1,9 +1,11 @@
 using Features.Character.Components;
+using Features.Character.Systems.SystemGroups;
 using Unity.Entities;
 using Unity.Transforms;
 
 namespace Features.Character.Systems
 {
+    [UpdateInGroup(typeof(GameObjectSyncGroup))]
     [UpdateAfter(typeof(MovementSystem))]
     public partial class CompanionFollowerSystem : SystemBase
     {
@@ -11,9 +13,9 @@ namespace Features.Character.Systems
         {
             Entities
                 .WithAll<Translation, CompanionFollower>()
-                .ForEach((in Translation translation, in CompanionFollower companion) => 
+                .ForEach((ref Translation translation, in CompanionFollower companion) => 
                 { 
-                    companion.Value.position = translation.Value;
+                    translation.Value = companion.Value.position;
                 })
                 .WithoutBurst()
                 .Run();

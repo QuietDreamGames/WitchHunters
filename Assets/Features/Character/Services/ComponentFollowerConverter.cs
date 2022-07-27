@@ -17,8 +17,8 @@ namespace Features.Character.Services
         
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            var companion = new CompanionFollower { Value = _companion };
-            dstManager.AddSharedComponentData(entity, companion);
+            var companion = new CompanionFollower(_companion);
+            dstManager.AddComponentData(entity, companion);
         }
         
         #endregion
