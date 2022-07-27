@@ -1,6 +1,7 @@
 using Features.Character.Components;
 using Features.HealthSystem.Components;
 using Features.InputSystem.Components;
+using Features.InputSystem.Services;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics.Authoring;
@@ -26,9 +27,6 @@ namespace Features.Character.Services
         [Header("Player Input Configuration")] 
         [SerializeField] private string _moveActionID = "Move";
         [SerializeField] private string _attackActionID = "Attack";
-        
-        [Header("Player Input Wrapper")]
-        [SerializeField] private PlayerInput _playerInput;
 
         #endregion
 
@@ -36,15 +34,21 @@ namespace Features.Character.Services
 
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            var playerInputWrapper = new PlayerInputWrapper { Value = _playerInput };
-            dstManager.AddSharedComponentData(entity, playerInputWrapper);
+            // var playerInputWrapper = new PlayerInputWrapper { Value = _playerInput };
+            // dstManager.AddSharedComponentData(entity, playerInputWrapper);
 
-            var playerInputConfiguration = new PlayerInputConfiguration
+            var characterInput = new CharacterInput
+            {
+                Value = new InputInterpreter()
+            };
+            dstManager.AddComponentData(entity, characterInput);
+
+            var inputConfiguration = new InputConfiguration
             {
                 MoveActionID = _moveActionID,
                 AttackActionID = _attackActionID
             };
-            dstManager.AddSharedComponentData(entity, playerInputConfiguration);
+            dstManager.AddSharedComponentData(entity, inputConfiguration);
 
             var health = new Health
             {
@@ -53,12 +57,14 @@ namespace Features.Character.Services
             };
             dstManager.AddComponentData(entity, health);
 
-            var damage = new Damage
-            {
-                Value = 0f
-            };
-            dstManager.AddComponentData(entity, damage);
-            
+            var damageTag = new DamageableTag();
+            dstManager.AddComponentData(entity, damageTag);
+
+            dstManager.AddBuffer<Damage>(entity);
+
+            var autoAttackOverlapBox = new AttackOverlapBox();
+            dstManager.AddComponentData(entity, autoAttackOverlapBox);
+
             var speed = new Speed { Value = _speed };
             dstManager.AddComponentData(entity, speed);
 

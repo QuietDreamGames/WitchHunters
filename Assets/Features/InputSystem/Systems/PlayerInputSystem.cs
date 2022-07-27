@@ -7,23 +7,38 @@ using UnityEngine;
 
 namespace Features.InputSystem.Systems
 {
-    [UpdateBefore(typeof(MovementSystem))]
+    [UpdateBefore(typeof(CharacterInputSystem))]
     public partial class PlayerInputSystem : SystemBase
     {
+        // private PlayerInputComponent _playerInputComponent;
+        //     
+        // protected override void OnStartRunning()
+        // {
+        //     RequireSingletonForUpdate<PlayerInputComponent>();
+        //     var playerInputEntity = GetSingletonEntity<PlayerInputComponent>();
+        //     _playerInputComponent = EntityManager.GetComponentData<PlayerInputComponent>(playerInputEntity);
+        // }
+
         protected override void OnUpdate()
         {
+            RequireSingletonForUpdate<PlayerInputComponent>();
+            var playerInputEntity = GetSingletonEntity<PlayerInputComponent>();
+            var playerInputComponent = EntityManager.GetComponentData<PlayerInputComponent>(playerInputEntity);
+            
             Entities
-                .WithAll<PlayerInputWrapper, PlayerInputConfiguration, Movement>()
+                .WithAll<CharacterInput, InputConfiguration, PlayerTag>()
                 .ForEach(
-                    (ref Movement movement, in PlayerInputWrapper input, in PlayerInputConfiguration conf) =>
+                    (CharacterInput characterInput, in InputConfiguration conf) =>
                     {
-                        var direction = new float3(input.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
-                        movement.Enable = math.any(direction != float3.zero);
+                        var direction =
+                            new float3(playerInputComponent.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
+
+                        var isAttack = playerInputComponent.Value.actions[conf.AttackActionID].IsPressed();
+
+                        characterInput.Value.SetAxis(conf.MoveActionID, direction);
                         
-                        if (movement.Enable)
-                        {
-                            movement.Direction = direction;
-                        }
+                        characterInput.Value.SetKey(conf.AttackActionID, isAttack);
+                        
                     })
                 .WithoutBurst()
                 .Run();

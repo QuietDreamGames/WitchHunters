@@ -3,19 +3,19 @@ using Unity.Entities;
 
 namespace Features.InputSystem.Components
 {
-    public struct PlayerInputConfiguration : ISharedComponentData, IEquatable<PlayerInputConfiguration>
+    public struct InputConfiguration : ISharedComponentData, IEquatable<InputConfiguration>
     {
         public string MoveActionID;
         public string AttackActionID;
 
-        public bool Equals(PlayerInputConfiguration other)
+        public bool Equals(InputConfiguration other)
         {
             return MoveActionID == other.MoveActionID && AttackActionID == other.AttackActionID;
         }
 
         public override bool Equals(object obj)
         {
-            return obj is PlayerInputConfiguration other && Equals(other);
+            return obj is InputConfiguration other && Equals(other);
         }
 
         public override int GetHashCode()
