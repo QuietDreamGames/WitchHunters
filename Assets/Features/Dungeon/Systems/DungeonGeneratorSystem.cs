@@ -7,36 +7,32 @@ namespace Features.Dungeon.Systems
     {
         protected override void OnUpdate()
         {
-            RequireSingletonForUpdate<DungeonScene>();
             if (!HasSingleton<DungeonScene>())
             {
                 return;
             }
 
-            var dungeonScene = GetComponentFromSingleton<DungeonScene>();
-            if (dungeonScene.Generated)
-                return;
-            
-            RequireSingletonForUpdate<DungeonLoader>();
+            var (dungeonSceneEntity, dungeonScene) = GetComponentFromSingleton<DungeonScene>();
+
             if (!HasSingleton<DungeonLoader>())
             {
                 return;
             }
             
-            var dungeonLoader = GetComponentFromSingleton<DungeonLoader>();
+            var (_, dungeonLoader) = GetComponentFromSingleton<DungeonLoader>();
             var dungeonGenerator = dungeonScene.Grid;
 
             dungeonGenerator.FixedLevelGraphConfig.LevelGraph = dungeonLoader.LevelGraph;
             dungeonGenerator.Generate();
             
-            dungeonScene.Generated = true;
+            EntityManager.DestroyEntity(dungeonSceneEntity);
         }
 
-        private T GetComponentFromSingleton<T>() where T : class, IComponentData
+        private (Entity, T) GetComponentFromSingleton<T>() where T : class, IComponentData
         {
             var entity = GetSingletonEntity<T>();
             var component = EntityManager.GetComponentData<T>(entity);
-            return component;
+            return (entity, component);
         } 
     }
 }

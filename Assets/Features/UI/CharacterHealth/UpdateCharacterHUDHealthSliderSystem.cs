@@ -14,7 +14,6 @@ namespace Features.UI.CharacterHealth
 
         private void UpdateHUDHealthBarData()
         {
-            RequireSingletonForUpdate<HUDHealthBarUIData>();
             if (!HasSingleton<HUDHealthBarUIData>())
                 return;
             
