@@ -3,6 +3,7 @@ using Features.BehaviourTree.Components.Nodes.Decorator;
 using Features.BehaviourTree.Components.Nodes.Leaf;
 using Features.BehaviourTree.Services;
 using Features.BehaviourTree.Services.Core;
+using Features.Character.Services;
 using Unity.Entities;
 using UnityEngine;
 using LogType = Features.BehaviourTree.Components.Nodes.Leaf.LogType;
@@ -19,6 +20,8 @@ namespace Features.Enemy.Services
         [SerializeField] private float _attackAnimationTime = 1f;
         
         [SerializeField] private float _moveSpeed = 2;
+
+        [SerializeField] private AutoattackInfo _attackInfo;
 
         #endregion
         
@@ -97,19 +100,14 @@ namespace Features.Enemy.Services
                             },
                             new TreeNode
                             {
-                                Description = "wait for damage deal pattern",
+                                Description = "damage deal pattern",
                                 Node = new Sequence(2),
                                 Children = new[]
                                 {
                                     new TreeNode
                                     {
-                                        Description = "wait for damage deal",
-                                        Node = new Wait(.2f),
-                                    },
-                                    new TreeNode
-                                    {
-                                        Description = "damage deal debug",
-                                        Node = new Log("damage deal", LogType.Simple),
+                                        Description = "damage deal",
+                                        Node = new DamageDeal(_attackInfo),
                                     },
                                 },
                             },
