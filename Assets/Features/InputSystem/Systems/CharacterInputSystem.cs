@@ -40,7 +40,11 @@ namespace Features.InputSystem.Systems
                     {
                         var isAttackInput = input.Value.GetKey(conf.AttackActionID);
 
+                        if (attack.Enable == isAttackInput)
+                            return;
+                        
                         attack.Enable = isAttackInput;
+                        attack.Trigger = true;
                     })
                 .WithoutBurst()
                 .Run();

@@ -30,6 +30,7 @@ namespace Features.Character.Systems
                 {
                     attack.Cooldown -= DeltaTime;
                     attack.Enable = false;
+                    attack.Trigger = true;
                 }
                 else if (attack.Cooldown > -1)
                 {
