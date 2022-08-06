@@ -77,6 +77,9 @@ namespace Features.BehaviourTree.Services
             
             dstManager.AddComponentData(entity, new Target());
 
+            dstManager.AddComponentData(entity, new Attack());
+            dstManager.AddComponentData(entity, new AttackOverlapBox());
+
             dstManager.AddComponentData(entity, new PlayNextAnimation());
         }
 
