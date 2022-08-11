@@ -53,9 +53,13 @@ namespace Features.BehaviourTree.Systems.Nodes.Leaf
 
                 overlapBox.Enable = false;
 
-                overlapBox.Width = nodeComponent.Width;
-                overlapBox.Height = nodeComponent.Height;
-                overlapBox.OffsetXY = nodeComponent.OffsetXY;
+                overlapBox.CenterOffset = nodeComponent.CenterOffset;
+
+                overlapBox.HorizontalOffset = nodeComponent.HorizontalOffset;
+                overlapBox.VerticalOffset = nodeComponent.VerticalOffset;
+                
+                overlapBox.HorizontalSize = nodeComponent.HorizontalSize;
+                overlapBox.VerticalSize = nodeComponent.VerticalSize;
 
                 attack.Cooldown = nodeComponent.Cooldown;
                 attack.Damage = nodeComponent.Damage;

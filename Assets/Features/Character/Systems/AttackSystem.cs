@@ -66,9 +66,14 @@ namespace Features.Character.Systems
                 if (timeFromAttackStart >= currentAttackInfo.ColliderStartTime && timeFromAttackStart <= currentAttackInfo.ColliderStopTime)
                 {
                     attackOverlapBox.Enable = true;
-                    attackOverlapBox.Height = currentAttackInfo.ColliderHeight;
-                    attackOverlapBox.Width = currentAttackInfo.ColliderWidth;
-                    attackOverlapBox.OffsetXY = currentAttackInfo.OffsetXY;
+
+                    attackOverlapBox.CenterOffset = currentAttackInfo.CenterOffset;
+
+                    attackOverlapBox.HorizontalOffset = currentAttackInfo.HorizontalOffset;
+                    attackOverlapBox.VerticalOffset = currentAttackInfo.VerticalOffset;
+
+                    attackOverlapBox.HorizontalSize = currentAttackInfo.HorizontalSize;
+                    attackOverlapBox.VerticalSize = currentAttackInfo.VerticalSize;
                 }
                 else
                 {

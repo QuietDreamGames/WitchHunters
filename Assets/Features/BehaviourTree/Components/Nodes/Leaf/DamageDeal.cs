@@ -10,9 +10,13 @@ namespace Features.BehaviourTree.Components.Nodes.Leaf
     [BurstCompile]
     public struct DamageDeal : IComponentData, INode
     {
-        public float Width;
-        public float Height;
-        public float2 OffsetXY;
+        public float2 CenterOffset;
+        
+        public float2 HorizontalOffset;
+        public float2 VerticalOffset;
+
+        public float2 HorizontalSize;
+        public float2 VerticalSize;
 
         public float Cooldown;
         public float Damage;
@@ -24,9 +28,13 @@ namespace Features.BehaviourTree.Components.Nodes.Leaf
 
         public DamageDeal(AutoattackInfo attack) : this()
         {
-            Width = attack.ColliderWidth;
-            Height = attack.ColliderHeight;
-            OffsetXY = attack.OffsetXY;
+            CenterOffset = attack.CenterOffset;
+            
+            HorizontalOffset = attack.HorizontalOffset;
+            VerticalOffset = attack.VerticalOffset;
+
+            HorizontalOffset = attack.HorizontalSize;
+            VerticalSize = attack.VerticalSize;
 
             Cooldown = attack.Time;
             Damage = attack.BaseDamage;
