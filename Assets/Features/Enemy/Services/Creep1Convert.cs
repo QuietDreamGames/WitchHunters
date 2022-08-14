@@ -5,6 +5,7 @@ using Features.BehaviourTree.Services;
 using Features.BehaviourTree.Services.Core;
 using Features.Character.Services;
 using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 using LogType = Features.BehaviourTree.Components.Nodes.Leaf.LogType;
 
@@ -40,29 +41,8 @@ namespace Features.Enemy.Services
         {
             return new TreeNode
             {
-                Description = "move to target pattern",
-                Node = new Parallel(2, ParallelType.Selector),
-                Children = new[]
-                {
-                    new TreeNode
-                    {
-                        Description = "repeatedly try to chase target",
-                        Node = new Repeater(RepeaterType.Failed),
-                        Children = new []
-                        {
-                            new TreeNode 
-                            { 
-                                Description = "get target in distance", 
-                                Node = new GetClosestPlayer(AwareDistance) 
-                            }, 
-                        }
-                    },
-                    new TreeNode
-                    {
-                        Description = "move to target",
-                        Node = new MoveToTarget(AttackDistance, _moveSpeed)
-                    },
-                },
+                Description = "aware start",
+                Node = new Log("aware started", LogType.Simple),
             };
         }
 
@@ -71,9 +51,37 @@ namespace Features.Enemy.Services
             return new TreeNode
             {
                 Description = "attack pattern",
-                Node = new Sequence(2),
+                Node = new Sequence(3),
                 Children = new[]
                 {
+                    new TreeNode
+                    {
+                        Description = "move to target pattern",
+                        Node = new Parallel(2, ParallelType.Selector),
+                        Children = new[]
+                        {
+                            new TreeNode
+                            {
+                                Description = "repeatedly try to chase target",
+                                Node = new Repeater(RepeaterType.Failed),
+                                Children = new []
+                                {
+                                    new TreeNode 
+                                    { 
+                                        Description = "get target in distance", 
+                                        Node = new GetClosestPlayer(AwareDistance) 
+                                    }, 
+                                }
+                            },
+                            new TreeNode
+                            {
+                                Description = "move to target",
+                                Node = new MoveToTarget(new float2(.85f, .2f),
+                                    new float2(.45f, .1f),
+                                    _moveSpeed)
+                            },
+                        },
+                    },
                     new TreeNode
                     {
                         Description = "attack animation pattern",
