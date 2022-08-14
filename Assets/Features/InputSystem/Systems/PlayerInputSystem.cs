@@ -21,7 +21,6 @@ namespace Features.InputSystem.Systems
 
         protected override void OnUpdate()
         {
-            RequireSingletonForUpdate<PlayerInputComponent>();
             var playerInputEntity = GetSingletonEntity<PlayerInputComponent>();
             var playerInputComponent = EntityManager.GetComponentData<PlayerInputComponent>(playerInputEntity);
             
