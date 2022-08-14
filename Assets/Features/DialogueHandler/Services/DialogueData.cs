@@ -7,6 +7,6 @@ namespace Features.DialogueHandler.Services
     public struct DialogueData
     {
         public int PhraseKey;
-        public FixedString32Bytes SpeakerCharacterKey;
+        public int SpeakerCharacter;
     }
 }

@@ -5,6 +5,6 @@ namespace Features.DialogueHandler.Services
 {
     public struct DialoguesDataPool
     {
-        public BlobArray<DialogueData> Value;
+        public BlobArray<DialogueData> DialoguesData;
     }
 }
