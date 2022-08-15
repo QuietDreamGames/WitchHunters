@@ -15,7 +15,7 @@ namespace Features.Animator.Systems
         {
             Entities
                 .WithAll<Movement, AnimatorWrapper, AnimatorConfiguration>()
-                .ForEach((in AnimatorWrapper animator, in Movement movement, in AnimatorConfiguration conf) =>
+                .ForEach((AnimatorWrapper animator, ref Movement movement, in AnimatorConfiguration conf) =>
                 {
                     animator.Value.SetFloat(conf.Horizontal.ToString(), movement.Direction.x); 
                     animator.Value.SetFloat(conf.Vertical.ToString(), movement.Direction.y);
