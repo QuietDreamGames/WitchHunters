@@ -9,5 +9,6 @@ namespace Features.Character.Components
     {
         public float3 Direction;
         public bool Enable;
+        public bool Trigger;
     }
 }
