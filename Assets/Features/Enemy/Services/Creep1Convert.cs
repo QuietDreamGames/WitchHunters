@@ -51,7 +51,7 @@ namespace Features.Enemy.Services
             return new TreeNode
             {
                 Description = "attack pattern",
-                Node = new Sequence(3),
+                Node = new Sequence(4),
                 Children = new[]
                 {
                     new TreeNode
@@ -76,11 +76,16 @@ namespace Features.Enemy.Services
                             new TreeNode
                             {
                                 Description = "move to target",
-                                Node = new MoveToTarget(new float2(.85f, .2f),
-                                    new float2(.45f, .1f),
+                                Node = new MoveToTarget(new float2(.95f, .2f),
+                                    new float2(.55f, .2f),
                                     _moveSpeed)
                             },
                         },
+                    },
+                    new TreeNode
+                    {
+                        Description = "face to target",
+                        Node = new FaceToTarget(),
                     },
                     new TreeNode
                     {
