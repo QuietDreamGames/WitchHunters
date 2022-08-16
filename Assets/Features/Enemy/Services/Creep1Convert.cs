@@ -113,16 +113,8 @@ namespace Features.Enemy.Services
                             },
                             new TreeNode
                             {
-                                Description = "damage deal pattern",
-                                Node = new Sequence(2),
-                                Children = new[]
-                                {
-                                    new TreeNode
-                                    {
-                                        Description = "damage deal",
-                                        Node = new DamageDeal(_attackInfo),
-                                    },
-                                },
+                                Description = "damage deal",
+                                Node = new DamageDeal(_attackInfo),
                             },
                         },
                     },

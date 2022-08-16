@@ -149,21 +149,21 @@ MonoBehaviour:
     BaseDamage: 10
     CenterOffset:
       x: 0
-      y: 0
+      y: 0.25
     HorizontalOffset:
-      x: 0
+      x: 0.45
       y: 0
     VerticalOffset:
       x: 0
       y: 0
     HorizontalSize:
-      x: 0
-      y: 0
+      x: 0.35
+      y: 1
     VerticalSize:
       x: 0
       y: 0
-    ColliderStartTime: 0.525
-    ColliderStopTime: 0.6
+    ColliderStartTime: 0.595
+    ColliderStopTime: 0.625
 --- !u!114 &6865988819853891410
 MonoBehaviour:
   m_ObjectHideFlags: 0
