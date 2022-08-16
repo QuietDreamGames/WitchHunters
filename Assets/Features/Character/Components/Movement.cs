@@ -10,5 +10,12 @@ namespace Features.Character.Components
         public float3 Direction;
         public bool Enable;
         public bool Trigger;
+
+        public Movement(float3 initialDirection) : this()
+        {
+            Direction = initialDirection;
+            Enable = false;
+            Trigger = true;
+        }
     }
 }

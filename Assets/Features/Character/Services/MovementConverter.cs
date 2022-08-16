@@ -1,5 +1,6 @@
 using Features.Character.Components;
 using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Features.Character.Services
@@ -29,6 +30,9 @@ namespace Features.Character.Services
 
             var speed = new Speed(_speed);
             dstManager.AddComponentData(entity, speed);
+
+            var movement = new Movement(new float3(1, 0, 0));
+            dstManager.AddComponentData(entity, movement);
         }
 
         #endregion

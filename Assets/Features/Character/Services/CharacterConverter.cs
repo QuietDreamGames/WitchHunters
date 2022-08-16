@@ -58,13 +58,6 @@ namespace Features.Character.Services
 
             var autoAttackOverlapBox = new AttackOverlapBox();
             dstManager.AddComponentData(entity, autoAttackOverlapBox);
-
-            var movement = new Movement
-            {
-                Direction = new float3(1, 0, 0),
-                Enable = false
-            };
-            dstManager.AddComponentData(entity, movement);
         }
 
         #endregion
