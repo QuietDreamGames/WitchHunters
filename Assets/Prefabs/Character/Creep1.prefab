@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 5722165270958187515}
   - component: {fileID: 6739429562476369125}
   - component: {fileID: 8103341699316324863}
+  - component: {fileID: 2216489936096495721}
   - component: {fileID: 6865988819853891410}
   - component: {fileID: 8027205021280559663}
   - component: {fileID: 6354403422067658498}
@@ -164,6 +165,19 @@ MonoBehaviour:
       y: 0
     ColliderStartTime: 0.595
     ColliderStopTime: 0.625
+--- !u!114 &2216489936096495721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422389617160847596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534d39808dd38944c956067260a9d324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
 --- !u!114 &6865988819853891410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +205,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  _speed: 2
 --- !u!114 &8027205021280559663
 MonoBehaviour:
   m_ObjectHideFlags: 0

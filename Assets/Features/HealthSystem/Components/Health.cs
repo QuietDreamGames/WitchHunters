@@ -7,5 +7,11 @@ namespace Features.HealthSystem.Components
     {
         public float MaxValue;
         public float Value;
+        
+        public Health(float maxValue)
+        {
+            MaxValue = maxValue;
+            Value = maxValue;
+        }
     }
 }

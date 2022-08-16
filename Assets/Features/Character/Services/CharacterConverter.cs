@@ -14,10 +14,7 @@ namespace Features.Character.Services
     public class CharacterConverter : MonoBehaviour, IConvertGameObjectToEntity
     {
         #region Serializable data
-
-        [Header("Health Data")]
-        [SerializeField] private float _maxHealth = 100f;
-
+        
         [Header("Player Input Configuration")] 
         [SerializeField] private string _moveActionID = "Move";
         [SerializeField] private string _attackActionID = "Attack";
@@ -43,18 +40,6 @@ namespace Features.Character.Services
                 AttackActionID = _attackActionID
             };
             dstManager.AddSharedComponentData(entity, inputConfiguration);
-
-            var health = new Health
-            {
-                MaxValue = _maxHealth,
-                Value = _maxHealth
-            };
-            dstManager.AddComponentData(entity, health);
-
-            var damageTag = new DamageableTag();
-            dstManager.AddComponentData(entity, damageTag);
-
-            dstManager.AddBuffer<Damage>(entity);
 
             var autoAttackOverlapBox = new AttackOverlapBox();
             dstManager.AddComponentData(entity, autoAttackOverlapBox);

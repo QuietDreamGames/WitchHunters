@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 4293066990853695052}
   - component: {fileID: 987032000771224365}
   - component: {fileID: 3060734947632182145}
+  - component: {fileID: 7931605976582203783}
   - component: {fileID: 2897284986136107151}
   - component: {fileID: 6117519940679713771}
   - component: {fileID: 6976730266487959725}
@@ -181,9 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75a52fd727949f45b36d3d7ad23a253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _physicsShape: {fileID: 0}
-  _speed: 100
   _moveActionID: Move
   _attackActionID: Attack
 --- !u!114 &4293066990853695052
@@ -245,6 +243,19 @@ MonoBehaviour:
   _attackParam: Attack
   _attackIdParam: AttackId
   _animator: {fileID: 3060734947688086314}
+--- !u!114 &7931605976582203783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060734947632182266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534d39808dd38944c956067260a9d324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
 --- !u!114 &2897284986136107151
 MonoBehaviour:
   m_ObjectHideFlags: 0
