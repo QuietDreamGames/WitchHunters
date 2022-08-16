@@ -18,9 +18,9 @@ namespace Features.InputSystem.Systems
                 .ForEach(
                     (CharacterInput input, ref Movement movement, in InputConfiguration conf) =>
                     {
-                        //var direction = new float3(input.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
+                        var moveActionID = conf.MoveActionID.ToString();
+                        var direction = new float3(input.Value.GetAxis(moveActionID));
                         
-                        var direction = new float3(input.Value.GetAxis(conf.MoveActionID));
                         movement.Enable = math.any(direction != float3.zero);
                         
                         if (movement.Enable)
@@ -36,9 +36,10 @@ namespace Features.InputSystem.Systems
             Entities
                 .WithAll<CharacterInput, Movement>()
                 .ForEach(
-                    ( CharacterInput input, ref Attack attack, in InputConfiguration conf) =>
+                    (CharacterInput input, ref Attack attack, in InputConfiguration conf) =>
                     {
-                        var isAttackInput = input.Value.GetKey(conf.AttackActionID);
+                        var attackActionID = conf.AttackActionID.ToString();
+                        var isAttackInput = input.Value.GetKey(attackActionID);
 
                         if (attack.Enable == isAttackInput)
                             return;

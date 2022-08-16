@@ -11,7 +11,7 @@ using Collider = Features.Collision.Components.Collider;
 
 namespace Features.Character.Services
 {
-    public class CharacterConverter : MonoBehaviour, IConvertGameObjectToEntity
+    public class PlayerConverter : MonoBehaviour, IConvertGameObjectToEntity
     {
         #region Serializable data
         
@@ -25,21 +25,14 @@ namespace Features.Character.Services
 
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            // var playerInputWrapper = new PlayerInputWrapper { Value = _playerInput };
-            // dstManager.AddSharedComponentData(entity, playerInputWrapper);
-
-            var characterInput = new CharacterInput
-            {
-                Value = new InputInterpreter()
-            };
+            var characterInput = new CharacterInput();
             dstManager.AddComponentData(entity, characterInput);
 
-            var inputConfiguration = new InputConfiguration
-            {
-                MoveActionID = _moveActionID,
-                AttackActionID = _attackActionID
-            };
-            dstManager.AddSharedComponentData(entity, inputConfiguration);
+            var inputConfiguration = new InputConfiguration(_moveActionID, _attackActionID);
+            dstManager.AddComponentData(entity, inputConfiguration);
+
+            var playerTag = new PlayerTag();
+            dstManager.AddComponentData(entity, playerTag);
         }
 
         #endregion
