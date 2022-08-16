@@ -33,7 +33,7 @@ namespace Features.BehaviourTree.Components.Nodes.Leaf
             HorizontalOffset = attack.HorizontalOffset;
             VerticalOffset = attack.VerticalOffset;
 
-            HorizontalOffset = attack.HorizontalSize;
+            HorizontalSize = attack.HorizontalSize;
             VerticalSize = attack.VerticalSize;
 
             Cooldown = attack.Time;

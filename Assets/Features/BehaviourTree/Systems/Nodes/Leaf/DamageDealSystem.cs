@@ -94,8 +94,8 @@ namespace Features.BehaviourTree.Systems.Nodes.Leaf
                 if (nodeComponent.CurrentTime >= nodeComponent.StartTime)
                 {
                     if (overlapBox.Enable == false)
-                    {
-                        // SetActiveDamageDeal(true, rootEntity, ref overlapBox);
+                    { 
+                        SetActiveDamageDeal(true, rootEntity, ref overlapBox);
                     }
 
                     return NodeResult.Running;
