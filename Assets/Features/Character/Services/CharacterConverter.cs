@@ -40,9 +40,6 @@ namespace Features.Character.Services
                 AttackActionID = _attackActionID
             };
             dstManager.AddSharedComponentData(entity, inputConfiguration);
-
-            var autoAttackOverlapBox = new AttackOverlapBox();
-            dstManager.AddComponentData(entity, autoAttackOverlapBox);
         }
 
         #endregion
