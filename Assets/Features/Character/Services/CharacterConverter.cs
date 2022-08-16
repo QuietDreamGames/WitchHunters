@@ -18,12 +18,6 @@ namespace Features.Character.Services
         [Header("Health Data")]
         [SerializeField] private float _maxHealth = 100f;
 
-        [Header("Collider")] 
-        [SerializeField] private PhysicsShapeAuthoring _physicsShape;
-
-        [Header("Speed Data")] 
-        [SerializeField] private float _speed = 2f;
-
         [Header("Player Input Configuration")] 
         [SerializeField] private string _moveActionID = "Move";
         [SerializeField] private string _attackActionID = "Attack";
@@ -64,9 +58,6 @@ namespace Features.Character.Services
 
             var autoAttackOverlapBox = new AttackOverlapBox();
             dstManager.AddComponentData(entity, autoAttackOverlapBox);
-
-            var speed = new Speed { Value = _speed };
-            dstManager.AddComponentData(entity, speed);
 
             var movement = new Movement
             {

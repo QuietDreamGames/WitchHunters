@@ -7,5 +7,10 @@ namespace Features.Character.Components
     public struct Speed : IComponentData
     {
         public float Value;
+
+        public Speed(float value) : this()
+        {
+            Value = value;
+        }
     }
 }

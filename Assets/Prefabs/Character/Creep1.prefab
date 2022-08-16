@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AwareDistance: 4
-  AttackDistance: 0.5
+  AttackDistance: 4
   _attackAnimationName: Attack1
   _attackAnimationTime: 0.625
   _moveSpeed: 120

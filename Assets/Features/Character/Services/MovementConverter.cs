@@ -11,6 +11,9 @@ namespace Features.Character.Services
         [Header("GO Movement")] 
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private ContactFilter2D _filter;
+        
+        [Header("Speed Data")] 
+        [SerializeField] private float _speed = 2f;
 
         #endregion
 
@@ -23,6 +26,9 @@ namespace Features.Character.Services
 
             var filterWrapper = new ContactFilter2DWrapper(_filter);
             dstManager.AddComponentData(entity, filterWrapper);
+
+            var speed = new Speed(_speed);
+            dstManager.AddComponentData(entity, speed);
         }
 
         #endregion
