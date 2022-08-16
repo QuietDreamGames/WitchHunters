@@ -144,7 +144,6 @@ GameObject:
   - component: {fileID: 3060734947632182145}
   - component: {fileID: 7931605976582203783}
   - component: {fileID: 2897284986136107151}
-  - component: {fileID: 6117519940679713771}
   - component: {fileID: 6976730266487959725}
   - component: {fileID: 2198554793723868509}
   - component: {fileID: 3060734947632182147}
@@ -269,18 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soAutoattacksInfo: {fileID: 11400000, guid: b9a481103469d7e499a0ed71fef7e79f, type: 2}
---- !u!114 &6117519940679713771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3060734947632182266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9e2122c60b5314780656d698d95fd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6976730266487959725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,11 +334,11 @@ MonoBehaviour:
   m_ShapeType: 0
   m_PrimitiveCenter:
     x: 0
-    y: 0.275
+    y: 0.125
     z: 0
   m_PrimitiveSize:
     x: 0.3
-    y: 0.65
+    y: 0.35
     z: 1
   m_PrimitiveOrientation:
     Value:
@@ -361,12 +348,12 @@ MonoBehaviour:
     RotationOrder: 4
   m_Capsule:
     Height: 1
-    Radius: 0.325
+    Radius: 0.175
     Axis: 2
   m_Cylinder:
-    Height: 0.3
-    Radius: 0.5
-    Axis: 0
+    Height: 1
+    Radius: 0.175
+    Axis: 2
   m_CylinderSideCount: 20
   m_SphereRadius: 0.5
   m_MinimumSkinnedVertexWeight: 0.1
