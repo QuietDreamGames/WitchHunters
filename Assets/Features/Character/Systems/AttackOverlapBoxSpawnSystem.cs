@@ -88,18 +88,48 @@ namespace Features.Character.Systems
             [ReadOnly] public CollisionWorld CollisionWorld;
             public EntityManager EntityManager;
             public CollisionFilter Filter;
-            
-            private void Execute(ref AttackOverlapBox attackOverlapBox, in Translation translation, ref Attack attack)
+
+            private void Execute(ref AttackOverlapBox attackOverlapBox,
+                in Movement movement,
+                in Translation translation,
+                ref Attack attack)
             {
                 if (!attackOverlapBox.Enable)
                     return;
+
+                var horizontal = math.abs(movement.Direction.x);
+                var vertical = math.abs(movement.Direction.y);
+                var isHorizontal = horizontal >= vertical;
+                float2 offset;
+                float2 size;
                 
-                var localMinX = attackOverlapBox.OffsetXY.x - attackOverlapBox.Width / 2f;
-                var localMinY = attackOverlapBox.OffsetXY.y - attackOverlapBox.Height / 2f;
+                if (isHorizontal)
+                {
+                    var faceDirection = math.sign(movement.Direction.x);
+
+                    offset = attackOverlapBox.HorizontalOffset;
+                    offset.x *= faceDirection;
+
+                    size = attackOverlapBox.HorizontalSize;
+                }
+                else
+                {
+                    var faceDirection = math.sign(movement.Direction.y);
+
+                    offset = attackOverlapBox.VerticalOffset;
+                    offset.y *= faceDirection;
+
+                    size = attackOverlapBox.VerticalSize;
+                }
+
+                offset += attackOverlapBox.CenterOffset;
+                
+                var localMinX = offset.x - size.x / 2f;
+                var localMinY = offset.y - size.y / 2f;
                 var localMinXY = new float3(localMinX, localMinY, 0f);
                 
-                var localMaxX = attackOverlapBox.OffsetXY.x + attackOverlapBox.Width / 2f;
-                var localMaxY = attackOverlapBox.OffsetXY.y + attackOverlapBox.Height / 2f;
+                var localMaxX = offset.x + size.x / 2f;
+                var localMaxY = offset.y + size.y / 2f;
                 var localMaxXY = new float3(localMaxX,  localMaxY, 0f);
                 
                 var aabb = new Aabb()

@@ -27,7 +27,7 @@ namespace Features.Animator.Services
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
             var animator = new AnimatorWrapper { Value = _animator };
-            dstManager.AddSharedComponentData(entity, animator);
+            dstManager.AddComponentData(entity, animator);
 
             var configuration = new AnimatorConfiguration
             {
