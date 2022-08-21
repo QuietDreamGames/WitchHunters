@@ -13,3 +13,11 @@ MonoBehaviour:
   m_Name: RussianLocalization
   m_EditorClassIdentifier: 
   LocalizationLang: 1
+  LinesData:
+  - Key: hello
+    Value: "\u041F\u0440\u0438\u0432\u0435\u0442"
+  - Key: howAreYou
+    Value: "\u041A\u0430\u043A \u0434\u0435\u043B\u0430"
+  - Key: checkLast
+    Value: "\u041F\u0440\u043E\u0432\u0435\u0440\u043A\u0430 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0433\u043E
+      \u043B\u0430\u0439\u043D\u0430"

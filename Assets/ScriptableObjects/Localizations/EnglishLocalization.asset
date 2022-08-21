@@ -13,3 +13,10 @@ MonoBehaviour:
   m_Name: EnglishLocalization
   m_EditorClassIdentifier: 
   LocalizationLang: 0
+  LinesData:
+  - Key: hello
+    Value: Hello
+  - Key: howAreYou
+    Value: How are you
+  - Key: checkLast
+    Value: Check last

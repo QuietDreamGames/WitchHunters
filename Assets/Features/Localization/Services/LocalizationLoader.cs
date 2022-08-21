@@ -36,11 +36,7 @@ namespace Features.Localization.Services
         }
         #endregion
         
-        #region This is a BAD idea
-
         private static List<LocalizationData> _uninitiatedLocalizationDatas;
-
-        #endregion
 
         [MenuItem("Localization/Download Data")]
         public static void StartDownloadData()
@@ -151,11 +147,14 @@ namespace Features.Localization.Services
             foreach (var alreadyInitializedFile in _uninitiatedLocalizationDatas)
             {
                 Debug.Log(alreadyInitializedFile.LocalizationLang + " <<<<<<<<<<<<<");
-                foreach (var line in alreadyInitializedFile.Lines)
+                foreach (var lineData in alreadyInitializedFile.LinesData)
                 {
-                    Debug.Log($"{line.Key} => {line.Value}");
+                    Debug.Log($"{lineData.Key} => {lineData.Value}");
                 }
             }
+            
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
 
         private static void ProcessLineFromCSV(List<string> currLineElements, int currLineIndex)
@@ -182,9 +181,10 @@ namespace Features.Localization.Services
 
             for (int i = 1; i < currLineElements.Count; i++)
             {
-                _uninitiatedLocalizationDatas[i - 1].Lines[entryId] = currLineElements[i];
+                _uninitiatedLocalizationDatas[i - 1].LinesData
+                    .Add(new LineData { Key = entryId, Value = currLineElements[i] });
+                EditorUtility.SetDirty(_uninitiatedLocalizationDatas[i - 1]);
             }
-            
         }
 
         #region Creation of the asset file
@@ -195,8 +195,7 @@ namespace Features.Localization.Services
             
             var assetName = @"" + localizationLang.ToString() + @"Localization";
             var assetPath = @"Assets\ScriptableObjects\Localizations\" + assetName + ".asset";
-            
-            
+
             string[] result = AssetDatabase.FindAssets(assetName);
 
             LocalizationData localizationData = null;
@@ -223,12 +222,12 @@ namespace Features.Localization.Services
             }
             
             localizationData.LocalizationLang = localizationLang;
-            localizationData.Lines = new Dictionary<string, string>();
+            localizationData.LinesData = new List<LineData>();
             _uninitiatedLocalizationDatas.Add(localizationData);
             
-            EditorUtility.SetDirty(localizationData);
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+            // EditorUtility.SetDirty(localizationData);
+            // AssetDatabase.SaveAssets();
+            // AssetDatabase.Refresh();
             // _uninitiatedLocalizationDatas.Add(new LocalizationData
             // {
             //     LocalizationLang = localizationLang, 
