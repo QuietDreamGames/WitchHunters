@@ -1,49 +1,14 @@
 ﻿using System;
 using Features.Localization.Services;
 using Features.Utils;
+using Unity.Entities;
 using UnityEditor;
 using UnityEngine;
 
 namespace Features.Localization
 {
-    public class LocalizationTool : MonoBehaviour
+    public partial class LocalizationSystem : SystemBase
     {
-        #region Singleton
-
-        private static LocalizationTool _instance;
-
-        public static LocalizationTool Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = GameObject.FindObjectOfType<LocalizationTool>();
-                    if (_instance == null)
-                    {
-                        GameObject singleton = new GameObject(typeof(LocalizationTool).Name);
-                        _instance = singleton.AddComponent<LocalizationTool>();
-                    }
-                }
-                return _instance;
-            }
-        }
-
-        public virtual void Awake()
-        {
-            if (_instance == null)
-            {
-                _instance = this as LocalizationTool;
-                
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        #endregion
-        
         public LocalizationData LocalizationData { get; private set; }
 
         public static Action OnLocalizationChanged;
@@ -90,5 +55,10 @@ namespace Features.Localization
         }
         
         #endregion
+
+        protected override void OnUpdate()
+        {
+            
+        }
     }
 }   

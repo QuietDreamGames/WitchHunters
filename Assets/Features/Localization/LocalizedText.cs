@@ -43,7 +43,8 @@ public class LocalizedText : MonoBehaviour
             var searchKey = dataEntry.ToString();
             searchKey = searchKey[1..^1];
             
-            var textToReplace = LocalizationTool.Instance.GetLocalizationLine(searchKey);
+            var textToReplace = World.DefaultGameObjectInjectionWorld.GetOrCreateSystem<LocalizationSystem>()
+                .GetLocalizationLine(searchKey);
             rawString = rawString.Replace(dataEntry.ToString(), textToReplace);
         }
 
@@ -57,17 +58,14 @@ public class LocalizedText : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("ONENABLE");
-        
         _textComponent = GetComponent<TextMeshProUGUI>();
-        //World.DefaultGameObjectInjectionWorld
         
-        LocalizationTool.OnLocalizationChanged += OnLocalizationChange;
+        LocalizationSystem.OnLocalizationChanged += OnLocalizationChange;
         UpdateText(RawText);
     }
 
     private void OnDisable()
     {
-        LocalizationTool.OnLocalizationChanged -= OnLocalizationChange;
+        LocalizationSystem.OnLocalizationChanged -= OnLocalizationChange;
     }
 }
