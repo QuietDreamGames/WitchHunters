@@ -66,33 +66,40 @@ namespace Features.BehaviourTree.Systems.Nodes.Leaf
                 var movement = SelfMovementComponents[rootEntity];
                 var speed = SelfSpeedComponents[rootEntity];
 
-                NodeResult result;
-
-                var distance = math.distance(target.Value, translation.Value);
+                var result = TryMove(in translation,
+                    in target,
+                    in nodeComponent,
+                    ref movement,
+                    ref speed);
                 
-                if (distance < nodeComponent.AcceptableRadius)
-                {
-                    movement.Direction = float3.zero;
-                    movement.Enable = false;
-
-                    result = NodeResult.Success;
-                }
-                else
-                {
-                    var direction = math.normalize(target.Value - translation.Value);
-
-                    movement.Direction = direction;
-                    movement.Enable = math.any(movement.Direction != float3.zero);
-                
-                    speed.Value = nodeComponent.Speed;
-
-                    result = NodeResult.Running;
-                }
-
                 SelfMovementComponents[rootEntity] = movement;
                 SelfSpeedComponents[rootEntity] = speed;
 
                 return result;
+            }
+
+            private NodeResult TryMove(in Translation self,
+                in Target target,
+                in MoveToTarget nodeComponent,
+                ref Movement movement,
+                ref Speed speed)
+            {
+                var (completed, direction) = nodeComponent.ComputePath(self.Value, target.Value);
+                
+                if (completed)
+                {
+                    movement.Direction = float3.zero;
+                    movement.Enable = false;
+
+                    return NodeResult.Success;
+                }
+
+                movement.Direction = direction;
+                movement.Enable = math.any(movement.Direction != float3.zero);
+                
+                speed.Value = nodeComponent.Speed;
+
+                return NodeResult.Running;
             }
         }
     }

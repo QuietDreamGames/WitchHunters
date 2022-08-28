@@ -3,7 +3,9 @@ using Features.BehaviourTree.Components.Nodes.Decorator;
 using Features.BehaviourTree.Components.Nodes.Leaf;
 using Features.BehaviourTree.Services;
 using Features.BehaviourTree.Services.Core;
+using Features.Character.Services;
 using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 using LogType = Features.BehaviourTree.Components.Nodes.Leaf.LogType;
 
@@ -19,6 +21,8 @@ namespace Features.Enemy.Services
         [SerializeField] private float _attackAnimationTime = 1f;
         
         [SerializeField] private float _moveSpeed = 2;
+
+        [SerializeField] private AutoattackInfo _attackInfo;
 
         #endregion
         
@@ -37,29 +41,8 @@ namespace Features.Enemy.Services
         {
             return new TreeNode
             {
-                Description = "move to target pattern",
-                Node = new Parallel(2, ParallelType.Selector),
-                Children = new[]
-                {
-                    new TreeNode
-                    {
-                        Description = "repeatedly try to chase target",
-                        Node = new Repeater(RepeaterType.Failed),
-                        Children = new []
-                        {
-                            new TreeNode 
-                            { 
-                                Description = "get target in distance", 
-                                Node = new GetClosestPlayer(AwareDistance) 
-                            }, 
-                        }
-                    },
-                    new TreeNode
-                    {
-                        Description = "move to target",
-                        Node = new MoveToTarget(AttackDistance, _moveSpeed)
-                    },
-                },
+                Description = "aware start",
+                Node = new Log("aware started", LogType.Simple),
             };
         }
 
@@ -68,9 +51,42 @@ namespace Features.Enemy.Services
             return new TreeNode
             {
                 Description = "attack pattern",
-                Node = new Sequence(2),
+                Node = new Sequence(4),
                 Children = new[]
                 {
+                    new TreeNode
+                    {
+                        Description = "move to target pattern",
+                        Node = new Parallel(2, ParallelType.Selector),
+                        Children = new[]
+                        {
+                            new TreeNode
+                            {
+                                Description = "repeatedly try to chase target",
+                                Node = new Repeater(RepeaterType.Failed),
+                                Children = new []
+                                {
+                                    new TreeNode 
+                                    { 
+                                        Description = "get target in distance", 
+                                        Node = new GetClosestPlayer(AwareDistance) 
+                                    }, 
+                                }
+                            },
+                            new TreeNode
+                            {
+                                Description = "move to target",
+                                Node = new MoveToTarget(new float2(.95f, .2f),
+                                    new float2(.55f, .2f),
+                                    _moveSpeed)
+                            },
+                        },
+                    },
+                    new TreeNode
+                    {
+                        Description = "face to target",
+                        Node = new FaceToTarget(),
+                    },
                     new TreeNode
                     {
                         Description = "attack animation pattern",
@@ -97,21 +113,8 @@ namespace Features.Enemy.Services
                             },
                             new TreeNode
                             {
-                                Description = "wait for damage deal pattern",
-                                Node = new Sequence(2),
-                                Children = new[]
-                                {
-                                    new TreeNode
-                                    {
-                                        Description = "wait for damage deal",
-                                        Node = new Wait(.2f),
-                                    },
-                                    new TreeNode
-                                    {
-                                        Description = "damage deal debug",
-                                        Node = new Log("damage deal", LogType.Simple),
-                                    },
-                                },
+                                Description = "damage deal",
+                                Node = new DamageDeal(_attackInfo),
                             },
                         },
                     },

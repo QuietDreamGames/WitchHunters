@@ -30,10 +30,10 @@ namespace Features.Character.Services
             {
                 Value = CreateAutoattackInfos()
             };
-
             dstManager.AddComponentData(entity, autoattacks);
 
-
+            var autoAttackOverlapBox = new AttackOverlapBox();
+            dstManager.AddComponentData(entity, autoAttackOverlapBox);
         }
 
         private BlobAssetReference<AutoattackInfoPool> CreateAutoattackInfos()

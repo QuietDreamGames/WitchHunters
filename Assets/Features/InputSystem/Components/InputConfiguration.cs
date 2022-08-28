@@ -1,26 +1,18 @@
 using System;
+using Unity.Collections;
 using Unity.Entities;
 
 namespace Features.InputSystem.Components
 {
-    public struct InputConfiguration : ISharedComponentData, IEquatable<InputConfiguration>
+    public struct InputConfiguration : IComponentData
     {
-        public string MoveActionID;
-        public string AttackActionID;
+        public FixedString32Bytes MoveActionID;
+        public FixedString32Bytes AttackActionID;
 
-        public bool Equals(InputConfiguration other)
+        public InputConfiguration(string moveActionID, string attackActionID)
         {
-            return MoveActionID == other.MoveActionID && AttackActionID == other.AttackActionID;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return obj is InputConfiguration other && Equals(other);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(MoveActionID, AttackActionID);
+            MoveActionID = moveActionID;
+            AttackActionID = attackActionID;
         }
     }
 }

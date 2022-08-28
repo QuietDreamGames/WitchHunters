@@ -21,7 +21,6 @@ namespace Features.InputSystem.Systems
 
         protected override void OnUpdate()
         {
-            RequireSingletonForUpdate<PlayerInputComponent>();
             var playerInputEntity = GetSingletonEntity<PlayerInputComponent>();
             var playerInputComponent = EntityManager.GetComponentData<PlayerInputComponent>(playerInputEntity);
             
@@ -30,15 +29,15 @@ namespace Features.InputSystem.Systems
                 .ForEach(
                     (CharacterInput characterInput, in InputConfiguration conf) =>
                     {
-                        var direction =
-                            new float3(playerInputComponent.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
+                        var moveActionID = conf.MoveActionID.ToString();
+                        var direction2D = playerInputComponent.Value.actions[moveActionID].ReadValue<Vector2>();
+                        var direction3D = new float3(direction2D, 0);
 
-                        var isAttack = playerInputComponent.Value.actions[conf.AttackActionID].IsPressed();
+                        var attackActionID = conf.AttackActionID.ToString();
+                        var isAttack = playerInputComponent.Value.actions[attackActionID].IsPressed();
 
-                        characterInput.Value.SetAxis(conf.MoveActionID, direction);
-                        
-                        characterInput.Value.SetKey(conf.AttackActionID, isAttack);
-                        
+                        characterInput.Value.SetAxis(moveActionID, direction3D);
+                        characterInput.Value.SetKey(attackActionID, isAttack);
                     })
                 .WithoutBurst()
                 .Run();
