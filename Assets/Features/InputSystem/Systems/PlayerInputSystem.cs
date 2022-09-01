@@ -7,23 +7,37 @@ using UnityEngine;
 
 namespace Features.InputSystem.Systems
 {
-    [UpdateBefore(typeof(MovementSystem))]
+    [UpdateBefore(typeof(CharacterInputSystem))]
     public partial class PlayerInputSystem : SystemBase
     {
+        // private PlayerInputComponent _playerInputComponent;
+        //     
+        // protected override void OnStartRunning()
+        // {
+        //     RequireSingletonForUpdate<PlayerInputComponent>();
+        //     var playerInputEntity = GetSingletonEntity<PlayerInputComponent>();
+        //     _playerInputComponent = EntityManager.GetComponentData<PlayerInputComponent>(playerInputEntity);
+        // }
+
         protected override void OnUpdate()
         {
+            var playerInputEntity = GetSingletonEntity<PlayerInputComponent>();
+            var playerInputComponent = EntityManager.GetComponentData<PlayerInputComponent>(playerInputEntity);
+            
             Entities
-                .WithAll<PlayerInputWrapper, PlayerInputConfiguration, Movement>()
+                .WithAll<CharacterInput, InputConfiguration, PlayerTag>()
                 .ForEach(
-                    (ref Movement movement, in PlayerInputWrapper input, in PlayerInputConfiguration conf) =>
+                    (CharacterInput characterInput, in InputConfiguration conf) =>
                     {
-                        var direction = new float3(input.Value.actions[conf.MoveActionID].ReadValue<Vector2>(), 0);
-                        movement.Enable = math.any(direction != float3.zero);
-                        
-                        if (movement.Enable)
-                        {
-                            movement.Direction = direction;
-                        }
+                        var moveActionID = conf.MoveActionID.ToString();
+                        var direction2D = playerInputComponent.Value.actions[moveActionID].ReadValue<Vector2>();
+                        var direction3D = new float3(direction2D, 0);
+
+                        var attackActionID = conf.AttackActionID.ToString();
+                        var isAttack = playerInputComponent.Value.actions[attackActionID].IsPressed();
+
+                        characterInput.Value.SetAxis(moveActionID, direction3D);
+                        characterInput.Value.SetKey(attackActionID, isAttack);
                     })
                 .WithoutBurst()
                 .Run();

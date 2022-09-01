@@ -9,10 +9,13 @@ namespace Features.Animator.Services
         #region Serializable data
 
         [Header("Animator Configuration")] 
-        [SerializeField] private string _movingParam = "Moving";
+        [SerializeField] private string _movingParam = "Move";
 
         [SerializeField] private string _horizontalParam = "Horizontal";
         [SerializeField] private string _verticalParam = "Vertical";
+        
+        [SerializeField] private string _attackParam = "Attack";
+        [SerializeField] private string _attackIdParam = "AttackId";
         
         [Header("Animator")] 
         [SerializeField] private UnityEngine.Animator _animator;
@@ -24,16 +27,19 @@ namespace Features.Animator.Services
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
             var animator = new AnimatorWrapper { Value = _animator };
-            dstManager.AddSharedComponentData(entity, animator);
+            dstManager.AddComponentData(entity, animator);
 
             var configuration = new AnimatorConfiguration
             {
                 Moving = _movingParam,
                 
                 Horizontal = _horizontalParam,
-                Vertical = _verticalParam
+                Vertical = _verticalParam,
+                
+                Attack = _attackParam,
+                AttackId = _attackIdParam,
             };
-            dstManager.AddSharedComponentData(entity, configuration);
+            dstManager.AddComponentData(entity, configuration);
         }
         
         #endregion

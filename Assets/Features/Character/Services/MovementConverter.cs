@@ -1,5 +1,6 @@
 using Features.Character.Components;
 using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Features.Character.Services
@@ -11,6 +12,9 @@ namespace Features.Character.Services
         [Header("GO Movement")] 
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private ContactFilter2D _filter;
+        
+        [Header("Speed Data")] 
+        [SerializeField] private float _speed = 2f;
 
         #endregion
 
@@ -23,6 +27,12 @@ namespace Features.Character.Services
 
             var filterWrapper = new ContactFilter2DWrapper(_filter);
             dstManager.AddComponentData(entity, filterWrapper);
+
+            var speed = new Speed(_speed);
+            dstManager.AddComponentData(entity, speed);
+
+            var movement = new Movement(new float3(1, 0, 0));
+            dstManager.AddComponentData(entity, movement);
         }
 
         #endregion
