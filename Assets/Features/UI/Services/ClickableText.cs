@@ -1,42 +1,46 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Features.UI.Services
 {
-    public class ClickableText : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+    public class ClickableText : Selectable
     {
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private Color _selectedColor;
         [SerializeField] private Color _unselectedColor;
         [SerializeField] private Color _downColor;
+
+        [Header("Navigation")]
+        [SerializeField] private Selectable _upSelectable;
+
+        [SerializeField] private Selectable _downSelectable;
+
+        [SerializeField] private Selectable _leftSelectable;
+
+        [SerializeField] private Selectable _rightSelectable;
         
         public Action OnClick;
-
-        public void OnPointerClick(PointerEventData eventData)
+        
+        public override Selectable FindSelectableOnUp()
         {
-            OnClick?.Invoke();
+            return _upSelectable != null ? _upSelectable : base.FindSelectableOnUp();
         }
 
-        public void OnPointerEnter(PointerEventData eventData)
+        public override Selectable FindSelectableOnDown()
         {
-            _text.color = _selectedColor;
+            return _downSelectable != null ? _downSelectable : base.FindSelectableOnDown();
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        public override Selectable FindSelectableOnLeft()
         {
-            _text.color = _unselectedColor;
+            return _leftSelectable != null ? _leftSelectable : base.FindSelectableOnLeft();
         }
 
-        public void OnPointerDown(PointerEventData eventData)
+        public override Selectable FindSelectableOnRight()
         {
-            _text.color = _downColor;
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            _text.color = _selectedColor;
+            return _rightSelectable != null ? _rightSelectable : base.FindSelectableOnRight();
         }
     }
 }

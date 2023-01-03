@@ -30,8 +30,6 @@ namespace Features.DialogueHandler.Services
             };
 
             dstManager.AddComponentData(entity, dialoguesData);
-
-
         }
 
         private BlobAssetReference<DialoguesDataPool> CreateDialoguesData()
@@ -47,7 +45,6 @@ namespace Features.DialogueHandler.Services
             );
 
             // Initialize the dialogues.
-
             for (var i = 0; i < _soDialoguesData.DialogueDatas.Length; i++)
             {
                 arrayBuilder[i].PhraseKey = _soDialoguesData.DialogueDatas[i].PhraseKey;
