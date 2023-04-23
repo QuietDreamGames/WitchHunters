@@ -38,6 +38,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 5fa836800b87f654a86ff3f6c6d0f7c0, type: 3}
     - {fileID: 2800000, guid: dc6cd7a2d59f77e41be31fc23ab3e640, type: 3}
     - {fileID: 2800000, guid: 7982eaa5ccf5180449c2d5105817a463, type: 3}
+    - {fileID: 2800000, guid: fedd4e047c6da674c95fbb190c938074, type: 3}
+    - {fileID: 2800000, guid: 5234364635be8654b9ef929897f60656, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -65,6 +67,12 @@ SpriteAtlas:
   - {fileID: 1384344737, guid: dc6cd7a2d59f77e41be31fc23ab3e640, type: 3}
   - {fileID: -770917872, guid: dc6cd7a2d59f77e41be31fc23ab3e640, type: 3}
   - {fileID: -1445689367, guid: dc6cd7a2d59f77e41be31fc23ab3e640, type: 3}
+  - {fileID: -2096580552, guid: fedd4e047c6da674c95fbb190c938074, type: 3}
+  - {fileID: 315309067, guid: fedd4e047c6da674c95fbb190c938074, type: 3}
+  - {fileID: 859185635, guid: fedd4e047c6da674c95fbb190c938074, type: 3}
+  - {fileID: 485472598, guid: fedd4e047c6da674c95fbb190c938074, type: 3}
+  - {fileID: 615351005, guid: fedd4e047c6da674c95fbb190c938074, type: 3}
+  - {fileID: 1514812977, guid: fedd4e047c6da674c95fbb190c938074, type: 3}
   - {fileID: -535919586, guid: 5e413c14dd100424a9d079b842349e61, type: 3}
   - {fileID: -1805124925, guid: 5e413c14dd100424a9d079b842349e61, type: 3}
   - {fileID: -373633841, guid: 5e413c14dd100424a9d079b842349e61, type: 3}
@@ -73,6 +81,19 @@ SpriteAtlas:
   - {fileID: -1253040082, guid: 7982eaa5ccf5180449c2d5105817a463, type: 3}
   - {fileID: -833284963, guid: 7982eaa5ccf5180449c2d5105817a463, type: 3}
   - {fileID: 348892480, guid: 7982eaa5ccf5180449c2d5105817a463, type: 3}
+  - {fileID: 1037772674, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: -1519966871, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: -288438264, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: -1353336429, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: 1037196436, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: 1065564838, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: 1552802779, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: -50716994, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: 1383133582, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: -2064812660, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: -863539364, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: -2145004976, guid: 5234364635be8654b9ef929897f60656, type: 3}
+  - {fileID: 1517346907, guid: 5234364635be8654b9ef929897f60656, type: 3}
   - {fileID: -1941538774, guid: 6b24557646074404f8d9449d648c4c2b, type: 3}
   - {fileID: 1970330287, guid: 6b24557646074404f8d9449d648c4c2b, type: 3}
   - {fileID: -181331266, guid: 6b24557646074404f8d9449d648c4c2b, type: 3}
@@ -136,6 +157,12 @@ SpriteAtlas:
   - smith_library_20
   - smith_library_23
   - smith_library_22
+  - courtyard_library_25
+  - courtyard_library_20
+  - courtyard_library_5
+  - courtyard_library_1
+  - courtyard_library_0
+  - courtyard_library_2
   - inquisitor_room_lybrary_3
   - inquisitor_room_lybrary_2
   - inquisitor_room_lybrary_1
@@ -144,6 +171,19 @@ SpriteAtlas:
   - trade_library_12
   - trade_library_8
   - trade_library_5
+  - hall_library_4
+  - hall_library_1
+  - hall_library_19
+  - hall_library_10
+  - hall_library_16
+  - hall_library_17
+  - hall_library_14
+  - hall_library_15
+  - hall_library_9
+  - hall_library_8
+  - hall_library_7
+  - hall_library_6
+  - hall_library_5
   - laboratory_10
   - laboratory_12
   - laboratory_9
