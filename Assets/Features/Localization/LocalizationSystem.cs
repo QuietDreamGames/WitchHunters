@@ -2,7 +2,9 @@
 using Features.Localization.Services;
 using Features.Utils;
 using Unity.Entities;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Features.Localization
@@ -15,6 +17,7 @@ namespace Features.Localization
 
         private void LoadLocalization(LocalizationLang localizationLang)
         {
+            #if UNITY_EDITOR
             var assetName = @"" + localizationLang.ToString() + @"Localization";
             string[] result = AssetDatabase.FindAssets(assetName);
             
@@ -28,6 +31,7 @@ namespace Features.Localization
                 Debug.LogError($"Error! {result.Length} localization files of {localizationLang} language were found!" +
                                $"It should be equal to 1!");
             }
+            #endif
         }
 
         #region Public methods
