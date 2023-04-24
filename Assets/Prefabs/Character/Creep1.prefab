@@ -442,6 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fullHealthBar: {fileID: 5725147738101164431}
   _currentHealthBar: {fileID: 737728990055801558}
+  _healthBarParent: {fileID: 2777443108869360481}
 --- !u!1 &4190658809460968046
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +671,11 @@ Transform:
 --- !u!4 &737728990055801558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8967573360105683808, guid: 885919a4bf23a8c4493653eac626cecd, type: 3}
+  m_PrefabInstance: {fileID: 8525253548098869686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2777443108869360481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5819984581500179159, guid: 885919a4bf23a8c4493653eac626cecd, type: 3}
   m_PrefabInstance: {fileID: 8525253548098869686}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5725147738101164431 stripped

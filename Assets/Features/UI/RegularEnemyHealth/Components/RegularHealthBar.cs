@@ -7,5 +7,6 @@ namespace Features.UI.RegularEnemyHealth.Components
     {
         public Transform FullHealthBarTransform;
         public Transform CurrentHealthBarTransform;
+        public GameObject GameObject;
     }
 }
