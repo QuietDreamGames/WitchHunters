@@ -18,23 +18,23 @@ namespace Features.Trigger.Systems
 
         protected override void OnCreate()
         {
-            _stepPhysicsWorld = World.GetOrCreateSystem<StepPhysicsWorld>();
-
-            _interactablesGroupQueryDesc = new EntityQueryDesc
-            {
-                All = new ComponentType[] {typeof(TriggerInteractable)}
-            };
-            
-            _triggerListenersGroupQueryDesc = new EntityQueryDesc
-            {
-                All = new ComponentType[] {typeof(InTrigger)}
-            };
+            // _stepPhysicsWorld = World.GetOrCreateSystem<StepPhysicsWorld>();
+            //
+            // _interactablesGroupQueryDesc = new EntityQueryDesc
+            // {
+            //     All = new ComponentType[] {typeof(TriggerInteractable)}
+            // };
+            //
+            // _triggerListenersGroupQueryDesc = new EntityQueryDesc
+            // {
+            //     All = new ComponentType[] {typeof(InTrigger)}
+            // };
         }
         
         protected override void OnStartRunning()
         {
-            base.OnStartRunning();
-            this.RegisterPhysicsRuntimeSystemReadOnly();
+            // base.OnStartRunning();
+            // this.RegisterPhysicsRuntimeSystemReadOnly();
         }
 
         protected override void OnUpdate()

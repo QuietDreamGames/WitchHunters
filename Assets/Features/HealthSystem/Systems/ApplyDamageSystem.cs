@@ -1,11 +1,10 @@
 ﻿using Features.Character.Components;
 using Features.HealthSystem.Components;
-using Features.UI.CharacterHealth;
+
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Physics;
-using UnityEngine;
+
 
 namespace Features.HealthSystem.Systems
 {
