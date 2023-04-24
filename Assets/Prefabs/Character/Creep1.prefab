@@ -128,6 +128,7 @@ MonoBehaviour:
   _verticalParam: Vertical
   _attackParam: Attack
   _attackIdParam: AttackId
+  _deathParam: Death
   _animator: {fileID: 3986158668971712753}
 --- !u!114 &8103341699316324863
 MonoBehaviour:
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534d39808dd38944c956067260a9d324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 30
 --- !u!114 &6865988819853891410
 MonoBehaviour:
   m_ObjectHideFlags: 0
