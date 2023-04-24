@@ -17,6 +17,8 @@ namespace Features.Animator.Services
         [SerializeField] private string _attackParam = "Attack";
         [SerializeField] private string _attackIdParam = "AttackId";
         
+        [SerializeField] private string _deathParam = "Death";
+        
         [Header("Animator")] 
         [SerializeField] private UnityEngine.Animator _animator;
 
@@ -38,6 +40,8 @@ namespace Features.Animator.Services
                 
                 Attack = _attackParam,
                 AttackId = _attackIdParam,
+                
+                Death = _deathParam,
             };
             dstManager.AddComponentData(entity, configuration);
         }
