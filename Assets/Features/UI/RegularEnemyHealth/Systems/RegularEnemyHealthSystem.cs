@@ -12,6 +12,11 @@ namespace Features.UI.RegularEnemyHealth.Systems
             Entities.WithAll<RegularHealthBar, Health>().ForEach((in Health health,
                 in RegularHealthBar regularHealthBar) =>
             {
+                if (health.Value <= 0)
+                {
+                    regularHealthBar.GameObject.SetActive(false);
+                }
+                
                 var currentHealthPercent = Mathf.Clamp01(health.Value / health.MaxValue);
                 var newScale = regularHealthBar.FullHealthBarTransform.localScale;
                 newScale.x *= currentHealthPercent;

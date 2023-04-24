@@ -6,6 +6,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Features.Character.Systems
 {
@@ -56,15 +57,6 @@ namespace Features.Character.Systems
                 .WithoutBurst()
                 .Run();
 
-            Entities
-                .WithAll<DeathFlag, PlayerTag>()
-                .ForEach(() =>
-                {
-                    // TODO: Implement game over and scene change
-                })
-                .WithoutBurst()
-                .Run();
-            
             _parentList.Clear();
             
             Entities
