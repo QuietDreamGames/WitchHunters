@@ -3,9 +3,10 @@ using Unity.Entities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 namespace Features.SceneManagement.Systems
 {
-    public class SceneCleaningSystem : SystemBase
+    public partial class SceneCleaningSystem : SystemBase
     {
         protected override void OnCreate()
         {
@@ -25,7 +26,7 @@ namespace Features.SceneManagement.Systems
 
         }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
         {
             Debug.Log("OnSceneLoaded: " + scene.name);
             Debug.Log(mode);
