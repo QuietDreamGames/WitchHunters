@@ -32,9 +32,6 @@ namespace Presentation.Feature
                 DeltaTime = Time.DeltaTime,
             };
             var animatorJob = new AnimatorJob();
-            var syncJob = new PositionSyncJob();
-            
-            syncJob.Run();
             animatorJob.Run();
             Dependency = moveJob.ScheduleParallel(Dependency);
         }
@@ -77,6 +74,7 @@ namespace Presentation.Feature
             }
         }
 
+        [BurstCompile]
         private partial struct AnimatorJob : IJobEntity
         {
             public void Execute(
@@ -97,15 +95,6 @@ namespace Presentation.Feature
                 animator.SetBool(moving, math.length(direction) > 0.1f);
             } 
         }
-        
-        private partial struct PositionSyncJob : IJobEntity
-        {
-            public void Execute(
-                TransformComponent transformComponent, 
-                [ReadOnly] in Translation translation)
-            {
-                transformComponent.Value.position = translation.Value;
-            }
-        }
+
     }
 }
