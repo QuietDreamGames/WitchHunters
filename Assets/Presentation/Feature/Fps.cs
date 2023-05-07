@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -9,15 +10,24 @@ namespace Presentation.Feature
     {
         [SerializeField] private TextMeshProUGUI _fpsCounter;
         [SerializeField] private TextMeshProUGUI _avgFpsCounter;
-        
-        private float deltaTime = 0.0f;
-        private float totalFrameTime = 0.0f;
-        private float avgFps;
-        private int count = 1;
+
+        private float[] _frames;
+        private int _frameIndex = 0;
+
+        private const int FrameCount = 60;
 
         private void Start()
         {
-            avgFps = 1.0f / deltaTime;
+            _frames = new float[FrameCount];
+            _frameIndex = 0;
+            
+            var deltaTime = Time.unscaledDeltaTime;
+
+            for (var i = 0; i < FrameCount; i++)
+            {
+                _frames[i] = deltaTime;
+            }
+            
             Recalculate();
         }
 
@@ -28,15 +38,16 @@ namespace Presentation.Feature
 
         private void  Recalculate()
         {
-            deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-            
-            float msec = deltaTime * 1000.0f;
-            float fps = 1.0f / deltaTime;
-            count++;
-            totalFrameTime += fps;
-            avgFps = totalFrameTime / count;
+            var deltaTime = Time.unscaledDeltaTime;
+            var fps = 1.0f / deltaTime;
 
-            _fpsCounter.text = $"Ms: {msec}, FPS: {fps}";
+            _frameIndex = (_frameIndex + 1) % FrameCount;
+            _frames[_frameIndex] = fps;
+
+            var sum = _frames.Sum();
+            var avgFps = sum / FrameCount;
+
+            _fpsCounter.text = $"Ms: {deltaTime * 1000}, FPS: {fps}";
             _avgFpsCounter.text = $"Average FPS: {avgFps}";
         }
         
