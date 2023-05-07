@@ -27,6 +27,21 @@ namespace Presentation.Feature
                 typeof(Translation));
         }
 
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            
+            if (_translations.IsCreated)
+            {
+                _translations.Dispose();
+            }
+            
+            if (_flocks.IsCreated)
+            {
+                _flocks.Dispose();
+            }
+        }
+
         protected override void OnUpdate()
         {
             if (_translations.IsCreated)
