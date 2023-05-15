@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: _Creep2Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+    - {fileID: 2800000, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+    - {fileID: 2800000, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+    - {fileID: 2800000, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+    - {fileID: 2800000, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+    - {fileID: 2800000, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 1394685432, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+  - {fileID: -1414552868, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+  - {fileID: -194761217, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+  - {fileID: 2116056607, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+  - {fileID: 371493683, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+  - {fileID: -566776511, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+  - {fileID: -1013715199, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+  - {fileID: -1344564637, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+  - {fileID: 612836913, guid: b2ad5ff1c40161e4b8b001bc3bb56bd2, type: 3}
+  - {fileID: -2121328285, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: -696770350, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: -1286322235, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: 1813391178, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: -1611436537, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: 375045598, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: -1122496048, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: 789845594, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: 784011948, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: -1215465115, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: 832774906, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: -1328385818, guid: d4ecab83420b13143b2e9a2e1b1491a7, type: 3}
+  - {fileID: 331176406, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: 2015999678, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: 419702993, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: -2056540569, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: 122745853, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: 960122660, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: 1441480008, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: 1802093250, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: 826649089, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: 2034077503, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: -1109659958, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: 463347006, guid: 217772e8392694c48a8319a47a3f7eae, type: 3}
+  - {fileID: -1923479613, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: 2069545202, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: -1158886114, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: 1072384874, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: 2062200709, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: 623567201, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: -1302027704, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: 1920823294, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: 2135239539, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: 309752090, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: -105889320, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: -738147622, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: 1123448780, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: -323673177, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: -1570467140, guid: cda0ce496fc7d2845b6b5ad031f8c943, type: 3}
+  - {fileID: -749412402, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+  - {fileID: -910923559, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+  - {fileID: 1875695946, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+  - {fileID: 661468081, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+  - {fileID: 997950822, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+  - {fileID: 1431788923, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+  - {fileID: 201986176, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+  - {fileID: -2142004204, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+  - {fileID: 1075318065, guid: d163ff7d941b0e0438ca35f1b56dea15, type: 3}
+  - {fileID: -1176141008, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: -2063555631, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: 709801558, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: -596299051, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: 973919346, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: 105055432, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: -1633478310, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: -1229567851, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: 1940220677, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: -1528445669, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: 868037407, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: 1957602716, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: 1242255355, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: -572090097, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  - {fileID: 1896917876, guid: a942766f8e476b641a99ba17362b924c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - move ancor undead enemy death right_7
+  - move ancor undead enemy death right_6
+  - move ancor undead enemy death right_5
+  - move ancor undead enemy death right_4
+  - move ancor undead enemy death right_3
+  - move ancor undead enemy death right_2
+  - move ancor undead enemy death right_1
+  - move ancor undead enemy death right_0
+  - move ancor undead enemy death right_8
+  - move ancor undead enemy_10
+  - move ancor undead enemy_11
+  - move ancor undead enemy_9
+  - move ancor undead enemy_8
+  - move ancor undead enemy_3
+  - move ancor undead enemy_2
+  - move ancor undead enemy_1
+  - move ancor undead enemy_0
+  - move ancor undead enemy_7
+  - move ancor undead enemy_6
+  - move ancor undead enemy_5
+  - move ancor undead enemy_4
+  - move ancor undead enemy left_11
+  - move ancor undead enemy left_10
+  - move ancor undead enemy left_0
+  - move ancor undead enemy left_1
+  - move ancor undead enemy left_2
+  - move ancor undead enemy left_3
+  - move ancor undead enemy left_4
+  - move ancor undead enemy left_5
+  - move ancor undead enemy left_6
+  - move ancor undead enemy left_7
+  - move ancor undead enemy left_8
+  - move ancor undead enemy left_9
+  - attack anor undead enemy left_4
+  - attack anor undead enemy left_5
+  - attack anor undead enemy left_6
+  - attack anor undead enemy left_7
+  - attack anor undead enemy left_0
+  - attack anor undead enemy left_1
+  - attack anor undead enemy left_2
+  - attack anor undead enemy left_3
+  - attack anor undead enemy left_14
+  - attack anor undead enemy left_13
+  - attack anor undead enemy left_12
+  - attack anor undead enemy left_11
+  - attack anor undead enemy left_10
+  - attack anor undead enemy left_8
+  - attack anor undead enemy left_9
+  - ancor undead enemy death left_8
+  - ancor undead enemy death left_3
+  - ancor undead enemy death left_2
+  - ancor undead enemy death left_1
+  - ancor undead enemy death left_0
+  - ancor undead enemy death left_7
+  - ancor undead enemy death left_6
+  - ancor undead enemy death left_5
+  - ancor undead enemy death left_4
+  - attack anor undead enemy_9
+  - attack anor undead enemy_8
+  - attack anor undead enemy_7
+  - attack anor undead enemy_6
+  - attack anor undead enemy_5
+  - attack anor undead enemy_4
+  - attack anor undead enemy_3
+  - attack anor undead enemy_2
+  - attack anor undead enemy_1
+  - attack anor undead enemy_0
+  - attack anor undead enemy_12
+  - attack anor undead enemy_13
+  - attack anor undead enemy_10
+  - attack anor undead enemy_11
+  - attack anor undead enemy_14
+  m_RenderDataMap: {}
+  m_Tag: _Creep2Atlas
+  m_IsVariant: 0
