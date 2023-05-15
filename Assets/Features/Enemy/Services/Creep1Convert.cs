@@ -135,7 +135,13 @@ namespace Features.Enemy.Services
         }
 
         #endregion
-        
-        
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            var offset = _attackInfo.CenterOffset + _attackInfo.HorizontalOffset + _attackInfo.VerticalOffset;
+            var size = _attackInfo.HorizontalSize + _attackInfo.VerticalSize;
+            Gizmos.DrawWireCube(transform.position + new Vector3(offset.x, offset.y, 0), new Vector3(size.x, size.y, 0));
+        }
     }
 }
