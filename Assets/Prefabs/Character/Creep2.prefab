@@ -145,7 +145,7 @@ MonoBehaviour:
   AwareDistance: 3
   AttackDistance: 3
   _attackAnimationName: Attack1
-  _attackAnimationTime: 0.315
+  _attackAnimationTime: 0.635
   _moveSpeed: 50
   _attackInfo:
     Id: -1
@@ -166,8 +166,8 @@ MonoBehaviour:
     VerticalSize:
       x: 0
       y: 0
-    ColliderStartTime: 0.245
-    ColliderStopTime: 0.315
+    ColliderStartTime: 0.305
+    ColliderStopTime: 0.365
 --- !u!114 &1270130812744330004
 MonoBehaviour:
   m_ObjectHideFlags: 0
