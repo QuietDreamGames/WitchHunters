@@ -7,8 +7,6 @@ using UnityEngine;
 public class LocalizedText : MonoBehaviour
 {
     public string RawText;
-    public string Text { get; private set; }
-
     private TextMeshProUGUI _textComponent;
     
     public void UpdateText(string newRawText)
@@ -37,7 +35,7 @@ public class LocalizedText : MonoBehaviour
         {
             var searchKey = dataEntry.ToString();
             searchKey = searchKey[1..^1];
-            
+
             var textToReplace = LocalizationManager.Instance.GetLocalizationLine(searchKey);
             rawString = rawString.Replace(dataEntry.ToString(), textToReplace);
         }

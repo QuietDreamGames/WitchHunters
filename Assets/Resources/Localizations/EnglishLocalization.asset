@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocalizationLang: 0
   LinesData:
-  - Key: hello
-    Value: Hello
-  - Key: howAreYou
-    Value: How are you
-  - Key: checkLast
-    Value: Check last
+  - Key: settings
+    Value: Settings
+  - Key: back
+    Value: Back
+  - Key: 1-1-1-inq
+    Value: blah blah
