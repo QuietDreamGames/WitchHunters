@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Features.Localization.Services;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Features.Localization.Services
+namespace Editor.Localization
 {
     public class LocalizationLoader
     {
