@@ -34,7 +34,7 @@ namespace Features.InputSystem.Systems
             //Attack
             
             Entities
-                .WithAll<CharacterInput, Movement>()
+                .WithAll<CharacterInput, Attack>()
                 .ForEach(
                     (CharacterInput input, ref Attack attack, in InputConfiguration conf) =>
                     {

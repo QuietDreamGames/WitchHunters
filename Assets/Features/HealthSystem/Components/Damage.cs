@@ -8,6 +8,6 @@ namespace Features.HealthSystem.Components
         public int SourceEntityId;
         public bool Enabled;
         public float Value;
-        public float Cooldown; // cooldown of invisibility from this damage source
+        public float Cooldown; // cooldown of invulnerability from this damage source
     }
 }

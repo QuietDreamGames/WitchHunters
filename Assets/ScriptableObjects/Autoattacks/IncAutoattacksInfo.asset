@@ -18,58 +18,58 @@ MonoBehaviour:
     BaseDamage: 10
     CenterOffset:
       x: 0
-      y: 0.25
+      y: 0.385
     HorizontalOffset:
-      x: 0.25
-      y: 0
-    VerticalOffset:
-      x: 0
-      y: 0.25
-    HorizontalSize:
-      x: 0.25
+      x: 0.28
       y: 0.5
+    VerticalOffset:
+      x: -0.06
+      y: 0.55
+    HorizontalSize:
+      x: 1.05
+      y: 1.36
     VerticalSize:
-      x: 0.5
-      y: 0.25
-    ColliderStartTime: 0.1
-    ColliderStopTime: 0.2
+      x: 0.63
+      y: 1.34
+    ColliderStartTime: 0.2
+    ColliderStopTime: 0.3
   - Id: 1
     Time: 0.588
     BaseDamage: 10
     CenterOffset:
       x: 0
-      y: 0.25
+      y: 0.385
     HorizontalOffset:
-      x: 0.25
-      y: 0
+      x: 0.24
+      y: 0.28
     VerticalOffset:
-      x: 0
-      y: 0.25
+      x: -0.06
+      y: 0.54
     HorizontalSize:
-      x: 0.25
+      x: 1.27
       y: 0.5
     VerticalSize:
-      x: 0.5
-      y: 0.25
-    ColliderStartTime: 0.1
-    ColliderStopTime: 0.2
+      x: 0.62
+      y: 1.30091
+    ColliderStartTime: 0.4
+    ColliderStopTime: 0.5
   - Id: 2
     Time: 0.51
     BaseDamage: 10
     CenterOffset:
       x: 0
-      y: 0.25
+      y: 0.385
     HorizontalOffset:
-      x: 0.25
-      y: 0
+      x: 0.1
+      y: 0.35
     VerticalOffset:
-      x: 0
-      y: 0.25
+      x: -0.14
+      y: 0.44
     HorizontalSize:
-      x: 0.25
-      y: 0.5
+      x: 1.44
+      y: 1.08
     VerticalSize:
-      x: 0.5
-      y: 0.25
-    ColliderStartTime: 0.1
-    ColliderStopTime: 0.2
+      x: 1.01
+      y: 1.32
+    ColliderStartTime: 0.38
+    ColliderStopTime: 0.48

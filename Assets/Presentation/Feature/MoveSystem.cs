@@ -74,7 +74,7 @@ namespace Presentation.Feature
             }
         }
 
-        [BurstCompile]
+        //[BurstCompile]
         private partial struct AnimatorJob : IJobEntity
         {
             public void Execute(
