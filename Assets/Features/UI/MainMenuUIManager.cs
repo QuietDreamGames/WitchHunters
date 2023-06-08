@@ -1,27 +1,54 @@
-﻿using Features.Localization;
-using Features.Localization.Services;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Features.UI
 {
     public class MainMenuUIManager : MonoBehaviour
     {
-        [SerializeField] private GameObject _settingsPanel;
+        [SerializeField] private GameObject _mainMenuPanel;
+
+        [SerializeField] private MainMenuSettingsUIManager _settingsUIManager;
+
+        [SerializeField] private Button _lastSelectedButton;
+
+        #region Called by scripts
+
+        public void ShowMainMenu()
+        {
+            _mainMenuPanel.SetActive(true);
+            _lastSelectedButton.Select();
+        }
+
+        public void HideMainMenu()
+        {
+            _lastSelectedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            _mainMenuPanel.SetActive(false);
+        }
+
+        #endregion
+
+        #region Called by buttons
+
+        public void PlayGame()
+        {
+            Debug.Log("Start game! (mockup for now)");
+        }
         
         public void ShowSettings()
         {
-            _settingsPanel.SetActive(true);
+            HideMainMenu();
+            _settingsUIManager.ShowSettings();
         }
 
-        public void HideSettings()
+        public void QuitGame()
         {
-            _settingsPanel.SetActive(false);
+            Application.Quit();
         }
 
-        public void ChangeLanguage(int lang)
-        {
-            var localizationLang = (LocalizationLang)lang;
-            LocalizationManager.Instance.ChangeLocalization(localizationLang);
-        }
+        #endregion
+        
+        
+
     }
 }

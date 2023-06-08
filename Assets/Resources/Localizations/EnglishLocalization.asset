@@ -18,5 +18,9 @@ MonoBehaviour:
     Value: Settings
   - Key: back
     Value: Back
-  - Key: 1-1-1-inq
-    Value: blah blah
+  - Key: play
+    Value: Play
+  - Key: quit
+    Value: Quit
+  - Key: 
+    Value: 
