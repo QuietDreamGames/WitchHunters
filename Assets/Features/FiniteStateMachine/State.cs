@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Features.StateMachine
+namespace Features.FiniteStateMachine
 {
     public abstract class State
     {
@@ -10,10 +10,10 @@ namespace Features.StateMachine
         
         public StateMachine StateMachine;
         
-        public virtual void OnEnter()
-        {
-            
-        }
+        // public virtual void OnEnter()
+        // {
+        //     
+        // }
         
         public virtual void OnEnter(StateMachine stateMachine)
         {
