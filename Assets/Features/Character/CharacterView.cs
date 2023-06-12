@@ -21,11 +21,14 @@ namespace Features.Character
             _animator.SetFloat("Vertical", movementDirection.y);
         }
         
-        public void PlayAttackAnimation()
+        public void PlayAttackAnimation(int index)
         {
-            
+            _animator.SetTrigger("Attack" + index);
         }
         
-        
+        public bool IsAnimationComplete()
+        {
+            return _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
+        }
     }
 }
