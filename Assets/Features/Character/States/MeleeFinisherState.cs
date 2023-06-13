@@ -15,7 +15,7 @@ namespace Features.Character.States
         {
             base.OnUpdate();
 
-            if (CharacterView.IsAnimationComplete())
+            if (CharacterView.IsAttackAnimationComplete(attackIndex))
             {
                 StateMachine.ChangeNextStateToMain();
             }

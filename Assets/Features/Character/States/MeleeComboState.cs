@@ -16,7 +16,7 @@ namespace Features.Character.States
         {
             base.OnUpdate();
             
-            if (CharacterView.IsAnimationComplete())
+            if (CharacterView.IsAttackAnimationComplete(attackIndex))
             {
                 if (ShouldCombo)
                 {

@@ -69,6 +69,8 @@ namespace Features.FiniteStateMachine
             {
                 CurrentState.OnExit();
             }
+
+            Debug.Log($"Changing state from {CurrentState} to {state}");
             
             CurrentState = state;
             CurrentState.OnEnter(this);

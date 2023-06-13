@@ -1,4 +1,5 @@
 ﻿using Features.FiniteStateMachine;
+using UnityEngine;
 
 namespace Features.Character.States
 {
@@ -15,7 +16,7 @@ namespace Features.Character.States
         {
             base.OnUpdate();
             
-            if (CharacterView.IsAnimationComplete())
+            if (CharacterView.IsAttackAnimationComplete(attackIndex))
             {
                 if (ShouldCombo)
                 {
