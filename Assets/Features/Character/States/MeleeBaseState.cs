@@ -17,7 +17,7 @@ namespace Features.Character.States
         private float _attackPressedTimer = 0;
 
         protected Collider2D HitCollider;
-        private List<Collider2D> _collidersDamaged;
+        // private List<Collider2D> _collidersDamaged;
 
         public MeleeBaseState(IMachine stateMachine) : base(stateMachine)
         {

@@ -31,6 +31,7 @@ namespace Features.Character.States
             if (_playerInput.actions["Attack"].IsPressed())
             {
                 stateMachine.ChangeState("MeleeEntryState");
+                return;
             }
             
             _movementInput = _playerInput.actions["Move"].ReadValue<Vector2>();

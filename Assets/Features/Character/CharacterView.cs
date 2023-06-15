@@ -11,8 +11,8 @@ namespace Features.Character
         private static readonly int LastVertical = Animator.StringToHash("LastVertical");
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
-        private static readonly int AttackColliderActive = Animator.StringToHash("AttackCollider.Active");
-        private static readonly int AttackComboWindowOpen = Animator.StringToHash("AttackComboWindow.Open");
+        // private static readonly int AttackColliderActive = Animator.StringToHash("AttackCollider.Active");
+        // private static readonly int AttackComboWindowOpen = Animator.StringToHash("AttackComboWindow.Open");
 
 
         public void PlayIdleAnimation(Vector2 lastMovementDirection)
@@ -46,14 +46,14 @@ namespace Features.Character
             return isAnimCompl && !isJustTriggered;
         }
 
-        public bool IsAttackColliderActive()
-        {
-            return _animator.GetFloat(AttackColliderActive) > 0.5f;
-        }
-        
-        public bool IsAttackComboWindowOpen()
-        {
-            return _animator.GetFloat(AttackComboWindowOpen) > 0.5f;
-        }
+        // public bool IsAttackColliderActive()
+        // {
+        //     return _animator.GetFloat(AttackColliderActive) > 0.5f;
+        // }
+        //
+        // public bool IsAttackComboWindowOpen()
+        // {
+        //     return _animator.GetFloat(AttackComboWindowOpen) > 0.5f;
+        // }
     }
 }
