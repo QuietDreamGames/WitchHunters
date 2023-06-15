@@ -1,4 +1,5 @@
 ﻿using Features.FiniteStateMachine;
+using Features.FiniteStateMachine.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,19 +15,24 @@ namespace Features.Character.States
         private Vector2 _movementInput;
         private Vector2 _lastMovementInput;
         
-        public override void OnEnter(StateMachine stateMachine)
+        public MoveState(IMachine stateMachine) : base(stateMachine)
         {
-            base.OnEnter(stateMachine);
-            
-            _characterView = StateMachine.GetExtension<CharacterView>();
-            _playerInput = StateMachine.GetExtension<PlayerInput>();
-            _transform = StateMachine.GetExtension<Transform>();
-            
+        }
+        
+        public override void OnEnter()
+        {
+            _characterView = stateMachine.GetExtension<CharacterView>();
+            _playerInput = stateMachine.GetExtension<PlayerInput>();
+            _transform = stateMachine.GetExtension<Transform>();
         }
 
-        public override void OnUpdate()
+        public override void OnUpdate(float deltaTime)
         {
-            base.OnUpdate();
+            if (_playerInput.actions["Attack"].IsPressed())
+            {
+                stateMachine.ChangeState("MeleeEntryState");
+            }
+            
             _movementInput = _playerInput.actions["Move"].ReadValue<Vector2>();
 
             if (_movementInput != Vector2.zero)
@@ -36,26 +42,29 @@ namespace Features.Character.States
             }
             else
             {
-                StateMachine.ChangeNextState(new IdleCombatState());
+                stateMachine.ChangeState("IdleCombatState");
             }
         }
 
-        public override void OnFixedUpdate()
+        public override void OnFixedUpdate(float deltaTime)
         {
-            base.OnFixedUpdate();
-            Move(_movementInput);
+            Move(_movementInput, deltaTime);
+        }
+
+        public override void OnLateUpdate(float deltaTime)
+        {
+            
         }
 
         public override void OnExit()
         {
-            base.OnExit();
             _characterView.PlayIdleAnimation(_lastMovementInput);
         }
         
-        private void Move(Vector2 moveInput)
+        private void Move(Vector2 moveInput, float fixedDeltaTime)
         {
             Vector3 movement = new Vector3(moveInput.x, moveInput.y, 0f);
-            _transform.Translate(movement * (Time.fixedDeltaTime * _speed));
+            _transform.Translate(movement * (fixedDeltaTime * _speed));
         }
     }
 }

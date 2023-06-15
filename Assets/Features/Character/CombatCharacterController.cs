@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Features.Character.States;
+﻿using Features.Character.States;
 using Features.FiniteStateMachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,41 +7,46 @@ namespace Features.Character
 {
     public class CombatCharacterController : MonoBehaviour
     {
-        [SerializeField] private StateMachine _stateMachine;
         [SerializeField] private Collider2D _attackCollider;
 
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private CharacterView _characterView;
 
+        private StateMachine _stateMachine;
+        
         private void Start()
         {
-            var extensions = new Dictionary<Type, Component>
-            {
-                {typeof(PlayerInput), _playerInput},
-                {typeof(CharacterView), _characterView},
-                {typeof(Transform), transform},
-                {typeof(Collider2D), _attackCollider}
-            };
-            _stateMachine.Initialize(new IdleCombatState(), extensions);
+            _stateMachine = new StateMachine();
+            
+            _stateMachine.AddExtension(_playerInput);
+            _stateMachine.AddExtension(_characterView);
+            _stateMachine.AddExtension(transform);
+            _stateMachine.AddExtension(_attackCollider);
+            
+            _stateMachine.AddState("IdleCombatState", new IdleCombatState(_stateMachine));
+            _stateMachine.AddState("MoveState", new MoveState(_stateMachine));
+            _stateMachine.AddState("MeleeEntryState", new MeleeEntryState(_stateMachine));
+            _stateMachine.AddState("MeleeComboEntryState", new MeleeComboEntryState(_stateMachine));
+            _stateMachine.AddState("MeleeComboState", new MeleeComboState(_stateMachine));
+            _stateMachine.AddState("MeleeFinisherState", new MeleeFinisherState(_stateMachine));
+            
+            _stateMachine.ChangeState("IdleCombatState");
         }
 
         private void Update()
         {
-            if (_playerInput.actions["Attack"].IsPressed())
-            {
-                if (_stateMachine.CurrentState is IdleCombatState or MoveState)
-                {
-                    _stateMachine.ChangeNextState(new MeleeEntryState());
-                }
-            }
+            _stateMachine.OnUpdate(Time.deltaTime);
             
-            if (_stateMachine.CurrentState is not IdleCombatState) return;
-            
-            if (_playerInput.actions["Move"].IsPressed())
-            {
-                _stateMachine.ChangeNextState(new MoveState());
-            }
-            
+        }
+
+        private void FixedUpdate()
+        {
+            _stateMachine.OnFixedUpdate(Time.fixedDeltaTime);
+        }
+        
+        private void LateUpdate()
+        {
+            _stateMachine.OnLateUpdate(Time.deltaTime);
         }
     }
 }

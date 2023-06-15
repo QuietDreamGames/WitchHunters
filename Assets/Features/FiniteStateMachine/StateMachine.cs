@@ -1,90 +1,117 @@
 ﻿using System;
 using System.Collections.Generic;
+using Features.FiniteStateMachine.Interfaces;
 using UnityEngine;
 
 namespace Features.FiniteStateMachine
 {
-    public class StateMachine : MonoBehaviour
+    public class StateMachine : IMachine
     {
-        public State CurrentState { get; private set; }
-        private State _nextState;
-        private State _mainState;
-        private Dictionary<Type, Component> _extensions = new Dictionary<Type, Component>();
+        private Dictionary<string, State> states;
+        private List<object> extensions;
 
-        public T GetExtension<T>() where T : Component
+        private State currentState;
+
+        public StateMachine()
         {
-            if (_extensions.ContainsKey(typeof(T)))
+            states = new Dictionary<string, State>();
+            extensions = new List<object>();
+            currentState = null;
+        }
+
+        public void AddState(string stateID, State state)
+        {
+            states.Add(stateID, state);
+        }
+
+        public void OnUpdate(float deltaTime)
+        {
+            if (currentState != null)
             {
-                return (T) _extensions[typeof(T)];
+                currentState.OnUpdate(deltaTime);
+            }
+        }
+        
+        public void OnFixedUpdate(float deltaTime)
+        {
+            if (currentState != null)
+            {
+                currentState.OnFixedUpdate(deltaTime);
+            }
+        }
+        
+        public void OnLateUpdate(float deltaTime)
+        {
+            if (currentState != null)
+            {
+                currentState.OnLateUpdate(deltaTime);
+            }
+        }
+
+        public void ChangeState(string stateID)
+        {
+            if (currentState != null)
+            {
+                currentState.OnExit();
             }
 
+            var containsState = states.TryGetValue(stateID, out currentState);
+            if (containsState == false)
+            {
+                Debug.LogError($"State with ID {stateID} not found in FSM");
+                return;
+            }
+
+            currentState.OnEnter();
+            currentState.OnUpdate(0); 
+        }
+
+        public void AddExtension<T>(T extension) where T : class
+        {
+            if (extensions.Contains(extension))
+            {
+                Debug.LogError($"Extension {extension} already added to FSM");
+                return;
+            }
+            
+            extensions.Add(extension);
+        }
+
+        public T GetExtension<T>() where T : class
+        {
+            for (var i = 0; i < extensions.Count; i++)
+            {
+                var extension = extensions[i];
+                if (extension is T)
+                {
+                    return extension as T;
+                }
+            }
+            
+            Debug.LogError($"Extension of type {typeof(T).FullName} not found in FSM");
             return null;
         }
 
-        public void SetExtension<T>(T component) where T : Component
+        public IEnumerable<T> GetExtensions<T>() where T : class
         {
-            _extensions[typeof(T)] = component;
-        }
-
-        public void Initialize(State mainState)
-        {
-            _mainState = mainState;
-            ChangeState(_mainState);
-        }
-        
-        public void Initialize(State mainState, Dictionary<Type, Component> extensions)
-        {
-            _mainState = mainState;
-            _extensions = extensions; 
-            ChangeState(_mainState);
-        }
-
-        private void Update()
-        {
-            if (_nextState != null)
+            var list = new List<T>();
+            
+            for (var i = 0; i < extensions.Count; i++)
             {
-                ChangeState(_nextState);
+                var extension = extensions[i];
+                if (extension is T)
+                {
+                    list.Add(extension as T);
+                }
             }
             
-            if (CurrentState != null)
+            if (list.Count == 0)
             {
-                CurrentState.OnUpdate();
-            }
-        }
-        
-        private void FixedUpdate()
-        {
-            CurrentState.OnFixedUpdate();
-        }
-        
-        private void LateUpdate()
-        {
-            CurrentState.OnLateUpdate();
-        }
-        
-        private void ChangeState(State state)
-        {
-            _nextState = null;
-            if (CurrentState != null)
-            {
-                CurrentState.OnExit();
+                Debug.LogError($"Extensions of type {typeof(T).FullName} not found in FSM");
+                return null;
             }
 
-            Debug.Log($"Changing state from {CurrentState} to {state}");
-            
-            CurrentState = state;
-            CurrentState.OnEnter(this);
-        }
-        
-        public void ChangeNextState(State state)
-        {
-            if (state != null)
-                _nextState = state;
-        }
-        
-        public void ChangeNextStateToMain()
-        {
-            ChangeNextState(_mainState);
+            return list;
         }
     }
 }

@@ -1,23 +1,27 @@
 ﻿using Features.FiniteStateMachine;
+using Features.FiniteStateMachine.Interfaces;
 
 namespace Features.Character.States
 {
     public class MeleeFinisherState : MeleeBaseState
     {
-        public override void OnEnter(StateMachine stateMachine)
+        public MeleeFinisherState(IMachine stateMachine) : base(stateMachine)
         {
-            base.OnEnter(stateMachine);
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
             attackIndex = 3;
             CharacterView.PlayAttackAnimation(attackIndex);
         }
-        
-        public override void OnUpdate()
-        {
-            base.OnUpdate();
 
+        public override void OnUpdate(float deltaTime)
+        {
+            base.OnUpdate(deltaTime);
             if (CharacterView.IsAttackAnimationComplete(attackIndex))
             {
-                StateMachine.ChangeNextStateToMain();
+                stateMachine.ChangeState("IdleCombatState");
             }
         }
     }

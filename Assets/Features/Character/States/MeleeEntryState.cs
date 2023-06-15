@@ -1,16 +1,19 @@
 ﻿using Features.FiniteStateMachine;
-using UnityEngine;
+using Features.FiniteStateMachine.Interfaces;
 
 namespace Features.Character.States
 {
     public class MeleeEntryState : MeleeBaseState
     {
-        public override void OnEnter(StateMachine stateMachine)
+        public MeleeEntryState(IMachine stateMachine) : base(stateMachine)
         {
-            base.OnEnter(stateMachine);
+        }
 
-            State nextState = new MeleeComboEntryState();
-            StateMachine.ChangeNextState(nextState);
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            
+            stateMachine.ChangeState("MeleeComboEntryState");
         }
     }
 }
