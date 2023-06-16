@@ -92,4 +92,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.06666667
+    functionName: BurstColliders
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: ac9106cf4be93ec4995ad806583c9855, type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

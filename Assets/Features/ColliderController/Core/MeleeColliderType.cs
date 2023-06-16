@@ -1,20 +1,9 @@
 ﻿using System;
-using UnityEngine;
 
 namespace Features.ColliderController.Core
 {
     [Serializable]
-    public class ColliderInfo
-    {
-        // public Collider2D Collider;
-        public Vector2 offset;
-        public Vector2 size; 
-        public ColliderType ColliderType;
-        
-    }
-    
-    [Serializable]
-    public enum ColliderType
+    public enum MeleeColliderType
     {
         U1 = 0,
         U2 = 1,

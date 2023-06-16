@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Features.Character
 {
@@ -18,8 +19,19 @@ namespace Features.Character
         public void PlayIdleAnimation(Vector2 lastMovementDirection)
         {
             _animator.SetFloat(Magnitude, 0);
-            _animator.SetFloat(LastHorizontal, lastMovementDirection.x);
-            _animator.SetFloat(LastVertical, lastMovementDirection.y);
+
+            if (MathF.Abs(lastMovementDirection.x) - MathF.Abs(lastMovementDirection.y) > -0.001f)
+            {
+                _animator.SetFloat(LastHorizontal, Mathf.Round(lastMovementDirection.x));
+                _animator.SetFloat(LastVertical, 0);
+            }
+            else
+            {
+                _animator.SetFloat(LastHorizontal, 0);
+                _animator.SetFloat(LastVertical, Mathf.Round(lastMovementDirection.y));
+            }
+
+            
         }
         
         public void PlayWalkAnimation(Vector2 movementDirection)
