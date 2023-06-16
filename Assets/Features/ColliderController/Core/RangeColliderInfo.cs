@@ -10,5 +10,6 @@ namespace Features.ColliderController.Core
         public int baseBurstTimes = 1;
         public float baseBurstInterval = 0.5f;
         public float additionalAngle = 25f;
+        public int basePiercingTimes = 1;
     }
 }
