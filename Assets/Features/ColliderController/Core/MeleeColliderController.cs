@@ -8,18 +8,18 @@ namespace Features.ColliderController.Core
     public class MeleeColliderController : MonoBehaviour
     {
         [SerializeField] private BoxCollider2D _collider;
-        [SerializeField] private ColliderInfo[] _collidersInfo;
+        [SerializeField] private MeleeColliderInfo[] _collidersInfo;
         
         private List<Collider2D> _collidersDamaged = new List<Collider2D>();
         
-        public void EnableCollider(ColliderType colliderType)
+        public void EnableCollider(MeleeColliderType meleeColliderType)
         {
             _collider.enabled = true;
             _collidersDamaged = new List<Collider2D>();
             
             for (int i = 0; i < _collidersInfo.Length; i++)
             {
-                if (_collidersInfo[i].ColliderType == colliderType)
+                if (_collidersInfo[i].meleeColliderType == meleeColliderType)
                 {
                     _collider.offset = _collidersInfo[i].offset;
                     _collider.size = _collidersInfo[i].size;
@@ -53,6 +53,7 @@ namespace Features.ColliderController.Core
                 // }
 
                 var teamComponent = colliders[j].GetComponent<TeamComponent>();
+                if (teamComponent == null) continue;
                 if (teamComponent.TeamIndex == TeamIndex.Enemy)
                 {
                     Debug.Log($"fake damaged {teamComponent.name}");

@@ -1,20 +1,19 @@
-﻿using Features.Character.States;
-using Features.FiniteStateMachine;
+﻿using Features.FiniteStateMachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Features.Character
 {
-    public class CombatCharacterController : MonoBehaviour
+    public abstract class CombatCharacterController : MonoBehaviour
     {
-        [SerializeField] private Collider2D _attackCollider;
+        [SerializeField] protected Collider2D _attackCollider;
 
-        [SerializeField] private PlayerInput _playerInput;
-        [SerializeField] private CharacterView _characterView;
+        [SerializeField] protected PlayerInput _playerInput;
+        [SerializeField] protected CharacterView _characterView;
 
-        private StateMachine _stateMachine;
+        protected StateMachine _stateMachine;
         
-        private void Start()
+        protected virtual void Start()
         {
             _stateMachine = new StateMachine();
             
@@ -23,14 +22,7 @@ namespace Features.Character
             _stateMachine.AddExtension(transform);
             _stateMachine.AddExtension(_attackCollider);
             
-            _stateMachine.AddState("IdleCombatState", new IdleCombatState(_stateMachine));
-            _stateMachine.AddState("MoveState", new MoveState(_stateMachine));
-            _stateMachine.AddState("MeleeEntryState", new MeleeEntryState(_stateMachine));
-            _stateMachine.AddState("MeleeComboEntryState", new MeleeComboEntryState(_stateMachine));
-            _stateMachine.AddState("MeleeComboState", new MeleeComboState(_stateMachine));
-            _stateMachine.AddState("MeleeFinisherState", new MeleeFinisherState(_stateMachine));
             
-            _stateMachine.ChangeState("IdleCombatState");
         }
 
         private void Update()
