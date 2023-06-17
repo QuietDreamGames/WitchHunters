@@ -46,26 +46,43 @@ namespace Features.Character
             _animator.SetTrigger("Attack" + index);
         }
         
+        public bool IsAttackAnimationJustTriggered(int attackIndex)
+        {
+            return _animator.GetBool("Attack" + attackIndex);
+        }
+        
         public bool IsAttackAnimationComplete(int attackIndex)
         {
             bool isAnimCompl = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
-            // bool isAnimName = _animator.GetCurrentAnimatorStateInfo(0).IsName("Attack" + attackIndex);
+            bool isAnimName = _animator.GetCurrentAnimatorStateInfo(0).IsName("Attack" + attackIndex);
             bool isJustTriggered = _animator.GetBool("Attack" + attackIndex);
-
-            // Debug.Log("isAnimCompl: " + isAnimCompl + " isAnimName: " + isAnimName + " isJustTriggered: " + isJustTriggered);
-            
             // return isAnimCompl && isAnimName && !isJustTriggered;
-            return isAnimCompl && !isJustTriggered;
+
+            if (isJustTriggered)
+                return false;
+            if (!isAnimName)
+                return true;
+            return isAnimCompl;
         }
         
-        public float CurrentAttackAnimationTime()
+        public float CurrentAnimationTimeNormalized()
         {
             return _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        }
+        
+        public float CurrentAnimationTimeSum()
+        {
+            return _animator.GetCurrentAnimatorStateInfo(0).length * _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
         }
         
         public Vector2 GetLastMovementDirection()
         {
             return new Vector2(_animator.GetFloat(LastHorizontal), _animator.GetFloat(LastVertical));
+        }
+        
+        public float GetCurrentAnimationLength()
+        {
+            return _animator.GetCurrentAnimatorStateInfo(0).length;
         }
 
         // public bool IsAttackColliderActive()

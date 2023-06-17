@@ -1,5 +1,6 @@
 ﻿using Features.Character.States;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Features.Character
 {
@@ -8,13 +9,13 @@ namespace Features.Character
         [Header("SecondComboAttack")]
         [SerializeField] private float _secondComboAttackStartPercentage = 0.3f;
         [SerializeField] private float _secondComboAttackEndPercentage = 0.9f;
-        [SerializeField] private float _secondComboAttackSpeed = 5f;
+        [SerializeField] private float _secondComboAttackDistance = 0.5f;
         
         protected override void Start()
         {
             base.Start();
 
-            var comboMovementState = new MeleeComboMovementState(_stateMachine, _secondComboAttackSpeed, _secondComboAttackStartPercentage, _secondComboAttackEndPercentage);
+            var comboMovementState = new MeleeComboMovementState(_stateMachine, _secondComboAttackDistance, _secondComboAttackStartPercentage, _secondComboAttackEndPercentage);
 
             _stateMachine.AddState("IdleCombatState", new IdleCombatState(_stateMachine));
             _stateMachine.AddState("MoveState", new MoveState(_stateMachine));

@@ -2209,7 +2209,7 @@ MonoBehaviour:
   _characterView: {fileID: 1165283364}
   _secondComboAttackStartPercentage: 0.3
   _secondComboAttackEndPercentage: 0.9
-  _secondComboAttackSpeed: 10
+  _secondComboAttackDistance: 0.5
 --- !u!114 &1165283369
 MonoBehaviour:
   m_ObjectHideFlags: 0

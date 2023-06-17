@@ -5,6 +5,7 @@ namespace Features.Character.States
 {
     public class MeleeComboMovementState : MeleeBaseState
     {
+        private float _distance;
         private float _speed;
         private Vector2 _attackDirection;
         private float _startPercentage; // at which point of animation should we start moving
@@ -16,9 +17,9 @@ namespace Features.Character.States
         {
         }
         
-        public MeleeComboMovementState(IMachine stateMachine, float speed, float startPercentage, float endPercentage) : base(stateMachine)
+        public MeleeComboMovementState(IMachine stateMachine, float distance, float startPercentage, float endPercentage) : base(stateMachine)
         {
-            _speed = speed;
+            _distance = distance;
             _startPercentage = startPercentage;
             _endPercentage = endPercentage;
         }
@@ -35,21 +36,38 @@ namespace Features.Character.States
         {
             base.OnUpdate(deltaTime);
             
-            if (CharacterView.CurrentAttackAnimationTime() > _startPercentage && CharacterView.CurrentAttackAnimationTime() < _endPercentage)
+            if (CharacterView.IsAttackAnimationComplete(attackIndex))
+            {
+                if (ShouldCombo)
+                {
+                    stateMachine.ChangeState("MeleeFinisherState");
+                }
+                else
+                {
+                    stateMachine.ChangeState("IdleCombatState");
+                }
+                _speed = 0;
+                return;
+            }
+            
+            if (CharacterView.IsAttackAnimationJustTriggered(attackIndex))
+            {
+                _shouldBeMoving = false;
+                _speed = 0;
+                return;
+            }
+            
+            if (CharacterView.CurrentAnimationTimeNormalized() > _startPercentage && CharacterView.CurrentAnimationTimeNormalized() < _endPercentage)
             {
                 _shouldBeMoving = true;
                 _attackDirection = CharacterView.GetLastMovementDirection();
+                
+                var animLength = CharacterView.GetCurrentAnimationLength();
+                _speed = _distance / (animLength * (_endPercentage - _startPercentage));
             }
             else
             {
                 _shouldBeMoving = false;
-            }
-            
-            
-            
-            if (CharacterView.IsAttackAnimationComplete(attackIndex))
-            {
-                stateMachine.ChangeState("MeleeFinisherState");
             }
         }
         
