@@ -57,6 +57,16 @@ namespace Features.Character
             // return isAnimCompl && isAnimName && !isJustTriggered;
             return isAnimCompl && !isJustTriggered;
         }
+        
+        public float CurrentAttackAnimationTime()
+        {
+            return _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        }
+        
+        public Vector2 GetLastMovementDirection()
+        {
+            return new Vector2(_animator.GetFloat(LastHorizontal), _animator.GetFloat(LastVertical));
+        }
 
         // public bool IsAttackColliderActive()
         // {

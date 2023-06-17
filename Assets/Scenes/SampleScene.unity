@@ -2143,7 +2143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bf5eeb43a54f5e9421589004bbd2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 1165283370}
   _animator: {fileID: 1165283371}
 --- !u!50 &1165283365
 Rigidbody2D:
@@ -2201,12 +2201,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1165283362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 399755cdade145e1a1fc3c0505bd498c, type: 3}
+  m_Script: {fileID: 11500000, guid: 924f4ebcc20a468daba1ae6b0fc68afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackCollider: {fileID: 0}
+  _attackCollider: {fileID: 1285515251}
   _playerInput: {fileID: 1147800503}
   _characterView: {fileID: 1165283364}
+  _secondComboAttackStartPercentage: 0.3
+  _secondComboAttackEndPercentage: 0.9
+  _secondComboAttackSpeed: 10
 --- !u!114 &1165283369
 MonoBehaviour:
   m_ObjectHideFlags: 0
