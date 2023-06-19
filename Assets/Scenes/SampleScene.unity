@@ -2288,6 +2288,11 @@ MonoBehaviour:
     TimeType: 0
     Value: 1
     Duration: 0
+  - Type: 8
+    Spec: 0
+    TimeType: 1
+    Value: 5
+    Duration: 5
   _secondComboAttackStartPercentage: 0.3
   _secondComboAttackEndPercentage: 0.9
   _secondComboAttackDistance: 0.9

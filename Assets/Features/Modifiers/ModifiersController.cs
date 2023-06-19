@@ -7,19 +7,13 @@ namespace Features.Modifiers
     public class ModifiersController : MonoBehaviour
     {
         private List<ModifierInfo> _modifiers = new List<ModifierInfo>();
-        private List<(ModifierInfo, float)> _timedModifiers = new List<(ModifierInfo, float)>();
-        
+
         public Action<ModifierType> OnModifierChanged;
         
         public void AddModifier(ModifierInfo modifier)
         {
             _modifiers.Add(modifier);
-            
-            if (modifier.TimeType == ModifierTimeType.Temporary)
-            {
-                _timedModifiers.Add((modifier, modifier.Duration));
-            }
-            
+
             OnModifierChanged?.Invoke(modifier.Type);
         }
         
@@ -74,19 +68,22 @@ namespace Features.Modifiers
 
         public void OnUpdate()
         {
-            for (int i = 0; i < _timedModifiers.Count; i++)
+            var modifiersToRemove = new List<ModifierInfo>();
+            
+            for (int i = 0; i < _modifiers.Count; i++)
             {
-                _timedModifiers[i] = (_timedModifiers[i].Item1, _timedModifiers[i].Item2 - Time.deltaTime);
-            }
-
-            for (int i = 0; i < _timedModifiers.Count; i++)
-            {
-                if (_timedModifiers[i].Item2 <= 0)
+                if (_modifiers[i].TimeType != ModifierTimeType.Temporary) continue;
+                
+                _modifiers[i].Duration -= Time.deltaTime;
+                if (_modifiers[i].Duration <= 0)
                 {
-                    _modifiers.Remove(_timedModifiers[i].Item1);
-                    _timedModifiers.RemoveAt(i);
-                    i--;
+                    modifiersToRemove.Add(_modifiers[i]);
                 }
+            }
+            
+            for (int i = 0; i < modifiersToRemove.Count; i++)
+            {
+                RemoveModifier(modifiersToRemove[i]);
             }
         }
     }

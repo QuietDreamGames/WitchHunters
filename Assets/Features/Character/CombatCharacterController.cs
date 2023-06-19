@@ -34,7 +34,7 @@ namespace Features.Character
         private void Update()
         {
             _stateMachine.OnUpdate(Time.deltaTime);
-            
+            _modifiersController.OnUpdate();
         }
 
         private void FixedUpdate()

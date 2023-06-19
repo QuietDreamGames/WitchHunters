@@ -10,5 +10,6 @@ namespace Features.Modifiers
         public ModifierTimeType TimeType;
         public float Value;
         public float Duration;
+        public float MaxDuration; // for UI, should be the same as Duration but should not change
     }
 }
