@@ -1,4 +1,5 @@
 ﻿using Features.FiniteStateMachine;
+using Features.Modifiers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,8 @@ namespace Features.Character
 
         [SerializeField] protected PlayerInput _playerInput;
         [SerializeField] protected CharacterView _characterView;
+        [SerializeField] protected ModifiersController _modifiersController;
+        [SerializeField] private ModifierInfo[] _baseModifiersList;
 
         protected StateMachine _stateMachine;
         
@@ -21,14 +24,17 @@ namespace Features.Character
             _stateMachine.AddExtension(_characterView);
             _stateMachine.AddExtension(transform);
             _stateMachine.AddExtension(_attackCollider);
-            
-            
+
+            for (int i = 0; i < _baseModifiersList.Length; i++)
+            {
+                _modifiersController.AddModifier(_baseModifiersList[i]);    
+            }
         }
 
         private void Update()
         {
             _stateMachine.OnUpdate(Time.deltaTime);
-            
+            _modifiersController.OnUpdate();
         }
 
         private void FixedUpdate()

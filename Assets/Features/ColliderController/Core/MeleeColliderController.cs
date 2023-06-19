@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Features.Damage;
+using Features.Damage.Interfaces;
+using Features.Modifiers;
 using Features.Team;
 using UnityEngine;
 
@@ -9,6 +12,7 @@ namespace Features.ColliderController.Core
     {
         [SerializeField] private BoxCollider2D _collider;
         [SerializeField] private MeleeColliderInfo[] _collidersInfo;
+        [SerializeField] private ModifiersController _modifiersController;
         
         private List<Collider2D> _collidersDamaged = new List<Collider2D>();
         
@@ -44,21 +48,17 @@ namespace Features.ColliderController.Core
             for (int j = 0; j < colliderCount; j++)
             {
                 if (_collidersDamaged.Contains(colliders[j])) continue;
-                    
-                // var damageable = colliders[j].GetComponent<IDamageable>();
-                // if (damageable != null)
-                // {
-                //     damageable.TakeDamage(1);
-                //     _collidersDamaged.Add(colliders[j]);
-                // }
-
-                var teamComponent = colliders[j].GetComponent<TeamComponent>();
-                if (teamComponent == null) continue;
-                if (teamComponent.TeamIndex == TeamIndex.Enemy)
-                {
-                    Debug.Log($"fake damaged {teamComponent.name}");
-                    _collidersDamaged.Add(colliders[j]);
-                }
+                
+                var damageable = colliders[j].GetComponent<IDamageable>();
+                if (damageable == null) continue;
+                
+                var damage = _modifiersController.CalculateModifiedValue(ModifierType.AttackDamage);
+                var knockbackDirection = colliders[j].transform.position - transform.position;
+                knockbackDirection.Normalize();
+                var knockbackForce = knockbackDirection * _modifiersController.CalculateModifiedValue(ModifierType.KnockbackForce);
+                damageable.TakeDamage(damage, knockbackForce);
+                
+                _collidersDamaged.Add(colliders[j]);
             }
         }
     }
