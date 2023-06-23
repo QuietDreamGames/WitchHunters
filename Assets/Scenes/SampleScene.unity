@@ -2074,7 +2074,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.00391, y: 4}
+    oldSize: {x: 4, y: 4}
     newSize: {x: 2.2, y: 1.92}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3905,7 +3905,7 @@ MonoBehaviour:
   - Type: 14
     Spec: 0
     TimeType: 0
-    Value: 1
+    Value: 0
     Duration: 0
     MaxDuration: 0
 --- !u!114 &2024167683
@@ -3962,7 +3962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _substanceHitParticleSystem: {fileID: 3469090690176480071}
   _crossHitParticleSystem: {fileID: 641086998}
-  _crossHitParticleRotationOffset: 30
+  _crossHitParticleRotationOffset: 10
 --- !u!1001 &2079469000
 PrefabInstance:
   m_ObjectHideFlags: 0
