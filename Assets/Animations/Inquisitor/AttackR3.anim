@@ -20,25 +20,23 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1123198721, guid: 8869869fb732731489572695434125ce, type: 3}
-    - time: 0.033333335
-      value: {fileID: 1171921158, guid: 8869869fb732731489572695434125ce, type: 3}
-    - time: 0.06666667
-      value: {fileID: -604662467, guid: 8869869fb732731489572695434125ce, type: 3}
-    - time: 0.11666667
-      value: {fileID: 452343351, guid: 8869869fb732731489572695434125ce, type: 3}
+      value: {fileID: -1175822418, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - time: 0.05
+      value: {fileID: -1309162890, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - time: 0.1
+      value: {fileID: 459041671, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
     - time: 0.15
-      value: {fileID: 920216218, guid: 8869869fb732731489572695434125ce, type: 3}
-    - time: 0.18333334
-      value: {fileID: 563197243, guid: 8869869fb732731489572695434125ce, type: 3}
-    - time: 0.21666667
-      value: {fileID: 799136572, guid: 8869869fb732731489572695434125ce, type: 3}
+      value: {fileID: 29131820, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - time: 0.2
+      value: {fileID: 604852594, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
     - time: 0.26666668
-      value: {fileID: 1337738542, guid: 8869869fb732731489572695434125ce, type: 3}
-    - time: 0.3
-      value: {fileID: 14416324, guid: 8869869fb732731489572695434125ce, type: 3}
-    - time: 0.33333334
-      value: {fileID: 1639077878, guid: 8869869fb732731489572695434125ce, type: 3}
+      value: {fileID: -1502714368, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - time: 0.31666666
+      value: {fileID: 2039141107, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - time: 0.36666667
+      value: {fileID: -1175642986, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - time: 0.41666666
+      value: {fileID: 1170657761, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -58,22 +56,21 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1123198721, guid: 8869869fb732731489572695434125ce, type: 3}
-    - {fileID: 1171921158, guid: 8869869fb732731489572695434125ce, type: 3}
-    - {fileID: -604662467, guid: 8869869fb732731489572695434125ce, type: 3}
-    - {fileID: 452343351, guid: 8869869fb732731489572695434125ce, type: 3}
-    - {fileID: 920216218, guid: 8869869fb732731489572695434125ce, type: 3}
-    - {fileID: 563197243, guid: 8869869fb732731489572695434125ce, type: 3}
-    - {fileID: 799136572, guid: 8869869fb732731489572695434125ce, type: 3}
-    - {fileID: 1337738542, guid: 8869869fb732731489572695434125ce, type: 3}
-    - {fileID: 14416324, guid: 8869869fb732731489572695434125ce, type: 3}
-    - {fileID: 1639077878, guid: 8869869fb732731489572695434125ce, type: 3}
+    - {fileID: -1175822418, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - {fileID: -1309162890, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - {fileID: 459041671, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - {fileID: 29131820, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - {fileID: 604852594, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - {fileID: -1502714368, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - {fileID: 2039141107, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - {fileID: -1175642986, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
+    - {fileID: 1170657761, guid: 90c3c38e713f9d84b9c4475952f83005, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.35000002
+    m_StopTime: 0.43333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -93,14 +90,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.3
+  - time: 0.26666668
     functionName: EnableCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 5
     messageOptions: 0
-  - time: 0.35
+  - time: 0.41666666
     functionName: DisableCollider
     data: 
     objectReferenceParameter: {fileID: 0}
