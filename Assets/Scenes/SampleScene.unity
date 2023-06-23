@@ -3933,7 +3933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904b7bf54b2e43619646842d1f3cdd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bloodHitParticleSystem: {fileID: 3469090690176480071}
+  _substanceHitParticleSystem: {fileID: 3469090690176480071}
   _crossHitParticleSystem: {fileID: 641086998}
   _crossHitParticleRotationOffset: 30
 --- !u!1001 &2079469000

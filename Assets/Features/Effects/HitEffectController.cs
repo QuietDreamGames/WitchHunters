@@ -5,7 +5,7 @@ namespace Features.Effects
     public class HitEffectController : MonoBehaviour
     {
         
-        [SerializeField] private ParticleSystem _bloodHitParticleSystem;
+        [SerializeField] private ParticleSystem _substanceHitParticleSystem;
         [SerializeField] private ParticleSystem _crossHitParticleSystem;
         
         [SerializeField] private float _crossHitParticleRotationOffset;
@@ -18,10 +18,10 @@ namespace Features.Effects
             var randomOffset = Random.Range(-_crossHitParticleRotationOffset, _crossHitParticleRotationOffset);
             _crossHitParticleSystem.transform.rotation = Quaternion.Euler(0, 0,
                 (Mathf.Atan2(forceDirection.y, forceDirection.x) + randomOffset) * Mathf.Rad2Deg);
-            _bloodHitParticleSystem.transform.rotation = Quaternion.Euler(0, 0,
+            _substanceHitParticleSystem.transform.rotation = Quaternion.Euler(0, 0,
                 Mathf.Atan2(forceDirection.y, forceDirection.x) * Mathf.Rad2Deg);
             _crossHitParticleSystem.Play();
-            _bloodHitParticleSystem.Play();
+            _substanceHitParticleSystem.Play();
         }
         
         public void PlayHitEffect()
