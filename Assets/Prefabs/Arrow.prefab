@@ -125,10 +125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeColliderInfo:
     rangeColliderType: 0
-    baseAmountInBurst: 10
+    baseAmountInBurst: 3
     baseBurstTimes: 3
-    baseBurstInterval: 0.5
-    additionalAngle: 25
+    baseBurstInterval: 0.1
+    additionalAngle: 15
     basePiercingTimes: 2
   _collider: {fileID: 5040799464837354560}
   speed: 5
