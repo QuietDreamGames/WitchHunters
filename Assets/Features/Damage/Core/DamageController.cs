@@ -11,6 +11,7 @@ namespace Features.Damage.Core
         [SerializeField] private HealthComponent _healthComponent;
         [SerializeField] private ModifiersController _modifiersController;
         [SerializeField] private HitEffectController _hitEffectController;
+        [SerializeField] private HitShaderController _hitShaderController;
         
         private Vector3 _knockbackForce;
         private float _knockbackDuration;
@@ -24,12 +25,12 @@ namespace Features.Damage.Core
             {
                 _healthComponent.TakeDamage(damageTaken);
                 _hitEffectController.PlayHitEffect();
+                _hitShaderController.PlayHitEffect();
             }
         }
 
         public void TakeDamage(float damage, Vector3 forceDirection)
         {
-            
             var armor = _modifiersController.CalculateModifiedValue(ModifierType.Armor);
             var damageTaken = damage - armor;
             if (damageTaken > 0)
@@ -39,6 +40,7 @@ namespace Features.Damage.Core
                 _knockbackDuration = 0.1f;
                 _knockbackTimer = _knockbackDuration;
                 _hitEffectController.PlayHitEffect(forceDirection);
+                _hitShaderController.PlayHitEffect();
             }
         }
         

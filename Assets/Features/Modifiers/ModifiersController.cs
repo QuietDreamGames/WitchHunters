@@ -66,6 +66,19 @@ namespace Features.Modifiers
             return value;
         }
 
+        public ModifierInfo GetModifierInfo(ModifierType type)
+        {
+            for (int i = 0; i < _modifiers.Count; i++)
+            {
+                if (_modifiers[i].Type == type)
+                {
+                    return _modifiers[i];
+                }
+            }
+
+            return null;
+        }
+
         public void OnUpdate()
         {
             var modifiersToRemove = new List<ModifierInfo>();

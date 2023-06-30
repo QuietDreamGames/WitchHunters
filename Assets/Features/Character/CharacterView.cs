@@ -12,6 +12,8 @@ namespace Features.Character
         private static readonly int LastVertical = Animator.StringToHash("LastVertical");
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
+        private static readonly int Ultimate = Animator.StringToHash("Ultimate");
+        private static readonly int Secondary = Animator.StringToHash("Secondary");
         // private static readonly int AttackColliderActive = Animator.StringToHash("AttackCollider.Active");
         // private static readonly int AttackComboWindowOpen = Animator.StringToHash("AttackComboWindow.Open");
 
@@ -30,8 +32,6 @@ namespace Features.Character
                 _animator.SetFloat(LastHorizontal, 0);
                 _animator.SetFloat(LastVertical, Mathf.Round(lastMovementDirection.y));
             }
-
-            
         }
         
         public void PlayWalkAnimation(Vector2 movementDirection)
@@ -75,14 +75,32 @@ namespace Features.Character
             return _animator.GetCurrentAnimatorStateInfo(0).length * _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
         }
         
-        public Vector2 GetLastMovementDirection()
+        public Vector3 GetLastMovementDirection()
         {
-            return new Vector2(_animator.GetFloat(LastHorizontal), _animator.GetFloat(LastVertical));
+            return new Vector3(_animator.GetFloat(LastHorizontal), _animator.GetFloat(LastVertical), 0);
         }
         
         public float GetCurrentAnimationLength()
         {
             return _animator.GetCurrentAnimatorStateInfo(0).length;
+        }
+        
+        public bool IsUltimateAnimationComplete()
+        {
+            bool isAnimCompl = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
+            bool isJustTriggered = _animator.GetBool(Ultimate);
+
+            return !isJustTriggered && isAnimCompl;
+        }
+        
+        public void PlayUltimateAnimation()
+        {
+            _animator.SetTrigger(Ultimate);
+        }
+        
+        public void PlaySecondaryAnimation()
+        {
+            _animator.SetTrigger(Secondary);
         }
 
         // public bool IsAttackColliderActive()

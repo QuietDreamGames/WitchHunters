@@ -6,10 +6,6 @@
         AttackSpeed = 1,
         MovementSpeed = 2,
         MaximumHealth = 3,
-        SecondarySkillDamage = 4,
-        SecondarySkillCooldown = 5,
-        UltimateSkillDamage = 6,
-        UltimateSkillCooldown = 7,
         Armor = 8,
         CriticalChance = 9,
         CriticalDamage = 10,
@@ -18,5 +14,12 @@
         AttackDamagePercentage = 13,
         KnockbackResistance = 14,
         KnockbackForce = 15,
+        UltimateDamage = 16,
+        UltimateCooldown = 17,
+        UltimateDuration = 18,
+        UltimateBurstsAmount = 19,
+        UltimateAmountInBurst = 19,
+        UltimateRange = 20,
+        UltimateCurrentCooldown = 21,
     }
 }

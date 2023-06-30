@@ -7,7 +7,7 @@ namespace Features.Character.States
     {
         private float _distance;
         private float _speed;
-        private Vector2 _attackDirection;
+        private Vector3 _attackDirection;
         private float _startPercentage; // at which point of animation should we start moving
         private float _endPercentage;
         private bool _shouldBeMoving;
@@ -78,7 +78,7 @@ namespace Features.Character.States
             if (!_shouldBeMoving) return;
             
             var direction = _attackDirection * (_speed * deltaTime);
-            _transform.position += new Vector3(direction.x, direction.y, 0);
+            _transform.position += direction;
         }
     }
 }
