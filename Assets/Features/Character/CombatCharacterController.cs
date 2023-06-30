@@ -1,5 +1,6 @@
 ﻿using Features.FiniteStateMachine;
 using Features.Modifiers;
+using Features.Skills.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ namespace Features.Character
         [SerializeField] protected PlayerInput _playerInput;
         [SerializeField] protected CharacterView _characterView;
         [SerializeField] protected ModifiersController _modifiersController;
+        [SerializeField] protected SkillsController _skillsController;
         [SerializeField] private ModifierInfo[] _baseModifiersList;
 
         protected StateMachine _stateMachine;
@@ -24,11 +26,15 @@ namespace Features.Character
             _stateMachine.AddExtension(_characterView);
             _stateMachine.AddExtension(transform);
             _stateMachine.AddExtension(_attackCollider);
+            _stateMachine.AddExtension(_modifiersController);
 
             for (int i = 0; i < _baseModifiersList.Length; i++)
             {
                 _modifiersController.AddModifier(_baseModifiersList[i]);    
             }
+            
+            _skillsController.Initiate(_modifiersController, _characterView);
+            _stateMachine.AddExtension(_skillsController);
         }
 
         private void Update()

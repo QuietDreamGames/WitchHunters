@@ -26,8 +26,9 @@ namespace Features.Effects
         
         public void PlayHitEffect()
         {
-            var randomOffset = Random.Range(-_crossHitParticleRotationOffset, _crossHitParticleRotationOffset);
-            _crossHitParticleSystem.transform.rotation = Quaternion.Euler(0, 0, randomOffset);
+            // var randomOffset = Random.Range(-_crossHitParticleRotationOffset, _crossHitParticleRotationOffset);
+            // _crossHitParticleSystem.transform.rotation = Quaternion.Euler(0, 0, randomOffset);
+            // _crossHitParticleSystem.Play();
         }
     }
 }

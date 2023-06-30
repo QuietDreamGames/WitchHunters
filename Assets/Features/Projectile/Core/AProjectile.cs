@@ -76,10 +76,10 @@ namespace Features.Projectile.Core
 
         protected virtual void ProcessCollider(Collider2D other)
         {
-            var teamComponent = other.GetComponent<TeamComponent>();
-            
-            if (teamComponent == null) return;
-            if (teamComponent.TeamIndex != TeamIndex.Enemy) return;
+            // var teamComponent = other.GetComponent<TeamComponent>();
+            //
+            // if (teamComponent == null) return;
+            // if (teamComponent.TeamIndex != TeamIndex.Enemy) return;
             if (_collidersDamaged.Contains(other)) return;
                 
             _collidersDamaged.Add(other);

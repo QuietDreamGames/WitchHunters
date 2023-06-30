@@ -23,6 +23,7 @@ namespace Features.Character
             _stateMachine.AddState("MeleeComboEntryState", new MeleeComboEntryState(_stateMachine));
             _stateMachine.AddState("MeleeComboState", comboMovementState);
             _stateMachine.AddState("MeleeFinisherState", new MeleeFinisherState(_stateMachine));
+            _stateMachine.AddState("UltimateSkillState", new UltimateSkillState(_stateMachine));
             
             _stateMachine.ChangeState("IdleCombatState");
         }

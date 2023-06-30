@@ -1,5 +1,6 @@
 ﻿using Features.FiniteStateMachine;
 using Features.FiniteStateMachine.Interfaces;
+using Features.Modifiers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,7 @@ namespace Features.Character.States
         private CharacterView _characterView;
         private PlayerInput _playerInput;
         private Transform _transform;
+        private ModifiersController _modifiersController;
         
         private float _speed = 5f;
         private Vector2 _movementInput;
@@ -24,6 +26,7 @@ namespace Features.Character.States
             _characterView = stateMachine.GetExtension<CharacterView>();
             _playerInput = stateMachine.GetExtension<PlayerInput>();
             _transform = stateMachine.GetExtension<Transform>();
+            _modifiersController = stateMachine.GetExtension<ModifiersController>();
         }
 
         public override void OnUpdate(float deltaTime)
@@ -32,6 +35,17 @@ namespace Features.Character.States
             {
                 stateMachine.ChangeState("MeleeEntryState");
                 return;
+            }
+            
+            if (_playerInput.actions["Ultimate"].IsPressed())
+            {
+                var currentCooldownInfo = _modifiersController.GetModifierInfo(ModifierType.UltimateCurrentCooldown);
+            
+                if (currentCooldownInfo == null)
+                {
+                    stateMachine.ChangeState("UltimateSkillState");
+                    return;
+                }
             }
             
             _movementInput = _playerInput.actions["Move"].ReadValue<Vector2>();
