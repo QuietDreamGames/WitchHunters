@@ -1,0 +1,16 @@
+{
+    "name": "TimeSystems",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c2397ab22be3f4246ab2ca332c684946"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
