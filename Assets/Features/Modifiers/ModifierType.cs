@@ -1,6 +1,6 @@
 ﻿namespace Features.Modifiers
 {
-    public enum ModifierType
+    public enum ModifierType : byte
     {
         AttackDamage = 0,
         AttackSpeed = 1,
