@@ -16,6 +16,8 @@ TagManager:
   - 
   - 
   - 
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -35,9 +37,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Ignore
   m_SortingLayers:
   - name: Default
     uniqueID: 0
