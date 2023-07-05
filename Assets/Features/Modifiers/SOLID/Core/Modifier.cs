@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Features.Modifiers.SOLID.Builders;
 
 namespace Features.Modifiers.SOLID.Core
 {
-    public class Modificator
+    public class Modifier
     {
-        private readonly List<ModificatorData> data = new();
-
+        private readonly List<ModifierData> data = new();
+        
         public float GetValue(float sourceValue)
         {
             for (var i = 0; i < data.Count; i++)
@@ -23,11 +24,12 @@ namespace Features.Modifiers.SOLID.Core
         
         public void Add(float duration, float modificatorValue, ModifierSpec spec)
         {
-            data.Add(new ModificatorData(modificatorValue, duration, spec));
+            data.Add(new ModifierData(modificatorValue, duration, spec));
         }
         
-        public void OnUpdate(float deltaTime)
+        public bool OnUpdate(float deltaTime)
         {
+            var isDirty = false;
             for (var i = 0; i < data.Count; i++)
             {
                 var currentData = data[i];
@@ -36,8 +38,11 @@ namespace Features.Modifiers.SOLID.Core
                 {
                     data.RemoveAt(i);
                     i--;
+                    isDirty = true;
                 }
             }
+
+            return isDirty;
         }
     }
 }

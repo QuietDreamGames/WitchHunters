@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Features.Effects
+namespace Features.VFX
 {
     public class HitEffectController : MonoBehaviour
     {

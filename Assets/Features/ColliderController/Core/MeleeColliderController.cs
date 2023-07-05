@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Features.Damage;
+﻿using System.Collections.Generic;
 using Features.Damage.Interfaces;
 using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
 using Features.Team;
 using UnityEngine;
 
@@ -12,9 +12,17 @@ namespace Features.ColliderController.Core
     {
         [SerializeField] private BoxCollider2D _collider;
         [SerializeField] private MeleeColliderInfo[] _collidersInfo;
-        [SerializeField] private ModifiersController _modifiersController;
+        
+        private ModifiersContainer _modifiersContainer;
+        private BaseModifiersContainer _baseModifiersContainer;
         
         private List<Collider2D> _collidersDamaged = new List<Collider2D>();
+        
+        public void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
+        {
+            _modifiersContainer = modifiersContainer;
+            _baseModifiersContainer = baseModifiersContainer;
+        }
         
         public void EnableCollider(MeleeColliderType meleeColliderType)
         {
@@ -51,11 +59,13 @@ namespace Features.ColliderController.Core
                 
                 var damageable = colliders[j].GetComponent<IDamageable>();
                 if (damageable == null) continue;
-                
-                var damage = _modifiersController.CalculateModifiedValue(ModifierType.AttackDamage);
+                if (damageable.TeamIndex != TeamIndex.Enemy) continue;
+                var damage = _modifiersContainer.GetValue(ModifierType.AttackDamage,
+                    _baseModifiersContainer.GetBaseValue(ModifierType.AttackDamage));
                 var knockbackDirection = colliders[j].transform.position - transform.position;
                 knockbackDirection.Normalize();
-                var knockbackForce = knockbackDirection * _modifiersController.CalculateModifiedValue(ModifierType.KnockbackForce);
+                var knockbackForce = knockbackDirection * _modifiersContainer.GetValue(ModifierType.KnockbackForce,
+                    _baseModifiersContainer.GetBaseValue(ModifierType.KnockbackForce));
                 damageable.TakeDamage(damage, knockbackForce);
                 
                 _collidersDamaged.Add(colliders[j]);

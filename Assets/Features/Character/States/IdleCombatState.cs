@@ -1,6 +1,8 @@
 ﻿using Features.FiniteStateMachine;
 using Features.FiniteStateMachine.Interfaces;
 using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
 using UnityEngine.InputSystem;
 
 namespace Features.Character.States
@@ -8,7 +10,8 @@ namespace Features.Character.States
     public class IdleCombatState : State
     {
         private PlayerInput _playerInput;
-        private ModifiersController _modifiersController;
+        private ModifiersContainer _modifiersContainer;
+        private BaseModifiersContainer _baseModifiersContainer;
         
         public IdleCombatState(IMachine stateMachine) : base(stateMachine)
         {
@@ -17,7 +20,8 @@ namespace Features.Character.States
         public override void OnEnter()
         {
             _playerInput = stateMachine.GetExtension<PlayerInput>();
-            _modifiersController = stateMachine.GetExtension<ModifiersController>();
+            _modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
+            _baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
         }
 
         public override void OnExit()
@@ -41,13 +45,10 @@ namespace Features.Character.States
             
             if (_playerInput.actions["Ultimate"].IsPressed())
             {
-                var currentCooldownInfo = _modifiersController.GetModifierInfo(ModifierType.UltimateCurrentCooldown);
-            
-                if (currentCooldownInfo == null)
-                {
-                    stateMachine.ChangeState("UltimateSkillState");
-                    return;
-                }
+                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown,
+                    _baseModifiersContainer.GetBaseValue(ModifierType.UltimateCurrentCooldown));
+                if (currentCooldownInfo > 0) return;
+                stateMachine.ChangeState("UltimateSkillState");
             }
         }
 

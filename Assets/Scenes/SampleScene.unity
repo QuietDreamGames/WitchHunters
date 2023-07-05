@@ -563,8 +563,8 @@ GameObject:
   - component: {fileID: 1165283371}
   - component: {fileID: 1165283370}
   - component: {fileID: 1165283372}
-  - component: {fileID: 1165283374}
   - component: {fileID: 1165283375}
+  - component: {fileID: 1165283376}
   m_Layer: 0
   m_Name: InquisitorCombatCharacter
   m_TagString: Untagged
@@ -665,63 +665,10 @@ MonoBehaviour:
   _attackCollider: {fileID: 1285515251}
   _playerInput: {fileID: 1147800503}
   _characterView: {fileID: 1165283364}
-  _modifiersController: {fileID: 1165283374}
+  _baseModifiersContainer: {fileID: 11400000, guid: a25007e702a94314d9429c6bb6b74c19, type: 2}
   _skillsController: {fileID: 1165283375}
-  _baseModifiersList:
-  - Type: 0
-    Spec: 0
-    TimeType: 0
-    Value: 2
-    Duration: 0
-    MaxDuration: 0
-  - Type: 1
-    Spec: 0
-    TimeType: 0
-    Value: 1
-    Duration: 0
-    MaxDuration: 0
-  - Type: 3
-    Spec: 0
-    TimeType: 0
-    Value: 10
-    Duration: 0
-    MaxDuration: 0
-  - Type: 15
-    Spec: 0
-    TimeType: 0
-    Value: 1
-    Duration: 0
-    MaxDuration: 0
-  - Type: 16
-    Spec: 0
-    TimeType: 0
-    Value: 10
-    Duration: 0
-    MaxDuration: 0
-  - Type: 20
-    Spec: 0
-    TimeType: 0
-    Value: 10
-    Duration: 0
-    MaxDuration: 0
-  - Type: 18
-    Spec: 0
-    TimeType: 0
-    Value: 5
-    Duration: 0
-    MaxDuration: 0
-  - Type: 19
-    Spec: 0
-    TimeType: 0
-    Value: 10
-    Duration: 0
-    MaxDuration: 0
-  - Type: 17
-    Spec: 0
-    TimeType: 0
-    Value: 10
-    Duration: 0
-    MaxDuration: 0
+  _damageController: {fileID: 1165283376}
+  _meleeColliderController: {fileID: 1165283372}
   _secondComboAttackStartPercentage: 0.3
   _secondComboAttackEndPercentage: 0.9
   _secondComboAttackDistance: 0.9
@@ -847,19 +794,6 @@ MonoBehaviour:
   - offset: {x: -0.372, y: -0.378}
     size: {x: 2.854, y: 3.194}
     meleeColliderType: 8
-  _modifiersController: {fileID: 1165283374}
---- !u!114 &1165283374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165283362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddf17954ea2143398dbbb9d77fcc3f4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1165283375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,6 +808,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ultimate: {fileID: 280206348}
   _secondary: {fileID: 0}
+--- !u!114 &1165283376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165283362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2667e0bb464d1d853f3af3ac3f78fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitEffectController: {fileID: 0}
+  _hitShaderController: {fileID: 0}
 --- !u!1 &1248051942
 GameObject:
   m_ObjectHideFlags: 0

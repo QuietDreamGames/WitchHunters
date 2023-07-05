@@ -1,6 +1,8 @@
 ﻿using Features.FiniteStateMachine;
 using Features.FiniteStateMachine.Interfaces;
 using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +13,8 @@ namespace Features.Character.States
         private CharacterView _characterView;
         private PlayerInput _playerInput;
         private Transform _transform;
-        private ModifiersController _modifiersController;
+        private ModifiersContainer _modifiersContainer;
+        private BaseModifiersContainer _baseModifiersContainer;
         
         private float _speed = 5f;
         private Vector2 _movementInput;
@@ -26,7 +29,8 @@ namespace Features.Character.States
             _characterView = stateMachine.GetExtension<CharacterView>();
             _playerInput = stateMachine.GetExtension<PlayerInput>();
             _transform = stateMachine.GetExtension<Transform>();
-            _modifiersController = stateMachine.GetExtension<ModifiersController>();
+            _modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
+            _baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
         }
 
         public override void OnUpdate(float deltaTime)
@@ -39,13 +43,10 @@ namespace Features.Character.States
             
             if (_playerInput.actions["Ultimate"].IsPressed())
             {
-                var currentCooldownInfo = _modifiersController.GetModifierInfo(ModifierType.UltimateCurrentCooldown);
-            
-                if (currentCooldownInfo == null)
-                {
-                    stateMachine.ChangeState("UltimateSkillState");
-                    return;
-                }
+                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown,
+                    _baseModifiersContainer.GetBaseValue(ModifierType.UltimateCurrentCooldown));
+                if (currentCooldownInfo > 0) return;
+                stateMachine.ChangeState("UltimateSkillState");
             }
             
             _movementInput = _playerInput.actions["Move"].ReadValue<Vector2>();

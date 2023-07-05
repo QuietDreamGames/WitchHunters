@@ -1,4 +1,5 @@
 ﻿using Features.Damage.Interfaces;
+using Features.Team;
 using UnityEngine;
 
 namespace Features.Skills.Implementations
@@ -52,6 +53,7 @@ namespace Features.Skills.Implementations
                 
                 var damageable = colliders[j].GetComponent<IDamageable>();
                 if (damageable == null) continue;
+                if (damageable.TeamIndex != TeamIndex.Enemy) continue;
 
                 var damage = 50; //_modifiersController.CalculateModifiedValue(ModifierType.AttackDamage);
                 // var knockbackDirection = colliders[j].transform.position - transform.position;

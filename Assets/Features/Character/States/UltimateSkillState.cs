@@ -14,17 +14,12 @@ namespace Features.Character.States
             base.OnEnter();
 
             CharacterView.PlayUltimateAnimation();
-
-            var cooldownInfo = new ModifierInfo
-            {
-                Type = ModifierType.UltimateCurrentCooldown,
-                TimeType = ModifierTimeType.Temporary,
-                Spec = ModifierSpec.RawAdditional,
-                Duration = ModifiersController.CalculateModifiedValue(ModifierType.UltimateCooldown),
-                MaxDuration = ModifiersController.CalculateModifiedValue(ModifierType.UltimateCooldown),
-            };
             
-            ModifiersController.AddModifier(cooldownInfo);
+            var cooldown = ModifiersContainer.GetValue(ModifierType.UltimateCooldown,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateCooldown));
+
+            ModifiersContainer.Add(ModifierType.UltimateCurrentCooldown, ModifierSpec.RawAdditional, cooldown,
+                cooldown);
         }
 
         public override void OnUpdate(float deltaTime)

@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 4189165868069970919}
   - component: {fileID: 4189165868069970918}
   - component: {fileID: 4189165868069970917}
-  - component: {fileID: 4189165868069970916}
-  - component: {fileID: 4189165868069970907}
   - component: {fileID: 4189165868069970906}
   - component: {fileID: 4189165868069970912}
   - component: {fileID: 4189165868069970913}
@@ -105,35 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2667e0bb464d1d853f3af3ac3f78fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthComponent: {fileID: 4189165868069970916}
-  _modifiersController: {fileID: 4189165868069970907}
   _hitEffectController: {fileID: 4189165868069970906}
   _hitShaderController: {fileID: 1421633449479258794}
---- !u!114 &4189165868069970916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4189165868069970905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02021ce880b14cce824c5cd07df38df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _modifiersController: {fileID: 4189165868069970907}
---- !u!114 &4189165868069970907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4189165868069970905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddf17954ea2143398dbbb9d77fcc3f4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4189165868069970906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,14 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a691c868e2de9c240b69e969f57c2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _modifiersController: {fileID: 4189165868069970907}
-  _baseModifiersList:
-  - Type: 3
-    Spec: 0
-    TimeType: 0
-    Value: 100
-    Duration: 0
-    MaxDuration: 0
+  _baseModifiersContainer: {fileID: 11400000, guid: fbc2f53e0f7fe814eb5dd034e5ae7919, type: 2}
+  _damageController: {fileID: 4189165868069970917}
 --- !u!61 &4189165868069970913
 BoxCollider2D:
   m_ObjectHideFlags: 0
