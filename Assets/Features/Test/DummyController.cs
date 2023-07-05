@@ -19,18 +19,8 @@ namespace Features.Test
         private void Awake()
         {
             _modifiersContainer = new ModifiersContainer();
-            ApplyBaseModifiers();
             _healthComponent = new HealthComponent(_modifiersContainer, _baseModifiersContainer);
             _damageController.Initiate(_modifiersContainer, _baseModifiersContainer, _healthComponent, TeamIndex.Enemy);
-        }
-        
-        private void ApplyBaseModifiers()
-        {
-            var baseModifiers = _baseModifiersContainer.baseModifiers;
-            foreach (var baseModifier in baseModifiers)
-            {
-                _modifiersContainer.Add(baseModifier);
-            }
         }
     }
 }

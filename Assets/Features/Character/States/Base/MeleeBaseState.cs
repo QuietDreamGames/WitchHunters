@@ -12,7 +12,7 @@ namespace Features.Character.States.Base
         protected bool ShouldCombo;
         protected int attackIndex;
         
-        private float _attackPressedTimer = 0;
+        // private float _attackPressedTimer = 0;
 
         protected Collider2D HitCollider;
         // private List<Collider2D> _collidersDamaged;

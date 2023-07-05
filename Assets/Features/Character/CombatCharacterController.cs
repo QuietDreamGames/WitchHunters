@@ -31,7 +31,6 @@ namespace Features.Character
         {
             stateMachine = new StateMachine();
             modifiersContainer = new ModifiersContainer();
-            ApplyBaseModifiers();
             healthComponent = new HealthComponent(modifiersContainer, _baseModifiersContainer);
             
             _damageController.Initiate(modifiersContainer, _baseModifiersContainer, healthComponent, TeamIndex.Player);
@@ -66,15 +65,6 @@ namespace Features.Character
         private void LateUpdate()
         {
             stateMachine.OnLateUpdate(Time.deltaTime);
-        }
-        
-        private void ApplyBaseModifiers()
-        {
-            var baseModifiers = _baseModifiersContainer.baseModifiers;
-            foreach (var baseModifier in baseModifiers)
-            {
-                modifiersContainer.Add(baseModifier);
-            }
         }
     }
 }
