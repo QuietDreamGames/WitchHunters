@@ -29,6 +29,9 @@ namespace Features.Health
         public void TakeDamage(float damage)
         {
             _currentHealth -= damage;
+
+            Debug.Log(damage);
+            
             if (_currentHealth <= 0)
             {
                 _currentHealth = 0;

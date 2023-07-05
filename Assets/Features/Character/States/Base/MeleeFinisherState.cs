@@ -1,7 +1,6 @@
-﻿using Features.FiniteStateMachine;
-using Features.FiniteStateMachine.Interfaces;
+﻿using Features.FiniteStateMachine.Interfaces;
 
-namespace Features.Character.States
+namespace Features.Character.States.Base
 {
     public class MeleeFinisherState : MeleeBaseState
     {

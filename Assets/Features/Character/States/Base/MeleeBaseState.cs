@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Features.FiniteStateMachine;
+﻿using Features.FiniteStateMachine;
 using Features.FiniteStateMachine.Interfaces;
-using Features.Team;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Features.Character.States
+namespace Features.Character.States.Base
 {
     public class MeleeBaseState : State
     {

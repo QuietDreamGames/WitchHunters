@@ -565,6 +565,7 @@ GameObject:
   - component: {fileID: 1165283372}
   - component: {fileID: 1165283375}
   - component: {fileID: 1165283376}
+  - component: {fileID: 1165283377}
   m_Layer: 0
   m_Name: InquisitorCombatCharacter
   m_TagString: Untagged
@@ -642,7 +643,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
-    newSize: {x: 2.2, y: 1.92}
+    newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -669,6 +670,7 @@ MonoBehaviour:
   _skillsController: {fileID: 1165283375}
   _damageController: {fileID: 1165283376}
   _meleeColliderController: {fileID: 1165283372}
+  _passiveController: {fileID: 1165283377}
   _secondComboAttackStartPercentage: 0.3
   _secondComboAttackEndPercentage: 0.9
   _secondComboAttackDistance: 0.9
@@ -718,7 +720,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.2, y: 1.92}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -822,6 +824,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitEffectController: {fileID: 0}
   _hitShaderController: {fileID: 0}
+--- !u!114 &1165283377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165283362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba55a17c85748219b66507aa3486a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1248051942
 GameObject:
   m_ObjectHideFlags: 0

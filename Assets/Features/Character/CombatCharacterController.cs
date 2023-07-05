@@ -21,6 +21,7 @@ namespace Features.Character
         [SerializeField] protected SkillsController _skillsController;
         [SerializeField] protected DamageController _damageController;
         [SerializeField] protected MeleeColliderController _meleeColliderController;
+        [SerializeField] protected APassiveController _passiveController;
         
         protected ModifiersContainer modifiersContainer;
         protected StateMachine stateMachine;
@@ -34,7 +35,7 @@ namespace Features.Character
             healthComponent = new HealthComponent(modifiersContainer, _baseModifiersContainer);
             
             _damageController.Initiate(modifiersContainer, _baseModifiersContainer, healthComponent, TeamIndex.Player);
-            _meleeColliderController.Initiate(modifiersContainer, _baseModifiersContainer);
+            
             
             stateMachine.AddExtension(_playerInput);
             stateMachine.AddExtension(_characterView);
@@ -45,12 +46,16 @@ namespace Features.Character
 
             _skillsController.Initiate(modifiersContainer, _baseModifiersContainer, _characterView);
             stateMachine.AddExtension(_skillsController);
+            
+            _passiveController.Initiate(modifiersContainer, _baseModifiersContainer);
+            stateMachine.AddExtension(_passiveController);
         }
 
         private void Update()
         {
             stateMachine.OnUpdate(Time.deltaTime);
             modifiersContainer.OnUpdate(Time.deltaTime);
+            _passiveController.OnUpdate(Time.deltaTime);
         }
 
         private void FixedUpdate()

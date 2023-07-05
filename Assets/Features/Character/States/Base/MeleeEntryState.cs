@@ -1,7 +1,7 @@
-﻿using Features.FiniteStateMachine;
-using Features.FiniteStateMachine.Interfaces;
+﻿using Features.FiniteStateMachine.Interfaces;
+using Features.Skills.Core;
 
-namespace Features.Character.States
+namespace Features.Character.States.Base
 {
     public class MeleeEntryState : MeleeBaseState
     {
@@ -13,7 +13,7 @@ namespace Features.Character.States
         {
             base.OnEnter();
             
-            stateMachine.ChangeState("MeleeComboEntryState");
+            stateMachine.ChangeState("MeleeCombo1State");
         }
     }
 }

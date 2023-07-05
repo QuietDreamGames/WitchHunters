@@ -21,5 +21,10 @@
         UltimateAmountInBurst = 19,
         UltimateRange = 20,
         UltimateCurrentCooldown = 21,
+        PassiveDelayDecay = 22,
+        PassiveChargedTime = 23,
+        PassiveChargePerHit = 24,
+        PassiveChargedAttackDamage = 25,
+        PassiveAmountToCharge = 26,
     }
 }

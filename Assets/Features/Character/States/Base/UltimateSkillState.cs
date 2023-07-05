@@ -1,7 +1,7 @@
 ﻿using Features.FiniteStateMachine.Interfaces;
 using Features.Modifiers;
 
-namespace Features.Character.States
+namespace Features.Character.States.Base
 {
     public class UltimateSkillState : SkillState
     {

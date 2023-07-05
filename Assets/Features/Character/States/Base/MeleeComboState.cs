@@ -1,21 +1,17 @@
-﻿using Features.FiniteStateMachine;
-using Features.FiniteStateMachine.Interfaces;
-using UnityEngine;
+﻿using Features.FiniteStateMachine.Interfaces;
 
-namespace Features.Character.States
+namespace Features.Character.States.Base
 {
-    public class MeleeComboEntryState : MeleeBaseState
+    public class MeleeComboState : MeleeBaseState
     {
-        
-
-        public MeleeComboEntryState(IMachine stateMachine) : base(stateMachine)
+        public MeleeComboState(IMachine stateMachine) : base(stateMachine)
         {
         }
 
         public override void OnEnter()
         {
             base.OnEnter();
-            attackIndex = 1;
+            attackIndex = 2;
             CharacterView.PlayAttackAnimation(attackIndex);
         }
 
@@ -27,7 +23,7 @@ namespace Features.Character.States
             {
                 if (ShouldCombo)
                 {
-                    stateMachine.ChangeState("MeleeComboState");
+                    stateMachine.ChangeState("MeleeFinisherState");
                 }
                 else
                 {

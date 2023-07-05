@@ -1,4 +1,8 @@
 ﻿using Features.Character.States;
+using Features.Character.States.Base;
+using Features.Character.States.Inquisitor;
+using Features.ColliderController.Implementations;
+using Features.Skills.Implementations;
 using UnityEngine;
 
 namespace Features.Character
@@ -14,17 +18,19 @@ namespace Features.Character
         {
             base.Start();
 
-            var comboMovementState = new MeleeComboMovementState(stateMachine, _secondComboAttackDistance, _secondComboAttackStartPercentage, _secondComboAttackEndPercentage);
+            var comboMovementState = new InqMeleeCombo2State(stateMachine, _secondComboAttackDistance, _secondComboAttackStartPercentage, _secondComboAttackEndPercentage);
 
             stateMachine.AddState("IdleCombatState", new IdleCombatState(stateMachine));
             stateMachine.AddState("MoveState", new MoveState(stateMachine));
             stateMachine.AddState("MeleeEntryState", new MeleeEntryState(stateMachine));
-            stateMachine.AddState("MeleeComboEntryState", new MeleeComboEntryState(stateMachine));
-            stateMachine.AddState("MeleeComboState", comboMovementState);
-            stateMachine.AddState("MeleeFinisherState", new MeleeFinisherState(stateMachine));
+            stateMachine.AddState("MeleeCombo1State", new InqMeleeCombo1State(stateMachine));
+            stateMachine.AddState("MeleeCombo2State", comboMovementState);
+            stateMachine.AddState("MeleeCombo3State", new InqMeleeCombo3State(stateMachine));
             stateMachine.AddState("UltimateSkillState", new UltimateSkillState(stateMachine));
             
             stateMachine.ChangeState("IdleCombatState");
+            
+            _meleeColliderController.Initiate(modifiersContainer, _baseModifiersContainer, new InqMeleeDamageProcessor(), _passiveController);
         }
     }
 }

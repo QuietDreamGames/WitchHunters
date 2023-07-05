@@ -1,10 +1,9 @@
 ﻿using Features.FiniteStateMachine;
 using Features.FiniteStateMachine.Interfaces;
-using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 
-namespace Features.Character.States
+namespace Features.Character.States.Base
 {
     public class SkillState : State
     {

@@ -1,7 +1,7 @@
 ﻿using Features.FiniteStateMachine.Interfaces;
 using UnityEngine;
 
-namespace Features.Character.States
+namespace Features.Character.States.Base
 {
     public class MeleeComboMovementState : MeleeBaseState
     {
