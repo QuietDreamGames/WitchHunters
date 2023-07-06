@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Features.Damage;
+﻿using System.Collections.Generic;
+using Features.ColliderController.Interfaces;
 using Features.Damage.Interfaces;
 using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
+using Features.Skills.Core;
 using Features.Team;
 using UnityEngine;
 
@@ -12,9 +14,21 @@ namespace Features.ColliderController.Core
     {
         [SerializeField] private BoxCollider2D _collider;
         [SerializeField] private MeleeColliderInfo[] _collidersInfo;
-        [SerializeField] private ModifiersController _modifiersController;
+        
+        private ModifiersContainer _modifiersContainer;
+        private BaseModifiersContainer _baseModifiersContainer;
+        private APassiveController _passiveController;
+        private IMeleeDamageProcessor _meleeDamageProcessor;
         
         private List<Collider2D> _collidersDamaged = new List<Collider2D>();
+        
+        public void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer, IMeleeDamageProcessor meleeDamageProcessor, APassiveController passiveController)
+        {
+            _modifiersContainer = modifiersContainer;
+            _baseModifiersContainer = baseModifiersContainer;
+            _meleeDamageProcessor = meleeDamageProcessor;
+            _passiveController = passiveController;
+        }
         
         public void EnableCollider(MeleeColliderType meleeColliderType)
         {
@@ -40,26 +54,14 @@ namespace Features.ColliderController.Core
         {
             if (!_collider.enabled) return;
             
-            var colliders = new Collider2D[10];
-            ContactFilter2D contactFilter2D = new ContactFilter2D();
-            contactFilter2D.useTriggers = true;
-            int colliderCount = _collider.OverlapCollider(contactFilter2D, colliders);
+            ProcessDamage();
+        }
 
-            for (int j = 0; j < colliderCount; j++)
-            {
-                if (_collidersDamaged.Contains(colliders[j])) continue;
-                
-                var damageable = colliders[j].GetComponent<IDamageable>();
-                if (damageable == null) continue;
-                
-                var damage = _modifiersController.CalculateModifiedValue(ModifierType.AttackDamage);
-                var knockbackDirection = colliders[j].transform.position - transform.position;
-                knockbackDirection.Normalize();
-                var knockbackForce = knockbackDirection * _modifiersController.CalculateModifiedValue(ModifierType.KnockbackForce);
-                damageable.TakeDamage(damage, knockbackForce);
-                
-                _collidersDamaged.Add(colliders[j]);
-            }
+        private void ProcessDamage()
+        {
+            _collidersDamaged.AddRange(_meleeDamageProcessor.ProcessMeleeDamage(
+                _collider, _collidersDamaged, transform, _modifiersContainer, _baseModifiersContainer, _passiveController
+                ));
         }
     }
 }

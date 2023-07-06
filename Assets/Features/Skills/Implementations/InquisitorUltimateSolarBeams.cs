@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
 using UnityEngine;
 
@@ -19,15 +21,18 @@ namespace Features.Skills.Implementations
         
         private bool _isCasting;
 
-        public override void Cast(Vector3 direction, ModifiersController modifiersController)
+        public override void Cast(Vector3 direction, ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
         {
-            var duration = modifiersController.CalculateModifiedValue(ModifierType.UltimateDuration);
+            var duration = modifiersContainer.GetValue(ModifierType.UltimateDuration,
+                baseModifiersContainer.GetBaseValue(ModifierType.UltimateDuration));
             var main = _abmientParticles.main;
             main.duration = duration;
             _abmientParticles.Play();
             
-            _beamsAmount = modifiersController.CalculateModifiedValue(ModifierType.UltimateBurstsAmount);
-            _range = modifiersController.CalculateModifiedValue(ModifierType.UltimateRange);
+            _beamsAmount = modifiersContainer.GetValue(ModifierType.UltimateBurstsAmount,
+                baseModifiersContainer.GetBaseValue(ModifierType.UltimateBurstsAmount));
+            _range = modifiersContainer.GetValue(ModifierType.UltimateRange,
+                baseModifiersContainer.GetBaseValue(ModifierType.UltimateRange)); 
             _timeBetweenBeams = duration / _beamsAmount;
             _beamsCasted = 0;
             _timer = 0f;

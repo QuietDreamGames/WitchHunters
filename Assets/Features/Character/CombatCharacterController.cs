@@ -1,6 +1,11 @@
-﻿using Features.FiniteStateMachine;
-using Features.Modifiers;
+﻿using Features.ColliderController.Core;
+using Features.Damage.Core;
+using Features.FiniteStateMachine;
+using Features.Health;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
+using Features.Team;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,45 +17,54 @@ namespace Features.Character
 
         [SerializeField] protected PlayerInput _playerInput;
         [SerializeField] protected CharacterView _characterView;
-        [SerializeField] protected ModifiersController _modifiersController;
+        [SerializeField] protected BaseModifiersContainer _baseModifiersContainer;
         [SerializeField] protected SkillsController _skillsController;
-        [SerializeField] private ModifierInfo[] _baseModifiersList;
-
-        protected StateMachine _stateMachine;
+        [SerializeField] protected DamageController _damageController;
+        [SerializeField] protected MeleeColliderController _meleeColliderController;
+        [SerializeField] protected APassiveController _passiveController;
+        
+        protected ModifiersContainer modifiersContainer;
+        protected StateMachine stateMachine;
+        protected HealthComponent healthComponent;
         
         protected virtual void Start()
         {
-            _stateMachine = new StateMachine();
+            stateMachine = new StateMachine();
+            modifiersContainer = new ModifiersContainer();
+            healthComponent = new HealthComponent(modifiersContainer, _baseModifiersContainer);
             
-            _stateMachine.AddExtension(_playerInput);
-            _stateMachine.AddExtension(_characterView);
-            _stateMachine.AddExtension(transform);
-            _stateMachine.AddExtension(_attackCollider);
-            _stateMachine.AddExtension(_modifiersController);
+            _damageController.Initiate(modifiersContainer, _baseModifiersContainer, healthComponent, TeamIndex.Player);
+            
+            
+            stateMachine.AddExtension(_playerInput);
+            stateMachine.AddExtension(_characterView);
+            stateMachine.AddExtension(transform);
+            stateMachine.AddExtension(_attackCollider);
+            stateMachine.AddExtension(modifiersContainer);
+            stateMachine.AddExtension(_baseModifiersContainer);
 
-            for (int i = 0; i < _baseModifiersList.Length; i++)
-            {
-                _modifiersController.AddModifier(_baseModifiersList[i]);    
-            }
+            _skillsController.Initiate(modifiersContainer, _baseModifiersContainer, _characterView);
+            stateMachine.AddExtension(_skillsController);
             
-            _skillsController.Initiate(_modifiersController, _characterView);
-            _stateMachine.AddExtension(_skillsController);
+            _passiveController.Initiate(modifiersContainer, _baseModifiersContainer);
+            stateMachine.AddExtension(_passiveController);
         }
 
         private void Update()
         {
-            _stateMachine.OnUpdate(Time.deltaTime);
-            _modifiersController.OnUpdate();
+            stateMachine.OnUpdate(Time.deltaTime);
+            modifiersContainer.OnUpdate(Time.deltaTime);
+            _passiveController.OnUpdate(Time.deltaTime);
         }
 
         private void FixedUpdate()
         {
-            _stateMachine.OnFixedUpdate(Time.fixedDeltaTime);
+            stateMachine.OnFixedUpdate(Time.fixedDeltaTime);
         }
         
         private void LateUpdate()
         {
-            _stateMachine.OnLateUpdate(Time.deltaTime);
+            stateMachine.OnLateUpdate(Time.deltaTime);
         }
     }
 }
