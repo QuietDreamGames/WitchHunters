@@ -9,7 +9,8 @@ namespace Features.Enemies.Nodes
 {
     public class MoveTargetContinuousLeaf : LeafNode, IFixedUpdateHandler
     {
-        [SerializeField] private Vector3 offset;
+        [Header("Dependencies")] 
+        [SerializeField] private InTargetBoundsLeaf targetBounds;
  
         private new Rigidbody2D rigidbody2D;
         private UnitConfig unitConfig;
@@ -55,25 +56,14 @@ namespace Features.Enemies.Nodes
             }
             
             float3 origin = rigidbody2D.transform.position;
-            float3 target = currentTarget.position; 
+            float3 target = targetBounds == null 
+                ? currentTarget.position 
+                : targetBounds.GetClosestPoint(origin);
             
-            var currentOffset = GetCurrentOffset(origin, target, offset);
-            target += new float3(currentOffset);
-
             var direction = math.normalize(target - origin);
             var velocity = direction * unitConfig.BaseSpeed * deltaTime;
             
             rigidbody2D.velocity = velocity.xy;
-        }
-        
-        private Vector3 GetCurrentOffset(Vector3 origin, Vector3 target, Vector3 offset)
-        {
-            var direction = target - origin;
-            direction = -direction;
-            var sign = math.sign(direction.x);
-            offset.x = math.abs(offset.x) * sign;
-
-            return offset;
         }
     }
 }

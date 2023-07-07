@@ -10,5 +10,10 @@ namespace Features.Enemies.Extensions
         {
             unitView.CompleteAnimation();
         }
+        
+        public void EventInvoke(string eventName)
+        {
+            unitView.EventInvoke(eventName);
+        }
     }
 }

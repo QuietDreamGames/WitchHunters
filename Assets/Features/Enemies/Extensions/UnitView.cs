@@ -17,6 +17,7 @@ namespace Features.Enemies.Extensions
         private int facingDirection;
 
         public Action OnCompleteAnimation;
+        public Action<string> OnEvent; 
 
         private void Start()
         {
@@ -60,6 +61,12 @@ namespace Features.Enemies.Extensions
         {
             OnCompleteAnimation?.Invoke();
             OnCompleteAnimation = null;
+        }
+        
+        public void EventInvoke(string eventName)
+        {
+            OnEvent?.Invoke(eventName);
+            OnEvent = null;
         }
     }
 }

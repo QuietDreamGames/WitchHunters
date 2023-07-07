@@ -20,6 +20,7 @@ namespace Features.Enemies.Nodes
 
         private Transform currentTarget;
         private Vector3 currentOffset;
+        private Bounds currentBounds;
         
         public override void Construct(IBTreeMachine stateMachine)
         {
@@ -50,12 +51,17 @@ namespace Features.Enemies.Nodes
 
             currentOffset = GetCurrentOffset(origin, targetPosition, offset);
 
-            var targetBounds = new Bounds(targetPosition + currentOffset, size);
-            var isInRange = targetBounds.Contains(origin);
+            currentBounds = new Bounds(targetPosition + currentOffset, size);
+            var isInRange = currentBounds.Contains(origin);
             
             return isInRange 
                 ? Status.Success 
                 : Status.Failure;
+        }
+
+        public Vector3 GetClosestPoint(Vector3 origin)
+        {
+            return currentBounds.ClosestPoint(origin);
         }
         
         private Vector3 GetCurrentOffset(Vector3 origin, Vector3 target, Vector3 offset)
