@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 4049567905777774729}
   - component: {fileID: 218288301172967421}
   m_Layer: 0
-  m_Name: Undead.Gecko.Projectile
+  m_Name: Gecko.Thrower.Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

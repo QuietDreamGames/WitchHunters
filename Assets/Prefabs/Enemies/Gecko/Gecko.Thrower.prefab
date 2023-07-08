@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 9176817455103414777}
   - component: {fileID: 5846140804361077601}
   m_Layer: 11
-  m_Name: Undead.Gecko
+  m_Name: Gecko.Thrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
