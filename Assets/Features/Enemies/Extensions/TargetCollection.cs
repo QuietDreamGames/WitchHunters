@@ -9,6 +9,8 @@ namespace Features.Enemies.Extensions
     {
         private readonly SortedSet<TargetData> targets = new(new TargetDataComparer());
         
+        public Vector3 FixatedTargetPosition { get; set; } = Vector3.zero;
+        
         public void AddTarget(Transform target, float distance)
         {
             targets.Add(new TargetData(distance, target));

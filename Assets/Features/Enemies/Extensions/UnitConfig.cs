@@ -13,13 +13,12 @@ namespace Features.Enemies.Extensions
         
         [Space]
         [SerializeField] private float baseSpeed;
+        [SerializeField] private float speedMultiplier = 100;
         
         [Space]
         [SerializeField] private float baseDamage;
         
         
-        
-        private const float SpeedMultiplier = 100;
         
         
         
@@ -29,7 +28,8 @@ namespace Features.Enemies.Extensions
         public string AttackParam => attackParam;
         public string AttackIDParam => attackIDParam;
         
-        public float BaseSpeed => baseSpeed * SpeedMultiplier;
+        public float BaseSpeed => baseSpeed * speedMultiplier;
+        public float SpeedMultiplier => speedMultiplier;
         
         public float BaseDamage => baseDamage;
     }
