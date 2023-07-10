@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Features.Modifiers.SOLID.Builders;
+using UnityEngine;
 
 namespace Features.Modifiers.SOLID.Core
 {
@@ -34,6 +35,7 @@ namespace Features.Modifiers.SOLID.Core
             {
                 var currentData = data[i];
                 currentData.duration -= deltaTime;
+
                 if (currentData.duration <= 0)
                 {
                     data.RemoveAt(i);

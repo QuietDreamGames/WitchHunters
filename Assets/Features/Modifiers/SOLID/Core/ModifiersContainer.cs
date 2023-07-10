@@ -10,6 +10,7 @@ namespace Features.Modifiers.SOLID.Core
         public Action<ModifierType> OnUpdateModifier;
         private readonly Dictionary<ModifierType, Modifier> modificators = new();
         
+        
         private void GetModificator(ModifierType type, out Modifier modifier)
         {
             if (!modificators.TryGetValue(type, out modifier))
@@ -36,7 +37,7 @@ namespace Features.Modifiers.SOLID.Core
             GetModificator(type, out var modificator);
             return modificator.GetValue(sourceValue);
         }
-        
+
         public void OnUpdate(float deltaTime)
         {
             foreach (var (type, value) in modificators)

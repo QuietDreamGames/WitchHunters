@@ -46,7 +46,7 @@ namespace Features.Character.States.Base
             if (_playerInput.actions["Ultimate"].IsPressed())
             {
                 var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown,
-                    _baseModifiersContainer.GetBaseValue(ModifierType.UltimateCurrentCooldown));
+                    0f);
                 if (currentCooldownInfo > 0) return;
                 stateMachine.ChangeState("UltimateSkillState");
             }
