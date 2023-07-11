@@ -3,7 +3,7 @@
 namespace Features.Modifiers.SOLID.Core
 {
     [Serializable]
-    public struct ModifierData
+    public class ModifierData
     {
         public float modificatorValue;
         public float duration;

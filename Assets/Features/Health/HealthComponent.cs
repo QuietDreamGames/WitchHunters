@@ -30,12 +30,12 @@ namespace Features.Health
         {
             _currentHealth -= damage;
 
-            Debug.Log(damage);
+            // Debug.Log(damage);
             
             if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
-                Debug.Log("Dead");
+                // Debug.Log("Dead");
             }
         }
 

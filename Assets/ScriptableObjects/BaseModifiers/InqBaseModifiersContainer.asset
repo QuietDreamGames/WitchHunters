@@ -54,11 +54,6 @@ MonoBehaviour:
       spec: 0
     type: 20
   - data:
-      modificatorValue: 10
-      duration: Infinity
-      spec: 0
-    type: 17
-  - data:
       modificatorValue: 0
       duration: Infinity
       spec: 0
@@ -88,3 +83,23 @@ MonoBehaviour:
       duration: Infinity
       spec: 0
     type: 26
+  - data:
+      modificatorValue: 10
+      duration: Infinity
+      spec: 0
+    type: 27
+  - data:
+      modificatorValue: 10
+      duration: Infinity
+      spec: 0
+    type: 28
+  - data:
+      modificatorValue: 3
+      duration: Infinity
+      spec: 0
+    type: 29
+  - data:
+      modificatorValue: 0
+      duration: Infinity
+      spec: 0
+    type: 8

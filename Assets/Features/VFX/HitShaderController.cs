@@ -4,7 +4,7 @@ namespace Features.VFX
 {
     public class HitShaderController : MonoBehaviour
     {
-        public float blendSpeed = 1f; // Controls the speed of color blending
+        public float blendSpeed = 5f; // Controls the speed of color blending
 
         private Material _material;
         private bool _isHit;

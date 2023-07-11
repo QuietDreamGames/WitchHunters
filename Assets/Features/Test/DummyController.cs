@@ -20,7 +20,7 @@ namespace Features.Test
         {
             _modifiersContainer = new ModifiersContainer();
             _healthComponent = new HealthComponent(_modifiersContainer, _baseModifiersContainer);
-            _damageController.Initiate(_modifiersContainer, _baseModifiersContainer, _healthComponent, TeamIndex.Enemy);
+            _damageController.Initiate(_modifiersContainer, _baseModifiersContainer, _healthComponent, TeamIndex.Enemy, new ShieldForDummy());
         }
     }
 }

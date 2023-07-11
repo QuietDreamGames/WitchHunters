@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Shield",
+                    "type": "Button",
+                    "id": "c347c106-74cd-43d3-9b56-4da320f513ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -291,6 +300,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad",
                     "action": "Ultimate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35c6aa94-c487-4389-89cb-a169564e7582",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shield",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

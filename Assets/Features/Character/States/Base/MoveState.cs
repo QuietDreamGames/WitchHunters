@@ -3,6 +3,7 @@ using Features.FiniteStateMachine.Interfaces;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.Skills.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +15,7 @@ namespace Features.Character.States.Base
         private PlayerInput _playerInput;
         private Transform _transform;
         private ModifiersContainer _modifiersContainer;
-        private BaseModifiersContainer _baseModifiersContainer;
+        private ShieldHealthController _shieldHealthController;
         
         private float _speed = 5f;
         private Vector2 _movementInput;
@@ -30,7 +31,7 @@ namespace Features.Character.States.Base
             _playerInput = stateMachine.GetExtension<PlayerInput>();
             _transform = stateMachine.GetExtension<Transform>();
             _modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
-            _baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
+            _shieldHealthController = stateMachine.GetExtension<ShieldHealthController>();
         }
 
         public override void OnUpdate(float deltaTime)
@@ -43,10 +44,19 @@ namespace Features.Character.States.Base
             
             if (_playerInput.actions["Ultimate"].IsPressed())
             {
-                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown,
-                    _baseModifiersContainer.GetBaseValue(ModifierType.UltimateCurrentCooldown));
-                if (currentCooldownInfo > 0) return;
-                stateMachine.ChangeState("UltimateSkillState");
+                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown, 0);
+                if (currentCooldownInfo <= 0) stateMachine.ChangeState("UltimateSkillState");
+                return;
+            }
+            
+            if (_playerInput.actions["Shield"].IsPressed())
+            {
+                _shieldHealthController.GetShieldHealth(out var shieldCurrentHealth, out var shieldMaxHealth);
+                if (shieldCurrentHealth > 0)
+                {
+                    stateMachine.ChangeState("ShieldState");
+                    return;
+                }
             }
             
             _movementInput = _playerInput.actions["Move"].ReadValue<Vector2>();

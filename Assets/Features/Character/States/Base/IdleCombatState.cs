@@ -3,6 +3,7 @@ using Features.FiniteStateMachine.Interfaces;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.Skills.Core;
 using UnityEngine.InputSystem;
 
 namespace Features.Character.States.Base
@@ -12,6 +13,7 @@ namespace Features.Character.States.Base
         private PlayerInput _playerInput;
         private ModifiersContainer _modifiersContainer;
         private BaseModifiersContainer _baseModifiersContainer;
+        private ShieldHealthController _shieldHealthController;
         
         public IdleCombatState(IMachine stateMachine) : base(stateMachine)
         {
@@ -22,6 +24,7 @@ namespace Features.Character.States.Base
             _playerInput = stateMachine.GetExtension<PlayerInput>();
             _modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
             _baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
+            _shieldHealthController = stateMachine.GetExtension<ShieldHealthController>();
         }
 
         public override void OnExit()
@@ -36,6 +39,24 @@ namespace Features.Character.States.Base
                 stateMachine.ChangeState("MeleeEntryState");
                 return;
             }
+            
+            if (_playerInput.actions["Ultimate"].IsPressed())
+            {
+                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown,
+                    0f);
+                if (currentCooldownInfo <= 0) stateMachine.ChangeState("UltimateSkillState");
+                return;
+            }
+            
+            if (_playerInput.actions["Shield"].IsPressed())
+            {
+                _shieldHealthController.GetShieldHealth(out var shieldCurrentHealth, out var shieldMaxHealth);
+                if (shieldCurrentHealth > 0)
+                {
+                    stateMachine.ChangeState("ShieldState");
+                    return;
+                }
+            }
 
             if (_playerInput.actions["Move"].IsPressed())
             {
@@ -43,13 +64,7 @@ namespace Features.Character.States.Base
                 return;
             }
             
-            if (_playerInput.actions["Ultimate"].IsPressed())
-            {
-                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown,
-                    _baseModifiersContainer.GetBaseValue(ModifierType.UltimateCurrentCooldown));
-                if (currentCooldownInfo > 0) return;
-                stateMachine.ChangeState("UltimateSkillState");
-            }
+            
         }
 
         public override void OnFixedUpdate(float deltaTime)

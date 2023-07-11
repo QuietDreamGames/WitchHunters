@@ -26,5 +26,8 @@
         PassiveChargePerHit = 24,
         PassiveChargedAttackDamage = 25,
         PassiveAmountToCharge = 26,
+        ShieldMaxHealth = 27,
+        ShieldRegenRate = 28,
+        ShieldRegenDelay = 29,
     }
 }
