@@ -20,11 +20,11 @@ namespace Features.VFX
             }
         }
         
-        public void OnUpdate()
+        public void OnUpdate(float deltaTime)
         {
             for (int i = 0; i < _shieldPieces.Length; i++)
             {
-                _shieldPieces[i].OnUpdate(Time.deltaTime);
+                _shieldPieces[i].OnUpdate(deltaTime);
             }
         }
 
@@ -54,7 +54,7 @@ namespace Features.VFX
             _animator.SetTrigger(ShieldDestroy);
             _animator.SetBool(IsActive, false);
         }
-        
+
         public void PlayShieldHitEffect()
         {
             _animator.SetTrigger(ShieldHit);

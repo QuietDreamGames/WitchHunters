@@ -11,7 +11,7 @@ namespace Features.VFX
         [SerializeField] private float _duration = 3f;
         
         private Transform _parentTransform;
-        private Vector3 _startPosition;
+        private Vector3 _startLocalPosition;
         private float _timer;
 
         private void OnValidate()
@@ -23,20 +23,21 @@ namespace Features.VFX
         public void Initiate(Transform parentTransform)
         {
             _parentTransform = parentTransform;
-            _startPosition = transform.position;
+            _startLocalPosition = transform.localPosition;
         }
         
         public void PlayDestructiblePieceEffect()
         {
-            transform.position = _startPosition;
+            transform.parent = _parentTransform;
+            transform.localPosition = _startLocalPosition;
             transform.rotation = Quaternion.identity;
             transform.parent = null;
             _rigidbody2D.velocity = Vector2.zero;
             
             var shieldForce = new Vector2
             {
-                x = (_startPosition.x - _parentTransform.position.x),
-                y = (_startPosition.y - _parentTransform.position.y)
+                x = (transform.position.x - _parentTransform.position.x),
+                y = (transform.position.y - _parentTransform.position.y)
             };
             
             gameObject.SetActive(true);
@@ -54,7 +55,6 @@ namespace Features.VFX
             
             if (_timer <= 0f)
             {
-                transform.parent = _parentTransform;
                 gameObject.SetActive(false);
             }
         }

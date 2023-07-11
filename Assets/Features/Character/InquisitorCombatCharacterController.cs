@@ -27,6 +27,7 @@ namespace Features.Character
             stateMachine.AddState("MeleeCombo2State", comboMovementState);
             stateMachine.AddState("MeleeCombo3State", new InqMeleeCombo3State(stateMachine));
             stateMachine.AddState("UltimateSkillState", new UltimateSkillState(stateMachine));
+            stateMachine.AddState("ShieldState", new ShieldState(stateMachine));
             
             stateMachine.ChangeState("IdleCombatState");
             
