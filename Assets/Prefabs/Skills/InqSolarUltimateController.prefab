@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3322751019874435905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3322751019874435904}
+  - component: {fileID: 123995318}
+  m_Layer: 0
+  m_Name: InqSolarUltimateController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3322751019874435904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3322751019874435905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.047051, y: -6.112288, z: -0.36352384}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3322751019882025711}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &123995318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3322751019874435905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f362d1d550e40a5a095d7a361810a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abmientParticles: {fileID: 3322751019882025697}
+  beamControllerPrefab: {fileID: 220541989982894769, guid: 9a732ef6bf616c74db3d0a9e2e7ce8c5, type: 3}
+--- !u!1001 &3222291742857074063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3322751019874435904}
+    m_Modifications:
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 192292721779083107, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+      propertyPath: m_Name
+      value: SunRays VFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+--- !u!198 &3322751019882025697 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 192292721779083118, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+  m_PrefabInstance: {fileID: 3222291742857074063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3322751019882025711 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 192292721779083104, guid: 5ba023aba1495d9429fa473915de64a1, type: 3}
+  m_PrefabInstance: {fileID: 3222291742857074063}
+  m_PrefabAsset: {fileID: 0}
