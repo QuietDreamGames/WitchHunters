@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Features.Damage.Interfaces;
+using Features.ObjectPools.Core;
 using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 
@@ -28,6 +29,9 @@ namespace Features.Projectiles
         
         private WaitForSeconds _waitForSeconds;
         private Coroutine _lifetimeDespawn;
+
+        public GameObjectPool<Projectile> Pool { get; set; } = null;
+        public GameObject Prefab {get; set; } = null;
 
         public float Speed
         {
@@ -76,7 +80,7 @@ namespace Features.Projectiles
             OnDespawn();
             
             StopCoroutine(_lifetimeDespawn);
-            Destroy(gameObject);
+            Pool.Despawn(Prefab, this);
         }
         
         protected abstract void OnSpawn();
