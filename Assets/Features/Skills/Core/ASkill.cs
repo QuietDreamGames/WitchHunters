@@ -6,6 +6,15 @@ namespace Features.Skills.Core
 {
     public abstract class ASkill : MonoBehaviour
     {
-        public abstract void Cast(Vector3 direction, ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer);
+        protected ModifiersContainer ModifiersContainer;
+        protected BaseModifiersContainer BaseModifiersContainer;
+        
+        public void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
+        {
+            ModifiersContainer = modifiersContainer;
+            BaseModifiersContainer = baseModifiersContainer;
+        }
+        
+        public abstract void Cast(Vector3 direction);
     }
 }

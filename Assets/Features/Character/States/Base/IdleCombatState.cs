@@ -40,6 +40,14 @@ namespace Features.Character.States.Base
                 return;
             }
             
+            if (_playerInput.actions["Secondary"].IsPressed())
+            {
+                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.SecondaryCurrentCooldown,
+                    0f);
+                if (currentCooldownInfo <= 0) stateMachine.ChangeState("SecondarySkillState");
+                return;
+            }
+            
             if (_playerInput.actions["Ultimate"].IsPressed())
             {
                 var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown,

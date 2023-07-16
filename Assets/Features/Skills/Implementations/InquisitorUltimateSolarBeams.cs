@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Features.Damage.Implementations;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
@@ -12,6 +13,8 @@ namespace Features.Skills.Implementations
         [SerializeField] private ParticleSystem _abmientParticles;
         [SerializeField] private AutoBeamController beamControllerPrefab;
         
+        
+        
         private float _beamsAmount;
         private float _range;
         
@@ -21,18 +24,18 @@ namespace Features.Skills.Implementations
         
         private bool _isCasting;
 
-        public override void Cast(Vector3 direction, ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
+        public override void Cast(Vector3 direction)
         {
-            var duration = modifiersContainer.GetValue(ModifierType.UltimateDuration,
-                baseModifiersContainer.GetBaseValue(ModifierType.UltimateDuration));
+            var duration = ModifiersContainer.GetValue(ModifierType.UltimateDuration,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateDuration));
             var main = _abmientParticles.main;
             main.duration = duration;
             _abmientParticles.Play();
             
-            _beamsAmount = modifiersContainer.GetValue(ModifierType.UltimateBurstsAmount,
-                baseModifiersContainer.GetBaseValue(ModifierType.UltimateBurstsAmount));
-            _range = modifiersContainer.GetValue(ModifierType.UltimateRange,
-                baseModifiersContainer.GetBaseValue(ModifierType.UltimateRange)); 
+            _beamsAmount = ModifiersContainer.GetValue(ModifierType.UltimateBurstsAmount,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateBurstsAmount));
+            _range = ModifiersContainer.GetValue(ModifierType.UltimateRange,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateRange)); 
             _timeBetweenBeams = duration / _beamsAmount;
             _beamsCasted = 0;
             _timer = 0f;
@@ -55,6 +58,12 @@ namespace Features.Skills.Implementations
                 if (success)
                 {
                     var beamController = Instantiate(beamControllerPrefab, target.position, Quaternion.identity);
+                    
+                    var hittableLayerMask = LayerMask.GetMask($"Hittable", "Enemy");
+                    var obstacleLayerMask = LayerMask.GetMask("Obstacle");
+
+                    beamController.Initiate(new InqSolarUltDamageInstance(hittableLayerMask, obstacleLayerMask,
+                        ModifiersContainer, BaseModifiersContainer, null, transform));
                     beamController.Cast();
                 }
                 _beamsCasted++;

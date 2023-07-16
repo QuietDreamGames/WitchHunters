@@ -5,7 +5,6 @@ using Features.Health;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
-using Features.Team;
 using Features.VFX;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,7 +19,7 @@ namespace Features.Character
         [SerializeField] protected CharacterView _characterView;
         [SerializeField] protected BaseModifiersContainer _baseModifiersContainer;
         [SerializeField] protected SkillsController _skillsController;
-        [SerializeField] protected DamageController _damageController;
+        [SerializeField] protected CharacterDamageController _damageController;
         [SerializeField] protected MeleeColliderController _meleeColliderController;
         [SerializeField] protected APassiveController _passiveController;
         
@@ -38,7 +37,7 @@ namespace Features.Character
             healthComponent = new HealthComponent(modifiersContainer, _baseModifiersContainer);
             shieldHealthController = new ShieldHealthController(modifiersContainer, _baseModifiersContainer);
             
-            _damageController.Initiate(modifiersContainer, _baseModifiersContainer, healthComponent, TeamIndex.Player, shieldHealthController);
+            _damageController.Initiate(modifiersContainer, _baseModifiersContainer, healthComponent, shieldHealthController);
 
             stateMachine.AddExtension(_playerInput);
             stateMachine.AddExtension(_characterView);
@@ -67,11 +66,13 @@ namespace Features.Character
             _passiveController.OnUpdate(Time.deltaTime);
             _shieldEffectController.OnUpdate(Time.deltaTime);
             shieldHealthController.OnUpdate(Time.deltaTime);
+            _damageController.OnUpdate(Time.deltaTime);
         }
 
         private void FixedUpdate()
         {
             stateMachine.OnFixedUpdate(Time.fixedDeltaTime);
+            _meleeColliderController.OnFixedUpdate(Time.fixedDeltaTime);
         }
         
         private void LateUpdate()

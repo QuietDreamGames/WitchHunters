@@ -1,5 +1,4 @@
-﻿using Features.Damage.Interfaces;
-using Features.Team;
+﻿using Features.Damage.Core;
 using UnityEngine;
 
 namespace Features.Skills.Implementations
@@ -14,7 +13,14 @@ namespace Features.Skills.Implementations
 
         private float _beamTimer;
         private bool _hit;
+        private AColliderDamageProcessor _damageProcessor; 
 
+        public void Initiate(AColliderDamageProcessor damageProcessor)
+        {
+            _damageProcessor = damageProcessor;
+            _damageProcessor.SetCollider(_hitboxCollider);
+        }
+        
         public void Cast()
         {
             _beamParticles.Play();
@@ -26,7 +32,7 @@ namespace Features.Skills.Implementations
         {
             if (_beamTimer > _delayBeforeDamage && !_hit)
             {
-                CalculateDamage();
+                _damageProcessor.InstantProcessDamage();
                 _hit = true;
             }
             if (_beamTimer > _delayBeforeDelete)
@@ -39,31 +45,6 @@ namespace Features.Skills.Implementations
             {
                 _beamTimer += Time.deltaTime;
             }
-        }
-        
-        private void CalculateDamage()
-        {
-            var colliders = new Collider2D[10];
-            ContactFilter2D contactFilter2D = new ContactFilter2D();
-            contactFilter2D.useTriggers = true;
-            int colliderCount = _hitboxCollider.OverlapCollider(contactFilter2D, colliders);
-            
-            for (int j = 0; j < colliderCount; j++)
-            {
-                
-                var damageable = colliders[j].GetComponent<IDamageable>();
-                if (damageable == null) continue;
-                if (damageable.TeamIndex != TeamIndex.Enemy) continue;
-
-                var damage = 50; //_modifiersController.CalculateModifiedValue(ModifierType.AttackDamage);
-                // var knockbackDirection = colliders[j].transform.position - transform.position;
-                // knockbackDirection.Normalize();
-                // var knockbackForce = knockbackDirection * _modifiersController.CalculateModifiedValue(ModifierType.KnockbackForce);
-                damageable.TakeDamage(damage);
-                
-                // _collidersDamaged.Add(colliders[j]);
-            }
-            
         }
     }
 }

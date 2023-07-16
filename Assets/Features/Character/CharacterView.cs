@@ -95,6 +95,14 @@ namespace Features.Character
             return !isJustTriggered && isAnimCompl;
         }
         
+        public bool IsSecondaryAnimationComplete()
+        {
+            bool isAnimCompl = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
+            bool isJustTriggered = _animator.GetBool(Secondary);
+
+            return !isJustTriggered && isAnimCompl;
+        }
+        
         public void PlayUltimateAnimation()
         {
             _animator.SetTrigger(Ultimate);
