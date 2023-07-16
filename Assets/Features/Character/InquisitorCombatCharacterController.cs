@@ -1,8 +1,6 @@
-﻿using Features.Character.States;
-using Features.Character.States.Base;
+﻿using Features.Character.States.Base;
 using Features.Character.States.Inquisitor;
-using Features.ColliderController.Implementations;
-using Features.Skills.Implementations;
+using Features.Damage.Implementations;
 using UnityEngine;
 
 namespace Features.Character
@@ -26,12 +24,21 @@ namespace Features.Character
             stateMachine.AddState("MeleeCombo1State", new InqMeleeCombo1State(stateMachine));
             stateMachine.AddState("MeleeCombo2State", comboMovementState);
             stateMachine.AddState("MeleeCombo3State", new InqMeleeCombo3State(stateMachine));
+            stateMachine.AddState("SecondarySkillState", new SecondarySkillState(stateMachine));
             stateMachine.AddState("UltimateSkillState", new UltimateSkillState(stateMachine));
             stateMachine.AddState("ShieldState", new ShieldState(stateMachine));
             
             stateMachine.ChangeState("IdleCombatState");
             
-            _meleeColliderController.Initiate(modifiersContainer, _baseModifiersContainer, new InqMeleeDamageProcessor(), _passiveController);
+            var hittableLayerMask = LayerMask.GetMask($"Hittable", "Enemy");
+            var obstacleLayerMask = LayerMask.GetMask("Obstacle");
+
+            _meleeColliderController.Initiate(
+                new InqSolarAttackDamageInstance(hittableLayerMask, obstacleLayerMask, modifiersContainer,
+                    _baseModifiersContainer, _passiveController, transform),
+                new InqSolarSecondaryMeleeDamageInstance(hittableLayerMask, obstacleLayerMask, modifiersContainer,
+                        _baseModifiersContainer, _passiveController, transform)
+                );
         }
     }
 }

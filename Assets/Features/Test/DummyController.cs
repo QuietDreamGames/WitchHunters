@@ -2,7 +2,6 @@ using Features.Damage.Core;
 using Features.Health;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
-using Features.Team;
 using UnityEngine;
 
 namespace Features.Test
@@ -20,7 +19,7 @@ namespace Features.Test
         {
             _modifiersContainer = new ModifiersContainer();
             _healthComponent = new HealthComponent(_modifiersContainer, _baseModifiersContainer);
-            _damageController.Initiate(_modifiersContainer, _baseModifiersContainer, _healthComponent, TeamIndex.Enemy, new ShieldForDummy());
+            _damageController.Initiate(_modifiersContainer, _baseModifiersContainer, _healthComponent);
         }
     }
 }

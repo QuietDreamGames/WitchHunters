@@ -29,5 +29,12 @@
         ShieldMaxHealth = 27,
         ShieldRegenRate = 28,
         ShieldRegenDelay = 29,
+        SecondaryCurrentCooldown = 30,
+        SecondaryCooldown = 31,
+        SecondarySkillRange = 32,
+        SecondarySkillDamage = 33,
+        SecondarySkillSpeed = 34,
+        SecondarySkillLifetime = 35,
+        SecondarySkillMaxSize = 36,
     }
 }
