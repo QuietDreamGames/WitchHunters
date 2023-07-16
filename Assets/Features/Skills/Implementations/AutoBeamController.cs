@@ -1,5 +1,4 @@
 ﻿using Features.Damage.Core;
-using Features.Damage.Interfaces;
 using UnityEngine;
 
 namespace Features.Skills.Implementations
@@ -19,6 +18,7 @@ namespace Features.Skills.Implementations
         public void Initiate(AColliderDamageProcessor damageProcessor)
         {
             _damageProcessor = damageProcessor;
+            _damageProcessor.SetCollider(_hitboxCollider);
         }
         
         public void Cast()

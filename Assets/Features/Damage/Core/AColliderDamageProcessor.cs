@@ -60,6 +60,7 @@ namespace Features.Damage.Core
             ContactFilter2D contactFilter2D = new ContactFilter2D();
             contactFilter2D.SetLayerMask(hittableLayerMask);
             contactFilter2D.useTriggers = true;
+            // use SetCollider to set collider2D if you see a null ref here
             int colliderCount = collider2D.OverlapCollider(contactFilter2D, colliders);
 
             for (int j = 0; j < colliderCount; j++)
