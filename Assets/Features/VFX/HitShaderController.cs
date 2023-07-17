@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Features.TimeSystems.Interfaces.Handlers;
+using UnityEngine;
 
 namespace Features.VFX
 {
-    public class HitShaderController : MonoBehaviour
+    public class HitShaderController : MonoBehaviour, IUpdateHandler
     {
         public float blendSpeed = 5f; // Controls the speed of color blending
 
@@ -17,11 +18,18 @@ namespace Features.VFX
             _material = GetComponent<SpriteRenderer>().material;
         }
 
-        private void Update()
+        public void PlayHitEffect()
+        {
+            _isHit = true;
+            _currentFlashAmount = 1f;
+            _material.SetFloat(FlashAmount, _currentFlashAmount);
+        }
+
+        public void OnUpdate(float deltaTime)
         {
             if (!_isHit) return;
             
-            _currentFlashAmount = Mathf.Lerp(_currentFlashAmount, 0f, blendSpeed * Time.deltaTime);
+            _currentFlashAmount = Mathf.Lerp(_currentFlashAmount, 0f, blendSpeed * deltaTime);
             
             if (_currentFlashAmount < 0.01f)
             {
@@ -29,13 +37,6 @@ namespace Features.VFX
                 _isHit = false;
             }
             
-            _material.SetFloat(FlashAmount, _currentFlashAmount);
-        }
-
-        public void PlayHitEffect()
-        {
-            _isHit = true;
-            _currentFlashAmount = 1f;
             _material.SetFloat(FlashAmount, _currentFlashAmount);
         }
     }
