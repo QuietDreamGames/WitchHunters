@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using Features.Damage.Implementations;
 using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
 using UnityEngine;
 
@@ -10,6 +13,8 @@ namespace Features.Skills.Implementations
         [SerializeField] private ParticleSystem _abmientParticles;
         [SerializeField] private AutoBeamController beamControllerPrefab;
         
+        
+        
         private float _beamsAmount;
         private float _range;
         
@@ -19,15 +24,18 @@ namespace Features.Skills.Implementations
         
         private bool _isCasting;
 
-        public override void Cast(Vector3 direction, ModifiersController modifiersController)
+        public override void Cast(Vector3 direction)
         {
-            var duration = modifiersController.CalculateModifiedValue(ModifierType.UltimateDuration);
+            var duration = ModifiersContainer.GetValue(ModifierType.UltimateDuration,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateDuration));
             var main = _abmientParticles.main;
             main.duration = duration;
             _abmientParticles.Play();
             
-            _beamsAmount = modifiersController.CalculateModifiedValue(ModifierType.UltimateBurstsAmount);
-            _range = modifiersController.CalculateModifiedValue(ModifierType.UltimateRange);
+            _beamsAmount = ModifiersContainer.GetValue(ModifierType.UltimateBurstsAmount,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateBurstsAmount));
+            _range = ModifiersContainer.GetValue(ModifierType.UltimateRange,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateRange)); 
             _timeBetweenBeams = duration / _beamsAmount;
             _beamsCasted = 0;
             _timer = 0f;
@@ -50,6 +58,12 @@ namespace Features.Skills.Implementations
                 if (success)
                 {
                     var beamController = Instantiate(beamControllerPrefab, target.position, Quaternion.identity);
+                    
+                    var hittableLayerMask = LayerMask.GetMask($"Hittable", "Enemy");
+                    var obstacleLayerMask = LayerMask.GetMask("Obstacle");
+
+                    beamController.Initiate(new InqSolarUltDamageInstance(hittableLayerMask, obstacleLayerMask,
+                        ModifiersContainer, BaseModifiersContainer, null, transform));
                     beamController.Cast();
                 }
                 _beamsCasted++;

@@ -1,5 +1,6 @@
 ﻿using Features.Character;
-using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
 using UnityEngine;
 
 namespace Features.Skills.Core
@@ -9,26 +10,25 @@ namespace Features.Skills.Core
         [SerializeField] private ASkill _ultimate;
         [SerializeField] private ASkill _secondary;
 
-        private ModifiersController _modifiersController;
         private CharacterView _characterView;
 
-        public void Initiate(ModifiersController modifiersController, CharacterView characterView)
+        public void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer, CharacterView characterView)
         {
             _characterView = characterView;
-            _modifiersController = modifiersController;
+            _ultimate.Initiate(modifiersContainer, baseModifiersContainer);
+            _secondary.Initiate(modifiersContainer, baseModifiersContainer);
         }
         
         public void CastUltimate()
         {
             var direction = _characterView.GetLastMovementDirection();
-            // var ultimate = Instantiate(_ultimatePrefab, transform.position, Quaternion.identity);
-            _ultimate.Cast(direction, _modifiersController);
+            _ultimate.Cast(direction);
         }
 
         public void CastSecondary()
         {
             var direction = _characterView.GetLastMovementDirection();
-            _secondary.Cast(direction, _modifiersController);
+            _secondary.Cast(direction);
         }
     }
 }

@@ -1,56 +1,61 @@
 ﻿using Features.Damage.Interfaces;
-using Features.Effects;
 using Features.Health;
 using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
+using Features.VFX;
 using UnityEngine;
 
 namespace Features.Damage.Core
 {
     public class DamageController : MonoBehaviour, IDamageable
     {
-        [SerializeField] private HealthComponent _healthComponent;
-        [SerializeField] private ModifiersController _modifiersController;
         [SerializeField] private HitEffectController _hitEffectController;
         [SerializeField] private HitShaderController _hitShaderController;
-        
+
+        private HealthComponent _healthComponent;
+        private ModifiersContainer _modifiersesController;
+        private BaseModifiersContainer _baseModifiersContainer;
+
+
         private Vector3 _knockbackForce;
         private float _knockbackDuration;
         private float _knockbackTimer;
 
-        public void TakeDamage(float damage)
+        public void Initiate(ModifiersContainer modifiersesController, BaseModifiersContainer baseModifiersContainer,
+            HealthComponent healthComponent)
         {
-            var armor = _modifiersController.CalculateModifiedValue(ModifierType.Armor);
-            var damageTaken = damage - armor;
-            if (damageTaken > 0)
-            {
-                _healthComponent.TakeDamage(damageTaken);
-                _hitEffectController.PlayHitEffect();
-                _hitShaderController.PlayHitEffect();
-            }
+            _modifiersesController = modifiersesController;
+            _healthComponent = healthComponent;
+            _baseModifiersContainer = baseModifiersContainer;
         }
 
-        public void TakeDamage(float damage, Vector3 forceDirection)
+        public virtual void TakeDamage(float damage, Vector3 forceDirection)
         {
-            var armor = _modifiersController.CalculateModifiedValue(ModifierType.Armor);
+            var armor = _modifiersesController.GetValue(ModifierType.Armor, _baseModifiersContainer.GetBaseValue(ModifierType.Armor));
             var damageTaken = damage - armor;
-            if (damageTaken > 0)
-            {
-                _healthComponent.TakeDamage(damageTaken);
-                _knockbackForce = forceDirection * (_modifiersController.CalculateModifiedValue(ModifierType.KnockbackResistance) * 3);
-                _knockbackDuration = 0.1f;
-                _knockbackTimer = _knockbackDuration;
-                _hitEffectController.PlayHitEffect(forceDirection);
-                _hitShaderController.PlayHitEffect();
-            }
+            if (damageTaken <= 0) return;
+            
+            _healthComponent.TakeDamage(damageTaken);
+            _hitShaderController.PlayHitEffect();
+            
+            if (forceDirection.magnitude < 0.1f) return;
+            
+            _knockbackForce = forceDirection * (_modifiersesController.GetValue(ModifierType.KnockbackResistance,
+                _baseModifiersContainer.GetBaseValue(ModifierType.KnockbackResistance)) * 3);
+            _knockbackDuration = 0.1f;
+            _knockbackTimer = _knockbackDuration;
+            _hitEffectController.PlayHitEffect(forceDirection);
+            
         }
         
-        private void Update()
+        public void OnUpdate(float deltaTime)
         {
             if (_knockbackTimer > 0)
             {
-                _knockbackTimer -= Time.deltaTime;
+                _knockbackTimer -= deltaTime;
                 
-                transform.Translate(_knockbackForce * Time.deltaTime);
+                transform.Translate(_knockbackForce * deltaTime);
                 
                 if (_knockbackTimer <= 0)
                 {
