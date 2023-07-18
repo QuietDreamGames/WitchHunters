@@ -2,11 +2,12 @@ using Features.Damage.Core;
 using Features.Health;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 
 namespace Features.Test
 {
-    public class DummyController : MonoBehaviour
+    public class DummyController : MonoBehaviour, IUpdateHandler
     {
         [SerializeField] protected BaseModifiersContainer _baseModifiersContainer;
         [SerializeField] protected DamageController _damageController;
@@ -20,6 +21,12 @@ namespace Features.Test
             _modifiersContainer = new ModifiersContainer();
             _healthComponent = new HealthComponent(_modifiersContainer, _baseModifiersContainer);
             _damageController.Initiate(_modifiersContainer, _baseModifiersContainer, _healthComponent);
+        }
+
+
+        public void OnUpdate(float deltaTime)
+        {
+            _damageController.OnUpdate(deltaTime);
         }
     }
 }
