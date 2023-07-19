@@ -9,6 +9,7 @@ namespace Features.Test
         [SerializeField] private float _damage;
         [SerializeField] private Collider2D _collider2D;
         [SerializeField] private float _delay;
+        [SerializeField] private LayerMask _layerMask;
         
         private List<Collider2D> _collidersDamaged = new List<Collider2D>();
 
@@ -19,6 +20,8 @@ namespace Features.Test
             var colliders = new Collider2D[10];
             ContactFilter2D contactFilter2D = new ContactFilter2D();
             contactFilter2D.useTriggers = true;
+            contactFilter2D.useLayerMask = true;
+            contactFilter2D.SetLayerMask(_layerMask);
             int colliderCount = _collider2D.OverlapCollider(contactFilter2D, colliders);
 
             for (int i = 0; i < colliderCount; i++)

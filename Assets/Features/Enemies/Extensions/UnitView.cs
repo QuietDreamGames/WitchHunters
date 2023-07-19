@@ -57,6 +57,11 @@ namespace Features.Enemies.Extensions
             animator.SetTrigger(config.AttackParam);
         }
         
+        public void SetTrigger(string trigger)
+        {
+            animator.SetTrigger(trigger);
+        }
+        
         public void CompleteAnimation()
         {
             OnCompleteAnimation?.Invoke();

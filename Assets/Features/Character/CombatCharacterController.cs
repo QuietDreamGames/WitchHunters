@@ -38,6 +38,7 @@ namespace Features.Character
             shieldHealthController = new ShieldHealthController(modifiersContainer, _baseModifiersContainer);
             
             _damageController.Initiate(modifiersContainer, _baseModifiersContainer, healthComponent, shieldHealthController);
+            _damageController.SetActive(true);
 
             stateMachine.AddExtension(_playerInput);
             stateMachine.AddExtension(_characterView);

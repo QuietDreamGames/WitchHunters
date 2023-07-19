@@ -16,6 +16,9 @@ namespace Features.Health
         private float _currentHealth;
         private float _maxHealth;
 
+        public Action OnHit;
+        public Action OnDeath;
+
         public HealthComponent(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
         {
             _modifiersContainer = modifiersContainer;
@@ -30,13 +33,15 @@ namespace Features.Health
         {
             _currentHealth -= damage;
 
-            // Debug.Log(damage);
-            
             if (_currentHealth <= 0)
             {
-                _currentHealth = 0;
-                // Debug.Log("Dead");
+                _currentHealth = 0; 
+                OnDeath?.Invoke();
+                
+                return;
             }
+            
+            OnHit?.Invoke();
         }
 
         private void OnModifiersChanged(ModifierType type)
