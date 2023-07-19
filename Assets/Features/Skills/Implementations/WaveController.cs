@@ -10,7 +10,6 @@ namespace Features.Skills.Implementations
         [SerializeField] private Collider2D _collider2D;
         
         private float _range;
-        private float _damage;
         private float _speed;
         private float _lifetime;
         private float _maxSize;
@@ -23,10 +22,9 @@ namespace Features.Skills.Implementations
 
         private bool _isActive;
         
-        public void Cast(float range, float damage, float speed, float lifetime, float maxSize, Vector3 direction, AColliderDamageProcessor damageProcessor)
+        public void Cast(float range, float speed, float lifetime, float maxSize, Vector3 direction, AColliderDamageProcessor damageProcessor)
         {
             _range = range;
-            _damage = damage;
             _speed = speed;
             _lifetime = lifetime;
             _maxSize = maxSize;
@@ -47,11 +45,12 @@ namespace Features.Skills.Implementations
             
         }
 
-        private void Update()
+        public void OnUpdate(float deltaTime)
         {
+            _animator.Update(deltaTime);
             if (!_isActive) return;
             
-            _timer += Time.deltaTime;
+            _timer += deltaTime;
             if (_timer > _lifetime)
             {
                 gameObject.SetActive(false);
@@ -66,10 +65,10 @@ namespace Features.Skills.Implementations
             }
         }
 
-        private void FixedUpdate()
+        public void OnFixedUpdate(float deltaTime)
         {
             if (!_isActive) return;
-            transform.position += _direction * (_speed * Time.fixedDeltaTime);
+            transform.position += _direction * (_speed * deltaTime);
             _damageProcessor.OnFixedUpdate(Time.fixedDeltaTime);
             
         }

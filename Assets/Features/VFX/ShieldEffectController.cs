@@ -12,6 +12,8 @@ namespace Features.VFX
         private static readonly int ShieldDestroy = Animator.StringToHash("ShieldDestroy");
         private static readonly int ShieldHit = Animator.StringToHash("ShieldGotHit");
 
+        private bool _isDestroyed;
+
         public void Initiate()
         {
             for (int i = 0; i < _shieldPieces.Length; i++)
@@ -25,6 +27,16 @@ namespace Features.VFX
             for (int i = 0; i < _shieldPieces.Length; i++)
             {
                 _shieldPieces[i].OnUpdate(deltaTime);
+            }
+            
+            _animator.Update(deltaTime);
+            
+            if (!_isDestroyed) return; 
+            
+            
+            for (int i = 0; i < _destroyEffectParticleSystems.Length; i++)
+            {
+                _destroyEffectParticleSystems[i].Simulate(deltaTime, true, false);
             }
         }
 
@@ -43,7 +55,9 @@ namespace Features.VFX
         {
             for (int i = 0; i < _destroyEffectParticleSystems.Length; i++)
             {
-                _destroyEffectParticleSystems[i].Play();
+                // _destroyEffectParticleSystems[i].Play();
+                _destroyEffectParticleSystems[i].Simulate(0.0f, true, true);
+                _isDestroyed = true;
             }
             
             for (int i = 0; i < _shieldPieces.Length; i++)

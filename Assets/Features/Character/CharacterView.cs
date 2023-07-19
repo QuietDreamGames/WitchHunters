@@ -1,9 +1,10 @@
 ﻿using System;
+using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 
 namespace Features.Character
 {
-    public class CharacterView : MonoBehaviour
+    public class CharacterView : MonoBehaviour, IUpdateHandler
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Animator _animator;
@@ -127,5 +128,9 @@ namespace Features.Character
         // {
         //     return _animator.GetFloat(AttackComboWindowOpen) > 0.5f;
         // }
+        public void OnUpdate(float deltaTime)
+        {
+            _animator.Update(deltaTime);
+        }
     }
 }

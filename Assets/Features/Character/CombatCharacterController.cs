@@ -5,13 +5,14 @@ using Features.Health;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
+using Features.TimeSystems.Interfaces.Handlers;
 using Features.VFX;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Features.Character
 {
-    public abstract class CombatCharacterController : MonoBehaviour
+    public abstract class CombatCharacterController : MonoBehaviour, IUpdateHandler, IFixedUpdateHandler, ILateUpdateHandler
     {
         [SerializeField] protected Collider2D _attackCollider;
 
@@ -60,25 +61,25 @@ namespace Features.Character
             stateMachine.AddExtension(_shieldEffectController);
         }
 
-        private void Update()
+        public void OnUpdate(float deltaTime)
         {
-            stateMachine.OnUpdate(Time.deltaTime);
-            modifiersContainer.OnUpdate(Time.deltaTime);
-            _passiveController.OnUpdate(Time.deltaTime);
-            _shieldEffectController.OnUpdate(Time.deltaTime);
-            shieldHealthController.OnUpdate(Time.deltaTime);
-            _damageController.OnUpdate(Time.deltaTime);
+            stateMachine.OnUpdate(deltaTime);
+            modifiersContainer.OnUpdate(deltaTime);
+            _passiveController.OnUpdate(deltaTime);
+            _shieldEffectController.OnUpdate(deltaTime);
+            shieldHealthController.OnUpdate(deltaTime);
+            _damageController.OnUpdate(deltaTime);
         }
 
-        private void FixedUpdate()
+        public void OnFixedUpdate(float deltaTime)
         {
-            stateMachine.OnFixedUpdate(Time.fixedDeltaTime);
-            _meleeColliderController.OnFixedUpdate(Time.fixedDeltaTime);
+            stateMachine.OnFixedUpdate(deltaTime);
+            _meleeColliderController.OnFixedUpdate(deltaTime);
         }
-        
-        private void LateUpdate()
+
+        public void OnLateUpdate(float deltaTime)
         {
-            stateMachine.OnLateUpdate(Time.deltaTime);
+            stateMachine.OnLateUpdate(deltaTime);
         }
     }
 }

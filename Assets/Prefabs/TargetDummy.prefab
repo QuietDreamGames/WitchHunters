@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4189165868069970912}
   - component: {fileID: 4189165868069970913}
   - component: {fileID: 1421633449479258794}
+  - component: {fileID: 5870181706006065197}
   m_Layer: 10
   m_Name: TargetDummy
   m_TagString: Enemy
@@ -173,6 +174,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blendSpeed: 5
+--- !u!114 &5870181706006065197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4189165868069970905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3b04ca474743e68ec4db275354e4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  includeChildren: 0
+  category: 
 --- !u!1001 &4189165866320475404
 PrefabInstance:
   m_ObjectHideFlags: 0

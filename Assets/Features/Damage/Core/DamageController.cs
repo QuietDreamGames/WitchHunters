@@ -1,5 +1,4 @@
-﻿using System;
-using Features.Damage.Interfaces;
+﻿using Features.Damage.Interfaces;
 using Features.Health;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
@@ -30,12 +29,13 @@ namespace Features.Damage.Core
         private float _knockbackDuration;
         private float _knockbackTimer;
 
+        public void Initiate(ModifiersContainer modifiersController, BaseModifiersContainer baseModifiersContainer,
         private bool _isActive;
 
         public void Initiate(ModifiersContainer modifiersesController, BaseModifiersContainer baseModifiersContainer,
             HealthComponent healthComponent)
         {
-            _modifiersesController = modifiersesController;
+            _modifiersesController = modifiersController;
             _healthComponent = healthComponent;
             _baseModifiersContainer = baseModifiersContainer;
             
