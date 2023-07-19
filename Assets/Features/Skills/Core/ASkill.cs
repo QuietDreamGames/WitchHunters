@@ -1,10 +1,11 @@
 ﻿using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 
 namespace Features.Skills.Core
 {
-    public abstract class ASkill : MonoBehaviour
+    public abstract class ASkill : MonoBehaviour, IUpdateHandler, IFixedUpdateHandler
     {
         protected ModifiersContainer ModifiersContainer;
         protected BaseModifiersContainer BaseModifiersContainer;
@@ -16,5 +17,15 @@ namespace Features.Skills.Core
         }
         
         public abstract void Cast(Vector3 direction);
+
+        public virtual void OnUpdate(float deltaTime)
+        {
+            
+        }
+        
+        public virtual void OnFixedUpdate(float deltaTime)
+        {
+            
+        }
     }
 }

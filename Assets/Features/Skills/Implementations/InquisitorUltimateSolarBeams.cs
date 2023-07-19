@@ -12,9 +12,7 @@ namespace Features.Skills.Implementations
     {
         [SerializeField] private ParticleSystem _abmientParticles;
         [SerializeField] private AutoBeamController beamControllerPrefab;
-        
-        
-        
+
         private float _beamsAmount;
         private float _range;
         
@@ -42,7 +40,7 @@ namespace Features.Skills.Implementations
             _isCasting = true;
         }
 
-        private void Update()
+        public override void OnUpdate(float deltaTime)
         {
             if (!_isCasting) return;
             

@@ -22,10 +22,10 @@ namespace Features.Damage.Core
         private float _knockbackDuration;
         private float _knockbackTimer;
 
-        public void Initiate(ModifiersContainer modifiersesController, BaseModifiersContainer baseModifiersContainer,
+        public void Initiate(ModifiersContainer modifiersController, BaseModifiersContainer baseModifiersContainer,
             HealthComponent healthComponent)
         {
-            _modifiersesController = modifiersesController;
+            _modifiersesController = modifiersController;
             _healthComponent = healthComponent;
             _baseModifiersContainer = baseModifiersContainer;
         }
