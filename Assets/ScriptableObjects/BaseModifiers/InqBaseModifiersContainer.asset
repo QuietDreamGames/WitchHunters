@@ -34,7 +34,7 @@ MonoBehaviour:
       spec: 0
     type: 16
   - data:
-      modificatorValue: 10
+      modificatorValue: 3
       duration: Infinity
       spec: 0
     type: 17
