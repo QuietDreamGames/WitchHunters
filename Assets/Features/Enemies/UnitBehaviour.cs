@@ -5,6 +5,7 @@ using Features.Enemies.Extensions;
 using Features.Health;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.ObjectPools.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -27,6 +28,9 @@ namespace Features.Enemies
 
         private ModifiersContainer _modifiersContainer;
         private HealthComponent _healthComponent;
+        
+        public GameObjectPool<UnitBehaviour> Pool { get; set; }
+        public GameObject Prefab { get; set; }
 
         private void Start()
         {
@@ -52,6 +56,11 @@ namespace Features.Enemies
             damageController.SetActive(false);
 
             stateMachine.SetActive(false);
+
+            if (Pool != null)
+            {
+                Pool.Despawn(Prefab, this);
+            }
         }
         
         private void ConfigureShader()

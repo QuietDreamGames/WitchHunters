@@ -29,13 +29,12 @@ namespace Features.Damage.Core
         private float _knockbackDuration;
         private float _knockbackTimer;
 
-        public void Initiate(ModifiersContainer modifiersController, BaseModifiersContainer baseModifiersContainer,
         private bool _isActive;
 
         public void Initiate(ModifiersContainer modifiersesController, BaseModifiersContainer baseModifiersContainer,
             HealthComponent healthComponent)
         {
-            _modifiersesController = modifiersController;
+            _modifiersesController = modifiersesController;
             _healthComponent = healthComponent;
             _baseModifiersContainer = baseModifiersContainer;
             

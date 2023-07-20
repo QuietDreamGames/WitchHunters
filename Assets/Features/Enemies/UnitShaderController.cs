@@ -40,7 +40,7 @@ namespace Features.Enemies
 
         #region Monobehaviour
 
-        private void Start()
+        private void Awake()
         {
             _mpb = new MaterialPropertyBlock();
         }
