@@ -22,6 +22,10 @@ namespace Features.Enemies
         [Header("Damageable")]
         [SerializeField] protected BaseModifiersContainer baseModifiersContainer;
         [SerializeField] protected DamageController damageController;
+        
+        [Header("Type")]
+        [SerializeField] private UnitType type;
+        [SerializeField] private int level;
 
         [Header("DEBUG")] 
         [SerializeField] private bool spawnOnStart;
@@ -31,6 +35,9 @@ namespace Features.Enemies
         
         public GameObjectPool<UnitBehaviour> Pool { get; set; }
         public GameObject Prefab { get; set; }
+        
+        public UnitType Type => type;
+        public int Level => level;
 
         private void Start()
         {
@@ -97,7 +104,10 @@ namespace Features.Enemies
         private void OnDeathHandle()
         {
             stateMachine.SetDeathState();
+            
             shaderController.FadeOut();
+            
+            damageController.SetActive(false);
         }
     }
 }

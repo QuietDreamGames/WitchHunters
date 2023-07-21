@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 8657543438468830798}
   m_Layer: 10
   m_Name: DamageReceiver
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1283,6 +1283,8 @@ MonoBehaviour:
   shaderController: {fileID: 1519839104195339455}
   baseModifiersContainer: {fileID: 11400000, guid: e015eebdafe54cb4083494f52a6aad52, type: 2}
   damageController: {fileID: 3064975936549512804}
+  type: 1
+  level: 0
   spawnOnStart: 0
 --- !u!50 &3676300435908501387
 Rigidbody2D:
