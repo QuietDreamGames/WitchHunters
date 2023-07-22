@@ -1,11 +1,14 @@
+using System;
+using Features.Activator;
 using Features.Enemies.Pools;
 using Features.ObjectPools.Core;
 using Features.ServiceLocators.Core;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Features.Enemies
 {
-    public class UnitTypeSpawnPoint : MonoBehaviour
+    public class UnitTypeSpawnPoint : MonoBehaviour, IActivator
     {
         [SerializeField] private UnitType type;
         [SerializeField] private Vector2Int levelRange;
@@ -30,10 +33,15 @@ namespace Features.Enemies
             
             if (spawnOnStart)
             {
-                Spawn();
+                Activate();
             }
         }
-        
+
+        public void OnDestroy()
+        {
+            Deactivate();
+        }
+
         private void Spawn()
         {
             var (min, max) = (levelRange.x, levelRange.y);
@@ -46,6 +54,22 @@ namespace Features.Enemies
             _unit.transform.position = transform.position;
             
             _unit.Spawn();
+        }
+
+        public void Activate()
+        {
+            Spawn();
+        }
+
+        public void Deactivate()
+        {
+            if (_unit != null)
+            {
+                if (_unit.IsEnabled)
+                {
+                    _unit.Despawn();
+                }
+            }
         }
     }
 }

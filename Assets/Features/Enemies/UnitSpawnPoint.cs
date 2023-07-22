@@ -1,11 +1,12 @@
 using System;
+using Features.Activator;
 using Features.ObjectPools.Core;
 using Features.ServiceLocators.Core;
 using UnityEngine;
 
 namespace Features.Enemies
 {
-    public class UnitSpawnPoint : MonoBehaviour
+    public class UnitSpawnPoint : MonoBehaviour, IActivator
     {
         [SerializeField] private UnitBehaviour unitPrefab;
         
@@ -27,8 +28,13 @@ namespace Features.Enemies
             
             if (spawnOnStart)
             {
-                Spawn();
+                Activate();
             }
+        }
+        
+        public void OnDestroy()
+        {
+            Deactivate();
         }
         
         private void Spawn()
@@ -40,6 +46,22 @@ namespace Features.Enemies
             _unit.transform.position = transform.position;
             
             _unit.Spawn();
+        }
+
+        public void Activate()
+        {
+            Spawn();
+        }
+
+        public void Deactivate()
+        {
+            if (_unit != null)
+            {
+                if (_unit.IsEnabled)
+                {
+                    _unit.Despawn();
+                }
+            }
         }
     }
 }

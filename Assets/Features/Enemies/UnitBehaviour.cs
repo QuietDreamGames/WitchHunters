@@ -38,6 +38,8 @@ namespace Features.Enemies
         
         public UnitType Type => type;
         public int Level => level;
+        
+        public bool IsEnabled => gameObject.activeSelf;
 
         private void Start()
         {
