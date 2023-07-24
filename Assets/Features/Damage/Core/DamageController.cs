@@ -30,21 +30,20 @@ namespace Features.Damage.Core
 
         public virtual void TakeDamage(float damage, Vector3 forceDirection, HitEffectType hitEffectType)
         {
-            var armor = _modifiersesController.GetValue(ModifierType.Armor, _baseModifiersContainer.GetBaseValue(ModifierType.Armor));
+            var armor = _modifiersesController.GetValue(ModifierType.Armor,
+                _baseModifiersContainer.GetBaseValue(ModifierType.Armor));
             var damageTaken = damage - armor;
 
-            if (damageTaken <= 0)
+            OnAnyHit?.Invoke(forceDirection, hitEffectType);
+
+            if (damageTaken <= 0) return;
+         
+            OnDamageHit?.Invoke(forceDirection, hitEffectType);
+            if (_healthComponent.TakeDamage(damageTaken) <= 0.01f)
             {
-                OnAnyHit?.Invoke(forceDirection, hitEffectType);
+                OnDeath?.Invoke(forceDirection);
             }
-            else
-            {
-                OnDamageHit?.Invoke(forceDirection, hitEffectType);
-                if (_healthComponent.TakeDamage(damageTaken) <= 0.01f)
-                {
-                    OnDeath?.Invoke(forceDirection);
-                }
-            }
+
         }
     }
 }

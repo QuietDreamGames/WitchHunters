@@ -1047,6 +1047,7 @@ GameObject:
   - component: {fileID: 1165283378}
   - component: {fileID: 1165283379}
   - component: {fileID: 1165283381}
+  - component: {fileID: 1165283382}
   m_Layer: 10
   m_Name: InquisitorCombatCharacter
   m_TagString: Untagged
@@ -1156,6 +1157,7 @@ MonoBehaviour:
   _damageController: {fileID: 1165283379}
   _meleeColliderController: {fileID: 1165283372}
   _passiveController: {fileID: 1165283377}
+  _knockbackController: {fileID: 1165283382}
   _shieldEffectController: {fileID: 1439272217}
   _secondComboAttackStartPercentage: 0.3
   _secondComboAttackEndPercentage: 0.9
@@ -1363,6 +1365,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   category: GamePlay
+--- !u!114 &1165283382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165283362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c3a785031a46b6a6290855cc049b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageController: {fileID: 1165283379}
 --- !u!1 &1248051942
 GameObject:
   m_ObjectHideFlags: 0

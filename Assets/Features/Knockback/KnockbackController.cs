@@ -1,13 +1,17 @@
-﻿using Features.Modifiers;
+﻿using Features.Damage.Core;
+using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.TimeSystems.Interfaces.Handlers;
+using Features.VFX.Core;
 using UnityEngine;
 
 namespace Features.Knockback
 {
-    public class KnockbackController : MonoBehaviour, IUpdateHandler
+    public class KnockbackController : MonoBehaviour, IFixedUpdateHandler
     {
+        [SerializeField] private DamageController _damageController;
+        
         private ModifiersContainer _modifiersContainer;
         private BaseModifiersContainer _baseModifiersContainer;
         
@@ -17,21 +21,17 @@ namespace Features.Knockback
         
         private Transform _knockingTransform;
 
-        public void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
+        public void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer,
+            Transform knockingTransform = null)
         {
             _modifiersContainer = modifiersContainer;
             _baseModifiersContainer = baseModifiersContainer;
-            _knockingTransform = transform;
-        }
-        
-        public void Initiate(Transform knockingTransform, ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
-        {
-            _modifiersContainer = modifiersContainer;
-            _baseModifiersContainer = baseModifiersContainer;
-            _knockingTransform = knockingTransform;
+            
+            _knockingTransform = knockingTransform == null ? transform : knockingTransform;
+            _damageController.OnAnyHit += OnHit;
         }
 
-        private void OnHit(Vector3 forceDirection)
+        private void OnHit(Vector3 forceDirection, HitEffectType hitEffectType)
         {
             if (forceDirection.magnitude < 0.1f) return;
             
@@ -43,7 +43,7 @@ namespace Features.Knockback
             _knockbackForce = forceDirection * knockbackForceMultiplier;
         }
         
-        public void OnUpdate(float deltaTime)
+        public void OnFixedUpdate(float deltaTime)
         {
             if (_knockbackTimer <= 0) return;
             

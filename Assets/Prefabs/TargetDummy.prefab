@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4189165868069970913}
   - component: {fileID: 1421633449479258794}
   - component: {fileID: 5870181706006065197}
+  - component: {fileID: 2371384479090487144}
   m_Layer: 10
   m_Name: TargetDummy
   m_TagString: Enemy
@@ -117,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseModifiersContainer: {fileID: 11400000, guid: fbc2f53e0f7fe814eb5dd034e5ae7919, type: 2}
   _damageController: {fileID: 4189165868069970917}
+  _knockbackController: {fileID: 2371384479090487144}
 --- !u!61 &4189165868069970913
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,6 +174,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   category: GamePlay
+--- !u!114 &2371384479090487144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4189165868069970905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c3a785031a46b6a6290855cc049b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageController: {fileID: 4189165868069970917}
 --- !u!1001 &4189165866320475404
 PrefabInstance:
   m_ObjectHideFlags: 0

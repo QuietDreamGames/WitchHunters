@@ -2,6 +2,7 @@
 using Features.Damage.Core;
 using Features.FiniteStateMachine;
 using Features.Health;
+using Features.Knockback;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
@@ -24,7 +25,8 @@ namespace Features.Character
         [SerializeField] protected CharacterDamageController _damageController;
         [SerializeField] protected MeleeColliderController _meleeColliderController;
         [SerializeField] protected APassiveController _passiveController;
-        
+        [SerializeField] protected KnockbackController _knockbackController;
+
         [SerializeField] protected ShieldEffectController _shieldEffectController;
         
         protected ModifiersContainer modifiersContainer;
@@ -38,6 +40,7 @@ namespace Features.Character
             modifiersContainer = new ModifiersContainer();
             healthComponent = new HealthComponent(modifiersContainer, _baseModifiersContainer);
             shieldHealthController = new ShieldHealthController(modifiersContainer, _baseModifiersContainer);
+            _knockbackController.Initiate(modifiersContainer, _baseModifiersContainer);
             
             _damageController.Initiate(modifiersContainer, _baseModifiersContainer, healthComponent, shieldHealthController);
 
