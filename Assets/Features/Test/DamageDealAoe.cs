@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Features.Damage.Interfaces;
+using Features.VFX.Core;
 using UnityEngine;
 
 namespace Features.Test
@@ -28,7 +29,7 @@ namespace Features.Test
                 var damageable = colliders[i].GetComponent<IDamageable>();
                 if (damageable == null) continue;
 
-                damageable.TakeDamage(_damage);
+                damageable.TakeDamage(_damage, Vector3.zero, HitEffectType.PhysicalAOE);
                 _collidersDamaged.Add(colliders[i]);
             }
         }

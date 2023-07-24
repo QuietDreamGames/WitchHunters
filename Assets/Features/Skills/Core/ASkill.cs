@@ -10,7 +10,7 @@ namespace Features.Skills.Core
         protected ModifiersContainer ModifiersContainer;
         protected BaseModifiersContainer BaseModifiersContainer;
         
-        public void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
+        public virtual void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
         {
             ModifiersContainer = modifiersContainer;
             BaseModifiersContainer = baseModifiersContainer;

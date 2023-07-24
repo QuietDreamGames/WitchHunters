@@ -4,6 +4,7 @@ using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
+using Features.VFX.Core;
 using UnityEngine;
 
 namespace Features.Damage.Implementations
@@ -22,7 +23,7 @@ namespace Features.Damage.Implementations
         {
             var damage = modifiersContainer.GetValue(ModifierType.UltimateDamage,
                 baseModifiersContainer.GetBaseValue(ModifierType.UltimateDamage));
-            damageable.TakeDamage(damage);
+            damageable.TakeDamage(damage, Vector3.zero, HitEffectType.FlameAOE);
         }
     }
 }
