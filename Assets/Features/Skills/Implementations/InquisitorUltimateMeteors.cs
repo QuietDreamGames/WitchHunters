@@ -1,4 +1,5 @@
 ﻿using Features.Damage.Implementations;
+using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.ObjectPools.Core;
@@ -15,7 +16,7 @@ namespace Features.Skills.Implementations
 
         private bool _isCasting;
         private int _meteorsCasted;
-        private int _meteorsToCast;
+        private float _meteorsToCast;
         private float _meteorSpawnInterval;
         private float _radius;
 
@@ -31,9 +32,12 @@ namespace Features.Skills.Implementations
         {
             _isCasting = true;
             _meteorsCasted = 0;
-            _meteorsToCast = 15;
-            _radius = 5f;
-            var duration = 4f;
+            _meteorsToCast = ModifiersContainer.GetValue(ModifierType.UltimateBurstsAmount,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateBurstsAmount));
+            _radius = ModifiersContainer.GetValue(ModifierType.UltimateRange,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateRange));
+            var duration = ModifiersContainer.GetValue(ModifierType.UltimateDuration,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateDuration));
             _meteorSpawnInterval = duration / (_meteorsToCast - 1);
             _timer = _meteorSpawnInterval;
         }

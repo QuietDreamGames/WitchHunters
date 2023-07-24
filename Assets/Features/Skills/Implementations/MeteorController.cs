@@ -57,9 +57,9 @@ namespace Features.Skills.Implementations
         {
             if (!_isUpdating) return;
             
-            // _meteorAnimator.Update(deltaTime);
-            // _explosionAnimator.Update(deltaTime);
-            // _ashAnimator.Update(deltaTime);
+            _meteorAnimator.Update(deltaTime);
+            _explosionAnimator.Update(deltaTime);
+            _ashAnimator.Update(deltaTime);
             
             _timer -= Time.deltaTime;
             switch (_timer)
