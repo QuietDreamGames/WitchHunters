@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Features.VFX
+namespace Features.VFX.Core
 {
     public class ShieldEffectController : MonoBehaviour
     {

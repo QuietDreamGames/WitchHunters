@@ -1,34 +1,42 @@
-﻿using UnityEngine;
+﻿using Features.Damage.Core;
+using Features.TimeSystems.Interfaces.Handlers;
+using UnityEngine;
 
-namespace Features.VFX
+namespace Features.VFX.Core
 {
-    public class HitEffectController : MonoBehaviour
+    public class HitEffectController : MonoBehaviour, IUpdateHandler
     {
+        [SerializeField] private DamageController _damageController;
         
         [SerializeField] private ParticleSystem _substanceHitParticleSystem;
-        [SerializeField] private ParticleSystem _crossHitParticleSystem;
-        
-        [SerializeField] private float _crossHitParticleRotationOffset;
-        
-        public void PlayHitEffect(Vector3 forceDirection)
+        [SerializeField] private HitEffectType _hitEffectType;
+
+        private bool _isPlaying;
+        private float _timePlaying;
+        private float _timer;
+
+        private void Start()
         {
-            // _hitParticleSystem.startRotation = Mathf.Atan2(forceDirection.y, forceDirection.x) * Mathf.Rad2Deg;
-            // main.startRotation = 
-            
-            var randomOffset = Random.Range(-_crossHitParticleRotationOffset, _crossHitParticleRotationOffset);
-            _crossHitParticleSystem.transform.rotation = Quaternion.Euler(0, 0,
-                (Mathf.Atan2(forceDirection.y, forceDirection.x) + randomOffset) * Mathf.Rad2Deg);
+            _damageController.OnDamageHit += PlayHitEffect;
+        }
+
+        public void PlayHitEffect(Vector3 forceDirection, HitEffectType hitEffectType)
+        {
+            if (hitEffectType != _hitEffectType) return;
+                
             _substanceHitParticleSystem.transform.rotation = Quaternion.Euler(0, 0,
                 Mathf.Atan2(forceDirection.y, forceDirection.x) * Mathf.Rad2Deg);
-            _crossHitParticleSystem.Play();
-            _substanceHitParticleSystem.Play();
+            _timePlaying = _substanceHitParticleSystem.main.duration;
+            _timer = _timePlaying;
+            _substanceHitParticleSystem.Simulate(0.0f, true, true);
         }
-        
-        public void PlayHitEffect()
+
+        public void OnUpdate(float deltaTime)
         {
-            // var randomOffset = Random.Range(-_crossHitParticleRotationOffset, _crossHitParticleRotationOffset);
-            // _crossHitParticleSystem.transform.rotation = Quaternion.Euler(0, 0, randomOffset);
-            // _crossHitParticleSystem.Play();
+            if (_timer <= 0) return;
+            
+            _timer -= deltaTime;
+            _substanceHitParticleSystem.Simulate(deltaTime, true, false);
         }
     }
 }
