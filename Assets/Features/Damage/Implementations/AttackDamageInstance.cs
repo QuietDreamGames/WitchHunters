@@ -4,6 +4,8 @@ using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
+using Features.VFX;
+using Features.VFX.Core;
 using UnityEngine;
 
 namespace Features.Damage.Implementations
@@ -27,7 +29,7 @@ namespace Features.Damage.Implementations
 
             var knockbackForce = knockbackDirection * modifiersContainer.GetValue(ModifierType.KnockbackForce,
                 baseModifiersContainer.GetBaseValue(ModifierType.KnockbackForce));
-            damageable.TakeDamage(damage, knockbackForce);
+            damageable.TakeDamage(damage, knockbackForce, HitEffectType.Physical);
         }
 
         

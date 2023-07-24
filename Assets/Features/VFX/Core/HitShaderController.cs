@@ -1,10 +1,14 @@
-﻿using Features.TimeSystems.Interfaces.Handlers;
+﻿using Features.Damage.Core;
+using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 
-namespace Features.VFX
+namespace Features.VFX.Core
 {
     public class HitShaderController : MonoBehaviour, IUpdateHandler
     {
+        [SerializeField] private DamageController _damageController;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        
         public float blendSpeed = 5f; // Controls the speed of color blending
 
         private Material _material;
@@ -15,10 +19,11 @@ namespace Features.VFX
 
         private void Start()
         {
-            _material = GetComponent<SpriteRenderer>().material;
+            _material = _spriteRenderer.material;
+            _damageController.OnDamageHit += PlayHitEffect;
         }
 
-        public void PlayHitEffect()
+        public void PlayHitEffect(Vector3 forceDirection, HitEffectType hitEffectType)
         {
             _isHit = true;
             _currentFlashAmount = 1f;

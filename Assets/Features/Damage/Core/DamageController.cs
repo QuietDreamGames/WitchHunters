@@ -1,26 +1,24 @@
-﻿using Features.Damage.Interfaces;
+﻿using System;
+using Features.Damage.Interfaces;
 using Features.Health;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.VFX;
+using Features.VFX.Core;
 using UnityEngine;
 
 namespace Features.Damage.Core
 {
     public class DamageController : MonoBehaviour, IDamageable
     {
-        [SerializeField] private HitEffectController _hitEffectController;
-        [SerializeField] private HitShaderController _hitShaderController;
-
         private HealthComponent _healthComponent;
         private ModifiersContainer _modifiersesController;
         private BaseModifiersContainer _baseModifiersContainer;
 
-
-        private Vector3 _knockbackForce;
-        private float _knockbackDuration;
-        private float _knockbackTimer;
+        public Action<Vector3, HitEffectType> OnAnyHit;
+        public Action<Vector3, HitEffectType> OnDamageHit;
+        public Action<Vector3> OnDeath;
 
         public void Initiate(ModifiersContainer modifiersController, BaseModifiersContainer baseModifiersContainer,
             HealthComponent healthComponent)
@@ -30,36 +28,21 @@ namespace Features.Damage.Core
             _baseModifiersContainer = baseModifiersContainer;
         }
 
-        public virtual void TakeDamage(float damage, Vector3 forceDirection)
+        public virtual void TakeDamage(float damage, Vector3 forceDirection, HitEffectType hitEffectType)
         {
             var armor = _modifiersesController.GetValue(ModifierType.Armor, _baseModifiersContainer.GetBaseValue(ModifierType.Armor));
             var damageTaken = damage - armor;
-            if (damageTaken <= 0) return;
-            
-            _healthComponent.TakeDamage(damageTaken);
-            _hitShaderController.PlayHitEffect();
-            
-            if (forceDirection.magnitude < 0.1f) return;
-            
-            _knockbackForce = forceDirection * (_modifiersesController.GetValue(ModifierType.KnockbackResistance,
-                _baseModifiersContainer.GetBaseValue(ModifierType.KnockbackResistance)) * 3);
-            _knockbackDuration = 0.1f;
-            _knockbackTimer = _knockbackDuration;
-            _hitEffectController.PlayHitEffect(forceDirection);
-            
-        }
-        
-        public void OnUpdate(float deltaTime)
-        {
-            if (_knockbackTimer > 0)
+
+            if (damageTaken <= 0)
             {
-                _knockbackTimer -= deltaTime;
-                
-                transform.Translate(_knockbackForce * deltaTime);
-                
-                if (_knockbackTimer <= 0)
+                OnAnyHit?.Invoke(forceDirection, hitEffectType);
+            }
+            else
+            {
+                OnDamageHit?.Invoke(forceDirection, hitEffectType);
+                if (_healthComponent.TakeDamage(damageTaken) <= 0.01f)
                 {
-                    _knockbackForce = Vector3.zero;
+                    OnDeath?.Invoke(forceDirection);
                 }
             }
         }

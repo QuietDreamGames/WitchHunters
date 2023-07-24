@@ -7,6 +7,7 @@ using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
 using Features.TimeSystems.Interfaces.Handlers;
 using Features.VFX;
+using Features.VFX.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -67,7 +68,6 @@ namespace Features.Character
             _passiveController.OnUpdate(deltaTime);
             _shieldEffectController.OnUpdate(deltaTime);
             shieldHealthController.OnUpdate(deltaTime);
-            _damageController.OnUpdate(deltaTime);
         }
 
         public void OnFixedUpdate(float deltaTime)

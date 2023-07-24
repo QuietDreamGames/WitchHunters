@@ -1,10 +1,6 @@
-﻿using System;
-using Features.Damage.Interfaces;
-using Features.Modifiers;
+﻿using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
-using UnityEngine;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Features.Health
 {
@@ -26,17 +22,16 @@ namespace Features.Health
             _currentHealth = _maxHealth;
         }
 
-        public void TakeDamage(float damage)
+        public float TakeDamage(float damage)
         {
             _currentHealth -= damage;
 
-            // Debug.Log(damage);
-            
             if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
-                // Debug.Log("Dead");
             }
+            
+            return _currentHealth;
         }
 
         private void OnModifiersChanged(ModifierType type)
