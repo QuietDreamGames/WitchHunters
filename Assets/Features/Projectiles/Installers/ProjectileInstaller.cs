@@ -3,9 +3,8 @@ using Features.ObjectPools.Core;
 using Features.ServiceLocators.Core;
 using Features.ServiceLocators.Core.Service;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Features.Projectiles
+namespace Features.Projectiles.Installers
 {
     public class ProjectileInstaller : ServiceInstaller
     {

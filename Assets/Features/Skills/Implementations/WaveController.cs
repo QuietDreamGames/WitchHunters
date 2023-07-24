@@ -35,7 +35,6 @@ namespace Features.Skills.Implementations
             
             transform.localScale = new Vector3(_currentSize, _currentSize, 1);
             transform.localPosition = new Vector3(0, 0, 0);
-            gameObject.SetActive(true);
             
             transform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, _direction, Vector3.forward));
             _animator.SetTrigger(Cast1);
@@ -53,7 +52,6 @@ namespace Features.Skills.Implementations
             _timer += deltaTime;
             if (_timer > _lifetime)
             {
-                gameObject.SetActive(false);
                 _damageProcessor.Stop();
                 _isActive = false;
             }
