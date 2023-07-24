@@ -4,6 +4,7 @@ using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
 using Features.VFX;
+using Features.VFX.Core;
 using UnityEngine.InputSystem;
 
 namespace Features.Character.States.Base

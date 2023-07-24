@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Features.Test
 {
-    public class DummyController : MonoBehaviour, IUpdateHandler
+    public class DummyController : MonoBehaviour
     {
         [SerializeField] protected BaseModifiersContainer _baseModifiersContainer;
         [SerializeField] protected DamageController _damageController;
@@ -21,12 +21,6 @@ namespace Features.Test
             _modifiersContainer = new ModifiersContainer();
             _healthComponent = new HealthComponent(_modifiersContainer, _baseModifiersContainer);
             _damageController.Initiate(_modifiersContainer, _baseModifiersContainer, _healthComponent);
-        }
-
-
-        public void OnUpdate(float deltaTime)
-        {
-            _damageController.OnUpdate(deltaTime);
         }
     }
 }
