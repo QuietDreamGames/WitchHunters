@@ -64,7 +64,7 @@ namespace Features.Skills.Implementations
             var damageInstance = new InqSolarUltDamageInstance(hittableLayerMask, obstacleLayerMask,
                 ModifiersContainer, BaseModifiersContainer, null, transform);
             
-            meteor.Cast(ModifiersContainer, BaseModifiersContainer, damageInstance);
+            meteor.Cast(damageInstance);
             
             if (_meteorsCasted >= _meteorsToCast)
             {

@@ -29,18 +29,13 @@ namespace Features.Skills.Implementations
         public GameObjectPool<MeteorController> Pool { get; set; } = null;
         public GameObject Prefab {get; set; } = null;
         
-        private ModifiersContainer _modifiersContainer;
-        private BaseModifiersContainer _baseModifiersContainer;
         private AColliderDamageProcessor _damageProcessor;
         
         private static readonly int Start = Animator.StringToHash("Start");
         private static readonly int Stop = Animator.StringToHash("Stop");
 
-        public void Cast(ModifiersContainer modifiersContainer,
-            BaseModifiersContainer baseModifiersContainer, AColliderDamageProcessor damageProcessor)
+        public void Cast(AColliderDamageProcessor damageProcessor)
         {
-            _modifiersContainer = modifiersContainer;
-            _baseModifiersContainer = baseModifiersContainer;
             _damageProcessor = damageProcessor;
             _damageProcessor.SetCollider(_hitboxCollider);
             
