@@ -1,8 +1,10 @@
-﻿using Features.Health;
+﻿using Features.Death;
+using Features.FiniteStateMachine;
+using Features.Health;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.ServiceLocators.Core;
 using Features.Skills.Interfaces;
-using Features.VFX;
 using Features.VFX.Core;
 using UnityEngine;
 
@@ -13,12 +15,14 @@ namespace Features.Damage.Core
         [SerializeField] private ShieldEffectController _shieldEffectController;
         
         private IShieldHealthController _shieldHealthController;
+        private StateMachine _stateMachine;
         
         public void Initiate(ModifiersContainer modifiersController, BaseModifiersContainer baseModifiersContainer,
-            HealthComponent healthComponent, IShieldHealthController shieldHealthController)
+            HealthComponent healthComponent, StateMachine stateMachine, IShieldHealthController shieldHealthController)
         {
-            _shieldHealthController = shieldHealthController;
             base.Initiate(modifiersController, baseModifiersContainer, healthComponent);
+            _shieldHealthController = shieldHealthController;
+            _stateMachine = stateMachine;
         }
         
         public override void TakeDamage(float damage, Vector3 forceDirection, HitEffectType hitEffectType)
@@ -30,6 +34,28 @@ namespace Features.Damage.Core
             }
 
             base.TakeDamage(damageAfterShield, forceDirection, hitEffectType);
+        }
+        
+        public override void Restart()
+        {
+            base.Restart();
+            _stateMachine.ChangeState("IdleCombatState");
+        }
+        
+        protected override void OnDeathEvent()
+        {
+            base.OnDeathEvent();
+            _stateMachine.ChangeState("DeathState");
+        }
+
+        private void OnEnable()
+        {
+            ServiceLocator.Resolve<DeathEventProcessor>().SubscribeCharacterDeathEvent(this);
+        }
+        
+        private void OnDisable()
+        {
+            ServiceLocator.Resolve<DeathEventProcessor>().UnsubscribeCharacterDeathEvent(this);
         }
     }
 }

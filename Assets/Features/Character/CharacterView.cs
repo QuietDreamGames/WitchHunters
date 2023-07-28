@@ -17,6 +17,8 @@ namespace Features.Character
         private static readonly int Secondary = Animator.StringToHash("Secondary");
 
         private static readonly int Shield = Animator.StringToHash("Shield");
+
+        private static readonly int Death = Animator.StringToHash("Death");
         // private static readonly int AttackColliderActive = Animator.StringToHash("AttackCollider.Active");
         // private static readonly int AttackComboWindowOpen = Animator.StringToHash("AttackComboWindow.Open");
 
@@ -112,6 +114,11 @@ namespace Features.Character
         public void PlaySecondaryAnimation()
         {
             _animator.SetTrigger(Secondary);
+        }
+        
+        public void PlayDeathAnimation()
+        {
+            _animator.SetTrigger(Death);
         }
 
         public void SetShieldAnimation(bool isShieldActive)
