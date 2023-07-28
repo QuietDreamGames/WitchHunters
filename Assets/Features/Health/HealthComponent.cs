@@ -49,5 +49,10 @@ namespace Features.Health
             var healthPercentage = _currentHealth / oldMaxHealth;
             _currentHealth = _maxHealth * healthPercentage;
         }
+        
+        public void Restart()
+        {
+            _currentHealth = _maxHealth;
+        }
     }
 }

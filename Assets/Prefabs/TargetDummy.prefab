@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1421633449479258794}
   - component: {fileID: 5870181706006065197}
   - component: {fileID: 2371384479090487144}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: TargetDummy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -242,6 +242,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrossHitEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 2653236928716163309, guid: 9a706998ea3b22442a96c6735df81467, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a706998ea3b22442a96c6735df81467, type: 3}
 --- !u!4 &2229520155735129574 stripped
@@ -307,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 3469090690835894829, guid: bdd084f9547eb0342990df8ab42687a1, type: 3}
       propertyPath: m_Name
       value: BloodHitEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469090690835894829, guid: bdd084f9547eb0342990df8ab42687a1, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd084f9547eb0342990df8ab42687a1, type: 3}

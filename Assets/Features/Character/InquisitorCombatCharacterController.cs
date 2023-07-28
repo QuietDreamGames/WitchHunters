@@ -27,6 +27,7 @@ namespace Features.Character
             stateMachine.AddState("SecondarySkillState", new SecondarySkillState(stateMachine));
             stateMachine.AddState("UltimateSkillState", new UltimateSkillState(stateMachine));
             stateMachine.AddState("ShieldState", new ShieldState(stateMachine));
+            stateMachine.AddState("DeathState", new DeathState(stateMachine));
             
             stateMachine.ChangeState("IdleCombatState");
             
