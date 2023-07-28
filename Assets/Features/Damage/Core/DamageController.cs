@@ -1,61 +1,114 @@
-﻿using Features.Damage.Interfaces;
-using Features.Effects;
+﻿using System;
+using Features.Damage.Interfaces;
 using Features.Health;
 using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
+using Features.TimeSystems.Interfaces.Handlers;
+using Features.VFX;
+using Features.VFX.Core;
 using UnityEngine;
 
 namespace Features.Damage.Core
 {
     public class DamageController : MonoBehaviour, IDamageable
     {
-        [SerializeField] private HealthComponent _healthComponent;
-        [SerializeField] private ModifiersController _modifiersController;
         [SerializeField] private HitEffectController _hitEffectController;
         [SerializeField] private HitShaderController _hitShaderController;
         
+        [Header("Origin")]
+        [SerializeField] private Transform _origin;
+
+        [Header("DEBUG")] 
+        [SerializeField] private bool _activeOnStart;
+
+        private HealthComponent _healthComponent;
+        private ModifiersContainer _modifiersesController;
+        private BaseModifiersContainer _baseModifiersContainer;
+
+
         private Vector3 _knockbackForce;
         private float _knockbackDuration;
         private float _knockbackTimer;
+        
+        public Action<Vector3, HitEffectType> OnAnyHit;
+        public Action<Vector3, HitEffectType> OnDamageHit;
+        public Action OnDeath;
+        
+        private bool _isDead;
 
-        public void TakeDamage(float damage)
+        private bool _isActive;
+
+        public void Initiate(ModifiersContainer modifiersesController, BaseModifiersContainer baseModifiersContainer,
+            HealthComponent healthComponent)
         {
-            var armor = _modifiersController.CalculateModifiedValue(ModifierType.Armor);
-            var damageTaken = damage - armor;
-            if (damageTaken > 0)
+            _modifiersesController = modifiersesController;
+            _healthComponent = healthComponent;
+            _baseModifiersContainer = baseModifiersContainer;
+            
+            if (_origin == null)
             {
-                _healthComponent.TakeDamage(damageTaken);
-                _hitEffectController.PlayHitEffect();
-                _hitShaderController.PlayHitEffect();
+                _origin = transform;
             }
         }
 
-        public void TakeDamage(float damage, Vector3 forceDirection)
+        public void SetActive(bool isActive)
         {
-            var armor = _modifiersController.CalculateModifiedValue(ModifierType.Armor);
-            var damageTaken = damage - armor;
-            if (damageTaken > 0)
-            {
-                _healthComponent.TakeDamage(damageTaken);
-                _knockbackForce = forceDirection * (_modifiersController.CalculateModifiedValue(ModifierType.KnockbackResistance) * 3);
-                _knockbackDuration = 0.1f;
-                _knockbackTimer = _knockbackDuration;
-                _hitEffectController.PlayHitEffect(forceDirection);
-                _hitShaderController.PlayHitEffect();
-            }
+            _isActive = isActive;
         }
         
-        private void Update()
+        public virtual void Restart()
         {
-            if (_knockbackTimer > 0)
+            _isDead = false;
+            _healthComponent.Restart();
+        }
+
+        public virtual void TakeDamage(float damage, Vector3 forceDirection, HitEffectType hitEffectType)
+        {
+            if (!_isActive)
             {
-                _knockbackTimer -= Time.deltaTime;
-                
-                transform.Translate(_knockbackForce * Time.deltaTime);
-                
-                if (_knockbackTimer <= 0)
-                {
-                    _knockbackForce = Vector3.zero;
-                }
+                return;
+            }
+            
+            if (_isDead) return;
+            
+            var armor = _modifiersesController.GetValue(ModifierType.Armor,
+                _baseModifiersContainer.GetBaseValue(ModifierType.Armor));
+            var damageTaken = damage - armor;
+
+            OnAnyHit?.Invoke(forceDirection, hitEffectType);
+
+            if (damageTaken <= 0) return;
+         
+            OnDamageHit?.Invoke(forceDirection, hitEffectType);
+
+            var healthAfterDamage = _healthComponent.TakeDamage(damageTaken);
+            
+            if (healthAfterDamage <= 0.01f)
+            {
+                OnDeathEvent();
+                OnDeath?.Invoke();
+            }
+        }
+
+        protected virtual void OnDeathEvent()
+        {
+            _isDead = true;
+        }
+        
+        private void Start()
+        {
+            if (_activeOnStart)
+            {
+                SetActive(true);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (_activeOnStart)
+            {
+                SetActive(false);
             }
         }
     }

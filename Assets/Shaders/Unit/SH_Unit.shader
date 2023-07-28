@@ -3,8 +3,11 @@ Shader "Unlit/SH_Unit"
     Properties
     {
         _MainTex ("Sprite Texture", 2D) = "white" {}
-        _Color("Color", Color) = (1,1,1,1)
-        _ColorProgress("Color Progress", float) = 0
+        
+        _Alpha("Alpha", float) = 1
+        
+        _HitTint("Hit Tint", Color) = (1,1,1,1)
+        _HitProgress("Hit Progress", float) = 0
     }
 
     SubShader
@@ -46,9 +49,10 @@ Shader "Unlit/SH_Unit"
 
             sampler2D _MainTex;
 
-            fixed4 _Color;
-            fixed _ColorProgress;
+            half _Alpha;
 
+            fixed4 _HitTint;
+            half _HitProgress;
 
             v2f vert(appdata_t IN)
             {
@@ -61,13 +65,22 @@ Shader "Unlit/SH_Unit"
                 return OUT;
             }
 
+            float4 GetTint(float4 source, float4 tint, half progress)
+            {
+                source.rgb = lerp(source.rgb, tint.rgb, progress);
+                return source;
+            }
+
             float4 frag(v2f IN) : SV_Target
             {
-                float4 spriteColor = tex2D(_MainTex, IN.texcoord);
-                spriteColor.rgb *= spriteColor.a * IN.color.a;
-                spriteColor *= IN.color;
+                float4 color = tex2D(_MainTex, IN.texcoord) * IN.color;
+                color.a *= _Alpha;
+                
+                const half alpha = color.a;
 
-                return lerp(spriteColor, _Color, _ColorProgress);
+                color = GetTint(color, _HitTint, _HitProgress);
+
+                return color * alpha;
             }
             ENDCG
         }

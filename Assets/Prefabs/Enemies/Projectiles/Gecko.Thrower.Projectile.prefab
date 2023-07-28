@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6891461588626603133}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4367382039650728}
   - component: {fileID: 6768875590195156127}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 1688159787845374301}
   - component: {fileID: 4049567905777774729}
   - component: {fileID: 218288301172967421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gecko.Thrower.Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,10 +167,10 @@ MonoBehaviour:
   collider: {fileID: 4270297695169169528}
   damageableMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 512
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2048
   speed: 10
   damage: 1
   lifetime: 5
@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3538786214537128181}
   - component: {fileID: 4270297695169169528}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

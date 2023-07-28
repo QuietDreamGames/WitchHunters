@@ -15,9 +15,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - Player
+  - Player 
   - Enemy
+  - Obstacle
+  - Hittable
   - 
   - 
   - 
@@ -37,7 +38,6 @@ TagManager:
   - 
   - 
   - 
-  - Ignore
   m_SortingLayers:
   - name: Default
     uniqueID: 0

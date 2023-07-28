@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Features.Damage.Interfaces;
+using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
 using UnityEngine;
 
 namespace Features.Enemies.Extensions
@@ -12,7 +14,10 @@ namespace Features.Enemies.Extensions
         private readonly List<Transform> _cachedTargets = new(10);
         private readonly RaycastHit2D[] raycasts = new RaycastHit2D[10];
         
-        public void DealDamage(float damage, Transform origin, LayerMask mask)
+        public float Damage { get; set; }
+        public float KnockbackForce { get; set; }
+
+        public void DealDamage(Transform origin, LayerMask mask)
         {
             for (var i = 0; i < colliders.Length; i++)
             {
@@ -47,7 +52,8 @@ namespace Features.Enemies.Extensions
                     }
                     
                     var direction = target.position - origin.position;
-                    damageable.TakeDamage(damage, direction);
+                    direction = direction.normalized * KnockbackForce;
+                    damageable.TakeDamage(Damage, direction);
                     
                     if (!_cachedTargets.Contains(target))
                     {

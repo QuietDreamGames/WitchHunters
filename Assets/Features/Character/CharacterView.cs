@@ -1,9 +1,10 @@
 ﻿using System;
+using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 
 namespace Features.Character
 {
-    public class CharacterView : MonoBehaviour
+    public class CharacterView : MonoBehaviour, IUpdateHandler
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Animator _animator;
@@ -14,6 +15,10 @@ namespace Features.Character
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int Ultimate = Animator.StringToHash("Ultimate");
         private static readonly int Secondary = Animator.StringToHash("Secondary");
+
+        private static readonly int Shield = Animator.StringToHash("Shield");
+
+        private static readonly int Death = Animator.StringToHash("Death");
         // private static readonly int AttackColliderActive = Animator.StringToHash("AttackCollider.Active");
         // private static readonly int AttackComboWindowOpen = Animator.StringToHash("AttackComboWindow.Open");
 
@@ -93,6 +98,14 @@ namespace Features.Character
             return !isJustTriggered && isAnimCompl;
         }
         
+        public bool IsSecondaryAnimationComplete()
+        {
+            bool isAnimCompl = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
+            bool isJustTriggered = _animator.GetBool(Secondary);
+
+            return !isJustTriggered && isAnimCompl;
+        }
+        
         public void PlayUltimateAnimation()
         {
             _animator.SetTrigger(Ultimate);
@@ -101,6 +114,16 @@ namespace Features.Character
         public void PlaySecondaryAnimation()
         {
             _animator.SetTrigger(Secondary);
+        }
+        
+        public void PlayDeathAnimation()
+        {
+            _animator.SetTrigger(Death);
+        }
+
+        public void SetShieldAnimation(bool isShieldActive)
+        {
+            _animator.SetBool(Shield, isShieldActive);
         }
 
         // public bool IsAttackColliderActive()
@@ -112,5 +135,9 @@ namespace Features.Character
         // {
         //     return _animator.GetFloat(AttackComboWindowOpen) > 0.5f;
         // }
+        public void OnUpdate(float deltaTime)
+        {
+            _animator.Update(deltaTime);
+        }
     }
 }

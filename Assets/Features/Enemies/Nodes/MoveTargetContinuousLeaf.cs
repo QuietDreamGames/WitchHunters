@@ -1,8 +1,8 @@
 using Features.BTrees.Core;
 using Features.BTrees.Interfaces;
 using Features.Enemies.Extensions;
+using Features.Enemies.Steering;
 using Features.TimeSystems.Interfaces.Handlers;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Features.Enemies.Nodes
@@ -12,19 +12,21 @@ namespace Features.Enemies.Nodes
         [Header("Dependencies")] 
         [SerializeField] private InTargetBoundsLeaf targetBounds;
  
-        private new Rigidbody2D rigidbody2D;
-        private UnitConfig unitConfig;
-        private TargetCollection targetCollection;
+        private Rigidbody2D _rigidbody2D;
+        private UnitConfig _unitConfig;
+        private ContextSteering _contextSteering;
+        private TargetCollection _targetCollection;
 
-        private Transform currentTarget;
+        private Transform _currentTarget;
         
         public override void Construct(IBTreeMachine stateMachine)
         {
             base.Construct(stateMachine);
             
-            rigidbody2D = stateMachine.GetExtension<Rigidbody2D>();
-            unitConfig = stateMachine.GetExtension<UnitConfig>();
-            targetCollection = stateMachine.GetExtension<TargetCollection>();
+            _rigidbody2D = stateMachine.GetExtension<Rigidbody2D>();
+            _unitConfig = stateMachine.GetExtension<UnitConfig>();
+            _contextSteering = stateMachine.GetExtension<ContextSteering>();
+            _targetCollection = stateMachine.GetExtension<TargetCollection>();
         }
                                     
         protected override void OnEnter()
@@ -34,13 +36,13 @@ namespace Features.Enemies.Nodes
                             
         protected override void OnExit()
         {
-            rigidbody2D.velocity = Vector2.zero;
+            _rigidbody2D.velocity = Vector2.zero;
         }
                             
         protected override Status OnUpdate(float deltaTime)
         {
-            currentTarget = targetCollection.GetClosestTarget();
-            if (currentTarget == null)
+            _currentTarget = _targetCollection.GetClosestTarget();
+            if (_currentTarget == null)
             {
                 return Status.Failure;
             }
@@ -55,15 +57,23 @@ namespace Features.Enemies.Nodes
                 return;
             }
             
-            float3 origin = rigidbody2D.transform.position;
-            float3 target = targetBounds == null 
-                ? currentTarget.position 
+            var origin = _rigidbody2D.position;
+            Vector2 target = targetBounds == null 
+                ? _currentTarget.position 
                 : targetBounds.GetClosestPoint(origin);
             
-            var direction = math.normalize(target - origin);
-            var velocity = direction * unitConfig.BaseSpeed * deltaTime;
+            var direction = target - origin;
+            direction.Normalize();
             
-            rigidbody2D.velocity = velocity.xy;
+            if (!_contextSteering.IsDangerDirection(direction))
+            {
+                _contextSteering.SetInterest(direction);
+            }
+
+            var steering = _contextSteering.GetSteering();
+            
+            var velocity = steering * (_unitConfig.BaseSpeed * deltaTime);
+            _rigidbody2D.velocity = velocity;
         }
     }
 }

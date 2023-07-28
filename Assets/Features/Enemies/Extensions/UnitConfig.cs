@@ -1,3 +1,4 @@
+using Features.Modifiers.SOLID.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -5,6 +6,7 @@ namespace Features.Enemies.Extensions
 {
     public class UnitConfig : MonoBehaviour
     {
+        [Space]
         [SerializeField] private string horizontalMoveParam = "Horizontal";
         [SerializeField] private string verticalMoveParam = "Vertical";
         
@@ -19,8 +21,10 @@ namespace Features.Enemies.Extensions
         [SerializeField] private float baseDamage;
         
         
+        private readonly ModifiersContainer _modifiersController = new();
         
         
+        public ModifiersContainer ModifiersController => _modifiersController;
         
         public string HorizontalMoveParam => horizontalMoveParam;
         public string VerticalMoveParam => verticalMoveParam;
