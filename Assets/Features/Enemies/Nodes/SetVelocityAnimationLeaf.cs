@@ -7,15 +7,15 @@ namespace Features.Enemies.Nodes
 {
     public class SetVelocityAnimationLeaf : LeafNode
     {
-        private new Rigidbody2D rigidbody2D;
-        private UnitView unitView;
+        private Rigidbody2D _rigidbody2D;
+        private UnitView _unitView;
 
         public override void Construct(IBTreeMachine stateMachine)
         {
             base.Construct(stateMachine);
             
-            rigidbody2D = stateMachine.GetExtension<Rigidbody2D>();
-            unitView = stateMachine.GetExtension<UnitView>();
+            _rigidbody2D = stateMachine.GetExtension<Rigidbody2D>();
+            _unitView = stateMachine.GetExtension<UnitView>();
         }
                                     
         protected override void OnEnter()
@@ -25,13 +25,13 @@ namespace Features.Enemies.Nodes
                             
         protected override void OnExit()
         {
-            unitView.SetVelocity(Vector2.zero);
+            _unitView.SetVelocity(Vector2.zero);
         }
                             
         protected override Status OnUpdate(float deltaTime)
         {
-            var velocity = rigidbody2D.velocity;
-            unitView.SetVelocity(velocity);
+            var velocity = _rigidbody2D.velocity;
+            _unitView.SetVelocity(velocity);
 
             return Status.Running;
         }

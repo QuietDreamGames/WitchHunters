@@ -765,14 +765,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2853194748745569793}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 216706194541200502}
+  - {fileID: 6839389622117136766}
   - {fileID: 5511592758180755300}
   - {fileID: 4679186179740290269}
-  - {fileID: 6839389622117136766}
+  - {fileID: 216706194541200502}
   m_Father: {fileID: 2603634300447566530}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -796,6 +796,7 @@ MonoBehaviour:
   - {fileID: 3676300435908501387}
   - {fileID: 3081768816776100693}
   - {fileID: 7780795493464911315}
+  - {fileID: 4086454833064489305}
   - {fileID: 577447247674719655}
   - {fileID: 4514908470433413549}
 --- !u!1 &2975971997781320627
@@ -831,6 +832,7 @@ Transform:
   - {fileID: 7215527046853375732}
   - {fileID: 4187784168470373310}
   - {fileID: 7063212197056097962}
+  - {fileID: 2242824128435484758}
   m_Father: {fileID: 2603634300447566530}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -850,6 +852,31 @@ MonoBehaviour:
   renderer: {fileID: 4550246626803943674}
   animator: {fileID: 7781358326257750154}
   config: {fileID: 3081768816776100693}
+  faceDirectionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  faceDirectionTime: 0.1
 --- !u!1 &4724609118378077621
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,8 +955,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1580308190467799184}
   - {fileID: 9140250603829269021}
+  - {fileID: 1580308190467799184}
   m_Father: {fileID: 2711521453799629061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1028,7 +1055,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.25}
@@ -1294,14 +1321,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5941294641897714233}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1312,7 +1339,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &7781358326257750154
 Animator:
   serializedVersion: 5
@@ -1541,7 +1568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStatus: 0
   started: 0
-  offset: {x: 1, y: 0, z: 0}
+  offset: {x: 1, y: 0.25, z: 0}
   size: {x: 1, y: 1.25, z: 0}
   debugColor: {r: 1, g: 0.008803836, b: 0, a: 1}
 --- !u!1 &7110145155721650132
@@ -2014,3 +2041,64 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &3463998758104619415
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8376973335997262105}
+    m_Modifications:
+    - target: {fileID: 3400925997865509313, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3400925997865509313, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3400925997865509313, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3400925997865509313, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8793407063571106361, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+      propertyPath: m_Name
+      value: ContextSteering
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884604052805803038, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+      propertyPath: rigidbody2D
+      value: 
+      objectReference: {fileID: 3676300435908501387}
+    - target: {fileID: 9169112404914625448, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+      propertyPath: unitConfig
+      value: 
+      objectReference: {fileID: 3081768816776100693}
+    - target: {fileID: 9169112404914625448, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+      propertyPath: rigidbody2D
+      value: 
+      objectReference: {fileID: 3676300435908501387}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+--- !u!4 &2242824128435484758 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3400925997865509313, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+  m_PrefabInstance: {fileID: 3463998758104619415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4086454833064489305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 622791429898692814, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
+  m_PrefabInstance: {fileID: 3463998758104619415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67923ad6553db934d858f0de11fb7cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

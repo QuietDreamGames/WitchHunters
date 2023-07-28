@@ -1,20 +1,33 @@
 using System;
+using System.Collections;
+using Features.TimeSystems.Interfaces.Handlers;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Features.Enemies.Extensions
 {
-    public class UnitView : MonoBehaviour
+    public class UnitView : MonoBehaviour,IUpdateHandler
     {
+        [Header("Face Parameters")]
+        [SerializeField] private AnimationCurve faceDirectionCurve;
+        [SerializeField] private float faceDirectionTime = .125f;
+        
+        [Header("Dependencies")]
         [SerializeField] private Transform view;
         
         [SerializeField] private Renderer renderer;
         [SerializeField] private Animator animator;
 
         [SerializeField] private UnitConfig config;
-
-        private int facingDirection;
+        
+        private readonly WaitForEndOfFrame _waitForEndOfFrame = new();
+        
+        private Coroutine _faceDirectionCoroutine;
+        
+        private int _facingDirection;
+        
+        private float _deltaTime;
 
         public Action OnCompleteAnimation;
         public Action<string> OnEvent; 
@@ -29,13 +42,17 @@ namespace Features.Enemies.Extensions
             if (direction != 0)
             {
                 var directionSign = direction > 0 ? 1 : -1;
-                if (directionSign != facingDirection)
+                if (directionSign != _facingDirection)
                 {
-                    facingDirection = directionSign;
+                    _facingDirection = directionSign;
                     
-                    var scale = view.localScale;
-                    scale.x = math.abs(scale.x) * facingDirection;
-                    view.localScale = scale;
+                    if (_faceDirectionCoroutine != null)
+                    {
+                        StopCoroutine(_faceDirectionCoroutine);
+                        _faceDirectionCoroutine = null;
+                    }
+                    
+                    _faceDirectionCoroutine = StartCoroutine(SetFacingDirectionCoroutine(directionSign > 0));
                 }
             }
         }
@@ -72,6 +89,33 @@ namespace Features.Enemies.Extensions
         {
             OnEvent?.Invoke(eventName);
             OnEvent = null;
+        }
+
+        public void OnUpdate(float deltaTime)
+        {
+            _deltaTime = deltaTime;
+        }
+        
+        private IEnumerator SetFacingDirectionCoroutine(bool right)
+        {
+            var currentTime = 0f;
+            var localEulerAngles = view.localEulerAngles;
+            var currentAngle = localEulerAngles.y;
+            var finalAngle = right ? 0 : 180;
+            var deltaAngle = finalAngle - currentAngle;
+
+            while (currentTime < faceDirectionTime)
+            {
+                currentTime += _deltaTime;
+                var t = currentTime / faceDirectionTime;
+                var progress = faceDirectionCurve.Evaluate(t);
+                localEulerAngles.y = currentAngle + deltaAngle * progress;
+                view.localEulerAngles = localEulerAngles;
+                
+                yield return _waitForEndOfFrame;
+            }
+
+            _faceDirectionCoroutine = null;
         }
     }
 }
