@@ -5,6 +5,7 @@ using Features.Health;
 using Features.Knockback;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.ServiceLocators.Core;
 using Features.Skills.Core;
 using Features.TimeSystems.Interfaces.Handlers;
 using Features.VFX;
@@ -18,7 +19,7 @@ namespace Features.Character
     {
         [SerializeField] protected Collider2D _attackCollider;
 
-        [SerializeField] protected PlayerInput _playerInput;
+        
         [SerializeField] protected CharacterView _characterView;
         [SerializeField] protected BaseModifiersContainer _baseModifiersContainer;
         [SerializeField] protected SkillsController _skillsController;
@@ -33,9 +34,11 @@ namespace Features.Character
         protected StateMachine stateMachine;
         protected HealthComponent healthComponent;
         protected ShieldHealthController shieldHealthController;
+        protected PlayerInput _playerInput;
         
-        protected virtual void Start()
+        public virtual void Initiate()
         {
+            _playerInput = ServiceLocator.Resolve<PlayerInput>();
             stateMachine = new StateMachine();
             modifiersContainer = new ModifiersContainer();
             healthComponent = new HealthComponent(modifiersContainer, _baseModifiersContainer);

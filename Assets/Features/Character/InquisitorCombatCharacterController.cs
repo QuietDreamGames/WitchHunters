@@ -12,9 +12,9 @@ namespace Features.Character
         [SerializeField] private float _secondComboAttackEndPercentage = 0.9f;
         [SerializeField] private float _secondComboAttackDistance = 0.5f;
         
-        protected override void Start()
+        public override void Initiate()
         {
-            base.Start();
+            base.Initiate();
 
             var comboMovementState = new InqMeleeCombo2State(stateMachine, _secondComboAttackDistance, _secondComboAttackStartPercentage, _secondComboAttackEndPercentage);
 
