@@ -17,7 +17,7 @@ namespace Features.Enemies.Steering
         
         private const float Epsilon = 0.003f;
 
-        private void Start()
+        private void Awake()
         {
             _directions = new Vector2[rayCount];
             _interests = new float[rayCount];

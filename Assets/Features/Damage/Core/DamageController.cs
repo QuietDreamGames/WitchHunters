@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Features.Damage.Core
 {
-    public class DamageController : MonoBehaviour, IDamageable, IFixedUpdateHandler
+    public class DamageController : MonoBehaviour, IDamageable
     {
         [SerializeField] private HitEffectController _hitEffectController;
         [SerializeField] private HitShaderController _hitShaderController;
