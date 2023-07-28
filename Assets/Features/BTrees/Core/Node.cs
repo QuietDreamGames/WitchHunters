@@ -1,4 +1,5 @@
-﻿using Features.BTrees.Interfaces;
+﻿using System;
+using Features.BTrees.Interfaces;
 using Unity.Collections;
 using UnityEngine;
 
@@ -11,11 +12,15 @@ namespace Features.BTrees.Core
         
         public Status CurrentStatus => currentStatus;
 
+        public Action OnEnterHandler;
+        public Action OnExitHandler;
+
         public Status UpdateCustom(float deltaTime)
         {
             if (!started)
             {
                 OnEnter();
+                OnEnterHandler?.Invoke();
                 started = true;
             }
 
@@ -24,6 +29,7 @@ namespace Features.BTrees.Core
             if (currentStatus != Status.Running)
             {
                 OnExit();
+                OnExitHandler?.Invoke();
                 started = false;
             }
 

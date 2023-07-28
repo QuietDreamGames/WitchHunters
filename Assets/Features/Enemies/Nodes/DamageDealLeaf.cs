@@ -1,6 +1,7 @@
 using Features.BTrees.Core;
 using Features.BTrees.Interfaces;
 using Features.Enemies.Extensions;
+using Features.Modifiers;
 using UnityEngine;
 
 namespace Features.Enemies.Nodes
@@ -9,12 +10,15 @@ namespace Features.Enemies.Nodes
     {
         [SerializeField] private LayerMask layerMask;
         
+        [Header("Parameters")]
+        [SerializeField] private float damage = 1;
+        [SerializeField] private float knockbackForce = 1;
+        
         private new Rigidbody2D rigidbody2D;
         private DamageDealer damageDealer;
         private UnitConfig unitConfig;
         
         private Transform origin;
-        private float baseDamage;
 
         public override void Construct(IBTreeMachine stateMachine)
         {
@@ -28,9 +32,10 @@ namespace Features.Enemies.Nodes
         protected override void OnEnter()
         {
             origin = rigidbody2D.transform;
-            baseDamage = unitConfig.BaseDamage;
             
             damageDealer.Reset();
+            damageDealer.Damage = unitConfig.ModifiersController.GetValue(ModifierType.AttackDamage, damage);
+            damageDealer.KnockbackForce = unitConfig.ModifiersController.GetValue(ModifierType.KnockbackForce, knockbackForce);
         }
                             
         protected override void OnExit()
@@ -40,9 +45,7 @@ namespace Features.Enemies.Nodes
                             
         protected override Status OnUpdate(float deltaTime)
         {
-            var damage = baseDamage;
-            
-            damageDealer.DealDamage(damage, origin, layerMask);
+            damageDealer.DealDamage(origin, layerMask);
 
             return Status.Running;
         }

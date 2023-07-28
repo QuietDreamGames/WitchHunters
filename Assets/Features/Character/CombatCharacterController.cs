@@ -46,6 +46,7 @@ namespace Features.Character
             _knockbackController.Initiate(modifiersContainer, _baseModifiersContainer);
             
             _damageController.Initiate(modifiersContainer,  _baseModifiersContainer, healthComponent, stateMachine, shieldHealthController);
+            _damageController.SetActive(true);
 
             stateMachine.AddExtension(_playerInput);
             stateMachine.AddExtension(_characterView);

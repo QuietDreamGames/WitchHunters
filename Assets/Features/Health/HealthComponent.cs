@@ -1,6 +1,10 @@
-﻿using Features.Modifiers;
+﻿using System;
+using Features.Damage.Interfaces;
+using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using UnityEngine;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Features.Health
 {
@@ -11,6 +15,9 @@ namespace Features.Health
         
         private float _currentHealth;
         private float _maxHealth;
+
+        public Action OnHit;
+        public Action OnDeath;
 
         public HealthComponent(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
         {
@@ -28,9 +35,14 @@ namespace Features.Health
 
             if (_currentHealth <= 0)
             {
-                _currentHealth = 0;
+                _currentHealth = 0; 
+                OnDeath?.Invoke();
+                
+                return _currentHealth;
             }
             
+            OnHit?.Invoke();
+
             return _currentHealth;
         }
 
