@@ -454,6 +454,8 @@ MonoBehaviour:
   IndividualRoomTemplates:
   - {fileID: 1474214451918881009, guid: 9d665b2a2705cee43a412c9f958c6f64, type: 3}
   - {fileID: 1474214451918881009, guid: d6dd936034c96ec4494e668ecfff1d94, type: 3}
+  - {fileID: 5286564414583029197, guid: 9fc06d0b79272ca4c89241a9824a3c7c, type: 3}
+  - {fileID: 6701741432122977514, guid: f555f2e88f1833f45a0526a3a8ddc833, type: 3}
   RoomTemplateSets: []
 --- !u!114 &5470282057792389556
 MonoBehaviour:
