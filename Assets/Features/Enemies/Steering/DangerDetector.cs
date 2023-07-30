@@ -19,6 +19,8 @@ namespace Features.Enemies.Steering
         
         private readonly RaycastHit2D[] _hits = new RaycastHit2D[10];
         
+        private float _maxDistance;
+        
         private bool _isEnabled;
 
         #region IFixedUpdateHandler impleentation
@@ -56,6 +58,7 @@ namespace Features.Enemies.Steering
             Vector2 origin = transform.position;
             var count = Physics2D.CircleCastNonAlloc(origin, exitRadius, Vector2.zero, _hits, 0, dangerLayer.value);
             
+            _maxDistance = 0;
             contextSteering.ResetDanger();
             
             for (var i = 0; i < count; i++)
@@ -73,6 +76,13 @@ namespace Features.Enemies.Steering
 
                 var point = hit.collider.ClosestPoint(origin);
                 var distance = Vector2.Distance(origin, point);
+                if (distance < _maxDistance)
+                {
+                    continue;
+                }
+                
+                _maxDistance = distance;
+                
                 var coefficient = Mathf.InverseLerp(exitRadius, enterRadius, distance);
                 var direction = point - origin;
                 contextSteering.AddDanger(direction.normalized * coefficient);

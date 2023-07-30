@@ -122,6 +122,8 @@ namespace Features.Projectiles
                 0,
                 damageableMask | obstacleMask);
 
+            var isColliding = false;
+            
             for (var i = 0; i < count; i++)
             {
                 var raycast = _raycasts[i];
@@ -133,11 +135,16 @@ namespace Features.Projectiles
                     if (damageable != null)
                     {
                         damageable.TakeDamage(damage, -raycast.normal);
+                        isColliding = true;
                     }
                 }
+                else
+                {
+                    isColliding = true;
+                }
             }
-            
-            return count != 0;
+
+            return isColliding;
         }
 
         private IEnumerator CLifetimeDespawn()

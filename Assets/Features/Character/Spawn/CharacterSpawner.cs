@@ -1,4 +1,6 @@
 ﻿using System;
+using Features.Camera;
+using Features.ServiceLocators.Core;
 using UnityEngine;
 
 namespace Features.Character.Spawn
@@ -9,9 +11,13 @@ namespace Features.Character.Spawn
 
         [Header("DEBUG")] 
         [SerializeField] private bool spawnOnStart;
+        
+        private CameraData _cameraData;
 
         private void Start()
         {
+            _cameraData = ServiceLocator.Resolve<CameraData>();
+            
             if (spawnOnStart)
             {
                 SpawnCharacter();
@@ -32,6 +38,7 @@ namespace Features.Character.Spawn
         {
             var character = Instantiate(_characterPrefab, position, Quaternion.identity);
             character.Initiate();
+            _cameraData.SetTarget(character.transform);
             return character;
         }
     }

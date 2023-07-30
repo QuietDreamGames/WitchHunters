@@ -557,7 +557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4321574877355199757}
   - component: {fileID: 4321574877355199756}
-  m_Layer: 9
+  m_Layer: 31
   m_Name: MeleeAttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

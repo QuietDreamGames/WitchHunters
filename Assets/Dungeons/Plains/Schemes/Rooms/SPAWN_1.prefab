@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 3116079799475381322}
   - component: {fileID: 6358392915393668777}
   - component: {fileID: 970880285705119819}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Outline Override
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -939,7 +939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5589107580432997197}
   - component: {fileID: 7384806306862302000}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Tilemaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +989,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3094613018494522720}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 8945998595118474208}
   - component: {fileID: 8945998595118474214}
   - component: {fileID: 8945998595118474215}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Other 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1202,7 +1202,7 @@ GameObject:
   - component: {fileID: 8945998595156123759}
   - component: {fileID: 8945998595156123752}
   - component: {fileID: 8945998595156123753}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1995,7 +1995,7 @@ GameObject:
   - component: {fileID: 8945998595451467034}
   - component: {fileID: 8945998595451467032}
   - component: {fileID: 8945998595451467033}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2711,7 +2711,7 @@ GameObject:
   - component: {fileID: 8945998595497567638}
   - component: {fileID: 8945998595497567636}
   - component: {fileID: 8945998595497567637}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Other 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2834,7 +2834,7 @@ GameObject:
   - component: {fileID: 8945998596311902340}
   - component: {fileID: 8945998596311902341}
   - component: {fileID: 8945998596311902342}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Collideable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3093,8 +3093,8 @@ GameObject:
   - component: {fileID: 8945998596820771162}
   - component: {fileID: 1851706655377761665}
   - component: {fileID: 8945998596820771108}
-  m_Layer: 11
-  m_Name: Circled Room 9x9
+  m_Layer: 0
+  m_Name: SPAWN_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3182,7 +3182,7 @@ GameObject:
   - component: {fileID: 8945998597142036186}
   - component: {fileID: 8945998597142036184}
   - component: {fileID: 8945998597142036185}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Other 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

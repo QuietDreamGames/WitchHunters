@@ -217,13 +217,13 @@ MonoBehaviour:
   - {fileID: -2973405814987727969}
   - {fileID: 5629096654820591146}
   - {fileID: -1660886028083862256}
-  CorridorIndividualRoomTemplates:
-  - {fileID: 4499158675962000429, guid: 652a14b443e2ef74eb835d480f5fc5e3, type: 3}
-  - {fileID: 1856270312802467920, guid: 3ca4ab9de998d584bbed2d0b9d10dc12, type: 3}
-  CorridorRoomTemplateSets: []
+  CorridorIndividualRoomTemplates: []
+  CorridorRoomTemplateSets:
+  - {fileID: 11400000, guid: a4a4b0e7faf126146be910a093874e00, type: 2}
   DefaultIndividualRoomTemplates:
-  - {fileID: 1474214451918881009, guid: 92032c20bfae0ec4884a03915ea01036, type: 3}
-  DefaultRoomTemplateSets: []
+  - {fileID: 1474214451918881009, guid: 3021487a268f71b46b835794c5322739, type: 3}
+  DefaultRoomTemplateSets:
+  - {fileID: 0}
   Rooms:
   - {fileID: 4008390311426011513}
   - {fileID: -8949761202134481681}
@@ -241,8 +241,8 @@ MonoBehaviour:
   - {fileID: 3736630268636175289}
   - {fileID: 3625552615477037794}
   EditorData:
-    PanOffset: {x: 635.7735, y: 570.1798}
-    Zoom: 0.41772485
+    PanOffset: {x: 183.85931, y: -46.435757}
+    Zoom: 1.2584949
   RoomType: Edgar.Unity.Room
   ConnectionType: Edgar.Unity.Connection
 --- !u!114 &1355165328264477892
