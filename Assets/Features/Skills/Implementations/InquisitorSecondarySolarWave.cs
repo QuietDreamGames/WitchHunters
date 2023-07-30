@@ -26,11 +26,19 @@ namespace Features.Skills.Implementations
             _waveController.Cast(range, speed, lifetime, maxSize, direction,
                 new InqSolarSecondaryWaveDamageInstance(hittableLayerMask, obstacleLayerMask, ModifiersContainer,
                     BaseModifiersContainer, null, transform));
+            
+            _maxCooldown = ModifiersContainer.GetValue(ModifierType.SecondaryCooldown,
+                BaseModifiersContainer.GetBaseValue(ModifierType.SecondaryCooldown));
+            _currentCooldown = _maxCooldown;
         }
         
         public override void OnUpdate(float deltaTime)
         {
             _waveController.OnUpdate(deltaTime);
+            
+            if (IsOnCooldown) _currentCooldown -= deltaTime;
+            
+            if (_currentCooldown < 0f) _currentCooldown = 0f;
         }
         
         public override void OnFixedUpdate(float deltaTime)
