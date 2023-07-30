@@ -52,7 +52,7 @@ namespace Features.Enemies.Extensions
                         _faceDirectionCoroutine = null;
                     }
                     
-                    _faceDirectionCoroutine = StartCoroutine(SetFacingDirectionCoroutine(directionSign > 0));
+                    _faceDirectionCoroutine = StartCoroutine(SetFacingDirectionCoroutine(directionSign));
                 }
             }
         }
@@ -96,25 +96,21 @@ namespace Features.Enemies.Extensions
             _deltaTime = deltaTime;
         }
         
-        private IEnumerator SetFacingDirectionCoroutine(bool right)
+        private IEnumerator SetFacingDirectionCoroutine(int direction)
         {
             var currentTime = 0f;
-            var localEulerAngles = view.localEulerAngles;
-            var currentAngle = localEulerAngles.y;
-            var finalAngle = right ? 0 : 180;
-            var deltaAngle = finalAngle - currentAngle;
 
             while (currentTime < faceDirectionTime)
             {
                 currentTime += _deltaTime;
-                var t = currentTime / faceDirectionTime;
-                var progress = faceDirectionCurve.Evaluate(t);
-                localEulerAngles.y = currentAngle + deltaAngle * progress;
-                view.localEulerAngles = localEulerAngles;
-                
+
                 yield return _waitForEndOfFrame;
             }
-
+            
+            var localScale = view.localScale;
+            localScale.x = math.abs(localScale.x) * direction;
+            view.localScale = localScale;
+            
             _faceDirectionCoroutine = null;
         }
     }

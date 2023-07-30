@@ -70,10 +70,11 @@ namespace Features.Enemies.Steering
                 {
                     continue;
                 }
-                
-                var distance = Vector2.Distance(origin, hit.point);
+
+                var point = hit.collider.ClosestPoint(origin);
+                var distance = Vector2.Distance(origin, point);
                 var coefficient = Mathf.InverseLerp(exitRadius, enterRadius, distance);
-                var direction = hit.point - origin;
+                var direction = point - origin;
                 contextSteering.AddDanger(direction.normalized * coefficient);
             }
         }
