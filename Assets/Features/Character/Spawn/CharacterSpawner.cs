@@ -1,10 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Features.Character.Spawn
 {
     public class CharacterSpawner : MonoBehaviour
     {
         [SerializeField] private CombatCharacterController _characterPrefab;
+
+        [Header("DEBUG")] 
+        [SerializeField] private bool spawnOnStart;
+
+        private void Start()
+        {
+            if (spawnOnStart)
+            {
+                SpawnCharacter();
+            }
+        }
 
         public CombatCharacterController SpawnCharacter()
         {
