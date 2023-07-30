@@ -10,12 +10,18 @@ namespace Features.Skills.Core
     {
         private float _maxShieldHealth;
         private float _currentShieldHealth;
+        
+        public float CurrentShieldHealth => _currentShieldHealth;
+        public float MaxShieldHealth => _maxShieldHealth;
+        
         private float _shieldRegenRate;
         private float _shieldRegenDelay;
         
         private float _shieldRegenDelayTimer;
         
         private bool _isShieldActive;
+        
+        private bool _isShieldUpdateActive;
         
         private ModifiersContainer _modifiersContainer;
         private BaseModifiersContainer _baseModifiersContainer;
@@ -31,6 +37,7 @@ namespace Features.Skills.Core
             _shieldRegenRate = _modifiersContainer.GetValue(ModifierType.ShieldRegenRate, baseModifiersContainer.GetBaseValue(ModifierType.ShieldRegenRate));
             _shieldRegenDelay = _modifiersContainer.GetValue(ModifierType.ShieldRegenDelay, baseModifiersContainer.GetBaseValue(ModifierType.ShieldRegenDelay));
             _modifiersContainer.OnUpdateModifier += OnUpdateModifiers;
+            _isShieldUpdateActive = true;
         }
         
         public void GetShieldHealth(out float currentShieldHealth, out float maxShieldHealth)
@@ -38,7 +45,18 @@ namespace Features.Skills.Core
             currentShieldHealth = _currentShieldHealth;
             maxShieldHealth = _maxShieldHealth;
         }
-        
+
+        public void StopShieldUpdate()
+        {
+            _isShieldUpdateActive = false;
+        }
+
+        public void Restart()
+        {
+            _isShieldUpdateActive = true;
+            _currentShieldHealth = _maxShieldHealth;
+        }
+
         public void SetShieldActive(bool isActive)
         {
             _isShieldActive = isActive;
@@ -66,6 +84,7 @@ namespace Features.Skills.Core
         {
             if (_isShieldActive) return;
             if (_currentShieldHealth >= _maxShieldHealth) return;
+            if (!_isShieldUpdateActive) return;
             
             if (_shieldRegenDelayTimer > 0)
             {

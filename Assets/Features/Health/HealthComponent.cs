@@ -15,6 +15,9 @@ namespace Features.Health
         
         private float _currentHealth;
         private float _maxHealth;
+        
+        public float CurrentHealth => _currentHealth;
+        public float MaxHealth => _maxHealth;
 
         public Action OnHit;
         public Action OnDeath;

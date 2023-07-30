@@ -14,11 +14,6 @@ namespace Features.Character.States.Base
             base.OnEnter();
             
             CharacterView.PlaySecondaryAnimation();
-            var cooldown = ModifiersContainer.GetValue(ModifierType.SecondaryCooldown,
-                BaseModifiersContainer.GetBaseValue(ModifierType.SecondaryCooldown));
-
-            ModifiersContainer.Add(ModifierType.SecondaryCurrentCooldown, ModifierSpec.RawAdditional, cooldown,
-                cooldown);
         }
         
         public override void OnUpdate(float deltaTime)

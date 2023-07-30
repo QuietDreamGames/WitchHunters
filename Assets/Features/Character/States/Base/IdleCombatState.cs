@@ -11,7 +11,7 @@ namespace Features.Character.States.Base
     public class IdleCombatState : State
     {
         private PlayerInput _playerInput;
-        private ModifiersContainer _modifiersContainer;
+        private SkillsController _skillsController;
         private BaseModifiersContainer _baseModifiersContainer;
         private ShieldHealthController _shieldHealthController;
         
@@ -22,7 +22,7 @@ namespace Features.Character.States.Base
         public override void OnEnter()
         {
             _playerInput = stateMachine.GetExtension<PlayerInput>();
-            _modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
+            _skillsController = stateMachine.GetExtension<SkillsController>();
             _baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
             _shieldHealthController = stateMachine.GetExtension<ShieldHealthController>();
         }
@@ -42,17 +42,15 @@ namespace Features.Character.States.Base
             
             if (_playerInput.actions["Secondary"].IsPressed())
             {
-                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.SecondaryCurrentCooldown,
-                    0f);
-                if (currentCooldownInfo <= 0) stateMachine.ChangeState("SecondarySkillState");
+                
+                if (!_skillsController.Secondary.IsOnCooldown) stateMachine.ChangeState("SecondarySkillState");
                 return;
             }
             
             if (_playerInput.actions["Ultimate"].IsPressed())
             {
-                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown,
-                    0f);
-                if (currentCooldownInfo <= 0) stateMachine.ChangeState("UltimateSkillState");
+                
+                if (!_skillsController.Ultimate.IsOnCooldown) stateMachine.ChangeState("UltimateSkillState");
                 return;
             }
             
