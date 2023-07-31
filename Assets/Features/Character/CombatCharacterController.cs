@@ -18,6 +18,7 @@ namespace Features.Character
     public abstract class CombatCharacterController : MonoBehaviour, IUpdateHandler, IFixedUpdateHandler, ILateUpdateHandler
     {
         [SerializeField] protected Collider2D _attackCollider;
+        [SerializeField] protected Rigidbody2D _rigidbody;
 
         
         [SerializeField] protected CharacterView _characterView;
@@ -55,7 +56,7 @@ namespace Features.Character
 
             stateMachine.AddExtension(_playerInput);
             stateMachine.AddExtension(_characterView);
-            stateMachine.AddExtension(transform);
+            stateMachine.AddExtension(_rigidbody);
             stateMachine.AddExtension(_attackCollider);
             stateMachine.AddExtension(ModifiersContainer);
             stateMachine.AddExtension(_baseModifiersContainer);

@@ -13,7 +13,7 @@ namespace Features.Character.States.Base
     {
         private CharacterView _characterView;
         private PlayerInput _playerInput;
-        private Transform _transform;
+        private Rigidbody2D _rigidbody;
         private SkillsController _skillsController;
         private ShieldHealthController _shieldHealthController;
         
@@ -29,7 +29,7 @@ namespace Features.Character.States.Base
         {
             _characterView = stateMachine.GetExtension<CharacterView>();
             _playerInput = stateMachine.GetExtension<PlayerInput>();
-            _transform = stateMachine.GetExtension<Transform>();
+            _rigidbody = stateMachine.GetExtension<Rigidbody2D>();
             _skillsController = stateMachine.GetExtension<SkillsController>();
             _shieldHealthController = stateMachine.GetExtension<ShieldHealthController>();
         }
@@ -96,8 +96,8 @@ namespace Features.Character.States.Base
         
         private void Move(Vector2 moveInput, float fixedDeltaTime)
         {
-            Vector3 movement = new Vector3(moveInput.x, moveInput.y, 0f);
-            _transform.Translate(movement * (fixedDeltaTime * _speed));
+            Vector2 movement = _rigidbody.position + moveInput * (_speed * fixedDeltaTime);
+            _rigidbody.MovePosition(movement);
         }
     }
 }

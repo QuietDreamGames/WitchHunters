@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackCollider: {fileID: 4321574877355199756}
+  _rigidbody: {fileID: 4321574877219388122}
   _characterView: {fileID: 4321574877219388123}
   _baseModifiersContainer: {fileID: 11400000, guid: a25007e702a94314d9429c6bb6b74c19, type: 2}
   _skillsController: {fileID: 4321574877219388112}
@@ -288,14 +289,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4321574877219388125}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
