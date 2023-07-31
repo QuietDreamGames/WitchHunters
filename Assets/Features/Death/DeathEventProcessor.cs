@@ -20,7 +20,7 @@ namespace Features.Death
         
         private void OnCharacterDeath()
         {
-            ServiceLocator.Resolve<FloorController>().RestartFloor();
+            // ServiceLocator.Resolve<FloorController>().RestartFloor();
         }
     }
 }

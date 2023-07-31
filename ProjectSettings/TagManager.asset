@@ -15,7 +15,7 @@ TagManager:
   - 
   - 
   - 
-  - Player 
+  - Player
   - Enemy
   - Obstacle
   - Hittable
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Effects
     uniqueID: 2245524957
+    locked: 0
+  - name: UI
+    uniqueID: 1214696479
     locked: 0

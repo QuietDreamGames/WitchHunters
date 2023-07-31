@@ -17,15 +17,7 @@ namespace Features.Enemies.Pools
                 ServiceLocator.Register(unitPool);
             }
 
-            var unitConfigurator = ServiceLocator.Resolve<UnitConfigurator>();
-            if (unitConfigurator != null)
-            {
-                for (var i = 0; i < unitConfigurator.units.Length; i++)
-                {
-                    var unitData = unitConfigurator.units[i];
-                    unitPool.Prewarm(unitData.unit.gameObject, unitData.count);
-                }
-            }
+            
         }
     }
 }

@@ -5,12 +5,13 @@ namespace Features.Camera
 {
     public class CameraData : MonoBehaviour
     {
+        [SerializeField] private new UnityEngine.Camera camera;
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         
         public void SetTarget(Transform target)
         {
-            virtualCamera.ForceCameraPosition(target.position, Quaternion.identity);
             virtualCamera.Follow = target;
+            virtualCamera.ForceCameraPosition(target.position, Quaternion.identity);
         }
         
     }
