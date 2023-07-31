@@ -61,7 +61,7 @@ namespace Features.Skills.Implementations
                     var obstacleLayerMask = LayerMask.GetMask("Obstacle");
 
                     beamController.Initiate(new InqSolarUltDamageInstance(hittableLayerMask, obstacleLayerMask,
-                        ModifiersContainer, BaseModifiersContainer, null, transform));
+                        ModifiersContainer, BaseModifiersContainer));
                     beamController.Cast();
                 }
                 _beamsCasted++;

@@ -11,6 +11,6 @@ namespace Features.ColliderController.Core
         public Vector2 offset;
         public Vector2 size; 
         public MeleeColliderType meleeColliderType;
-        
+        public Vector3 attackDirection;
     }
 }

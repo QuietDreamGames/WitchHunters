@@ -13,8 +13,8 @@ namespace Features.Damage.Implementations
     {
         public InqSolarSecondaryWaveDamageInstance(LayerMask hittableLayerMask, LayerMask obstacleLayerMask,
             ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer,
-            APassiveController passiveController = null, Transform attackerTransform = null) : base(hittableLayerMask,
-            obstacleLayerMask, modifiersContainer, baseModifiersContainer, passiveController, attackerTransform)
+            APassiveController passiveController = null) : base(hittableLayerMask,
+            obstacleLayerMask, modifiersContainer, baseModifiersContainer, passiveController)
         {
         }
 

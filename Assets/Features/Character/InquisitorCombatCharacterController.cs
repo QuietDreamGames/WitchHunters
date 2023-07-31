@@ -36,9 +36,9 @@ namespace Features.Character
 
             _meleeColliderController.Initiate(
                 new InqSolarAttackDamageInstance(hittableLayerMask, obstacleLayerMask, ModifiersContainer,
-                    _baseModifiersContainer, _passiveController, transform),
+                    _baseModifiersContainer, _passiveController),
                 new InqSolarSecondaryMeleeDamageInstance(hittableLayerMask, obstacleLayerMask, ModifiersContainer,
-                        _baseModifiersContainer, _passiveController, transform)
+                        _baseModifiersContainer, _passiveController)
                 );
         }
     }

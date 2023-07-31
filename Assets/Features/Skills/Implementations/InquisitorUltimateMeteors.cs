@@ -70,7 +70,7 @@ namespace Features.Skills.Implementations
             var obstacleLayerMask = LayerMask.GetMask("Obstacle");
             
             var damageInstance = new InqSolarUltDamageInstance(hittableLayerMask, obstacleLayerMask,
-                ModifiersContainer, BaseModifiersContainer, null, transform);
+                ModifiersContainer, BaseModifiersContainer);
             
             meteor.Cast(damageInstance);
             

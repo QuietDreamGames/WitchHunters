@@ -44,6 +44,7 @@ namespace Features.ColliderController.Core
                 {
                     _collider.offset = _collidersInfo[i].offset;
                     _collider.size = _collidersInfo[i].size;
+                    _attackDamageProcessor.SetDirection(_collidersInfo[i].attackDirection);
                 }
             }
             _attackDamageProcessor.Start();
@@ -60,6 +61,7 @@ namespace Features.ColliderController.Core
                 {
                     _collider.offset = _skillCollidersInfo[i].offset;
                     _collider.size = _skillCollidersInfo[i].size;
+                    _secondaryDamageProcessor.SetDirection(_skillCollidersInfo[i].attackDirection);
                 }
             }
             _secondaryDamageProcessor.Start();

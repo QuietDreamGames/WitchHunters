@@ -25,7 +25,7 @@ namespace Features.Skills.Implementations
 
             _waveController.Cast(range, speed, lifetime, maxSize, direction,
                 new InqSolarSecondaryWaveDamageInstance(hittableLayerMask, obstacleLayerMask, ModifiersContainer,
-                    BaseModifiersContainer, null, transform));
+                    BaseModifiersContainer));
             
             _maxCooldown = ModifiersContainer.GetValue(ModifierType.SecondaryCooldown,
                 BaseModifiersContainer.GetBaseValue(ModifierType.SecondaryCooldown));

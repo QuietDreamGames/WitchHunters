@@ -13,9 +13,8 @@ namespace Features.Damage.Implementations
     {
         public InqSolarUltDamageInstance(LayerMask hittableLayerMask,
             LayerMask obstacleLayerMask, ModifiersContainer modifiersContainer,
-            BaseModifiersContainer baseModifiersContainer, APassiveController passiveController = null,
-            Transform attackerTransform = null) : base(hittableLayerMask, obstacleLayerMask,
-            modifiersContainer, baseModifiersContainer, passiveController, attackerTransform)
+            BaseModifiersContainer baseModifiersContainer, APassiveController passiveController = null)
+            : base(hittableLayerMask, obstacleLayerMask, modifiersContainer, baseModifiersContainer, passiveController)
         {
         }
 
