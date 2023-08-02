@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1421633449479258794}
   - component: {fileID: 5870181706006065197}
   - component: {fileID: 2371384479090487144}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: TargetDummy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -104,6 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2667e0bb464d1d853f3af3ac3f78fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitEffectController: {fileID: 1646686689720235208}
+  _hitShaderController: {fileID: 1421633449479258794}
+  _origin: {fileID: 0}
+  _activeOnStart: 0
 --- !u!114 &4189165868069970912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,3 +327,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3469090690835894826, guid: bdd084f9547eb0342990df8ab42687a1, type: 3}
   m_PrefabInstance: {fileID: 4189165866574402739}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1646686689720235208 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3240582893016752251, guid: bdd084f9547eb0342990df8ab42687a1, type: 3}
+  m_PrefabInstance: {fileID: 4189165866574402739}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904b7bf54b2e43619646842d1f3cdd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -16,7 +16,7 @@ namespace Features.Damage.Core
         protected ModifiersContainer modifiersContainer;
         protected BaseModifiersContainer baseModifiersContainer;
         protected APassiveController passiveController;
-        protected Transform attackerTransform;
+        protected Vector3 attackDirection;
 
         private bool _isActive;
         private List<Collider2D> _collidersDamaged;
@@ -25,20 +25,23 @@ namespace Features.Damage.Core
         
         public AColliderDamageProcessor( LayerMask hittableLayerMask, LayerMask obstacleLayerMask,
             ModifiersContainer modifiersContainer,
-            BaseModifiersContainer baseModifiersContainer, APassiveController passiveController = null,
-            Transform attackerTransform = null)
+            BaseModifiersContainer baseModifiersContainer, APassiveController passiveController = null)
         {
             this.hittableLayerMask = hittableLayerMask;
             this.obstacleLayerMask = obstacleLayerMask;
             this.modifiersContainer = modifiersContainer;
             this.baseModifiersContainer = baseModifiersContainer;
             this.passiveController = passiveController;
-            this.attackerTransform = attackerTransform;
         }
         
         public void SetCollider(Collider2D collider2D)
         {
             this.collider2D = collider2D;
+        }
+        
+        public void SetDirection(Vector3 attackDirection)
+        {
+            this.attackDirection = attackDirection;
         }
 
         public void Start()

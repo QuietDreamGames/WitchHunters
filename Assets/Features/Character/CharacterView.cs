@@ -19,6 +19,7 @@ namespace Features.Character
         private static readonly int Shield = Animator.StringToHash("Shield");
 
         private static readonly int Death = Animator.StringToHash("Death");
+        private static readonly int Reset = Animator.StringToHash("Reset");
         // private static readonly int AttackColliderActive = Animator.StringToHash("AttackCollider.Active");
         // private static readonly int AttackComboWindowOpen = Animator.StringToHash("AttackComboWindow.Open");
 
@@ -119,6 +120,11 @@ namespace Features.Character
         public void PlayDeathAnimation()
         {
             _animator.SetTrigger(Death);
+        }
+        
+        public void ResetTrigger()
+        {
+            _animator.SetTrigger(Reset);
         }
 
         public void SetShieldAnimation(bool isShieldActive)

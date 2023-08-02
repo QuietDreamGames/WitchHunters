@@ -19,7 +19,7 @@ MonoBehaviour:
       spec: 0
     type: 8
   - data:
-      modificatorValue: 50
+      modificatorValue: Infinity
       duration: Infinity
       spec: 0
     type: 3

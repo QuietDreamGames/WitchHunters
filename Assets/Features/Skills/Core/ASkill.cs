@@ -10,6 +10,13 @@ namespace Features.Skills.Core
         protected ModifiersContainer ModifiersContainer;
         protected BaseModifiersContainer BaseModifiersContainer;
         
+        protected float _currentCooldown;
+        protected float _maxCooldown;
+        
+        public float CurrentCooldown => _currentCooldown;
+        public float MaxCooldown => _maxCooldown;
+        public bool IsOnCooldown => _currentCooldown > 0f;
+        
         public virtual void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
         {
             ModifiersContainer = modifiersContainer;

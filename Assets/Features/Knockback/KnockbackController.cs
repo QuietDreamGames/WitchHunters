@@ -33,7 +33,7 @@ namespace Features.Knockback
 
         private void OnHit(Vector3 forceDirection, HitEffectType hitEffectType)
         {
-            if (forceDirection.magnitude < 0.1f) return;
+            if (forceDirection.magnitude < 0.11f) return;
             
             _knockbackDuration = 0.1f;
             _knockbackTimer = _knockbackDuration;

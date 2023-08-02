@@ -18,6 +18,7 @@ namespace Features.Character
     public abstract class CombatCharacterController : MonoBehaviour, IUpdateHandler, IFixedUpdateHandler, ILateUpdateHandler
     {
         [SerializeField] protected Collider2D _attackCollider;
+        [SerializeField] protected Rigidbody2D _rigidbody;
 
         
         [SerializeField] protected CharacterView _characterView;
@@ -30,38 +31,43 @@ namespace Features.Character
 
         [SerializeField] protected ShieldEffectController _shieldEffectController;
         
-        protected ModifiersContainer modifiersContainer;
-        protected StateMachine stateMachine;
-        protected HealthComponent healthComponent;
-        protected ShieldHealthController shieldHealthController;
+        public ModifiersContainer ModifiersContainer { get; protected set; }
+        public HealthComponent HealthComponent { get; protected set; }
+        public ShieldHealthController ShieldHealthController { get; protected set; }
+        
+        public BaseModifiersContainer BaseModifiersContainer => _baseModifiersContainer;
+        public APassiveController PassiveController => _passiveController;
+        public SkillsController SkillsController => _skillsController;
+        
         protected PlayerInput _playerInput;
+        protected StateMachine stateMachine;
         
         public virtual void Initiate()
         {
             _playerInput = ServiceLocator.Resolve<PlayerInput>();
             stateMachine = new StateMachine();
-            modifiersContainer = new ModifiersContainer();
-            healthComponent = new HealthComponent(modifiersContainer, _baseModifiersContainer);
-            shieldHealthController = new ShieldHealthController(modifiersContainer, _baseModifiersContainer);
-            _knockbackController.Initiate(modifiersContainer, _baseModifiersContainer);
+            ModifiersContainer = new ModifiersContainer();
+            HealthComponent = new HealthComponent(ModifiersContainer, _baseModifiersContainer);
+            ShieldHealthController = new ShieldHealthController(ModifiersContainer, _baseModifiersContainer);
+            _knockbackController.Initiate(ModifiersContainer, _baseModifiersContainer);
             
-            _damageController.Initiate(modifiersContainer,  _baseModifiersContainer, healthComponent, stateMachine, shieldHealthController);
+            _damageController.Initiate(ModifiersContainer,  _baseModifiersContainer, HealthComponent, stateMachine, ShieldHealthController);
             _damageController.SetActive(true);
 
             stateMachine.AddExtension(_playerInput);
             stateMachine.AddExtension(_characterView);
-            stateMachine.AddExtension(transform);
+            stateMachine.AddExtension(_rigidbody);
             stateMachine.AddExtension(_attackCollider);
-            stateMachine.AddExtension(modifiersContainer);
+            stateMachine.AddExtension(ModifiersContainer);
             stateMachine.AddExtension(_baseModifiersContainer);
-            stateMachine.AddExtension(healthComponent);
-            stateMachine.AddExtension(shieldHealthController);
+            stateMachine.AddExtension(HealthComponent);
+            stateMachine.AddExtension(ShieldHealthController);
             
 
-            _skillsController.Initiate(modifiersContainer, _baseModifiersContainer, _characterView);
+            _skillsController.Initiate(ModifiersContainer, _baseModifiersContainer, _characterView);
             stateMachine.AddExtension(_skillsController);
             
-            _passiveController.Initiate(modifiersContainer, _baseModifiersContainer);
+            _passiveController.Initiate(ModifiersContainer, _baseModifiersContainer);
             stateMachine.AddExtension(_passiveController);
             
             _shieldEffectController.Initiate();
@@ -76,10 +82,10 @@ namespace Features.Character
         public void OnUpdate(float deltaTime)
         {
             stateMachine.OnUpdate(deltaTime);
-            modifiersContainer.OnUpdate(deltaTime);
+            ModifiersContainer.OnUpdate(deltaTime);
             _passiveController.OnUpdate(deltaTime);
             _shieldEffectController.OnUpdate(deltaTime);
-            shieldHealthController.OnUpdate(deltaTime);
+            ShieldHealthController.OnUpdate(deltaTime);
         }
 
         public void OnFixedUpdate(float deltaTime)

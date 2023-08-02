@@ -40,12 +40,14 @@ namespace Features.Damage.Core
         {
             base.Restart();
             _stateMachine.ChangeState("IdleCombatState");
+            _shieldHealthController.Restart();
         }
         
         protected override void OnDeathEvent()
         {
             base.OnDeathEvent();
             _stateMachine.ChangeState("DeathState");
+            _shieldHealthController.StopShieldUpdate();
         }
 
         private void OnEnable()

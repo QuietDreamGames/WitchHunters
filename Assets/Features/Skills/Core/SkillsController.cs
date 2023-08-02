@@ -9,6 +9,9 @@ namespace Features.Skills.Core
     {
         [SerializeField] private ASkill _ultimate;
         [SerializeField] private ASkill _secondary;
+        
+        public ASkill Ultimate => _ultimate;
+        public ASkill Secondary => _secondary;
 
         private CharacterView _characterView;
 
