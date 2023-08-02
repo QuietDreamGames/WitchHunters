@@ -1,6 +1,7 @@
 ﻿using System;
 using Features.Damage.Core;
 using Features.Floor;
+using Features.GameManagers;
 using Features.ServiceLocators.Core;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Features.Death
         
         private void OnCharacterDeath()
         {
-            // ServiceLocator.Resolve<FloorController>().RestartFloor();
+            ServiceLocator.Resolve<GameManager>().Restart();
         }
     }
 }

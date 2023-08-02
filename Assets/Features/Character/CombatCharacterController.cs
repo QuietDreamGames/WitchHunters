@@ -68,6 +68,11 @@ namespace Features.Character
             stateMachine.AddExtension(_shieldEffectController);
         }
 
+        public void Restart()
+        {
+            _damageController.Restart();
+        }
+
         public void OnUpdate(float deltaTime)
         {
             stateMachine.OnUpdate(deltaTime);
