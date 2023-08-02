@@ -14,6 +14,8 @@ namespace Features.Character.Spawn
         
         public CombatCharacterController CurrentCharacter => _currentCharacterData.character;
         
+        public Action<CombatCharacterController> OnCharacterChanged;
+        
         private void Awake()
         {
             if (spawnOnStart)
@@ -42,6 +44,8 @@ namespace Features.Character.Spawn
             characterData.character.Initiate();
             
             _currentCharacterData = characterData;
+            
+            OnCharacterChanged?.Invoke(_currentCharacterData.character);
         }
         
         private CharacterData GetCharacterData(CharacterType type)
