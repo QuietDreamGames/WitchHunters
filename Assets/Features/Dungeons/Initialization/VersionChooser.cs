@@ -1,19 +1,19 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Features.Dungeons.Initialization
 {
     public class VersionChooser : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            var origin = transform;
+            var currentChildIndex = Random.Range(0, origin.childCount);
+            for (var i = 0; i < origin.childCount; i++)
+            {
+                var child = origin.GetChild(i);
+                child.gameObject.SetActive(i == currentChildIndex);
+            }
         }
     }
 }
