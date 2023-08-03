@@ -1,5 +1,4 @@
-﻿using System;
-using Features.Localization;
+﻿using Features.Localization;
 using Features.Localization.Services;
 using UnityEngine;
 using UnityEngine.UI;

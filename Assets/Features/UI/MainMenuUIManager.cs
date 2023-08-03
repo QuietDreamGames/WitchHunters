@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Features.UI
@@ -33,6 +34,7 @@ namespace Features.UI
         public void PlayGame()
         {
             Debug.Log("Start game! (mockup for now)");
+            SceneManager.LoadScene("SampleScene");
         }
         
         public void ShowSettings()
@@ -44,6 +46,7 @@ namespace Features.UI
         public void QuitGame()
         {
             Application.Quit();
+            Debug.Log("Quit game! (does nothing in editor)");
         }
 
         #endregion
