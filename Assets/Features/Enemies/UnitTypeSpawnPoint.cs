@@ -1,6 +1,7 @@
 using System;
 using Features.Activator;
 using Features.Enemies.Pools;
+using Features.GameManagers;
 using Features.ObjectPools.Core;
 using Features.ServiceLocators.Core;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace Features.Enemies
 
         private UnitConfigurator _unitConfigurator;
         private GameObjectPool<UnitBehaviour> _unitPool;
+        private GameManager _gameManager;
         
         private UnitBehaviour _unit;
 
@@ -25,6 +27,7 @@ namespace Features.Enemies
         {
             _unitConfigurator = ServiceLocator.Resolve<UnitConfigurator>();
             _unitPool = ServiceLocator.Resolve<GameObjectPool<UnitBehaviour>>();
+            _gameManager = ServiceLocator.Resolve<GameManager>();
             if (_unitPool == null)
             {
                 Debug.LogError("Unit pool is not registered", this);
@@ -35,11 +38,19 @@ namespace Features.Enemies
             {
                 Activate();
             }
+            
+            if (_gameManager != null)
+            {
+                _gameManager.OnSceneChange += Deactivate;
+            }
         }
 
         public void OnDestroy()
         {
-            Deactivate();
+            if (_gameManager != null)
+            {
+                _gameManager.OnSceneChange -= Deactivate;
+            }
         }
 
         private void Spawn()

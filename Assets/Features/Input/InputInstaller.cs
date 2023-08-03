@@ -7,14 +7,11 @@ namespace Features.Input
 {
     public class InputInstaller : ServiceInstaller
     {
-        [SerializeField] private PlayerInput _playerInput;
-
-
+        [SerializeField] private InputData inputData;
+        
         public override void Install()
         {
-            Debug.Log(1);
-            ServiceLocator.Register(_playerInput);
-            Debug.Log(2);
+            ServiceLocator.Register<InputData>(inputData);
         }
     }
 }

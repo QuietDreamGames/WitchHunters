@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Features.Localization
 {
-    public class LocalizationManager : Singleton<LocalizationManager>
+    public class LocalizationManager : MonoBehaviour
     {
         public LocalizationData LocalizationData { get; private set; }
 
-        public static Action OnLocalizationChanged;
+        public Action OnLocalizationChanged;
 
         private void LoadLocalization(LocalizationLang localizationLang)
         {

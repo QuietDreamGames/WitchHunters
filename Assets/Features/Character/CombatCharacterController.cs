@@ -2,6 +2,7 @@
 using Features.Damage.Core;
 using Features.FiniteStateMachine;
 using Features.Health;
+using Features.Input;
 using Features.Knockback;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
@@ -44,7 +45,8 @@ namespace Features.Character
         
         public virtual void Initiate()
         {
-            _playerInput = ServiceLocator.Resolve<PlayerInput>();
+            var inputData = ServiceLocator.Resolve<InputData>();
+            _playerInput = inputData.playerInput;
             stateMachine = new StateMachine();
             ModifiersContainer = new ModifiersContainer();
             HealthComponent = new HealthComponent(ModifiersContainer, _baseModifiersContainer);

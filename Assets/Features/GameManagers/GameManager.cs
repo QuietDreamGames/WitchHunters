@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Features.ServiceLocators.Core;
@@ -12,21 +13,27 @@ namespace Features.GameManagers
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private string masterSceneName;
-        [SerializeField] private string dungeonSceneName;
+        [SerializeField] private string mainMenuSceneName;
         
         [Space]
+        [SerializeField] private string masterSceneName;
+        
+        [Space]
+        [SerializeField] private string dungeonSceneName;
+        
+        [Header("Time Categories")]
         [SerializeField, TimeCategory] private string gameplayTimeCategory;
         
         private readonly List<Scene> _activeScenes = new(4);
         
         private LoadingScreenUI _loadingScreenUI;
         private TimeSystem _timeSystem;
+        
+        public Action OnSceneChange;
 
         private void Awake()
         {
-            _loadingScreenUI = ServiceLocator.Resolve<LoadingScreenUI>();
-            _timeSystem = ServiceLocator.Resolve<TimeSystem>();
+            GetDependencies();
         }
         
         public void Restart()
@@ -34,6 +41,11 @@ namespace Features.GameManagers
             StartMasterScene();
             
             StartDungeon();
+        }
+        
+        public void StartMainMenu()
+        {
+            SceneManager.LoadScene(masterSceneName, LoadSceneMode.Single);
         }
 
         public void StartMasterScene()
@@ -73,9 +85,16 @@ namespace Features.GameManagers
         
         private IEnumerator ChangeSceneRoutine(string sceneName)
         {
+            yield return null;
+
+            GetDependencies();
+            
+            _loadingScreenUI.Reset();
             yield return _loadingScreenUI.SetAlphaCoroutine(1);
             
             _timeSystem.SetCategoryTimeScale(gameplayTimeCategory, 0);
+            
+            OnSceneChange?.Invoke();
             
             AsyncOperation async = null;
             
@@ -96,9 +115,12 @@ namespace Features.GameManagers
             {
                 yield return null;
             }
+
+            yield return null;
             
             _timeSystem.SetCategoryTimeScale(gameplayTimeCategory, 1);
             
+            _loadingScreenUI.Reset();
             yield return _loadingScreenUI.SetAlphaCoroutine(0);
         }
 
@@ -119,6 +141,18 @@ namespace Features.GameManagers
                     
                     scenes.Add(loadedScene);
                 }
+            }
+        }
+
+        private void GetDependencies()
+        {
+            if (_loadingScreenUI == null)
+            {
+                _loadingScreenUI = ServiceLocator.Resolve<LoadingScreenUI>();
+            }
+            if (_timeSystem == null)
+            {
+                _timeSystem = ServiceLocator.Resolve<TimeSystem>();
             }
         }
     }

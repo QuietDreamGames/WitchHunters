@@ -10,14 +10,8 @@ namespace Features.Enemies.Pools
     {
         public override void Install()
         {
-            var unitPool = ServiceLocator.Resolve<GameObjectPool<UnitBehaviour>>();
-            if (unitPool == null)
-            {
-                unitPool = new GameObjectPool<UnitBehaviour>(transform);
-                ServiceLocator.Register(unitPool);
-            }
-
-            
+            var unitPool = new GameObjectPool<UnitBehaviour>(transform);
+            ServiceLocator.Register(unitPool);
         }
     }
 }
