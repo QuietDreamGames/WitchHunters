@@ -85,6 +85,7 @@ namespace Features.Enemies
             
             damageController.Initiate(_modifiersContainer, baseModifiersContainer, _healthComponent);
             damageController.SetActive(true);
+            damageController.Restart();
 
             _healthComponent.OnHit = OnHitHandle;
             _healthComponent.OnDeath = OnDeathHandle;

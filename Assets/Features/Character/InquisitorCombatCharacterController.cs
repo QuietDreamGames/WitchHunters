@@ -35,10 +35,10 @@ namespace Features.Character
             var obstacleLayerMask = LayerMask.GetMask("Obstacle");
 
             _meleeColliderController.Initiate(
-                new InqSolarAttackDamageInstance(hittableLayerMask, obstacleLayerMask, modifiersContainer,
-                    _baseModifiersContainer, _passiveController, transform),
-                new InqSolarSecondaryMeleeDamageInstance(hittableLayerMask, obstacleLayerMask, modifiersContainer,
-                        _baseModifiersContainer, _passiveController, transform)
+                new InqSolarAttackDamageInstance(hittableLayerMask, obstacleLayerMask, ModifiersContainer,
+                    _baseModifiersContainer, _passiveController),
+                new InqSolarSecondaryMeleeDamageInstance(hittableLayerMask, obstacleLayerMask, ModifiersContainer,
+                        _baseModifiersContainer, _passiveController)
                 );
         }
     }

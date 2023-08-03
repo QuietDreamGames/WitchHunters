@@ -14,15 +14,14 @@ namespace Features.Damage.Implementations
     {
         public AttackDamageInstance(LayerMask hittableLayerMask, LayerMask obstacleLayerMask,
             ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer,
-            APassiveController passiveController = null, Transform attackerTransform = null) : base(
-            hittableLayerMask, obstacleLayerMask, modifiersContainer, baseModifiersContainer, passiveController,
-            attackerTransform)
+            APassiveController passiveController = null) : base(
+            hittableLayerMask, obstacleLayerMask, modifiersContainer, baseModifiersContainer, passiveController)
         {
         }
 
         protected override void ProcessDamage(IDamageable damageable, Vector3 damageablePosition)
         {
-            var knockbackDirection = damageablePosition - attackerTransform.position;
+            var knockbackDirection = attackDirection;
             knockbackDirection.Normalize();
             var damage = modifiersContainer.GetValue(ModifierType.AttackDamage,
                 baseModifiersContainer.GetBaseValue(ModifierType.AttackDamage));

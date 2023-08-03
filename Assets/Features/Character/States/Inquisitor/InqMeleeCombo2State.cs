@@ -15,7 +15,7 @@ namespace Features.Character.States.Inquisitor
         private float _startPercentage; // at which point of animation should we start moving
         private float _endPercentage;
         private bool _shouldBeMoving;
-        private Transform _transform;
+        private Rigidbody2D _rigidbody;
 
         public InqMeleeCombo2State(IMachine stateMachine) : base(stateMachine)
         {
@@ -37,7 +37,7 @@ namespace Features.Character.States.Inquisitor
             attackIndex = isCharged ? 5 : 2;
             CharacterView.PlayAttackAnimation(attackIndex);
             
-            _transform = stateMachine.GetExtension<Transform>();
+            _rigidbody = stateMachine.GetExtension<Rigidbody2D>();
         }
 
         public override void OnUpdate(float deltaTime)
@@ -85,8 +85,10 @@ namespace Features.Character.States.Inquisitor
             
             if (!_shouldBeMoving) return;
             
-            var direction = _attackDirection * (_speed * deltaTime);
-            _transform.position += direction;
+            var direction = new Vector2(_attackDirection.x, _attackDirection.y) * (_speed * deltaTime);
+            
+            Vector2 movement = _rigidbody.position + direction;
+            _rigidbody.MovePosition(movement);
         }
     }
 }

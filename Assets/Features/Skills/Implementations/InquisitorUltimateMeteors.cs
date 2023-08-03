@@ -40,10 +40,18 @@ namespace Features.Skills.Implementations
                 BaseModifiersContainer.GetBaseValue(ModifierType.UltimateDuration));
             _meteorSpawnInterval = duration / (_meteorsToCast - 1);
             _timer = _meteorSpawnInterval;
+            
+            _maxCooldown = ModifiersContainer.GetValue(ModifierType.UltimateCooldown,
+                BaseModifiersContainer.GetBaseValue(ModifierType.UltimateCooldown));
+            _currentCooldown = _maxCooldown;
         }
 
         public override void OnUpdate(float deltaTime)
         {
+            if (IsOnCooldown) _currentCooldown -= deltaTime;
+            
+            if (_currentCooldown < 0f) _currentCooldown = 0f;
+            
             if (!_isCasting) return;
             
             _timer -= deltaTime;
@@ -62,7 +70,7 @@ namespace Features.Skills.Implementations
             var obstacleLayerMask = LayerMask.GetMask("Obstacle");
             
             var damageInstance = new InqSolarUltDamageInstance(hittableLayerMask, obstacleLayerMask,
-                ModifiersContainer, BaseModifiersContainer, null, transform);
+                ModifiersContainer, BaseModifiersContainer);
             
             meteor.Cast(damageInstance);
             

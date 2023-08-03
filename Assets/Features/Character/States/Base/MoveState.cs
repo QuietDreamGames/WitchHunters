@@ -13,8 +13,8 @@ namespace Features.Character.States.Base
     {
         private CharacterView _characterView;
         private PlayerInput _playerInput;
-        private Transform _transform;
-        private ModifiersContainer _modifiersContainer;
+        private Rigidbody2D _rigidbody;
+        private SkillsController _skillsController;
         private ShieldHealthController _shieldHealthController;
         
         private float _speed = 5f;
@@ -29,8 +29,8 @@ namespace Features.Character.States.Base
         {
             _characterView = stateMachine.GetExtension<CharacterView>();
             _playerInput = stateMachine.GetExtension<PlayerInput>();
-            _transform = stateMachine.GetExtension<Transform>();
-            _modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
+            _rigidbody = stateMachine.GetExtension<Rigidbody2D>();
+            _skillsController = stateMachine.GetExtension<SkillsController>();
             _shieldHealthController = stateMachine.GetExtension<ShieldHealthController>();
         }
 
@@ -42,10 +42,17 @@ namespace Features.Character.States.Base
                 return;
             }
             
+            if (_playerInput.actions["Secondary"].IsPressed())
+            {
+                
+                if (!_skillsController.Secondary.IsOnCooldown) stateMachine.ChangeState("SecondarySkillState");
+                return;
+            }
+            
             if (_playerInput.actions["Ultimate"].IsPressed())
             {
-                var currentCooldownInfo = _modifiersContainer.GetValue(ModifierType.UltimateCurrentCooldown, 0);
-                if (currentCooldownInfo <= 0) stateMachine.ChangeState("UltimateSkillState");
+                
+                if (!_skillsController.Ultimate.IsOnCooldown) stateMachine.ChangeState("UltimateSkillState");
                 return;
             }
             
@@ -89,8 +96,8 @@ namespace Features.Character.States.Base
         
         private void Move(Vector2 moveInput, float fixedDeltaTime)
         {
-            Vector3 movement = new Vector3(moveInput.x, moveInput.y, 0f);
-            _transform.Translate(movement * (fixedDeltaTime * _speed));
+            Vector2 movement = _rigidbody.position + moveInput * (_speed * fixedDeltaTime);
+            _rigidbody.MovePosition(movement);
         }
     }
 }
