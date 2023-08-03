@@ -10,12 +10,7 @@ namespace Features.ServiceLocators.Core
         public static void Register<T>(T service) where T : class
         {
             var type = typeof(T);
-            if (Container.ContainsKey(type))
-            {
-                return;
-            }
-
-            Container.Add(type, service);
+            Container[type] = service;
         }
         
         public static T Resolve<T>() where T : class

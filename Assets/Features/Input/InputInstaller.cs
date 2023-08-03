@@ -12,7 +12,9 @@ namespace Features.Input
 
         public override void Install()
         {
+            Debug.Log(1);
             ServiceLocator.Register(_playerInput);
+            Debug.Log(2);
         }
     }
 }
