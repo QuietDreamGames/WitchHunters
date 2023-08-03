@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0feb0fe3ca387448cff6947dd58ed6, type: 3}
+  m_Name: MediumRooms
+  m_EditorClassIdentifier: 
+  RoomTemplates:
+  - {fileID: 1474214451918881009, guid: 3cd2bf207450fb942ba30c4aed2bbb2b, type: 3}
+  - {fileID: 1474214451918881009, guid: 134c18c76c23b884bb10fddfa8f13ced, type: 3}
+  - {fileID: 1474214451918881009, guid: 4e5dbaf2f21ac90489c9a520bca1e000, type: 3}

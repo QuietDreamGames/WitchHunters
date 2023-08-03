@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0feb0fe3ca387448cff6947dd58ed6, type: 3}
+  m_Name: SmallRooms
+  m_EditorClassIdentifier: 
+  RoomTemplates:
+  - {fileID: 1474214451918881009, guid: 3021487a268f71b46b835794c5322739, type: 3}
+  - {fileID: 1474214451918881009, guid: ea9a7d4d84fcf4a438da87324909daaf, type: 3}
+  - {fileID: 1474214451918881009, guid: 640684875c27cc246b0cd01100ffd386, type: 3}
