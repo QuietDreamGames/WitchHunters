@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomTemplates:
   - {fileID: 1474214451918881009, guid: 3021487a268f71b46b835794c5322739, type: 3}
+  - {fileID: 1474214451918881009, guid: 0b018265e25c8bd41a54a592abb20fda, type: 3}
+  - {fileID: 1474214451918881009, guid: 85d7741aad7758a49a6ae9f8936f884b, type: 3}
   - {fileID: 1474214451918881009, guid: ea9a7d4d84fcf4a438da87324909daaf, type: 3}
   - {fileID: 1474214451918881009, guid: 640684875c27cc246b0cd01100ffd386, type: 3}
