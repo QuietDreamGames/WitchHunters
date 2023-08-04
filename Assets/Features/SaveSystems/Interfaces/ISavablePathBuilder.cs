@@ -6,6 +6,6 @@ namespace Features.SaveSystems.Interfaces
     {
         public int Index { get; set; }
         
-        public string GetDirectoryPath(SaveSettings.SaveCategory saveCategory);
+        public string GetDirectoryPath(SaveCategory saveCategory);
     }
 }

@@ -52,7 +52,7 @@ namespace Features.SaveSystems.Core
             return _storage[id].value;
         }
 
-        public void SaveToDisk(SaveSettings.SaveCategory saveCategory)
+        public void SaveToDisk(SaveCategory saveCategory)
         {
             var directoryPath = _pathBuilder.GetDirectoryPath(saveCategory);
             if (!Directory.Exists(directoryPath))
@@ -67,7 +67,7 @@ namespace Features.SaveSystems.Core
             File.WriteAllBytes(filePath, data);
         }
         
-        public void LoadFromDisk(SaveSettings.SaveCategory saveCategory)
+        public void LoadFromDisk(SaveCategory saveCategory)
         {
             _storage.Clear();
             var directoryPath = _pathBuilder.GetDirectoryPath(saveCategory); 

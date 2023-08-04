@@ -1,9 +1,12 @@
 ﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Features.SaveSystems.Editor
 {
+    #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(SaveCategoryAttribute))]
     internal class SaveCategoryDrawer : PropertyDrawer
     {
@@ -38,4 +41,5 @@ namespace Features.SaveSystems.Editor
             property.stringValue = categories[index];
         }
     }
+    #endif
 }

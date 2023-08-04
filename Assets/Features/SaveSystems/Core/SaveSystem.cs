@@ -13,7 +13,7 @@ namespace Features.SaveSystems.Core
     {
         private readonly Dictionary<string, SavableData> _data = new();
 
-        private SaveSettings _settings;
+        [SerializeField] private SaveSettings settings;
         
         private ISavableSerializer _serializer;
         private ISavablePathBuilder _pathBuilder;
@@ -22,7 +22,9 @@ namespace Features.SaveSystems.Core
 
         public void Construct()
         {
-            _settings = SaveSettings.GetSettings();
+            #if UNITY_EDITOR
+            settings = SaveSettings.GetSettings();
+            #endif
             
             _serializer = ServiceLocator.Resolve<ISavableSerializer>();
             _pathBuilder = ServiceLocator.Resolve<ISavablePathBuilder>();
@@ -126,14 +128,14 @@ namespace Features.SaveSystems.Core
 
         #region Private methods
 
-        private bool TryGetSaveCategory(string category, out SaveSettings.SaveCategory saveCategory)
+        private bool TryGetSaveCategory(string category, out SaveCategory saveCategory)
         {
             saveCategory = null;
-            for (var i = 0; i < _settings.SaveCategories.Length; i++)
+            for (var i = 0; i < settings.SaveCategories.Length; i++)
             {
-                if (_settings.SaveCategories[i].category == category)
+                if (settings.SaveCategories[i].category == category)
                 {
-                    saveCategory = _settings.SaveCategories[i];
+                    saveCategory = settings.SaveCategories[i];
                     return true;
                 }
             }

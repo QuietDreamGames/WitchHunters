@@ -1,8 +1,11 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Features.TimeSystems.Configs
 {
+    #if UNITY_EDITOR
     internal class TimeCategorySettings : ScriptableObject
     {
         [SerializeField] private string[] timeCategories;
@@ -27,4 +30,5 @@ namespace Features.TimeSystems.Configs
             }
         }
     }
+    #endif
 }

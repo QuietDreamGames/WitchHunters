@@ -1,5 +1,7 @@
 ﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Features.SaveSystems.Configs
@@ -17,6 +19,8 @@ namespace Features.SaveSystems.Configs
         };
         
         public SaveCategory[] SaveCategories => saveCategories;
+        
+        #if UNITY_EDITOR
 
         public static SaveSettings GetSettings()
         {
@@ -35,15 +39,16 @@ namespace Features.SaveSystems.Configs
                     return AssetDatabase.LoadAssetAtPath<SaveSettings>(path);
             }
         }
+        #endif
+    }
+    
+    [Serializable]
+    public class SaveCategory
+    {
+        public string category;
+        public bool indexed;
+        public bool useUser;
         
-        [Serializable]
-        public class SaveCategory
-        {
-            public string category;
-            public bool indexed;
-            public bool useUser;
-            
-            public string extension = ".data";
-        }
+        public string extension = ".data";
     }
 }

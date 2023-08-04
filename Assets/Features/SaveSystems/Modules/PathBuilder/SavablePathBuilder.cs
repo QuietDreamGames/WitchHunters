@@ -16,7 +16,7 @@ namespace Features.SaveSystems.Modules.PathBuilder
             _absolutePath = Path.Combine(Application.persistentDataPath, "Storage");
         }
 
-        public string GetDirectoryPath(SaveSettings.SaveCategory saveCategory)
+        public string GetDirectoryPath(SaveCategory saveCategory)
         {
             var path = _absolutePath;
             if (saveCategory.useUser)

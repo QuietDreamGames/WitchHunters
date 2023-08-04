@@ -53,12 +53,12 @@ namespace Features.SaveSystems.Core
             }
         }
         
-        public void SaveToDisk(SaveSettings.SaveCategory saveCategory)
+        public void SaveToDisk(SaveCategory saveCategory)
         {
             Storage.SaveToDisk(saveCategory);
         }
         
-        public void LoadFromDisk(SaveSettings.SaveCategory saveCategory)
+        public void LoadFromDisk(SaveCategory saveCategory)
         {
             Storage.LoadFromDisk(saveCategory);
         }

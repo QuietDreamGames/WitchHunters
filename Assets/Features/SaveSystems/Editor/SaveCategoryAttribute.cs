@@ -5,11 +5,13 @@ namespace Features.SaveSystems.Editor
 {
     public class SaveCategoryAttribute : PropertyAttribute
     {
-        public readonly SaveSettings.SaveCategory[] saveCategories;
+        #if UNITY_EDITOR
+        public readonly SaveCategory[] saveCategories;
         
         public SaveCategoryAttribute()
         {
             saveCategories = SaveSettings.GetSettings().SaveCategories;
         }
+        #endif
     }
 }

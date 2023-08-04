@@ -1,9 +1,12 @@
 ﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Features.TimeSystems.Editor
 {
+    #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(TimeCategoryAttribute))]
     internal class TimeCategoryDrawer : PropertyDrawer
     {
@@ -33,4 +36,5 @@ namespace Features.TimeSystems.Editor
             property.stringValue = timeCategories[index];
         }
     }
+    #endif
 }
