@@ -6,23 +6,12 @@ namespace Features.Character.Spawn
     public class CharacterHolder : MonoBehaviour
     {
         [SerializeField] private CharacterData[] characters;
-
-        [Header("DEBUG")] 
-        [SerializeField] private bool spawnOnStart;
         
         private CharacterData _currentCharacterData;
         
         public CombatCharacterController CurrentCharacter => _currentCharacterData.character;
         
         public Action<CombatCharacterController> OnCharacterChanged;
-        
-        private void Awake()
-        {
-            if (spawnOnStart)
-            {
-                SetCharacter(CharacterType.Inquisitor);
-            }
-        }
 
         public void SetCharacter(CharacterType type)
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Features.Dungeons.Initialization
 {
@@ -17,6 +18,9 @@ namespace Features.Dungeons.Initialization
         [SerializeField] private string wallsName = "Walls";
         [SerializeField] private LayerMask wallsLayer;
         
+        [Header("Sprite Renderers")]
+        [SerializeField] private int sortingOrder = 0;
+        
         [ContextMenu("Configure room")]
         public void ConfigureRoom()
         {
@@ -27,6 +31,21 @@ namespace Features.Dungeons.Initialization
             
             var walls = tilemaps.Find(wallsName);
             walls.gameObject.layer = GetLayerNumber(wallsLayer);
+            
+            for (var i = 0; i < tilemaps.childCount; i++)
+            {
+                var child = tilemaps.GetChild(i);
+                SetSortingOrder(child);
+            }
+        }
+        
+        private void SetSortingOrder(Component component)
+        {
+            var tilemapRenderer = component.GetComponent<TilemapRenderer>();
+            if (tilemapRenderer != null)
+            {
+                tilemapRenderer.sortingOrder = sortingOrder;
+            }
         }
         
         private static int GetLayerNumber(LayerMask mask)

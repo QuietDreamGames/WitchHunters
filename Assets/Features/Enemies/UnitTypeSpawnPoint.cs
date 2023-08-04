@@ -23,7 +23,7 @@ namespace Features.Enemies
         
         private UnitBehaviour _unit;
 
-        public void Start()
+        public void Awake()
         {
             _unitConfigurator = ServiceLocator.Resolve<UnitConfigurator>();
             _unitPool = ServiceLocator.Resolve<GameObjectPool<UnitBehaviour>>();
