@@ -9,7 +9,7 @@ namespace Features.Floor
     {
         [SerializeField] private CharacterSpawner _characterSpawner;
         
-        private void Start()
+        private void Awake()
         {
             var character = _characterSpawner.SpawnCharacter();
             ServiceLocator.Resolve<CharacterHolder>().SetCurrentCharacter(character);

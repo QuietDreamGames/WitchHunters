@@ -1,6 +1,8 @@
-﻿using Features.Character.States.Base;
+﻿using System.Collections;
+using Features.Character.States.Base;
 using Features.FiniteStateMachine.Interfaces;
 using Features.Skills.Core;
+using UnityEngine;
 
 namespace Features.Character.States.Inquisitor
 {
@@ -16,12 +18,15 @@ namespace Features.Character.States.Inquisitor
         {
             base.OnEnter();
             _passiveController = stateMachine.GetExtension<APassiveController>();
+            
             var isCharged = _passiveController.CurrentPassiveInfo.IsCharged;
             
             attackIndex = isCharged ? 4 : 1;
             
-            CharacterView.PlayAttackAnimation(attackIndex);
+            CharacterView.PlayAttackAnimation(attackIndex, attackSpeed);
             
+            var comboController = stateMachine.GetExtension<ComboController>();
+            comboController.OnAttack(CharacterView);
         }
 
         public override void OnUpdate(float deltaTime)
