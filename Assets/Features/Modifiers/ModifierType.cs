@@ -4,7 +4,6 @@
     {
         AttackDamage = 0,
         AttackSpeed = 1,
-        MovementSpeed = 2,
         MaximumHealth = 3,
         Armor = 8,
         CriticalChance = 9,
@@ -34,5 +33,6 @@
         SecondarySkillSpeed = 34,
         SecondarySkillLifetime = 35,
         SecondarySkillMaxSize = 36,
+        MoveSpeed = 37,
     }
 }

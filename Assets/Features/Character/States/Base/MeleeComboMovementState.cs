@@ -28,7 +28,7 @@ namespace Features.Character.States.Base
         {
             base.OnEnter();
             attackIndex = 2;
-            CharacterView.PlayAttackAnimation(attackIndex);
+            CharacterView.PlayAttackAnimation(attackIndex, attackSpeed);
             _transform = stateMachine.GetExtension<Transform>();
         }
 

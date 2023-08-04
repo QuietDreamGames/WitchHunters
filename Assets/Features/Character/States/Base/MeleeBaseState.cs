@@ -1,5 +1,9 @@
-﻿using Features.FiniteStateMachine;
+﻿using System.Collections;
+using Features.FiniteStateMachine;
 using Features.FiniteStateMachine.Interfaces;
+using Features.Modifiers;
+using Features.Modifiers.SOLID.Core;
+using Features.Modifiers.SOLID.Helpers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +15,11 @@ namespace Features.Character.States.Base
         protected PlayerInput PlayerInput;
         protected bool ShouldCombo;
         protected int attackIndex;
+        protected float attackSpeed;
         
         // private float _attackPressedTimer = 0;
-
-        protected Collider2D HitCollider;
-        // private List<Collider2D> _collidersDamaged;
+        
+        private Vector2 _lastMovementDirection;
 
         public MeleeBaseState(IMachine stateMachine) : base(stateMachine)
         {
@@ -25,6 +29,11 @@ namespace Features.Character.States.Base
         {
             CharacterView = stateMachine.GetExtension<CharacterView>();
             PlayerInput = stateMachine.GetExtension<PlayerInput>();
+            var modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
+            var baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
+            attackSpeed = modifiersContainer.GetValue(ModifierType.AttackSpeed,
+                baseModifiersContainer.GetBaseValue(ModifierType.AttackSpeed));
+            _lastMovementDirection = Vector2.zero;
             // _collidersDamaged = new List<Collider2D>();
             // HitCollider = stateMachine.GetExtension<Collider2D>();
         }
@@ -51,6 +60,13 @@ namespace Features.Character.States.Base
             // }
             
             ShouldCombo = PlayerInput.actions["Attack"].IsPressed();
+            
+            var movementInput = PlayerInput.actions["Move"].ReadValue<Vector2>();
+
+            if (movementInput != Vector2.zero)
+            {
+                _lastMovementDirection = movementInput;
+            }
         }
 
         public override void OnFixedUpdate(float deltaTime)
@@ -65,31 +81,8 @@ namespace Features.Character.States.Base
         
         public override void OnExit()
         {
-            
+            if (_lastMovementDirection != Vector2.zero)
+                CharacterView.SetLastMovementDirection(_lastMovementDirection);
         }
-        
-        // protected void Attack()
-        // {
-        //     Collider2D[] colliders = new Collider2D[10];
-        //     ContactFilter2D contactFilter2D = new ContactFilter2D();
-        //     contactFilter2D.useTriggers = true;
-        //     int colliderCount = HitCollider.OverlapCollider(contactFilter2D, colliders);
-        //     
-        //     for (int i = 0; i < colliderCount; i++)
-        //     {
-        //         Collider2D collider = colliders[i];
-        //         if (!_collidersDamaged.Contains(collider))
-        //         {
-        //             TeamComponent hitTeamComponent = collider.GetComponent<TeamComponent>();
-        //             
-        //             if (hitTeamComponent != null && hitTeamComponent.TeamIndex == TeamIndex.Enemy)
-        //             {
-        //                 _collidersDamaged.Add(collider);
-        //                 Debug.Log($"{collider.name} was damaged");
-        //             }
-        //         }
-        //     }
-        //
-        // }
     }
 }
