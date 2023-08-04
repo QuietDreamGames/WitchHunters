@@ -20,7 +20,9 @@ namespace Features.Character.States.Inquisitor
             
             attackIndex = isCharged ? 6 : 3;
             
-            CharacterView.PlayAttackAnimation(attackIndex);
+            CharacterView.PlayAttackAnimation(attackIndex, attackSpeed);
+            var comboController = stateMachine.GetExtension<ComboController>();
+            comboController.OnAttack(CharacterView);
             
         }
 

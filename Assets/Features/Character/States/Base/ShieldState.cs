@@ -4,8 +4,8 @@ using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.Skills.Core;
 using Features.Skills.Interfaces;
-using Features.VFX;
 using Features.VFX.Core;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Features.Character.States.Base
@@ -14,10 +14,10 @@ namespace Features.Character.States.Base
     {
         private ShieldEffectController _shieldEffectController;
         private IShieldHealthController _shieldHealthController;
-        private ModifiersContainer _modifiersContainer;
-        private BaseModifiersContainer _baseModifiersContainer;
         private CharacterView _characterView;
         private PlayerInput _playerInput;
+        
+        private Vector2 _lastMovementDirection;
         
         public ShieldState(IMachine stateMachine) : base(stateMachine)
         {
@@ -26,8 +26,6 @@ namespace Features.Character.States.Base
         public override void OnEnter()
         {
             _shieldEffectController = stateMachine.GetExtension<ShieldEffectController>();
-            _modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
-            _baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
             _characterView = stateMachine.GetExtension<CharacterView>();
             _playerInput = stateMachine.GetExtension<PlayerInput>();
             _shieldHealthController = stateMachine.GetExtension<ShieldHealthController>();
@@ -39,6 +37,8 @@ namespace Features.Character.States.Base
 
         public override void OnExit()
         {
+            if (_lastMovementDirection != Vector2.zero)
+                _characterView.SetLastMovementDirection(_lastMovementDirection);
         }
 
         public override void OnUpdate(float deltaTime)
@@ -61,6 +61,13 @@ namespace Features.Character.States.Base
                 stateMachine.ChangeState("IdleCombatState");
                 _shieldHealthController.SetShieldActive(false);
                 return;
+            }
+            
+            var movementInput = _playerInput.actions["Move"].ReadValue<Vector2>();
+
+            if (movementInput != Vector2.zero)
+            {
+                _lastMovementDirection = movementInput;
             }
         }
 

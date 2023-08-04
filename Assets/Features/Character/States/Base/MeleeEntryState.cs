@@ -12,8 +12,9 @@ namespace Features.Character.States.Base
         public override void OnEnter()
         {
             base.OnEnter();
-            
-            stateMachine.ChangeState("MeleeCombo1State");
+            var comboController = stateMachine.GetExtension<ComboController>();
+            var attackNr = comboController.GetAttackComboNr() + 1;
+            stateMachine.ChangeState($"MeleeCombo{attackNr}State");
         }
     }
 }

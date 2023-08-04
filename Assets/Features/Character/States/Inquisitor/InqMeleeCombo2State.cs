@@ -35,9 +35,11 @@ namespace Features.Character.States.Inquisitor
             _passiveController = stateMachine.GetExtension<APassiveController>();
             var isCharged = _passiveController.CurrentPassiveInfo.IsCharged;
             attackIndex = isCharged ? 5 : 2;
-            CharacterView.PlayAttackAnimation(attackIndex);
+            CharacterView.PlayAttackAnimation(attackIndex, attackSpeed);
             
             _rigidbody = stateMachine.GetExtension<Rigidbody2D>();
+            var comboController = stateMachine.GetExtension<ComboController>();
+            comboController.OnAttack(CharacterView);
         }
 
         public override void OnUpdate(float deltaTime)
