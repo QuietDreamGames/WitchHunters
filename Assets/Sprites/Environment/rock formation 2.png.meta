@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b678a5e1317c0e4e8f7493d08607290
+guid: abe44b66ffe10ac48ad6a59b83737841
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,96 +105,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stuff_1
+      name: rock formation 2_2
       rect:
         serializedVersion: 2
-        x: 267
-        y: 1329
-        width: 458
-        height: 412
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b7a145e19f546f438d15267f8e2f0a6
-      internalID: 53633187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_2
-      rect:
-        serializedVersion: 2
-        x: 980
-        y: 1398
-        width: 290
-        height: 289
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 03b2918d38541844698f2bfcf3252223
-      internalID: 880173810
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_3
-      rect:
-        serializedVersion: 2
-        x: 1504
-        y: 1429
-        width: 301
-        height: 208
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c9a845a8fa958947b91cfb1becd4a90
-      internalID: 1124068671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_5
-      rect:
-        serializedVersion: 2
-        x: 436
-        y: 953
-        width: 43
-        height: 292
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5c678c8f3743d8489345ec0ece59adf
-      internalID: -2120375462
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_6
-      rect:
-        serializedVersion: 2
-        x: 725
-        y: 1036
-        width: 145
+        x: 56
+        y: 1007
+        width: 463
         height: 195
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -203,20 +119,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a223c9f92bdcb54a851d6bd5fcb877c
-      internalID: 184896172
+      spriteID: f35c43e4efe9f4f46b7e7effaf0daffa
+      internalID: -1840186071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_7
+      name: rock formation 2_3
       rect:
         serializedVersion: 2
-        x: 1041
-        y: 1133
-        width: 195
-        height: 112
+        x: 739
+        y: 807
+        width: 341
+        height: 409
+      alignment: 9
+      pivot: {x: 0.491851, y: 0.30296433}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 015fbd2fe38e0e44a8a4ed559ebddb3a
+      internalID: -1145360891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rock formation 2_5
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 589
+        width: 95
+        height: 116
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22d7023313e57124284a8a12583d001a
-      internalID: 231990700
+      spriteID: ca98a0efd6b949546b7d7d8d73e0a633
+      internalID: -2014035432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_8
+      name: rock formation 2_6
       rect:
         serializedVersion: 2
-        x: 1393
-        y: 1085
-        width: 178
-        height: 146
+        x: 345
+        y: 610
+        width: 69
+        height: 71
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef42c8d68301e214caa8cab2e073610f
-      internalID: -909996308
+      spriteID: 02187c9dcca719e44829b56306e51510
+      internalID: -47600648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_9
+      name: rock formation 2_7
       rect:
         serializedVersion: 2
-        x: 1729
-        y: 1146
-        width: 113
-        height: 62
+        x: 486
+        y: 610
+        width: 198
+        height: 157
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,20 +203,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 379f056b3dd46eb46a6a51db232a416f
-      internalID: -831499816
+      spriteID: b592f41d9961d29438db03fc2fd9cb8c
+      internalID: 1754689691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_10
+      name: rock formation 2_8
       rect:
         serializedVersion: 2
-        x: 167
-        y: 427
-        width: 131
-        height: 186
+        x: 819
+        y: 603
+        width: 64
+        height: 143
+      alignment: 9
+      pivot: {x: 0.5059433, y: 0.24002132}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6276098891820074ea302004d7592f7d
+      internalID: -831263844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rock formation 2_9
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 658
+        width: 42
+        height: 91
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,20 +245,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 800a003f7dec4c548815bf3349e5f7bb
-      internalID: -1531533717
+      spriteID: ca0a1654be186e943b8c666e0a5c5104
+      internalID: -848255784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_11
+      name: rock formation 2_10
       rect:
         serializedVersion: 2
-        x: 539
-        y: 289
-        width: 486
-        height: 485
+        x: 1170
+        y: 629
+        width: 22
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -308,20 +266,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44e58cf4f2b3d204bbed51e62384247e
-      internalID: -410203802
+      spriteID: 0a008a9cea800e949b7c85f4f1c7d920
+      internalID: -540946212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_12
+      name: rock formation 2_12
       rect:
         serializedVersion: 2
-        x: 1202
-        y: 465
-        width: 67
-        height: 109
+        x: 1028
+        y: 448
+        width: 53
+        height: 139
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,20 +287,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4aa30f82381ae64995f9905df97953a
-      internalID: 323570932
+      spriteID: 142f0effdd8ed004596c62d18a78515f
+      internalID: 68734121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_13
+      name: rock formation 2_13
       rect:
         serializedVersion: 2
-        x: 1457
-        y: 480
-        width: 51
-        height: 68
+        x: 159
+        y: 295
+        width: 162
+        height: 115
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,20 +308,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d497fab643e43f4c999a6ea331e7cb2
-      internalID: -1692058393
+      spriteID: 175ee00f0315371429497e6318d23c87
+      internalID: -1195245698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_14
+      name: rock formation 2_14
       rect:
         serializedVersion: 2
-        x: 1735
-        y: 455
-        width: 88
-        height: 121
+        x: 493
+        y: 78
+        width: 439
+        height: 332
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,8 +329,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d700ffbbbc612e74c8bbdae9c8edd025
-      internalID: -256382558
+      spriteID: 698850d2c6070e340a0ae8a376b5073a
+      internalID: -159519099
       vertices: []
       indices: 
       edges: []
@@ -388,25 +346,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      stuff_14: -256382558
-      stuff_12: 323570932
-      stuff_15: -1671842932
-      stuff_11: -410203802
-      stuff_2: 880173810
-      stuff_10: -1531533717
-      stuff_8: -909996308
-      stuff_18: -223293865
-      stuff_16: -2021994660
-      stuff_0: -1341582748
-      stuff_6: 184896172
-      stuff_3: 1124068671
-      stuff_5: -2120375462
-      stuff_17: -350076701
-      stuff_1: 53633187
-      stuff_7: 231990700
-      stuff_4: 1261231364
-      stuff_13: -1692058393
-      stuff_9: -831499816
+      rock formation 2_10: -540946212
+      rock formation 2_0: 143596225
+      rock formation 2_2: -1840186071
+      rock formation 2_6: -47600648
+      rock formation 2_12: 68734121
+      rock formation 2_5: -2014035432
+      rock formation 2_13: -1195245698
+      rock formation 2_11: 613671958
+      rock formation 2_9: -848255784
+      rock formation 2_3: -1145360891
+      rock formation 2_7: 1754689691
+      rock formation 2_8: -831263844
+      rock formation 2_14: -159519099
+      rock formation 2_1: 1664337921
+      rock formation 2_4: -1608661440
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -105,27 +105,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rock formation_0
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 905
-        width: 197
-        height: 187
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eb63d885cde1e0a4189170dd2bd3feb4
-      internalID: -108319195
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: rock formation_1
       rect:
         serializedVersion: 2
@@ -133,8 +112,8 @@ TextureImporter:
         y: 903
         width: 125
         height: 189
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.47776952, y: 0.2500478}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,8 +196,8 @@ TextureImporter:
         y: 126
         width: 452
         height: 218
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.48155624, y: 0.25780383}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -238,8 +217,8 @@ TextureImporter:
         y: 114
         width: 367
         height: 551
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.49999902, y: 0.22097111}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b678a5e1317c0e4e8f7493d08607290
+guid: 95f0426fd6703f24296464372bb8b75b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stuff_1
+      name: bush and stone_5
       rect:
         serializedVersion: 2
-        x: 267
-        y: 1329
-        width: 458
-        height: 412
+        x: 699
+        y: 570
+        width: 121
+        height: 123
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b7a145e19f546f438d15267f8e2f0a6
-      internalID: 53633187
+      spriteID: afb976a5329f919459dd97fb01962b2a
+      internalID: -513802056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_2
+      name: bush and stone_6
       rect:
         serializedVersion: 2
-        x: 980
-        y: 1398
-        width: 290
-        height: 289
+        x: 113
+        y: 418
+        width: 76
+        height: 52
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03b2918d38541844698f2bfcf3252223
-      internalID: 880173810
+      spriteID: cad5d19c217dfb5409b6bd4cf177a3f8
+      internalID: -1327863407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_3
+      name: bush and stone_7
       rect:
         serializedVersion: 2
-        x: 1504
-        y: 1429
-        width: 301
-        height: 208
+        x: 435
+        y: 417
+        width: 67
+        height: 57
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,218 +161,260 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c9a845a8fa958947b91cfb1becd4a90
-      internalID: 1124068671
+      spriteID: 69e9b7534577afd42beb35bc99d08659
+      internalID: -1264698967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_5
+      name: bush and stone_8
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 417
+        width: 154
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa4d1c1852007b47a2eae329d3f6e9b
+      internalID: 388088701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_9
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 268
+        width: 113
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0bcfeef402592044922e4bde67c3771
+      internalID: -1606404265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_10
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 281
+        width: 60
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 542baee8b352f9a40940eac42ff14bd9
+      internalID: -811024632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_11
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 268
+        width: 97
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273d3872c3cbe9f4cb424b0d11a8e4a1
+      internalID: -1225912629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_13
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 159
+        width: 68
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b12a4ca67fad908428eeaa3f560e0346
+      internalID: 818503527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_14
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 150
+        width: 70
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85da9efe6b0a3d641a689ca890c325ae
+      internalID: -494288030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_15
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 151
+        width: 106
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a2ddefcb4514343bf1f3fa1ac98db0
+      internalID: -960323475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_0
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 794
+        width: 95
+        height: 116
+      alignment: 9
+      pivot: {x: 0.5254396, y: 0.26040754}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0131cda0bf141d942872b548f0e88b68
+      internalID: 163861690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_1
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 774
+        width: 144
+        height: 96
+      alignment: 9
+      pivot: {x: 0.48321682, y: 0.32377815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1c288a5af2dbb748b9ffd53c928bc28
+      internalID: -918327162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_2
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 796
+        width: 131
+        height: 110
+      alignment: 9
+      pivot: {x: 0.4631026, y: 0.2363531}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15c6b8401fa87c4db54e14c06895894
+      internalID: -1892356770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_3
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 570
+        width: 69
+        height: 71
+      alignment: 9
+      pivot: {x: 0.4824871, y: 0.27874756}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce1f80eab671f6d4c915b25c246bd5e4
+      internalID: -661931426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush and stone_4
       rect:
         serializedVersion: 2
         x: 436
-        y: 953
-        width: 43
-        height: 292
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 570
+        width: 64
+        height: 161
+      alignment: 9
+      pivot: {x: 0.46223783, y: 0.20728639}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5c678c8f3743d8489345ec0ece59adf
-      internalID: -2120375462
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_6
-      rect:
-        serializedVersion: 2
-        x: 725
-        y: 1036
-        width: 145
-        height: 195
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a223c9f92bdcb54a851d6bd5fcb877c
-      internalID: 184896172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_7
-      rect:
-        serializedVersion: 2
-        x: 1041
-        y: 1133
-        width: 195
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 22d7023313e57124284a8a12583d001a
-      internalID: 231990700
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_8
-      rect:
-        serializedVersion: 2
-        x: 1393
-        y: 1085
-        width: 178
-        height: 146
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef42c8d68301e214caa8cab2e073610f
-      internalID: -909996308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_9
-      rect:
-        serializedVersion: 2
-        x: 1729
-        y: 1146
-        width: 113
-        height: 62
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 379f056b3dd46eb46a6a51db232a416f
-      internalID: -831499816
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_10
-      rect:
-        serializedVersion: 2
-        x: 167
-        y: 427
-        width: 131
-        height: 186
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 800a003f7dec4c548815bf3349e5f7bb
-      internalID: -1531533717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_11
-      rect:
-        serializedVersion: 2
-        x: 539
-        y: 289
-        width: 486
-        height: 485
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44e58cf4f2b3d204bbed51e62384247e
-      internalID: -410203802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_12
-      rect:
-        serializedVersion: 2
-        x: 1202
-        y: 465
-        width: 67
-        height: 109
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4aa30f82381ae64995f9905df97953a
-      internalID: 323570932
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_13
-      rect:
-        serializedVersion: 2
-        x: 1457
-        y: 480
-        width: 51
-        height: 68
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d497fab643e43f4c999a6ea331e7cb2
-      internalID: -1692058393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_14
-      rect:
-        serializedVersion: 2
-        x: 1735
-        y: 455
-        width: 88
-        height: 121
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d700ffbbbc612e74c8bbdae9c8edd025
-      internalID: -256382558
+      spriteID: 627c7783421794f4f84cd8be576b7cbe
+      internalID: -416972625
       vertices: []
       indices: 
       edges: []
@@ -388,25 +430,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      stuff_14: -256382558
-      stuff_12: 323570932
-      stuff_15: -1671842932
-      stuff_11: -410203802
-      stuff_2: 880173810
-      stuff_10: -1531533717
-      stuff_8: -909996308
-      stuff_18: -223293865
-      stuff_16: -2021994660
-      stuff_0: -1341582748
-      stuff_6: 184896172
-      stuff_3: 1124068671
-      stuff_5: -2120375462
-      stuff_17: -350076701
-      stuff_1: 53633187
-      stuff_7: 231990700
-      stuff_4: 1261231364
-      stuff_13: -1692058393
-      stuff_9: -831499816
+      bush and stone_2: -1892356770
+      bush and stone_5: -513802056
+      bush and stone_10: -811024632
+      bush and stone_6: -1327863407
+      bush and stone_3: -661931426
+      bush and stone_7: -1264698967
+      bush and stone_11: -1225912629
+      bush and stone_8: 388088701
+      bush and stone_4: -416972625
+      bush and stone_13: 818503527
+      bush and stone_15: -960323475
+      bush and stone_12: -1718564524
+      bush and stone_1: -918327162
+      bush and stone_14: -494288030
+      bush and stone_0: 163861690
+      bush and stone_9: -1606404265
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

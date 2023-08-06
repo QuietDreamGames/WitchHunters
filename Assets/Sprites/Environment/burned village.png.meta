@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b678a5e1317c0e4e8f7493d08607290
+guid: aee00454c14c45b42b4a17dc1b350bc4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stuff_1
+      name: burned village_0
       rect:
         serializedVersion: 2
-        x: 267
-        y: 1329
-        width: 458
-        height: 412
+        x: 22
+        y: 566
+        width: 422
+        height: 394
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,62 +119,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b7a145e19f546f438d15267f8e2f0a6
-      internalID: 53633187
+      spriteID: 8fa8ef9f2fda89f4cb569674e41e67ed
+      internalID: -1414515960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_2
+      name: burned village_2
       rect:
         serializedVersion: 2
-        x: 980
-        y: 1398
-        width: 290
-        height: 289
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 520
+        y: 689
+        width: 455
+        height: 254
+      alignment: 9
+      pivot: {x: 0.5034393, y: 0.3090097}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03b2918d38541844698f2bfcf3252223
-      internalID: 880173810
+      spriteID: 4dc6f985507c7964e88dbc5ab5365c01
+      internalID: 290968380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_3
+      name: burned village_3
       rect:
         serializedVersion: 2
-        x: 1504
-        y: 1429
-        width: 301
-        height: 208
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 337
+        y: 287
+        width: 207
+        height: 206
+      alignment: 9
+      pivot: {x: 0.49169257, y: 0.274608}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c9a845a8fa958947b91cfb1becd4a90
-      internalID: 1124068671
+      spriteID: 8826803a18059d64182ec1e14a3a3d09
+      internalID: 390421984
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_5
+      name: burned village_4
       rect:
         serializedVersion: 2
-        x: 436
-        y: 953
-        width: 43
-        height: 292
+        x: 780
+        y: 474
+        width: 72
+        height: 136
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5c678c8f3743d8489345ec0ece59adf
-      internalID: -2120375462
+      spriteID: 2caf16eb89728cf4c99f26ba28d3658e
+      internalID: 1587855500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_6
+      name: burned village_5
       rect:
         serializedVersion: 2
-        x: 725
-        y: 1036
-        width: 145
-        height: 195
+        x: 108
+        y: 310
+        width: 99
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,41 +203,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a223c9f92bdcb54a851d6bd5fcb877c
-      internalID: 184896172
+      spriteID: 6d930a41a59fd664a843f70026e0a904
+      internalID: -1411539132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_7
+      name: burned village_6
       rect:
         serializedVersion: 2
-        x: 1041
-        y: 1133
-        width: 195
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 674
+        y: 259
+        width: 283
+        height: 150
+      alignment: 9
+      pivot: {x: 0.4999998, y: 0.35643208}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22d7023313e57124284a8a12583d001a
-      internalID: 231990700
+      spriteID: 5ef925a498b195944afd18f5c9d7195a
+      internalID: -1159392352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_8
+      name: burned village_7
       rect:
         serializedVersion: 2
-        x: 1393
-        y: 1085
-        width: 178
-        height: 146
+        x: 125
+        y: 66
+        width: 153
+        height: 85
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,20 +245,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef42c8d68301e214caa8cab2e073610f
-      internalID: -909996308
+      spriteID: b9b0bdcd7bed43742861d5d6c2c5a675
+      internalID: -1726918418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_9
+      name: burned village_9
       rect:
         serializedVersion: 2
-        x: 1729
-        y: 1146
-        width: 113
-        height: 62
+        x: 409
+        y: 51
+        width: 221
+        height: 141
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,20 +266,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 379f056b3dd46eb46a6a51db232a416f
-      internalID: -831499816
+      spriteID: 914573f44ffcfc14a891515709e31500
+      internalID: 600102683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stuff_10
+      name: burned village_11
       rect:
         serializedVersion: 2
-        x: 167
-        y: 427
-        width: 131
-        height: 186
+        x: 749
+        y: 66
+        width: 202
+        height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,92 +287,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 800a003f7dec4c548815bf3349e5f7bb
-      internalID: -1531533717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_11
-      rect:
-        serializedVersion: 2
-        x: 539
-        y: 289
-        width: 486
-        height: 485
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44e58cf4f2b3d204bbed51e62384247e
-      internalID: -410203802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_12
-      rect:
-        serializedVersion: 2
-        x: 1202
-        y: 465
-        width: 67
-        height: 109
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4aa30f82381ae64995f9905df97953a
-      internalID: 323570932
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_13
-      rect:
-        serializedVersion: 2
-        x: 1457
-        y: 480
-        width: 51
-        height: 68
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d497fab643e43f4c999a6ea331e7cb2
-      internalID: -1692058393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stuff_14
-      rect:
-        serializedVersion: 2
-        x: 1735
-        y: 455
-        width: 88
-        height: 121
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d700ffbbbc612e74c8bbdae9c8edd025
-      internalID: -256382558
+      spriteID: 5b4ea6c9137239942858b9ea647ada8e
+      internalID: 1310143580
       vertices: []
       indices: 
       edges: []
@@ -388,25 +304,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      stuff_14: -256382558
-      stuff_12: 323570932
-      stuff_15: -1671842932
-      stuff_11: -410203802
-      stuff_2: 880173810
-      stuff_10: -1531533717
-      stuff_8: -909996308
-      stuff_18: -223293865
-      stuff_16: -2021994660
-      stuff_0: -1341582748
-      stuff_6: 184896172
-      stuff_3: 1124068671
-      stuff_5: -2120375462
-      stuff_17: -350076701
-      stuff_1: 53633187
-      stuff_7: 231990700
-      stuff_4: 1261231364
-      stuff_13: -1692058393
-      stuff_9: -831499816
+      burned village_9: 600102683
+      burned village_0: -1414515960
+      burned village_6: -1159392352
+      burned village_12: -736026276
+      burned village_1: 1268148455
+      burned village_3: 390421984
+      burned village_4: 1587855500
+      burned village_10: -1042997718
+      burned village_11: 1310143580
+      burned village_8: -23161933
+      burned village_7: -1726918418
+      burned village_2: 290968380
+      burned village_5: -1411539132
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
