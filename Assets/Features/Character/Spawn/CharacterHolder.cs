@@ -23,7 +23,7 @@ namespace Features.Character.Spawn
             var characterData = GetCharacterData(type);
             if (characterData.character == null)
             {
-                characterData.character = Instantiate(characterData.prefab, Vector3.zero, Quaternion.identity);
+                characterData.character = Instantiate(characterData.prefab, transform, false);
             }
             else
             {
