@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
@@ -47,9 +48,18 @@ namespace Features.UI
                 _coroutine = null;
             }
             
-            StartCoroutine(SetAlphaCoroutine(0));
+            _coroutine = StartCoroutine(SetAlphaCoroutine(0));
         }
-        
+
+        public void Reset()
+        {
+            if (_coroutine != null)
+            {
+                StopCoroutine(_coroutine);
+                _coroutine = null;
+            } 
+        }
+
         public IEnumerator SetAlphaCoroutine(float targetAlpha)
         {
             var startAlpha = background.color.a;

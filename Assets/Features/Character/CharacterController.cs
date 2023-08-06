@@ -36,7 +36,7 @@ namespace Features.Character
 
             if (moveInput != Vector2.zero)
             {
-                _characterView.PlayWalkAnimation(moveInput);
+                _characterView.PlayWalkAnimation(moveInput, 1f);
                 _lastMovementInput = moveInput; 
             }
             else

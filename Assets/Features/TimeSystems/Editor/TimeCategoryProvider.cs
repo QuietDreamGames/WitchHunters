@@ -1,10 +1,13 @@
 ﻿using Features.TimeSystems.Configs;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.UIElements;
+#endif
 using UnityEngine.UIElements;
 
 namespace Features.TimeSystems.Editor
 {
+    #if UNITY_EDITOR
     internal static class TimeCategoryProvider
     {
         [SettingsProvider]
@@ -40,4 +43,5 @@ namespace Features.TimeSystems.Editor
             return provider;
         }
     }
+    #endif
 }

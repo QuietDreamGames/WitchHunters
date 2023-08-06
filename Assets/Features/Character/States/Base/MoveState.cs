@@ -17,7 +17,12 @@ namespace Features.Character.States.Base
         private SkillsController _skillsController;
         private ShieldHealthController _shieldHealthController;
         
-        private float _speed = 5f;
+        private BaseModifiersContainer _baseModifiersContainer;
+        private ModifiersContainer _modifiersContainer;
+        
+        private float _baseMoveSpeed;
+        private float _animationSpeedMultiplier = 1f;
+        
         private Vector2 _movementInput;
         private Vector2 _lastMovementInput;
         
@@ -32,6 +37,11 @@ namespace Features.Character.States.Base
             _rigidbody = stateMachine.GetExtension<Rigidbody2D>();
             _skillsController = stateMachine.GetExtension<SkillsController>();
             _shieldHealthController = stateMachine.GetExtension<ShieldHealthController>();
+            
+            _baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
+            _modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
+            
+            _baseMoveSpeed = _baseModifiersContainer.GetBaseValue(ModifierType.MoveSpeed);
         }
 
         public override void OnUpdate(float deltaTime)
@@ -70,7 +80,7 @@ namespace Features.Character.States.Base
 
             if (_movementInput != Vector2.zero)
             {
-                _characterView.PlayWalkAnimation(_movementInput);
+                _characterView.PlayWalkAnimation(_movementInput, _animationSpeedMultiplier);
                 _lastMovementInput = _movementInput; 
             }
             else
@@ -96,7 +106,9 @@ namespace Features.Character.States.Base
         
         private void Move(Vector2 moveInput, float fixedDeltaTime)
         {
-            Vector2 movement = _rigidbody.position + moveInput * (_speed * fixedDeltaTime);
+            var speed = _modifiersContainer.GetValue(ModifierType.MoveSpeed, _baseMoveSpeed);
+            _animationSpeedMultiplier = speed / _baseMoveSpeed;
+            Vector2 movement = _rigidbody.position + moveInput * (speed * fixedDeltaTime);
             _rigidbody.MovePosition(movement);
         }
     }

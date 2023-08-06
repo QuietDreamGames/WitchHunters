@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScreenUIPrefab: {fileID: 4333451542538638376, guid: 14d47275a17a70a4ab31cd43df286d37, type: 3}
+  hudPrefab: {fileID: 1115071528086852053, guid: c55fe24fa6928184294c9a5e3cc49b92, type: 3}

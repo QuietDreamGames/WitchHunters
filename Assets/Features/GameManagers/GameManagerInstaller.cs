@@ -10,7 +10,16 @@ namespace Features.GameManagers
         
         public override void Install()
         {
+            var exist = ServiceLocator.Resolve<GameManager>() != null;
+            if (exist)
+            {
+                return;
+            }
+            
             ServiceLocator.Register<GameManager>(gameManager);
+            
+            gameManager.transform.parent = null;
+            DontDestroyOnLoad(gameManager);
         }
     }
 }

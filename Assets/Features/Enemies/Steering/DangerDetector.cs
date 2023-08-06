@@ -20,6 +20,7 @@ namespace Features.Enemies.Steering
         private readonly RaycastHit2D[] _hits = new RaycastHit2D[10];
         
         private float _maxDistance;
+        private Vector3 _closestDirection;
         
         private bool _isEnabled;
 
@@ -59,6 +60,7 @@ namespace Features.Enemies.Steering
             var count = Physics2D.CircleCastNonAlloc(origin, exitRadius, Vector2.zero, _hits, 0, dangerLayer.value);
             
             _maxDistance = 0;
+            _closestDirection = Vector3.zero;
             contextSteering.ResetDanger();
             
             for (var i = 0; i < count; i++)
@@ -84,8 +86,8 @@ namespace Features.Enemies.Steering
                 _maxDistance = distance;
                 
                 var coefficient = Mathf.InverseLerp(exitRadius, enterRadius, distance);
-                var direction = point - origin;
-                contextSteering.AddDanger(direction.normalized * coefficient);
+                _closestDirection = point - origin;
+                contextSteering.AddDanger(_closestDirection.normalized * coefficient);
             }
         }
 
@@ -101,6 +103,9 @@ namespace Features.Enemies.Steering
             Gizmos.DrawWireSphere(origin, enterRadius);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(origin, exitRadius);
+            
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(origin, _closestDirection);
         }
     }
 }

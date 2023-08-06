@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using Features.Localization;
+using Features.ServiceLocators.Core;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class LocalizedText : MonoBehaviour
 {
     public string RawText;
     private TextMeshProUGUI _textComponent;
+    
+    private LocalizationManager _localizationManager;
     
     public void UpdateText(string newRawText)
     {
@@ -36,7 +39,7 @@ public class LocalizedText : MonoBehaviour
             var searchKey = dataEntry.ToString();
             searchKey = searchKey[1..^1];
 
-            var textToReplace = LocalizationManager.Instance.GetLocalizationLine(searchKey);
+            var textToReplace = _localizationManager.GetLocalizationLine(searchKey);
             rawString = rawString.Replace(dataEntry.ToString(), textToReplace);
         }
 
@@ -51,13 +54,14 @@ public class LocalizedText : MonoBehaviour
     private void OnEnable()
     {
         _textComponent = GetComponent<TextMeshProUGUI>();
+        _localizationManager = ServiceLocator.Resolve<LocalizationManager>();
         
-        LocalizationManager.OnLocalizationChanged += OnLocalizationChange;
+        _localizationManager.OnLocalizationChanged += OnLocalizationChange;
         UpdateText(RawText);
     }
 
     private void OnDisable()
     {
-        LocalizationManager.OnLocalizationChanged -= OnLocalizationChange;
+        _localizationManager.OnLocalizationChanged -= OnLocalizationChange;
     }
 }

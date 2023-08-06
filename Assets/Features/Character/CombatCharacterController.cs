@@ -2,6 +2,7 @@
 using Features.Damage.Core;
 using Features.FiniteStateMachine;
 using Features.Health;
+using Features.Input;
 using Features.Knockback;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
@@ -30,6 +31,7 @@ namespace Features.Character
         [SerializeField] protected KnockbackController _knockbackController;
 
         [SerializeField] protected ShieldEffectController _shieldEffectController;
+        [SerializeField] protected ComboController _comboController;
         
         public ModifiersContainer ModifiersContainer { get; protected set; }
         public HealthComponent HealthComponent { get; protected set; }
@@ -42,9 +44,11 @@ namespace Features.Character
         protected PlayerInput _playerInput;
         protected StateMachine stateMachine;
         
+        
         public virtual void Initiate()
         {
-            _playerInput = ServiceLocator.Resolve<PlayerInput>();
+            var inputData = ServiceLocator.Resolve<InputData>();
+            _playerInput = inputData.playerInput;
             stateMachine = new StateMachine();
             ModifiersContainer = new ModifiersContainer();
             HealthComponent = new HealthComponent(ModifiersContainer, _baseModifiersContainer);
@@ -63,7 +67,9 @@ namespace Features.Character
             stateMachine.AddExtension(HealthComponent);
             stateMachine.AddExtension(ShieldHealthController);
             
-
+            _comboController.Initiate(3);
+            stateMachine.AddExtension(_comboController);
+            
             _skillsController.Initiate(ModifiersContainer, _baseModifiersContainer, _characterView);
             stateMachine.AddExtension(_skillsController);
             
@@ -86,6 +92,7 @@ namespace Features.Character
             _passiveController.OnUpdate(deltaTime);
             _shieldEffectController.OnUpdate(deltaTime);
             ShieldHealthController.OnUpdate(deltaTime);
+            _comboController.OnUpdate(deltaTime);
         }
 
         public void OnFixedUpdate(float deltaTime)

@@ -1,4 +1,5 @@
 ﻿using System;
+using Features.Input;
 using Features.ServiceLocators.Core;
 using Features.TimeSystems.Core;
 using Features.TimeSystems.Interfaces.Handlers;
@@ -27,7 +28,8 @@ namespace Features.UI.Gameplay.EscapeMenu
         
         private void Start()
         {
-            _playerInput = ServiceLocator.Resolve<PlayerInput>();
+            var inputData = ServiceLocator.Resolve<InputData>();
+            _playerInput = inputData.playerInput;
         }
 
         public void ShowEscapeMenu()

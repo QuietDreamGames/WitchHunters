@@ -12,7 +12,7 @@ namespace Features.Character.States.Base
         {
             base.OnEnter();
             attackIndex = 2;
-            CharacterView.PlayAttackAnimation(attackIndex);
+            CharacterView.PlayAttackAnimation(attackIndex, attackSpeed);
         }
 
         public override void OnUpdate(float deltaTime)

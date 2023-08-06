@@ -1,10 +1,13 @@
 ﻿using Features.SaveSystems.Configs;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.UIElements;
+#endif
 using UnityEngine.UIElements;
 
 namespace Features.SaveSystems.Editor
 {
+    #if UNITY_EDITOR
     internal static class SaveCategoryProvider
     {
         [SettingsProvider]
@@ -40,4 +43,5 @@ namespace Features.SaveSystems.Editor
             return provider;
         }
     }
+    #endif
 }

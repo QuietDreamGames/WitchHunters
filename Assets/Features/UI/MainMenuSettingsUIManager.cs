@@ -1,5 +1,6 @@
 ﻿using Features.Localization;
 using Features.Localization.Services;
+using Features.ServiceLocators.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,8 +28,10 @@ namespace Features.UI
 
         public void ChangeLanguage(int lang)
         {
+            var localizationManager = ServiceLocator.Resolve<LocalizationManager>();
             var localizationLang = (LocalizationLang)lang;
-            LocalizationManager.Instance.ChangeLocalization(localizationLang);
+            
+            localizationManager.ChangeLocalization(localizationLang);
         }
         
         

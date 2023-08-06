@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2cfff062bab25d945a3d3b3fa4682d0a
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MasterScene.unity
+    guid: 2f6c2b04c24630c48b0f095db48f4eb4
+  - enabled: 1
+    path: Assets/Scenes/DangeonTemplate.unity
+    guid: 56c7644ef558be54da63a5ab659fb1de
   m_configObjects: {}

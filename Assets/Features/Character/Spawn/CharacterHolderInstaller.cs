@@ -11,6 +11,7 @@ namespace Features.Character.Spawn
         public override void Install()
         {
             ServiceLocator.Register<CharacterHolder>(characterHolder);
+            characterHolder.SetCharacter(CharacterType.Inquisitor);
         }
     }
 }

@@ -1,6 +1,8 @@
+using System.Collections;
 using Edgar.Unity;
 using Features.Character.Spawn;
 using Features.ServiceLocators.Core;
+using Pathfinding;
 using UnityEngine;
 
 namespace Features.Dungeons.Initialization
@@ -9,12 +11,21 @@ namespace Features.Dungeons.Initialization
     {
         [SerializeField] private DungeonGeneratorBaseGrid2D dungeonGenerator;
         [SerializeField] private RoomConfigurator roomConfigurator;
-
+        [SerializeField] private AstarPath astarPath;
+        
         [ContextMenu("Generate dungeon")]
         public void GenerateDungeon()
         {
             dungeonGenerator.Generate();
             roomConfigurator.ConfigureRoom();
+            
+            StartCoroutine(ScanCoroutine());
+        }
+        
+        private IEnumerator ScanCoroutine()
+        {
+            yield return null;
+            astarPath.Scan();
         }
 
         private void Start()

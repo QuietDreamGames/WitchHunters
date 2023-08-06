@@ -28,27 +28,22 @@ namespace Features.Character
         {
             _animator.SetFloat(Magnitude, 0);
 
-            if (MathF.Abs(lastMovementDirection.x) - MathF.Abs(lastMovementDirection.y) > -0.001f)
-            {
-                _animator.SetFloat(LastHorizontal, Mathf.Round(lastMovementDirection.x));
-                _animator.SetFloat(LastVertical, 0);
-            }
-            else
-            {
-                _animator.SetFloat(LastHorizontal, 0);
-                _animator.SetFloat(LastVertical, Mathf.Round(lastMovementDirection.y));
-            }
+            SetLastMovementDirection(lastMovementDirection);
+
+            _animator.speed = 1f;
         }
         
-        public void PlayWalkAnimation(Vector2 movementDirection)
+        public void PlayWalkAnimation(Vector2 movementDirection, float animationSpeedMultiplier)
         {
             _animator.SetFloat(Magnitude, movementDirection.magnitude);
             _animator.SetFloat(Horizontal, movementDirection.x);
             _animator.SetFloat(Vertical, movementDirection.y);
+            _animator.speed = animationSpeedMultiplier;
         }
         
-        public void PlayAttackAnimation(int index)
+        public void PlayAttackAnimation(int index, float attackSpeedMultiplier)
         {
+            _animator.speed = attackSpeedMultiplier;
             _animator.SetTrigger("Attack" + index);
         }
         
@@ -76,9 +71,28 @@ namespace Features.Character
             return _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
         }
         
+        public float CurrentAnimationLengthWithSpeed()
+        {
+            return _animator.GetCurrentAnimatorStateInfo(0).length / _animator.speed;
+        }
+        
         public float CurrentAnimationTimeSum()
         {
             return _animator.GetCurrentAnimatorStateInfo(0).length * _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        }
+        
+        public void SetLastMovementDirection(Vector2 lastMovementDirection)
+        {
+            if (MathF.Abs(lastMovementDirection.x) - MathF.Abs(lastMovementDirection.y) > -0.001f)
+            {
+                _animator.SetFloat(LastHorizontal, Mathf.Round(lastMovementDirection.x));
+                _animator.SetFloat(LastVertical, 0);
+            }
+            else
+            {
+                _animator.SetFloat(LastHorizontal, 0);
+                _animator.SetFloat(LastVertical, Mathf.Round(lastMovementDirection.y));
+            }
         }
         
         public Vector3 GetLastMovementDirection()
@@ -109,16 +123,19 @@ namespace Features.Character
         
         public void PlayUltimateAnimation()
         {
+            _animator.speed = 1f;
             _animator.SetTrigger(Ultimate);
         }
         
         public void PlaySecondaryAnimation()
         {
+            _animator.speed = 1f;
             _animator.SetTrigger(Secondary);
         }
         
         public void PlayDeathAnimation()
         {
+            _animator.speed = 1f;
             _animator.SetTrigger(Death);
         }
         
@@ -129,6 +146,7 @@ namespace Features.Character
 
         public void SetShieldAnimation(bool isShieldActive)
         {
+            _animator.speed = 1f;
             _animator.SetBool(Shield, isShieldActive);
         }
 
