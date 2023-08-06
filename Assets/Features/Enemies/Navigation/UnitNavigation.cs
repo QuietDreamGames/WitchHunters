@@ -98,13 +98,28 @@ namespace Features.Enemies.Navigation
             }
         }
         
-        private void OnPathHandler(Path p)
+        private void OnPathHandler(Path newPath)
         {
-            if (!p.error)
+            var p = newPath as ABPath;
+            if (p == null)
             {
-                _path = p;
-                _currentWaypoint = 0;
+                return;
             }
+
+            p.Claim(this);
+            
+            if (p.error) 
+            {
+                p.Release(this);
+                return;
+            }
+
+            if (_path != null)
+            {
+                _path.Release(this);
+            }
+
+            _path = p;
         }
 
         private void OnDrawGizmosSelected()
