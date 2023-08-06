@@ -13,14 +13,11 @@ namespace Features.Dungeons.Initialization
         [SerializeField] private RoomConfigurator roomConfigurator;
         [SerializeField] private AstarPath astarPath;
         
-        [SerializeField] private Seeker seeker;
-
         [ContextMenu("Generate dungeon")]
         public void GenerateDungeon()
         {
             dungeonGenerator.Generate();
             roomConfigurator.ConfigureRoom();
-            
             
             StartCoroutine(ScanCoroutine());
         }

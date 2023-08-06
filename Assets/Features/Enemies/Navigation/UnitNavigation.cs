@@ -15,7 +15,6 @@ namespace Features.Enemies.Navigation
         [Header("Dependencies")]
         [SerializeField] private new Rigidbody2D rigidbody2D;
         [SerializeField] private Seeker seeker;
-        [SerializeField] private RVOController rvo;
 
         private NavigationComputer _navigationComputer;
 
@@ -77,11 +76,7 @@ namespace Features.Enemies.Navigation
                     _currentWaypoint++;
                 }
             } while (inDistance);
-
-            var target = origin + direction;
-            rvo.SetTarget(target, 1, 1);
-
-            direction = rvo.CalculateMovementDelta(origin, 1).normalized;
+            
             return true;
         }
 

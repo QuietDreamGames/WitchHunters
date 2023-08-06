@@ -70,19 +70,14 @@ namespace Features.Enemies.Nodes
             var exist = _unitNavigation.TryGetDirection(out var direction);
             if (!exist)
             {
-                direction = target - origin;
+                direction = (target - origin).normalized;
             }
             
-            direction.Normalize();
-            /*
             if (!_contextSteering.IsDangerDirection(direction))
             {
                 _contextSteering.SetInterest(direction);
             }
-
             var steering = _contextSteering.GetSteering();
-            */
-            var steering = direction;
             
             var velocity = steering * (_unitConfig.BaseSpeed * deltaTime);
             _rigidbody2D.velocity = velocity;

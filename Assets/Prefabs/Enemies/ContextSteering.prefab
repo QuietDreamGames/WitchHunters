@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360f9e7937100ec468191f73592bf4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterRadius: 0.75
-  exitRadius: 1.15
+  enterRadius: 0.65
+  exitRadius: 1.05
   dangerLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 3072
   rigidbody2D: {fileID: 0}
   contextSteering: {fileID: 622791429898692814}
 --- !u!1 &8793407063571106361
