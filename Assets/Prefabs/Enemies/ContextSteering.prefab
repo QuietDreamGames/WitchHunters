@@ -48,7 +48,7 @@ MonoBehaviour:
   exitRadius: 1.15
   dangerLayer:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 1024
   rigidbody2D: {fileID: 0}
   contextSteering: {fileID: 622791429898692814}
 --- !u!1 &8793407063571106361
