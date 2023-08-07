@@ -207,10 +207,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2029276025}
     m_Modifications:
-    - target: {fileID: 2711005666644491626, guid: b52b16424e15aed4998e85ee0de6cf52, type: 3}
-      propertyPath: data.Array.data[0].prewarmCount
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4313566253844647667, guid: b52b16424e15aed4998e85ee0de6cf52, type: 3}
       propertyPath: m_RootOrder
       value: 8

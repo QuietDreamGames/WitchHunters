@@ -484,6 +484,7 @@ MonoBehaviour:
   currentStatus: 0
   started: 0
   targetBounds: {fileID: 7067719055853519312}
+  controlRigidbodySimulation: 0
 --- !u!1 &2441485307523823580
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +890,7 @@ GameObject:
   - component: {fileID: 4853197221106780639}
   - component: {fileID: 8305669543494688330}
   - component: {fileID: 5891440220964367957}
+  - component: {fileID: 9002539763342670882}
   - component: {fileID: 5604397801897566607}
   - component: {fileID: 263006423627927544}
   - component: {fileID: 8793576968431566584}
@@ -958,6 +960,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &9002539763342670882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419718671918686879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a690d111e2a94eb97fe515c8aa184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 5891440220964367957}
 --- !u!95 &5604397801897566607
 Animator:
   serializedVersion: 5
@@ -1087,30 +1102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03f342987171ee4590e911dc7853b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faceDirectionCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   faceDirectionTime: 0.1
   view: {fileID: 4882232251718779922}
   renderer: {fileID: 3240188774358951966}
@@ -1358,6 +1349,7 @@ MonoBehaviour:
   deathState: {fileID: 3882600509324328322}
   extensions:
   - {fileID: 5891440220964367957}
+  - {fileID: 9002539763342670882}
   - {fileID: 263006423627927544}
   - {fileID: 8793576968431566584}
   - {fileID: 6193034036054740000}
@@ -1460,6 +1452,7 @@ MonoBehaviour:
   currentStatus: 0
   started: 0
   targetBounds: {fileID: 8712379225422017}
+  controlRigidbodySimulation: 0
 --- !u!1 &5086275433534178580
 GameObject:
   m_ObjectHideFlags: 0

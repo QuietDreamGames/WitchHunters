@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Features.Enemies.Nodes
 {
-    public class MoveTargetContinuousLeaf : LeafNode, IFixedUpdateHandler
+    public class MoveTargetManageablyLeaf : LeafNode, IFixedUpdateHandler
     {
         [Header("Dependencies")] 
         [SerializeField] private AInTargetMeasureLeaf targetBounds;
@@ -20,6 +20,7 @@ namespace Features.Enemies.Nodes
         private TargetCollection _targetCollection;
 
         private Transform _currentTarget;
+        private Vector2 _currentTargetPosition;
         
         public override void Construct(IBTreeMachine stateMachine)
         {
@@ -34,23 +35,34 @@ namespace Features.Enemies.Nodes
                                     
         protected override void OnEnter()
         {
-            _unitNavigation.SetActive(true);
+            _currentTarget = _targetCollection.GetClosestTarget();
+            if (_currentTarget == null)
+            {
+                return;
+            }
+            
+            _currentTargetPosition = targetBounds == null 
+                ? _currentTarget.position 
+                : targetBounds.GetClosestPoint(_rigidbody2D.Origin);            
+            
+            _rigidbody2D.Active = false;
         }
                             
         protected override void OnExit()
         {
-            _unitNavigation.SetActive(false);
+            _rigidbody2D.Active = true; 
             _rigidbody2D.Velocity = Vector2.zero;
         }
                             
         protected override Status OnUpdate(float deltaTime)
         {
-            _currentTarget = _targetCollection.GetClosestTarget();
             if (_currentTarget == null)
             {
                 return Status.Failure;
             }
 
+            SetupNavigation();
+            
             return Status.Running;
         }
 
@@ -61,11 +73,13 @@ namespace Features.Enemies.Nodes
                 return;
             }
 
-            var origin = _rigidbody2D.Origin;
-            Vector2 target = targetBounds == null 
-                ? _currentTarget.position 
-                : targetBounds.GetClosestPoint(origin);
+            if (!_rigidbody2D.Active)
+            {
+                return;
+            }
             
+            var origin = _rigidbody2D.Origin;
+            var target = _currentTargetPosition;
             _unitNavigation.SetTarget(target);
             var exist = _unitNavigation.TryGetDirection(out var direction);
             if (!exist)
@@ -81,6 +95,16 @@ namespace Features.Enemies.Nodes
             
             var velocity = steering * (_unitConfig.BaseSpeed * deltaTime);
             _rigidbody2D.Velocity = velocity;
+        }
+        
+        private void SetupNavigation()
+        {
+            var active = _rigidbody2D.Active;
+            if (active == _unitNavigation.IsActive)
+            {
+                return;
+            }
+            _unitNavigation.SetActive(active);
         }
     }
 }

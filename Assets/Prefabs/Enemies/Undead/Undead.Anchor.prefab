@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5970334408483334875}
   - component: {fileID: 8174240830308559642}
   - component: {fileID: 8112940712871771252}
+  - component: {fileID: 6619709095570591556}
   - component: {fileID: 4425026492377572204}
   - component: {fileID: 2608631810822666073}
   - component: {fileID: 2263684913889622248}
@@ -164,6 +165,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6619709095570591556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394715997976533199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1a690d111e2a94eb97fe515c8aa184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 8112940712871771252}
 --- !u!95 &4425026492377572204
 Animator:
   serializedVersion: 5
@@ -870,6 +884,7 @@ MonoBehaviour:
   currentStatus: 0
   started: 0
   targetBounds: {fileID: 4548278595217227027}
+  controlRigidbodySimulation: 0
 --- !u!1 &3873652069767220029
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,30 +986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03f342987171ee4590e911dc7853b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faceDirectionCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   faceDirectionTime: 0.1
   view: {fileID: 6093560179725041442}
   renderer: {fileID: 5092159041858121544}
@@ -1466,6 +1457,7 @@ MonoBehaviour:
   deathState: {fileID: 8277600021658836701}
   extensions:
   - {fileID: 8112940712871771252}
+  - {fileID: 6619709095570591556}
   - {fileID: 2608631810822666073}
   - {fileID: 2263684913889622248}
   - {fileID: 2856543540445381681}

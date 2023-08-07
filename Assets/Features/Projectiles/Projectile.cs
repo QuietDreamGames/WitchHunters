@@ -21,7 +21,7 @@ namespace Features.Projectiles
         [SerializeField] private float damage;
         [SerializeField] private float lifetime;
         
-        protected Vector3 Target;
+        protected Transform Target;
         
         protected bool IsRunning;
         
@@ -51,7 +51,7 @@ namespace Features.Projectiles
             set => lifetime = value;
         }
 
-        public void Spawn(Vector3 target)
+        public void Spawn(Transform target)
         {
             if (IsRunning)
             {

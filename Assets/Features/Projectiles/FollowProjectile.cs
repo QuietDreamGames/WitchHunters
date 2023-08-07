@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Features.Projectiles
 {
-    public class LineProjectile : Projectile
+    public class FollowProjectile : Projectile
     {
         private Vector3 _direction;
         
@@ -20,6 +20,10 @@ namespace Features.Projectiles
 
         protected override void Translate(float deltaTime)
         {
+            _direction = (Target.position - transform.position).normalized;
+            
+            RotateView(_direction);
+            
             transform.Translate(_direction * (Speed * deltaTime));
         }
     }
