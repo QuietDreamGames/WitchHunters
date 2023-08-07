@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Features.Damage.Core;
 using Features.Damage.Interfaces;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
+using Features.ServiceLocators.Core;
 using UnityEngine;
 
 namespace Features.Enemies.Extensions
@@ -13,6 +15,8 @@ namespace Features.Enemies.Extensions
 
         private readonly List<Transform> _cachedTargets = new(10);
         private readonly RaycastHit2D[] raycasts = new RaycastHit2D[10];
+        
+        private DamageableCache _damageableCache;
         
         public float Damage { get; set; }
         public float KnockbackForce { get; set; }
@@ -40,12 +44,13 @@ namespace Features.Enemies.Extensions
                 for (var j = 0; j < count; j++)
                 {
                     var target = raycasts[j].transform;
+                    var targetCollider = raycasts[j].collider;
                     if (_cachedTargets.Contains(target))
                     {
                         continue;
                     }
                     
-                    var damageable = target.GetComponent<IDamageable>();
+                    var damageable = _damageableCache.GetDamageable(target);
                     if (damageable == null)
                     {
                         continue;
@@ -65,6 +70,7 @@ namespace Features.Enemies.Extensions
 
         public void Reset()
         {
+            _damageableCache = ServiceLocator.Resolve<DamageableCache>();
             _cachedTargets.Clear();
         }
     }

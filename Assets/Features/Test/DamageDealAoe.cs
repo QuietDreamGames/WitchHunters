@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Features.Damage.Core;
 using Features.Damage.Interfaces;
+using Features.ServiceLocators.Core;
 using Features.VFX.Core;
 using UnityEngine;
 
@@ -13,8 +16,15 @@ namespace Features.Test
         [SerializeField] private LayerMask _layerMask;
         
         private List<Collider2D> _collidersDamaged = new List<Collider2D>();
+        
+        private DamageableCache _damageableCache;
 
         private float _timer;
+
+        private void Awake()
+        {
+            _damageableCache = ServiceLocator.Resolve<DamageableCache>();
+        }
 
         private void DealDamage()
         {
@@ -29,7 +39,7 @@ namespace Features.Test
             {
                 if (_collidersDamaged.Contains(colliders[i])) continue;
 
-                var damageable = colliders[i].GetComponent<IDamageable>();
+                var damageable = _damageableCache.GetDamageable(colliders[i].transform);
                 if (damageable == null) continue;
 
                 damageable.TakeDamage(_damage, Vector3.zero, HitEffectType.PhysicalAOE);

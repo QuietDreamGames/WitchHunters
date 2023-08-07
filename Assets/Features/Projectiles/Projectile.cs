@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using Features.Damage.Core;
 using Features.Damage.Interfaces;
 using Features.ObjectPools.Core;
+using Features.ServiceLocators.Core;
 using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 
@@ -26,6 +28,8 @@ namespace Features.Projectiles
         protected bool IsRunning;
         
         private RaycastHit2D[] _raycasts = new RaycastHit2D[10];
+        
+        private DamageableCache _damageableCache;
         
         private WaitForSeconds _waitForSeconds;
         private Coroutine _lifetimeDespawn;
@@ -61,6 +65,8 @@ namespace Features.Projectiles
             IsRunning = true;
             
             Target = target;
+            
+            _damageableCache = ServiceLocator.Resolve<DamageableCache>();
             
             _waitForSeconds = new WaitForSeconds(lifetime);
             _lifetimeDespawn = StartCoroutine(CLifetimeDespawn());
@@ -131,7 +137,7 @@ namespace Features.Projectiles
                 var isDamageableLayer = damageableMask == (damageableMask | (1 << layer));
                 if (isDamageableLayer)
                 {
-                    var damageable = raycast.collider.GetComponent<IDamageable>();
+                    var damageable = _damageableCache.GetDamageable(raycast.collider.transform);
                     if (damageable != null)
                     {
                         damageable.TakeDamage(damage, -raycast.normal);
