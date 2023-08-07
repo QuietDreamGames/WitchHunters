@@ -17,9 +17,6 @@ namespace Features.Damage.Core
         [SerializeField] private HitEffectController _hitEffectController;
         [SerializeField] private HitShaderController _hitShaderController;
         
-        [Header("Origin")]
-        [SerializeField] private Transform _origin;
-
         private DamageableCache _damageableCache;
 
         private HealthComponent _healthComponent;
@@ -46,11 +43,6 @@ namespace Features.Damage.Core
             _modifiersesController = modifiersesController;
             _healthComponent = healthComponent;
             _baseModifiersContainer = baseModifiersContainer;
-            
-            if (_origin == null)
-            {
-                _origin = transform;
-            }
         }
 
         public void SetActive(bool isActive)
