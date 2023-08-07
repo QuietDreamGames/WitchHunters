@@ -47,7 +47,6 @@ MonoBehaviour:
   currentStatus: 0
   started: 0
   targetBounds: {fileID: 2988375490651859118}
-  controlRigidbodySimulation: 0
 --- !u!1 &21317616443251608
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +832,7 @@ Transform:
   m_Children:
   - {fileID: 958571546103784177}
   - {fileID: 7215527046853375732}
+  - {fileID: 464033373976040965}
   - {fileID: 4187784168470373310}
   - {fileID: 7063212197056097962}
   - {fileID: 2242824128435484758}
@@ -967,7 +967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4187784168470373310}
   - component: {fileID: 3064975936549512804}
-  - component: {fileID: 8657543438468830798}
+  - component: {fileID: 7738559880463070434}
   m_Layer: 10
   m_Name: DamageReceiver
   m_TagString: Enemy
@@ -988,7 +988,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8376973335997262105}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3064975936549512804
 MonoBehaviour:
@@ -1006,8 +1006,8 @@ MonoBehaviour:
   _hitShaderController: {fileID: 0}
   _origin: {fileID: 2603634300447566530}
   _activeOnStart: 0
---- !u!61 &8657543438468830798
-BoxCollider2D:
+--- !u!70 &7738559880463070434
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1016,22 +1016,12 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.75}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0.2}
+  m_Size: {x: 0.65, y: 1.2}
+  m_Direction: 0
 --- !u!1 &5442617651418408854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,6 +1377,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   category: GamePlay
+--- !u!1 &6001290160992806090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 464033373976040965}
+  - component: {fileID: 3960137325312850506}
+  m_Layer: 10
+  m_Name: PhysicsBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &464033373976040965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001290160992806090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8376973335997262105}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &3960137325312850506
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001290160992806090}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.85, y: 0.65}
+  m_Direction: 1
 --- !u!1 &6271245926749328746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,7 +1907,7 @@ Transform:
   m_Children:
   - {fileID: 8465902025751382685}
   m_Father: {fileID: 8376973335997262105}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4514908470433413549
 MonoBehaviour:
@@ -1999,7 +2037,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3400925997865509313, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3400925997865509313, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
       propertyPath: m_LocalScale.z
@@ -2072,7 +2110,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 521153706160935375, guid: c5bc7a014b6ea4c47875b50e6f9b9724, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 521153706160935375, guid: c5bc7a014b6ea4c47875b50e6f9b9724, type: 3}
       propertyPath: m_LocalScale.z

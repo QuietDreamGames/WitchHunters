@@ -680,7 +680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2655072248255478921}
   - component: {fileID: 4169757124982852610}
-  - component: {fileID: 8989831302468932761}
+  - component: {fileID: 8702014380392039777}
   m_Layer: 10
   m_Name: DamageReceiver
   m_TagString: Enemy
@@ -701,7 +701,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1176189324195975842}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4169757124982852610
 MonoBehaviour:
@@ -719,8 +719,8 @@ MonoBehaviour:
   _hitShaderController: {fileID: 0}
   _origin: {fileID: 1209639262422703983}
   _activeOnStart: 0
---- !u!61 &8989831302468932761
-BoxCollider2D:
+--- !u!70 &8702014380392039777
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -729,22 +729,12 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.55, y: 0.375}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0.2}
+  m_Size: {x: 0.5, y: 0.75}
+  m_Direction: 0
 --- !u!1 &4024558514823728292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,6 +1284,54 @@ MonoBehaviour:
   currentStatus: 0
   started: 0
   message: Hit End
+--- !u!1 &5816884125991885846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3754736911799981530}
+  - component: {fileID: 8145915430049792695}
+  m_Layer: 10
+  m_Name: PhysicsBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3754736911799981530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816884125991885846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1176189324195975842}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &8145915430049792695
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816884125991885846}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.55, y: 0.375}
+  m_Direction: 1
 --- !u!1 &6275941161022714258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,6 +1417,7 @@ Transform:
   m_Children:
   - {fileID: 7330865542418236579}
   - {fileID: 7545426504096753629}
+  - {fileID: 3754736911799981530}
   - {fileID: 2655072248255478921}
   - {fileID: 980688704752762526}
   - {fileID: 2447578443512353695}
@@ -1682,7 +1721,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1176189324195975842}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2329259115370601184
 MonoBehaviour:
@@ -1977,7 +2016,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3400925997865509313, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3400925997865509313, guid: 06feec99ef8d19e4fb0e4fa9edf9e57c, type: 3}
       propertyPath: m_LocalScale.z
@@ -2058,7 +2097,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 521153706160935375, guid: c5bc7a014b6ea4c47875b50e6f9b9724, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 521153706160935375, guid: c5bc7a014b6ea4c47875b50e6f9b9724, type: 3}
       propertyPath: m_LocalScale.z
