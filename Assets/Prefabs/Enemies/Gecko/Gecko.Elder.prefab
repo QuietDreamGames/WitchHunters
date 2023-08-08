@@ -717,8 +717,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitEffectController: {fileID: 0}
   _hitShaderController: {fileID: 0}
-  _origin: {fileID: 1209639262422703983}
-  _activeOnStart: 0
 --- !u!70 &8702014380392039777
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1965,7 +1963,7 @@ MonoBehaviour:
   verticalMoveParam: Vertical
   attackParam: Attack
   attackIDParam: AttackID
-  baseSpeed: 1.3
+  baseSpeed: 1.85
   speedMultiplier: 100
   baseDamage: 1
 --- !u!114 &2997860240470501448
