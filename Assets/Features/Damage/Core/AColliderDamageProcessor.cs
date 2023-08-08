@@ -73,7 +73,10 @@ namespace Features.Damage.Core
             for (int j = 0; j < colliderCount; j++)
             {
                 if (_collidersDamaged.Contains(colliders[j])) continue;
-                var damageable = _damageableCache.GetDamageable(colliders[j].transform);
+                var target = colliders[j].transform;
+                if (target == null)
+                    continue;
+                var damageable = _damageableCache.GetDamageable(target);
                 if (damageable == null) continue;
                 _collidersDamaged.Add(colliders[j]);
                 ProcessDamage(damageable, colliders[j].transform.position);
@@ -90,7 +93,10 @@ namespace Features.Damage.Core
 
             for (int j = 0; j < colliderCount; j++)
             {
-                var damageable = _damageableCache.GetDamageable(colliders[j].transform);
+                var target = colliders[j].transform;
+                if (target == null)
+                    continue;
+                var damageable = _damageableCache.GetDamageable(target);
                 if (damageable == null) continue;
                 ProcessDamage(damageable, colliders[j].transform.position);
             }
