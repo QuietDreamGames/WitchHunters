@@ -1,5 +1,6 @@
 ﻿using Features.ColliderController.Core;
 using Features.Damage.Core;
+using Features.Experience;
 using Features.FiniteStateMachine;
 using Features.Health;
 using Features.Input;
@@ -33,6 +34,8 @@ namespace Features.Character
         [SerializeField] protected ShieldEffectController _shieldEffectController;
         [SerializeField] protected ComboController _comboController;
         
+        [SerializeField] protected ExperienceController _experienceController;
+        
         public ModifiersContainer ModifiersContainer { get; protected set; }
         public HealthComponent HealthComponent { get; protected set; }
         public ShieldHealthController ShieldHealthController { get; protected set; }
@@ -40,6 +43,7 @@ namespace Features.Character
         public BaseModifiersContainer BaseModifiersContainer => _baseModifiersContainer;
         public APassiveController PassiveController => _passiveController;
         public SkillsController SkillsController => _skillsController;
+        public ExperienceController ExperienceController => _experienceController;
         
         protected PlayerInput _playerInput;
         protected StateMachine stateMachine;
@@ -47,6 +51,9 @@ namespace Features.Character
         
         public virtual void Initiate()
         {
+            _experienceController.Initiate();
+            
+            _playerInput = ServiceLocator.Resolve<PlayerInput>();
             var inputData = ServiceLocator.Resolve<InputData>();
             _playerInput = inputData.playerInput;
             stateMachine = new StateMachine();
