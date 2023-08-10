@@ -39,7 +39,7 @@ namespace Features.UI.Gameplay.EscapeMenu
             ServiceLocator.Resolve<TimeSystem>().SetCategoryTimeScale("GamePlay", 0f);
             
             _isInEscapeMenu = true;
-            _playerInput.SwitchCurrentActionMap(_uiActionMapName);
+            // _playerInput.SwitchCurrentActionMap(_uiActionMapName);
         }
         
         public void HideEscapeMenu()
@@ -48,7 +48,7 @@ namespace Features.UI.Gameplay.EscapeMenu
             ServiceLocator.Resolve<TimeSystem>().SetCategoryTimeScale("GamePlay", 1f);
             
             _isInEscapeMenu = false;
-            _playerInput.SwitchCurrentActionMap(_playerActionMapName);
+            // _playerInput.SwitchCurrentActionMap(_playerActionMapName);
         }
         
         public void ExitToMainMenu()
