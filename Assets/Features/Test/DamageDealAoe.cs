@@ -24,6 +24,7 @@ namespace Features.Test
         private void Awake()
         {
             _damageableCache = ServiceLocator.Resolve<DamageableCache>();
+            
         }
 
         private void DealDamage()

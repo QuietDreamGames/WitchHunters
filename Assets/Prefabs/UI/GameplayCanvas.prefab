@@ -3747,7 +3747,6 @@ GameObject:
   - component: {fileID: 351354663837858093}
   - component: {fileID: 1967538417721451631}
   - component: {fileID: 3478952096590875979}
-  - component: {fileID: 5950461558412215982}
   m_Layer: 5
   m_Name: MoveJoystick
   m_TagString: Untagged
@@ -3827,15 +3826,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovementRange: 50
   m_ControlPath: <Gamepad>/leftStick
---- !u!114 &5950461558412215982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8073243849813409144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6dadc73736be9d499ca4e2c350c143f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
