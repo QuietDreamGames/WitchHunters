@@ -34,7 +34,7 @@ namespace Features.Character
         [SerializeField] protected ShieldEffectController _shieldEffectController;
         [SerializeField] protected ComboController _comboController;
         
-        [SerializeField] protected ExperienceController _experienceController;
+        [SerializeField] protected LevelController _levelController;
         
         public ModifiersContainer ModifiersContainer { get; protected set; }
         public HealthComponent HealthComponent { get; protected set; }
@@ -43,7 +43,8 @@ namespace Features.Character
         public BaseModifiersContainer BaseModifiersContainer => _baseModifiersContainer;
         public APassiveController PassiveController => _passiveController;
         public SkillsController SkillsController => _skillsController;
-        public ExperienceController ExperienceController => _experienceController;
+        public LevelController LevelController => _levelController;
+        
         
         protected PlayerInput _playerInput;
         protected StateMachine stateMachine;
@@ -51,7 +52,7 @@ namespace Features.Character
         
         public virtual void Initiate()
         {
-            _experienceController.Initiate();
+            _levelController.Initiate();
             
             _playerInput = ServiceLocator.Resolve<PlayerInput>();
             var inputData = ServiceLocator.Resolve<InputData>();

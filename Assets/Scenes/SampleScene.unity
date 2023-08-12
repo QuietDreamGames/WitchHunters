@@ -553,7 +553,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1548025928}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Features.Test.CharacterExperienceTestSetter, Assembly-CSharp
         m_MethodName: OnAddExp
         m_Mode: 1
@@ -860,7 +860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553685bc236b4876899d29b58e4cbe77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterSpawner: {fileID: 732710315}
 --- !u!114 &1144978593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,7 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a4a4c8f73944f681cee62d5032c3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 1147800503}
+  inputData: {fileID: 0}
 --- !u!1001 &1149374633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1225,6 +1224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d03694ad3b948599e37405c2b265d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterHolder: {fileID: 0}
 --- !u!1 &1548025926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1548025927}
-  - component: {fileID: 1548025928}
   m_Layer: 5
   m_Name: Exp
   m_TagString: Untagged
@@ -1262,19 +1261,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1548025928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548025926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d19f17d6a3f947e190771576482f8e12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  expAmount: 100
 --- !u!114 &1568571582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,7 +1954,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1548025928}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Features.Test.CharacterExperienceTestSetter, Assembly-CSharp
         m_MethodName: OnResetExp
         m_Mode: 1
