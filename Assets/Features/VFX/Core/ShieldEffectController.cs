@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Features.VFX.Implementations;
+using UnityEngine;
 
 namespace Features.VFX.Core
 {

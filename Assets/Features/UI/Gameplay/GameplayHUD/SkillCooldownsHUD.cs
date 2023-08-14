@@ -1,15 +1,12 @@
 ﻿using Features.Character;
 using Features.Character.Spawn;
-using Features.Modifiers;
-using Features.Modifiers.SOLID.Core;
-using Features.Modifiers.SOLID.Helpers;
 using Features.ServiceLocators.Core;
 using Features.Skills.Core;
 using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Features.UI.GameplayHUD
+namespace Features.UI.Gameplay.GameplayHUD
 {
     public class SkillCooldownsHUD : MonoBehaviour, IUpdateHandler
     {

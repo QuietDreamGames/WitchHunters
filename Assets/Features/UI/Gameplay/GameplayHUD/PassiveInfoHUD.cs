@@ -9,7 +9,7 @@ using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Features.UI.GameplayHUD
+namespace Features.UI.Gameplay.GameplayHUD
 {
     public class PassiveInfoHUD : MonoBehaviour, IUpdateHandler
     {
