@@ -90,6 +90,7 @@ SpriteAtlas:
   - {fileID: -831263844, guid: abe44b66ffe10ac48ad6a59b83737841, type: 3}
   - {fileID: -848255784, guid: abe44b66ffe10ac48ad6a59b83737841, type: 3}
   - {fileID: 21300000, guid: 60c59f4895cbbcf41ac6df110a568089, type: 3}
+  - {fileID: 21300000, guid: 1deaa0c9baef6f74dbffb40152b5a86d, type: 3}
   - {fileID: 842208921, guid: 9806bce90a49f6449bd603bf175308fc, type: 3}
   - {fileID: 661256411, guid: 9806bce90a49f6449bd603bf175308fc, type: 3}
   - {fileID: 2083257052, guid: 9806bce90a49f6449bd603bf175308fc, type: 3}
@@ -175,6 +176,7 @@ SpriteAtlas:
   - rock formation 2_8
   - rock formation 2_9
   - stonehendge
+  - crossed dude
   - crates and stuff_16
   - crates and stuff_17
   - crates and stuff_14
