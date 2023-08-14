@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Features.VFX
+namespace Features.VFX.Implementations
 {
     public class DestructiblePieceController : MonoBehaviour
     {
