@@ -1248,6 +1248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManagerInstaller
       objectReference: {fileID: 0}
+    - target: {fileID: 4654182333351422722, guid: 8b8f0c8df59a46649acab9a1b896781c, type: 3}
+      propertyPath: defaultState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4654182333351422723, guid: 8b8f0c8df59a46649acab9a1b896781c, type: 3}
       propertyPath: gameplayTimeCategory
       value: GamePlay
