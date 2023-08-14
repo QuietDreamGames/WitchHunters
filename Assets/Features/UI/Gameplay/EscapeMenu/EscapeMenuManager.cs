@@ -1,4 +1,5 @@
 ﻿using System;
+using Features.GameManagers;
 using Features.Input;
 using Features.ServiceLocators.Core;
 using Features.TimeSystems.Core;
@@ -22,12 +23,14 @@ namespace Features.UI.Gameplay.EscapeMenu
         [SerializeField] private string _uiActionMapName = "UI";
 
         private PlayerInput _playerInput;
-        private float _lastGameplayTimeScale;
-
-        private bool _isInEscapeMenu;
+        private GameManager _gameManager;
+        private GameStateManager _gameStateManager;
         
         private void Start()
         {
+            _gameManager = ServiceLocator.Resolve<GameManager>();
+            _gameStateManager = ServiceLocator.Resolve<GameStateManager>();
+            
             var inputData = ServiceLocator.Resolve<InputData>();
             _playerInput = inputData.playerInput;
         }
@@ -36,24 +39,20 @@ namespace Features.UI.Gameplay.EscapeMenu
         {
             _escapeMenuPanel.SetActive(true);
             _firstButton.Select();
-            ServiceLocator.Resolve<TimeSystem>().SetCategoryTimeScale("GamePlay", 0f);
             
-            _isInEscapeMenu = true;
-            _playerInput.SwitchCurrentActionMap(_uiActionMapName);
+            _gameStateManager.SetGameState(GameStates.Menu);
         }
         
         public void HideEscapeMenu()
         {
             _escapeMenuPanel.SetActive(false);
-            ServiceLocator.Resolve<TimeSystem>().SetCategoryTimeScale("GamePlay", 1f);
             
-            _isInEscapeMenu = false;
-            _playerInput.SwitchCurrentActionMap(_playerActionMapName);
+            _gameStateManager.SetGameState(GameStates.Gameplay);
         }
         
         public void ExitToMainMenu()
         {
-            SceneManager.LoadScene(_mainMenuSceneName);
+            _gameManager.StartMainMenu();
         }
 
         public void OnUpdate(float deltaTime)
@@ -63,12 +62,10 @@ namespace Features.UI.Gameplay.EscapeMenu
             if (_playerInput.currentActionMap.name == _playerActionMapName)
             {
                 ShowEscapeMenu();
-                
             }
             else
             {
                 HideEscapeMenu();
-                
             }
         }
     }
