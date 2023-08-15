@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Features.GameManagers;
+using Features.ServiceLocators.Core;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -22,7 +24,7 @@ namespace Features.UI.TabSystem.TabContents
         
         public void ExitToMainMenu()
         {
-            SceneManager.LoadScene(_mainMenuSceneName);
+            ServiceLocator.Resolve<GameManager>().StartMainMenu();
         }
 
         // public void OnUpdate(float deltaTime)

@@ -58,9 +58,9 @@ namespace Features.Stats
                 new ModifierData(_statsData.strength, float.PositiveInfinity, ModifierSpec.RawAdditional));
             
             _modifiersData.Add(ModifierType.AttackSpeed,
-                new ModifierData(_statsData.agility, float.PositiveInfinity, ModifierSpec.PercentageAdditional));
+                new ModifierData(_statsData.agility * 0.01f, float.PositiveInfinity, ModifierSpec.PercentageAdditional));
             _modifiersData.Add(ModifierType.CastSpeed,
-                new ModifierData(_statsData.agility, float.PositiveInfinity, ModifierSpec.PercentageAdditional));
+                new ModifierData(_statsData.agility * 0.01f, float.PositiveInfinity, ModifierSpec.PercentageAdditional));
             _modifiersData.Add(ModifierType.CriticalChance,
                 new ModifierData(_statsData.agility * 0.5f, float.PositiveInfinity, ModifierSpec.RawAdditional));
             _modifiersData.Add(ModifierType.CriticalDamage,
