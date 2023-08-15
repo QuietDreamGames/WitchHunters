@@ -119,6 +119,33 @@ namespace Features.SaveSystems.Core
             savableData.LoadFromDisk(saveCategory);
         }
 
+        public void Clear(string category)
+        {
+            var contains = TryGetSaveCategory(category, out var saveCategory);
+            if (!contains)
+            {
+                Debug.LogWarning($"Save category {category} not found");
+                return;
+            }
+            
+            contains = _data.TryGetValue(category, out var savableData);
+            if (!contains)
+            {
+                savableData = new SavableData(_serializer, _pathBuilder);
+            }
+            
+            savableData.Clear(saveCategory);
+        }
+        
+        public void ClearAll()
+        {
+            for (var i = 0; i < settings.SaveCategories.Length; i++)
+            {
+                var saveCategory = settings.SaveCategories[i];
+                Clear(saveCategory.category);
+            }
+        }
+
         public void SetIndex(int index)
         {
             _pathBuilder.Index = index;
