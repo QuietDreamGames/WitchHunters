@@ -120,6 +120,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6426832601664836001}
+  - component: {fileID: 3626306036152672512}
+  - component: {fileID: 3374037025043202737}
+  - component: {fileID: 4844718247682938114}
   m_Layer: 0
   m_Name: Stats
   m_TagString: Untagged
@@ -142,6 +145,53 @@ Transform:
   m_Father: {fileID: 8829474016268893781}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3626306036152672512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3685784306787801102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9843cf8135894326ad058f2c53b62a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameplayCharacterSaver: {fileID: 8829038583385556657}
+  _statsData:
+    strength: 0
+    agility: 0
+    intelligence: 0
+    unusedStatsPoints: 0
+--- !u!114 &3374037025043202737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3685784306787801102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef93a7f6e4473496fd8fd81686b5ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 
+  useCustomID: 0
+--- !u!114 &4844718247682938114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3685784306787801102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8d72f86e2048268b2a4843d57ea2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: Gameplay
+  uniqueID: {fileID: 3374037025043202737}
+  customSavable: {fileID: 3626306036152672512}
 --- !u!1 &4321574876289465451
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +461,7 @@ MonoBehaviour:
   _shieldEffectController: {fileID: 5056129461234221188}
   _comboController: {fileID: 824366123938292658}
   _levelController: {fileID: 2048478977657288372}
+  _statsController: {fileID: 3626306036152672512}
   _secondComboAttackStartPercentage: 0.3
   _secondComboAttackEndPercentage: 0.9
   _secondComboAttackDistance: 0.9
@@ -681,8 +732,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitEffectController: {fileID: 0}
   _hitShaderController: {fileID: 0}
-  _origin: {fileID: 0}
-  _activeOnStart: 0
   _shieldEffectController: {fileID: 5056129461234221188}
 --- !u!114 &4321574877219388106
 MonoBehaviour:

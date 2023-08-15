@@ -5,12 +5,12 @@
         AttackDamage = 0,
         AttackSpeed = 1,
         MaximumHealth = 3,
+        MaximumShieldHealth = 4,
         Armor = 8,
         CriticalChance = 9,
         CriticalDamage = 10,
         Lifesteal = 11,
         HealthRegeneration = 12,
-        AttackDamagePercentage = 13,
         KnockbackResistance = 14,
         KnockbackForce = 15,
         UltimateDamage = 16,
@@ -34,5 +34,6 @@
         SecondarySkillLifetime = 35,
         SecondarySkillMaxSize = 36,
         MoveSpeed = 37,
+        CastSpeed = 38,
     }
 }

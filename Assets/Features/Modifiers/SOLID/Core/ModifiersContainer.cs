@@ -27,10 +27,10 @@ namespace Features.Modifiers.SOLID.Core
             OnUpdateModifier?.Invoke(type);
         }
         
-        public void Add(ModifierInfo modInfo)
-        {
-            Add(modInfo.type, modInfo.data.spec, modInfo.data.duration, modInfo.data.modificatorValue);
-        }
+        // public void Add(ModifierInfo modInfo)
+        // {
+        //     Add(modInfo.type, modInfo.data.spec, modInfo.data.duration, modInfo.data.modificatorValue);
+        // }
         
         public float GetValue(ModifierType type, float sourceValue)
         { 
