@@ -27,7 +27,7 @@ namespace Features.GameManagers
         private readonly List<Scene> _activeScenes = new(4);
         
         private LoadingScreenUI _loadingScreenUI;
-        private TimeSystem _timeSystem;
+        private GameStateManager _gameStateManager;
         
         public Action OnSceneChange;
 
@@ -45,7 +45,8 @@ namespace Features.GameManagers
         
         public void StartMainMenu()
         {
-            SceneManager.LoadScene(masterSceneName, LoadSceneMode.Single);
+            _gameStateManager.SetGameState(GameStates.Menu);
+            SceneManager.LoadScene(mainMenuSceneName, LoadSceneMode.Single);
         }
 
         public void StartMasterScene()
@@ -53,6 +54,7 @@ namespace Features.GameManagers
             var isLoaded = IsSceneLoaded(masterSceneName);
             if (!isLoaded)
             {
+                _gameStateManager.SetGameState(GameStates.None);
                 SceneManager.LoadScene(masterSceneName, LoadSceneMode.Single);
             }
         }
@@ -92,7 +94,7 @@ namespace Features.GameManagers
             _loadingScreenUI.Reset();
             yield return _loadingScreenUI.SetAlphaCoroutine(1);
             
-            _timeSystem.SetCategoryTimeScale(gameplayTimeCategory, 0);
+            _gameStateManager.SetGameState(GameStates.None);
             
             OnSceneChange?.Invoke();
             
@@ -118,7 +120,7 @@ namespace Features.GameManagers
 
             yield return null;
             
-            _timeSystem.SetCategoryTimeScale(gameplayTimeCategory, 1);
+            _gameStateManager.SetGameState(GameStates.Gameplay);
             
             _loadingScreenUI.Reset();
             yield return _loadingScreenUI.SetAlphaCoroutine(0);
@@ -150,9 +152,9 @@ namespace Features.GameManagers
             {
                 _loadingScreenUI = ServiceLocator.Resolve<LoadingScreenUI>();
             }
-            if (_timeSystem == null)
+            if (_gameStateManager == null)
             {
-                _timeSystem = ServiceLocator.Resolve<TimeSystem>();
+                _gameStateManager = ServiceLocator.Resolve<GameStateManager>();
             }
         }
     }

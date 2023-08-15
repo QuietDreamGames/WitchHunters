@@ -1,13 +1,12 @@
 ﻿using Features.Character;
 using Features.Character.Spawn;
-using Features.Health;
 using Features.ServiceLocators.Core;
 using Features.Skills.Core;
 using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Features.UI.GameplayHUD
+namespace Features.UI.Gameplay.GameplayHUD
 {
     public class CharacterShieldHUD : MonoBehaviour, IUpdateHandler
     {
