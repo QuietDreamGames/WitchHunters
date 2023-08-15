@@ -26,6 +26,23 @@ namespace Features.Modifiers.SOLID.Core
             modificator.Add(duration, modificatorValue, spec);
             OnUpdateModifier?.Invoke(type);
         }
+
+        public void Add(ModifierType type, ModifierData modifierData)
+        {
+            GetModificator(type, out var modificator);
+            modificator.Add(modifierData);
+            OnUpdateModifier?.Invoke(type);
+        }
+
+        public void Remove(ModifierType type, ModifierData modifierData)
+        {
+            GetModificator(type, out var modificator);
+
+            if (!modificator.Data.Contains(modifierData)) return;
+            
+            modificator.Data.Remove(modifierData);
+            OnUpdateModifier?.Invoke(type);
+        }
         
         // public void Add(ModifierInfo modInfo)
         // {

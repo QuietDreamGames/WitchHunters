@@ -1,4 +1,5 @@
-﻿using Features.Character;
+﻿using System.Collections.Generic;
+using Features.Character;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.SaveSystems.Interfaces;
@@ -14,6 +15,8 @@ namespace Features.Stats
         public StatsData StatsData => _statsData;
         
         private ModifiersContainer _modifiersContainer;
+        
+        private Dictionary<ModifierType, ModifierData> _modifiersData = new ();
         
         #region ISaveble
 
@@ -34,33 +37,48 @@ namespace Features.Stats
         {
             _gameplayCharacterSaver.Load();
             _modifiersContainer = modifiersContainer;
+            _modifiersData = new Dictionary<ModifierType, ModifierData>();
+            
             SetupStats();
         }
         
         private void SetupStats()
         {
-            // _modifiersContainer.Add(ModifierType.MaximumHealth, ModifierSpec.RawAdditional, float.PositiveInfinity,
-            //     _statsData.strength);
-            // _modifiersContainer.Add(ModifierType.AttackDamage, ModifierSpec.RawAdditional, float.PositiveInfinity,
-            //     _statsData.strength);
-            //
-            // _modifiersContainer.Add(ModifierType.AttackSpeed, ModifierSpec.PercentageAdditional, float.PositiveInfinity,
-            //     _statsData.agility);
-            // _modifiersContainer.Add(ModifierType.CastSpeed, ModifierSpec.PercentageAdditional, float.PositiveInfinity,
-            //     _statsData.agility);
-            // _modifiersContainer.Add(ModifierType.CriticalChance, ModifierSpec.RawAdditional, float.PositiveInfinity,
-            //     _statsData.agility * 0.5f);
-            // _modifiersContainer.Add(ModifierType.CriticalDamage, ModifierSpec.RawAdditional, float.PositiveInfinity,
-            //     _statsData.agility * 0.5f);
-            //
-            // _modifiersContainer.Add(ModifierType.PassiveChargedAttackDamage, ModifierSpec.PercentageAdditional,
-            //     float.PositiveInfinity, _statsData.intelligence);
-            // _modifiersContainer.Add(ModifierType.SecondarySkillDamage, ModifierSpec.PercentageAdditional,
-            //     float.PositiveInfinity, _statsData.intelligence);
-            // _modifiersContainer.Add(ModifierType.UltimateDamage, ModifierSpec.PercentageAdditional,
-            //     float.PositiveInfinity, _statsData.intelligence);
-            // _modifiersContainer.Add(ModifierType.MaximumShieldHealth, ModifierSpec.RawAdditional,
-            //     float.PositiveInfinity, _statsData.intelligence);
+            
+            foreach (KeyValuePair<ModifierType, ModifierData> entry in _modifiersData)
+            {
+                _modifiersContainer.Remove(entry.Key, entry.Value);
+            }
+            
+            _modifiersData.Clear();
+            
+            _modifiersData.Add(ModifierType.MaximumHealth,
+                new ModifierData(_statsData.strength, float.PositiveInfinity, ModifierSpec.RawAdditional));
+            _modifiersData.Add(ModifierType.AttackDamage,
+                new ModifierData(_statsData.strength, float.PositiveInfinity, ModifierSpec.RawAdditional));
+            
+            _modifiersData.Add(ModifierType.AttackSpeed,
+                new ModifierData(_statsData.agility, float.PositiveInfinity, ModifierSpec.PercentageAdditional));
+            _modifiersData.Add(ModifierType.CastSpeed,
+                new ModifierData(_statsData.agility, float.PositiveInfinity, ModifierSpec.PercentageAdditional));
+            _modifiersData.Add(ModifierType.CriticalChance,
+                new ModifierData(_statsData.agility * 0.5f, float.PositiveInfinity, ModifierSpec.RawAdditional));
+            _modifiersData.Add(ModifierType.CriticalDamage,
+                new ModifierData(_statsData.agility * 0.5f, float.PositiveInfinity, ModifierSpec.RawAdditional));
+            
+            _modifiersData.Add(ModifierType.PassiveChargedAttackDamage,
+                new ModifierData(_statsData.intelligence, float.PositiveInfinity, ModifierSpec.PercentageAdditional));
+            _modifiersData.Add(ModifierType.SecondarySkillDamage,
+                new ModifierData(_statsData.intelligence, float.PositiveInfinity, ModifierSpec.PercentageAdditional));
+            _modifiersData.Add(ModifierType.UltimateDamage,
+                new ModifierData(_statsData.intelligence, float.PositiveInfinity, ModifierSpec.PercentageAdditional));
+            _modifiersData.Add(ModifierType.MaximumShieldHealth,
+                new ModifierData(_statsData.intelligence, float.PositiveInfinity, ModifierSpec.RawAdditional));
+
+            foreach (KeyValuePair<ModifierType, ModifierData> entry in _modifiersData)
+            {
+                _modifiersContainer.Add(entry.Key, entry.Value);
+            }
         }
         
         public void AddUnusedStatsPoints(int statsPoints)
@@ -103,6 +121,8 @@ namespace Features.Stats
         {
             _statsData = statsData;
             _gameplayCharacterSaver.Save();
+            
+            SetupStats();
         }
     }
 }

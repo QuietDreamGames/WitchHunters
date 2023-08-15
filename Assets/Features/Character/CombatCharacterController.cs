@@ -56,13 +56,13 @@ namespace Features.Character
         public virtual void Initiate()
         {
             _levelController.Initiate();
-            _statsController.Initiate(ModifiersContainer);
             
             _playerInput = ServiceLocator.Resolve<PlayerInput>();
             var inputData = ServiceLocator.Resolve<InputData>();
             _playerInput = inputData.playerInput;
             stateMachine = new StateMachine();
             ModifiersContainer = new ModifiersContainer();
+            _statsController.Initiate(ModifiersContainer);
             HealthComponent = new HealthComponent(ModifiersContainer, _baseModifiersContainer);
             ShieldHealthController = new ShieldHealthController(ModifiersContainer, _baseModifiersContainer);
             _knockbackController.Initiate(ModifiersContainer, _baseModifiersContainer);

@@ -72,6 +72,8 @@ namespace Features.Damage.Core
             }
             
             if (_isDead) return;
+
+            Debug.Log(damage);
             
             var armor = _modifiersesController.GetValue(ModifierType.Armor,
                 _baseModifiersContainer.GetBaseValue(ModifierType.Armor));
