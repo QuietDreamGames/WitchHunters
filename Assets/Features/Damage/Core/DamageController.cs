@@ -72,7 +72,7 @@ namespace Features.Damage.Core
             }
             
             if (_isDead) return;
-            
+
             var armor = _modifiersesController.GetValue(ModifierType.Armor,
                 _baseModifiersContainer.GetBaseValue(ModifierType.Armor));
             var damageTaken = damage - armor;

@@ -85,6 +85,7 @@ namespace Features.Damage.Core
 
         public void InstantProcessDamage()
         {
+            _damageableCache = ServiceLocator.Resolve<DamageableCache>();
             var colliders = new Collider2D[10];
             ContactFilter2D contactFilter2D = new ContactFilter2D();
             contactFilter2D.SetLayerMask(hittableLayerMask);
