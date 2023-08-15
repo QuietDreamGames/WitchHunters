@@ -8,6 +8,7 @@ namespace Features.Modifiers.SOLID.Core
     public class Modifier
     {
         private readonly List<ModifierData> data = new();
+        public List<ModifierData> Data => data;
         
         public float GetValue(float sourceValue)
         {
@@ -26,6 +27,11 @@ namespace Features.Modifiers.SOLID.Core
         public void Add(float duration, float modificatorValue, ModifierSpec spec)
         {
             data.Add(new ModifierData(modificatorValue, duration, spec));
+        }
+        
+        public void Add(ModifierData modifierData)
+        {
+            data.Add(modifierData);
         }
         
         public bool OnUpdate(float deltaTime)
