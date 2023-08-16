@@ -12,15 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d124957088fb4253ac0d826b09325bf, type: 3}
   m_Name: OSSC_DB
   m_EditorClassIdentifier: 
-  items:
-  - name: 
-    soundItems: []
-    audioObjectPrefab: {fileID: 0}
-    usingDefaultPrefab: 1
-    categoryVolume: 1
-    foldOutSoundItems: 0
-    soundsSearchName: 
-    isMute: 0
+  items: []
   foldOutCategories: 1
   foldOutTags: 0
   assetName: 
