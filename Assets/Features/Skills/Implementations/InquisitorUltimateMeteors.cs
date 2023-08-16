@@ -1,4 +1,6 @@
-﻿using Features.Damage.Implementations;
+﻿using System.Collections.Generic;
+using Features.Damage.Core;
+using Features.Damage.Implementations;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
@@ -13,12 +15,16 @@ namespace Features.Skills.Implementations
     {
         [SerializeField] private MeteorController _meteorPrefab;
         private GameObjectPool<MeteorController> _meteorsPool;
+        
+        private DamageableCache _damageableCache;
+        private LayerMask _hittableLayerMask;
 
         private bool _isCasting;
         private int _meteorsCasted;
         private float _meteorsToCast;
         private float _meteorSpawnInterval;
         private float _radius;
+        private float _offsetForRandomPosition = 3;
 
         private float _timer;
 
@@ -26,6 +32,10 @@ namespace Features.Skills.Implementations
         {
             base.Initiate(modifiersContainer, baseModifiersContainer);
             _meteorsPool = ServiceLocator.Resolve<GameObjectPool<MeteorController>>();
+            
+            _damageableCache = ServiceLocator.Resolve<DamageableCache>();
+            
+            _hittableLayerMask = LayerMask.GetMask($"Hittable", "Enemy");
         }
 
         public override void Cast(Vector3 direction)
@@ -64,7 +74,7 @@ namespace Features.Skills.Implementations
             var meteor = _meteorsPool.Spawn(_meteorPrefab.gameObject, null);
             meteor.Pool = _meteorsPool;
             meteor.Prefab = _meteorPrefab.gameObject;
-            meteor.transform.position = FindRandomPosition(_radius);
+            meteor.transform.position = FindFallPosition();
             
             var hittableLayerMask = LayerMask.GetMask($"Hittable", "Enemy");
             var obstacleLayerMask = LayerMask.GetMask("Obstacle");
@@ -79,13 +89,40 @@ namespace Features.Skills.Implementations
                 _isCasting = false;
             }
         }
-
-        private Vector3 FindRandomPosition(float radius)
+        
+        private Vector3 FindFallPosition()
         {
-            // return random position in radius around transform.position
+            var (success, target) = FindTarget();
+
+            return success ? FindRandomPosition(target.position, _offsetForRandomPosition) : FindRandomPosition(transform.position, _radius);
+        }
+
+        private static Vector3 FindRandomPosition(Vector3 point, float radius)
+        {
+            // return random position in radius around a certain point
             Vector2 randomCircle = Random.insideUnitCircle * radius;
-            Vector3 randomPosition = transform.position + new Vector3(randomCircle.x, randomCircle.y, 0);
+            Vector3 randomPosition = point + new Vector3(randomCircle.x, randomCircle.y, 0);
             return randomPosition;
+        }
+        
+        private (bool, Transform) FindTarget()
+        {
+            var colliders = new Collider2D[10];
+            ContactFilter2D contactFilter2D = new ContactFilter2D();
+            contactFilter2D.SetLayerMask(_hittableLayerMask);
+            int colliderCount = Physics2D.OverlapCircle(transform.position, _radius, contactFilter2D, colliders);
+
+            var enemies = new List<Transform>();
+            
+            for (int j = 0; j < colliderCount; j++)
+            {
+                enemies.Add(colliders[j].transform);
+            }
+            
+            if (enemies.Count <= 0) return (false, null);
+            
+            var randomIndex = Random.Range(0, enemies.Count);
+            return (true, enemies[randomIndex]);
         }
     }
 }
