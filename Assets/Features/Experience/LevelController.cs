@@ -1,4 +1,5 @@
 ﻿using System;
+using Features.Stats;
 using UnityEngine;
 
 namespace Features.Experience
@@ -13,8 +14,7 @@ namespace Features.Experience
         
         public Action OnLevelUp;
         public Action OnAddExp;
-        
-        
+
         // Should be called after the initiation of the ExperienceController
         public void Initiate()
         {

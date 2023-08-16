@@ -62,7 +62,7 @@ namespace Features.Character
             _playerInput = inputData.playerInput;
             stateMachine = new StateMachine();
             ModifiersContainer = new ModifiersContainer();
-            _statsController.Initiate(ModifiersContainer);
+            _statsController.Initiate(_levelController, ModifiersContainer);
             HealthComponent = new HealthComponent(ModifiersContainer, _baseModifiersContainer);
             ShieldHealthController = new ShieldHealthController(ModifiersContainer, _baseModifiersContainer);
             _knockbackController.Initiate(ModifiersContainer, _baseModifiersContainer);

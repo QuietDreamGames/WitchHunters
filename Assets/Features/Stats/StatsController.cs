@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Features.Character;
+using Features.Experience;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.SaveSystems.Interfaces;
@@ -33,13 +34,15 @@ namespace Features.Stats
 
         #endregion
         
-        public void Initiate(ModifiersContainer modifiersContainer)
+        public void Initiate(LevelController levelController, ModifiersContainer modifiersContainer)
         {
             _gameplayCharacterSaver.Load();
             _modifiersContainer = modifiersContainer;
             _modifiersData = new Dictionary<ModifierType, ModifierData>();
             
             SetupStats();
+
+            levelController.OnLevelUp += OnLevelUp;
         }
         
         private void SetupStats()
@@ -79,6 +82,11 @@ namespace Features.Stats
             {
                 _modifiersContainer.Add(entry.Key, entry.Value);
             }
+        }
+        
+        private void OnLevelUp()
+        {
+            AddUnusedStatsPoints(3);
         }
         
         public void AddUnusedStatsPoints(int statsPoints)
