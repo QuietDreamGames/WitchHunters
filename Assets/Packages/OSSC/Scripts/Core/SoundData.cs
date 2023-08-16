@@ -9,12 +9,14 @@ namespace Packages.OSSC.Scripts.Core
         public bool active = true;
         public string category = string.Empty;
         public string soundName = string.Empty;
+        public float fadeIn = 0f;
+        public float fadeOut = 0f;
 
         public ISoundCue Cue => _cue;
         
         private ISoundCue _cue;
         
-        public void PlaySoundData(SoundController soundController, Vector3 position, float fadeIn = 0f, float fadeOut = 0f)
+        public void PlaySoundData(SoundController soundController, Vector3 position)
         {
             if (active == false)
             {
@@ -30,7 +32,7 @@ namespace Packages.OSSC.Scripts.Core
             _cue = BuildCue(soundController, category, soundName, position, _cue, fadeIn, fadeOut);
         }
 
-        public void PlaySoundData(SoundController soundController, MonoBehaviour mono, float fadeIn = 0f, float fadeOut = 0f)
+        public void PlaySoundData(SoundController soundController, MonoBehaviour mono)
         {
             if (active == false)
             {
