@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe952a378864fdda220d64e8c3433dd, type: 3}
+  m_Name: InquisitorTalentsList
+  m_EditorClassIdentifier: 
+  talents:
+  - talentName: Damage 1
+    talentData:
+    - modifierType: 0
+      modifier:
+        modificatorValue: 1
+        duration: Infinity
+        spec: 0
+    icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
+  - talentName: Damage 2
+    talentData:
+    - modifierType: 0
+      modifier:
+        modificatorValue: 1
+        duration: Infinity
+        spec: 0
+    icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
+  - talentName: Damage 3
+    talentData:
+    - modifierType: 0
+      modifier:
+        modificatorValue: 1
+        duration: Infinity
+        spec: 0
+    icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
+  - talentName: Damage 4
+    talentData:
+    - modifierType: 0
+      modifier:
+        modificatorValue: 1
+        duration: Infinity
+        spec: 0
+    icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
+  - talentName: Damage 5
+    talentData:
+    - modifierType: 0
+      modifier:
+        modificatorValue: 1
+        duration: Infinity
+        spec: 0
+    icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
+  - talentName: Damage 6
+    talentData:
+    - modifierType: 0
+      modifier:
+        modificatorValue: 1
+        duration: Infinity
+        spec: 0
+    icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
+  - talentName: Damage 7
+    talentData:
+    - modifierType: 0
+      modifier:
+        modificatorValue: 1
+        duration: Infinity
+        spec: 0
+    icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
+  - talentName: Damage 8
+    talentData:
+    - modifierType: 0
+      modifier:
+        modificatorValue: 1
+        duration: Infinity
+        spec: 0
+    icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
