@@ -66,7 +66,7 @@ namespace Features.UI.TabSystem.TabContents.SkillsAndStats
             _pointsText.color = _addedPointsTextColor;
             SetRemovePointsButton(true);
             
-            _skillsTabContent.OnAddPoint();
+            _skillsTabContent.OnAddStatPoint();
         }
         
         public void OnRemovePoint()
@@ -96,7 +96,7 @@ namespace Features.UI.TabSystem.TabContents.SkillsAndStats
                 SetRemovePointsButton(false);
             }
             
-            _skillsTabContent.OnRemovePoint();
+            _skillsTabContent.OnRemoveStatPoint();
         }
         
         public void SetAddPointsButton(bool value)

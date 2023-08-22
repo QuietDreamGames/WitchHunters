@@ -2,7 +2,6 @@
 using System.Linq;
 using Features.Character;
 using Features.Experience;
-using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.SaveSystems.Interfaces;
 using UnityEngine;
@@ -11,12 +10,16 @@ namespace Features.Talents
 {
     public class TalentsController : MonoBehaviour, ISavable
     {
-        // [SerializeField] private TalentsList _talentsList; // static list of all talents, learned and unlearned
+        [SerializeField] private TalentsList _talentsList; // static list of all talents, learned and unlearned
         [SerializeField] private TalentsData _talentsData; // learned talents
+        
+        public TalentsList TalentsList => _talentsList;
+        public TalentsData TalentsData => _talentsData;
+        
         [SerializeField] private GameplayCharacterSaver _gameplayCharacterSaver;
 
         private ModifiersContainer _modifiersContainer;
-        private Dictionary<ModifierType, ModifierData> _modifiersData = new ();
+        private List<TalentData> _talentModifiersData;
         
         #region ISaveble
         
@@ -38,7 +41,7 @@ namespace Features.Talents
             _gameplayCharacterSaver.Load();
             _modifiersContainer = modifiersContainer;
             
-            _modifiersData = new Dictionary<ModifierType, ModifierData>();
+            _talentModifiersData = new List<TalentData>();
             
             SetupTalents();
             
@@ -47,21 +50,16 @@ namespace Features.Talents
         
         public void SetupTalents()
         {
-            foreach (KeyValuePair<ModifierType, ModifierData> entry in _modifiersData)
+            foreach (var talentDataEntry in _talentModifiersData.SelectMany(talentData => talentData.talentData))
             {
-                _modifiersContainer.Remove(entry.Key, entry.Value);
+                _modifiersContainer.Remove(talentDataEntry.modifierType, talentDataEntry.modifier);
             }
             
-            _modifiersData.Clear();
+            _talentModifiersData = _talentsData.Clone();
             
-            foreach (var talentDataEntry in _talentsData.learnedTalents.SelectMany(talent => talent.talentData))
+            foreach (var entry in _talentModifiersData.SelectMany(talentData => talentData.talentData))
             {
-                _modifiersData.Add(talentDataEntry.modifierType, talentDataEntry.modifier);
-            }
-            
-            foreach (KeyValuePair<ModifierType, ModifierData> entry in _modifiersData)
-            {
-                _modifiersContainer.Add(entry.Key, entry.Value);
+                _modifiersContainer.Add(entry.modifierType, entry.modifier);
             }
         }
 
@@ -72,6 +70,7 @@ namespace Features.Talents
 
         public void LearnTalent(TalentData talentData)
         {
+            _talentsData.talentPoints--;
             _talentsData.learnedTalents.Add(talentData);
             SetupTalents();
             _gameplayCharacterSaver.Save();

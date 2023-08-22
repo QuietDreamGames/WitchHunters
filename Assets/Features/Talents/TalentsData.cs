@@ -11,11 +11,17 @@ namespace Features.Talents
     {
         public int talentPoints;
         public List<TalentData> learnedTalents;
+
+        public List<TalentData> Clone()
+        {
+            return new List<TalentData>(learnedTalents);
+        }
     }
 
     [Serializable]
     public class TalentData
     {
+        public string talentId;
         public string talentName;
         public TalendDataEntry[] talentData;
         public Sprite icon;

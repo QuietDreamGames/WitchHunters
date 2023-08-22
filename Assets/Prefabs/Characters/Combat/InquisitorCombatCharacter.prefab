@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8931008032894105208}
   - component: {fileID: 7003949222348020243}
+  - component: {fileID: 2415244622644313223}
+  - component: {fileID: 1270087227912897237}
   m_Layer: 0
   m_Name: Talents
   m_TagString: Untagged
@@ -44,10 +46,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b82abe6db8242aca4d86f141cff2ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _talentsList: {fileID: 11400000, guid: 39a60c1210ec926419d0aab4f7221676, type: 2}
   _talentsData:
     talentPoints: 0
     learnedTalents: []
   _gameplayCharacterSaver: {fileID: 8829038583385556657}
+--- !u!114 &2415244622644313223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575540882422099232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef93a7f6e4473496fd8fd81686b5ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 
+  useCustomID: 0
+--- !u!114 &1270087227912897237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575540882422099232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8d72f86e2048268b2a4843d57ea2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: Gameplay
+  uniqueID: {fileID: 2415244622644313223}
+  customSavable: {fileID: 7003949222348020243}
 --- !u!1 &643187023575112984
 GameObject:
   m_ObjectHideFlags: 0

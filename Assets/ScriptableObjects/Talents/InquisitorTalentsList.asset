@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: InquisitorTalentsList
   m_EditorClassIdentifier: 
   talents:
-  - talentName: Damage 1
+  - talentId: damage1
+    talentName: Damage 1
     talentData:
     - modifierType: 0
       modifier:
@@ -21,7 +22,8 @@ MonoBehaviour:
         duration: Infinity
         spec: 0
     icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
-  - talentName: Damage 2
+  - talentId: damage2
+    talentName: Damage 2
     talentData:
     - modifierType: 0
       modifier:
@@ -29,7 +31,8 @@ MonoBehaviour:
         duration: Infinity
         spec: 0
     icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
-  - talentName: Damage 3
+  - talentId: damage3
+    talentName: Damage 3
     talentData:
     - modifierType: 0
       modifier:
@@ -37,7 +40,8 @@ MonoBehaviour:
         duration: Infinity
         spec: 0
     icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
-  - talentName: Damage 4
+  - talentId: damage4
+    talentName: Damage 4
     talentData:
     - modifierType: 0
       modifier:
@@ -45,7 +49,8 @@ MonoBehaviour:
         duration: Infinity
         spec: 0
     icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
-  - talentName: Damage 5
+  - talentId: damage5
+    talentName: Damage 5
     talentData:
     - modifierType: 0
       modifier:
@@ -53,7 +58,8 @@ MonoBehaviour:
         duration: Infinity
         spec: 0
     icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
-  - talentName: Damage 6
+  - talentId: damage6
+    talentName: Damage 6
     talentData:
     - modifierType: 0
       modifier:
@@ -61,7 +67,8 @@ MonoBehaviour:
         duration: Infinity
         spec: 0
     icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
-  - talentName: Damage 7
+  - talentId: damage7
+    talentName: Damage 7
     talentData:
     - modifierType: 0
       modifier:
@@ -69,7 +76,8 @@ MonoBehaviour:
         duration: Infinity
         spec: 0
     icon: {fileID: -548753676, guid: 3c287e3c59f41d74e85fae3bed7f619c, type: 3}
-  - talentName: Damage 8
+  - talentId: damage8
+    talentName: Damage 8
     talentData:
     - modifierType: 0
       modifier:
