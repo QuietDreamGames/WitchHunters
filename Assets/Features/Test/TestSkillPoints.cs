@@ -12,5 +12,12 @@ namespace Features.Test
             
             character.StatsController.AddUnusedStatsPoints(3);
         }
+        
+        public void AddTalentPoints()
+        {
+            var character = ServiceLocator.Resolve<CharacterHolder>().CurrentCharacter;
+            
+            character.TalentsController.AddTalentPoint();
+        }
     }
 }

@@ -10,6 +10,7 @@ using Features.Modifiers.SOLID.Helpers;
 using Features.ServiceLocators.Core;
 using Features.Skills.Core;
 using Features.Stats;
+using Features.Talents;
 using Features.TimeSystems.Interfaces.Handlers;
 using Features.VFX;
 using Features.VFX.Core;
@@ -37,7 +38,7 @@ namespace Features.Character
         
         [SerializeField] protected LevelController _levelController;
         [SerializeField] protected StatsController _statsController;
-        
+        [SerializeField] protected TalentsController _talentsController;
         public ModifiersContainer ModifiersContainer { get; protected set; }
         public HealthComponent HealthComponent { get; protected set; }
         public ShieldHealthController ShieldHealthController { get; protected set; }
@@ -47,6 +48,7 @@ namespace Features.Character
         public SkillsController SkillsController => _skillsController;
         public LevelController LevelController => _levelController;
         public StatsController StatsController => _statsController;
+        public TalentsController TalentsController => _talentsController;
         
         
         protected PlayerInput _playerInput;
@@ -61,8 +63,11 @@ namespace Features.Character
             var inputData = ServiceLocator.Resolve<InputData>();
             _playerInput = inputData.playerInput;
             stateMachine = new StateMachine();
+            
             ModifiersContainer = new ModifiersContainer();
             _statsController.Initiate(_levelController, ModifiersContainer);
+            _talentsController.Initiate(_levelController, ModifiersContainer);
+            
             HealthComponent = new HealthComponent(ModifiersContainer, _baseModifiersContainer);
             ShieldHealthController = new ShieldHealthController(ModifiersContainer, _baseModifiersContainer);
             _knockbackController.Initiate(ModifiersContainer, _baseModifiersContainer);
