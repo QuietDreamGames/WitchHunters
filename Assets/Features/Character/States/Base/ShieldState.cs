@@ -2,6 +2,7 @@
 using Features.FiniteStateMachine.Interfaces;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.Network;
 using Features.Skills.Core;
 using Features.Skills.Interfaces;
 using Features.VFX.Core;
@@ -16,6 +17,7 @@ namespace Features.Character.States.Base
         private IShieldHealthController _shieldHealthController;
         private CharacterView _characterView;
         private PlayerInput _playerInput;
+        private NetworkInput _networkInput;
         
         private Vector2 _lastMovementDirection;
         
@@ -28,6 +30,7 @@ namespace Features.Character.States.Base
             _shieldEffectController = stateMachine.GetExtension<ShieldEffectController>();
             _characterView = stateMachine.GetExtension<CharacterView>();
             _playerInput = stateMachine.GetExtension<PlayerInput>();
+            _networkInput = stateMachine.GetExtension<NetworkInput>();
             _shieldHealthController = stateMachine.GetExtension<ShieldHealthController>();
             
             _characterView.SetShieldAnimation(true);
@@ -43,7 +46,8 @@ namespace Features.Character.States.Base
 
         public override void OnUpdate(float deltaTime)
         {
-            if (_playerInput.actions["Shield"].IsPressed() == false)
+            var inputData = _networkInput.InputData;
+            if (!inputData.shield)
             {
                 _characterView.SetShieldAnimation(false);
                 _shieldEffectController.StopShieldEffect();
@@ -63,7 +67,7 @@ namespace Features.Character.States.Base
                 return;
             }
             
-            var movementInput = _playerInput.actions["Move"].ReadValue<Vector2>();
+            var movementInput = inputData.move;
 
             if (movementInput != Vector2.zero)
             {

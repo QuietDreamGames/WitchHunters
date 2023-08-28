@@ -4,6 +4,7 @@ using Features.FiniteStateMachine.Interfaces;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.Network;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ namespace Features.Character.States.Base
     {
         protected CharacterView CharacterView;
         protected PlayerInput PlayerInput;
+        protected NetworkInput NetworkInput;
         protected bool ShouldCombo;
         protected int attackIndex;
         protected float attackSpeed;
@@ -29,6 +31,7 @@ namespace Features.Character.States.Base
         {
             CharacterView = stateMachine.GetExtension<CharacterView>();
             PlayerInput = stateMachine.GetExtension<PlayerInput>();
+            NetworkInput = stateMachine.GetExtension<NetworkInput>();
             var modifiersContainer = stateMachine.GetExtension<ModifiersContainer>();
             var baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
             attackSpeed = modifiersContainer.GetValue(ModifierType.AttackSpeed,
@@ -59,9 +62,11 @@ namespace Features.Character.States.Base
             //     Attack();
             // }
             
-            ShouldCombo = PlayerInput.actions["Attack"].IsPressed();
+            var inputData = NetworkInput.InputData;
+
+            ShouldCombo = inputData.attack;
             
-            var movementInput = PlayerInput.actions["Move"].ReadValue<Vector2>();
+            var movementInput = inputData.move;
 
             if (movementInput != Vector2.zero)
             {

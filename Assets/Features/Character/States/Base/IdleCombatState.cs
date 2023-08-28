@@ -3,7 +3,9 @@ using Features.FiniteStateMachine.Interfaces;
 using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.Network;
 using Features.Skills.Core;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Features.Character.States.Base
@@ -11,6 +13,7 @@ namespace Features.Character.States.Base
     public class IdleCombatState : State
     {
         private PlayerInput _playerInput;
+        private NetworkInput _networkInput;
         private SkillsController _skillsController;
         private BaseModifiersContainer _baseModifiersContainer;
         private ShieldHealthController _shieldHealthController;
@@ -22,6 +25,7 @@ namespace Features.Character.States.Base
         public override void OnEnter()
         {
             _playerInput = stateMachine.GetExtension<PlayerInput>();
+            _networkInput = stateMachine.GetExtension<NetworkInput>();
             _skillsController = stateMachine.GetExtension<SkillsController>();
             _baseModifiersContainer = stateMachine.GetExtension<BaseModifiersContainer>();
             _shieldHealthController = stateMachine.GetExtension<ShieldHealthController>();
@@ -34,27 +38,28 @@ namespace Features.Character.States.Base
 
         public override void OnUpdate(float deltaTime)
         {
-            if (_playerInput.actions["Attack"].IsPressed())
+            var inputData = _networkInput.InputData;
+            if (inputData.attack)
             {
                 stateMachine.ChangeState("MeleeEntryState");
                 return;
             }
             
-            if (_playerInput.actions["Secondary"].IsPressed())
+            if (inputData.secondary)
             {
                 
                 if (!_skillsController.Secondary.IsOnCooldown) stateMachine.ChangeState("SecondarySkillState");
                 return;
             }
             
-            if (_playerInput.actions["Ultimate"].IsPressed())
+            if (inputData.ultimate)
             {
                 
                 if (!_skillsController.Ultimate.IsOnCooldown) stateMachine.ChangeState("UltimateSkillState");
                 return;
             }
             
-            if (_playerInput.actions["Shield"].IsPressed())
+            if (inputData.shield)
             {
                 _shieldHealthController.GetShieldHealth(out var shieldCurrentHealth, out var shieldMaxHealth);
                 if (shieldCurrentHealth > 0)
@@ -64,7 +69,7 @@ namespace Features.Character.States.Base
                 }
             }
 
-            if (_playerInput.actions["Move"].IsPressed())
+            if (inputData.move != Vector2.zero)
             {
                 stateMachine.ChangeState("MoveState");
                 return;

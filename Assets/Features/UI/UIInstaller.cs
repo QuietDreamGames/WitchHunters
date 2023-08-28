@@ -14,7 +14,7 @@ namespace Features.UI
             var loadingScreenUI = Instantiate(loadingScreenUIPrefab, transform, false);
             ServiceLocator.Register<LoadingScreenUI>(loadingScreenUI);
             
-            var hud = Instantiate(hudPrefab, transform, false);
+            //var hud = Instantiate(hudPrefab, transform, false);
         }
     }
 }

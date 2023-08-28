@@ -1,4 +1,5 @@
-﻿using Features.ColliderController.Core;
+﻿using System.Collections;
+using Features.ColliderController.Core;
 using Features.Damage.Core;
 using Features.Experience;
 using Features.FiniteStateMachine;
@@ -7,18 +8,20 @@ using Features.Input;
 using Features.Knockback;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.Network;
 using Features.ServiceLocators.Core;
 using Features.Skills.Core;
 using Features.Stats;
 using Features.TimeSystems.Interfaces.Handlers;
 using Features.VFX;
 using Features.VFX.Core;
+using FishNet.Object;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Features.Character
 {
-    public abstract class CombatCharacterController : MonoBehaviour, IUpdateHandler, IFixedUpdateHandler, ILateUpdateHandler
+    public abstract class CombatCharacterController : NetworkBehaviour, IUpdateHandler, IFixedUpdateHandler, ILateUpdateHandler
     {
         [SerializeField] protected Collider2D _attackCollider;
         [SerializeField] protected Rigidbody2D _rigidbody;
@@ -52,6 +55,23 @@ namespace Features.Character
         protected PlayerInput _playerInput;
         protected StateMachine stateMachine;
         
+        private bool _isInitiated;
+
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            
+            if (!IsOwner)
+            {
+                StartCoroutine(InitiateCoroutine());
+            }
+        }
+        
+        private IEnumerator InitiateCoroutine()
+        {
+            yield return new WaitForEndOfFrame();
+            Initiate();
+        }
         
         public virtual void Initiate()
         {
@@ -60,6 +80,14 @@ namespace Features.Character
             _playerInput = ServiceLocator.Resolve<PlayerInput>();
             var inputData = ServiceLocator.Resolve<InputData>();
             _playerInput = inputData.playerInput;
+            var networkInputStorage = ServiceLocator.Resolve<NetworkInputStorage>();
+            var networkInput = networkInputStorage.Get(OwnerId);
+            Debug.Log($"Character: {OwnerId}");
+            if (networkInput == null)
+            {
+                Debug.LogError("NetworkInput is null");
+                return;
+            }
             stateMachine = new StateMachine();
             ModifiersContainer = new ModifiersContainer();
             _statsController.Initiate(_levelController, ModifiersContainer);
@@ -70,6 +98,7 @@ namespace Features.Character
             _damageController.Initiate(ModifiersContainer,  _baseModifiersContainer, HealthComponent, stateMachine, ShieldHealthController);
             _damageController.SetActive(true);
 
+            stateMachine.AddExtension(networkInput);
             stateMachine.AddExtension(_playerInput);
             stateMachine.AddExtension(_characterView);
             stateMachine.AddExtension(_rigidbody);
@@ -90,6 +119,8 @@ namespace Features.Character
             
             _shieldEffectController.Initiate();
             stateMachine.AddExtension(_shieldEffectController);
+            
+            _isInitiated = true;
         }
 
         public void Restart()
@@ -99,6 +130,9 @@ namespace Features.Character
 
         public void OnUpdate(float deltaTime)
         {
+            if (!_isInitiated)
+                return;
+            
             stateMachine.OnUpdate(deltaTime);
             ModifiersContainer.OnUpdate(deltaTime);
             _passiveController.OnUpdate(deltaTime);
@@ -109,12 +143,18 @@ namespace Features.Character
 
         public void OnFixedUpdate(float deltaTime)
         {
+            if (!_isInitiated)
+                return;
+            
             stateMachine.OnFixedUpdate(deltaTime);
             _meleeColliderController.OnFixedUpdate(deltaTime);
         }
 
         public void OnLateUpdate(float deltaTime)
         {
+            if (!_isInitiated)
+                return;
+            
             stateMachine.OnLateUpdate(deltaTime);
         }
     }

@@ -1,9 +1,12 @@
 ﻿using System;
+using FishNet;
+using FishNet.Connection;
+using FishNet.Object;
 using UnityEngine;
 
 namespace Features.Character.Spawn
 {
-    public class CharacterHolder : MonoBehaviour
+    public class CharacterHolder : NetworkBehaviour
     {
         [SerializeField] private CharacterData[] characters;
         
@@ -15,6 +18,12 @@ namespace Features.Character.Spawn
 
         public void SetCharacter(CharacterType type)
         {
+            SetCharacterServer(type, this, LocalConnection);
+        }
+
+        [ServerRpc]
+        public void SetCharacterServer(CharacterType type, CharacterHolder self, NetworkConnection conn)
+        {
             if (_currentCharacterData != null)
             {
                 SetActiveCharacter(false, _currentCharacterData);
@@ -24,11 +33,24 @@ namespace Features.Character.Spawn
             if (characterData.character == null)
             {
                 characterData.character = Instantiate(characterData.prefab, transform, false);
+                ServerManager.Spawn(characterData.character.gameObject, conn);
             }
             else
             {
                 SetActiveCharacter(true, characterData);
-            }
+            } 
+            
+            SetCharacterObservers(characterData, conn);
+        }
+        
+        [ObserversRpc]
+        public void SetCharacterObservers(CharacterData serverData, NetworkConnection conn)
+        {
+            if (conn != LocalConnection)
+                return;
+            
+            var characterData = GetCharacterData(serverData.type);
+            characterData.character = serverData.character;
             
             characterData.character.Initiate();
             
@@ -37,7 +59,7 @@ namespace Features.Character.Spawn
             OnCharacterChanged?.Invoke(_currentCharacterData.character);
         }
         
-        private CharacterData GetCharacterData(CharacterType type)
+        public CharacterData GetCharacterData(CharacterType type)
         {
             foreach (var character in characters)
             {
@@ -51,13 +73,13 @@ namespace Features.Character.Spawn
             return characters[0];
         }
         
-        private static void SetActiveCharacter(bool active, CharacterData characterData)
+        public static void SetActiveCharacter(bool active, CharacterData characterData)
         {
             characterData.character.gameObject.SetActive(active);
         }
 
         [Serializable]
-        private class CharacterData
+        public class CharacterData
         {
             public CombatCharacterController prefab;
             public CharacterType type;

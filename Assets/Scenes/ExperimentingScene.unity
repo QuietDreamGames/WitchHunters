@@ -339,6 +339,78 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: _scenePathHash
+      value: 4224978717
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: _initializeOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: <SceneId>k__BackingField
+      value: 18146145416440232542
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: <IsNested>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: <ComponentIndex>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: <ParentNetworkObject>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: SerializedTransformProperties.Position.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: SerializedTransformProperties.Rotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: SerializedTransformProperties.Rotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: SerializedTransformProperties.Rotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: SerializedTransformProperties.Rotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: SerializedTransformProperties.LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: SerializedTransformProperties.LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628826256035030468, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: SerializedTransformProperties.LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846119790859490386, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: _scenePathHash
+      value: 4224978717
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846119790859490386, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: <SceneId>k__BackingField
+      value: 18146145418088023464
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846119790859490386, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: <IsNested>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846119790859490386, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
+      propertyPath: SerializedTransformProperties.Position.x
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 4117221365477574689, guid: a9e478f413deb3643b8220ba15d2f83a, type: 3}
       propertyPath: m_Icon
       value: 
