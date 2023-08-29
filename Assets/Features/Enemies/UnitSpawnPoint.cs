@@ -3,11 +3,12 @@ using Features.Activator;
 using Features.GameManagers;
 using Features.ObjectPools.Core;
 using Features.ServiceLocators.Core;
+using FishNet.Object;
 using UnityEngine;
 
 namespace Features.Enemies
 {
-    public class UnitSpawnPoint : MonoBehaviour, IActivator
+    public class UnitSpawnPoint : NetworkBehaviour, IActivator
     {
         [SerializeField] private UnitBehaviour unitPrefab;
         
@@ -19,8 +20,13 @@ namespace Features.Enemies
         
         private UnitBehaviour _unit;
 
-        public void Start()
+        public override void OnStartClient()
         {
+            if (!IsHost)
+            {
+                return;
+            }
+            
             _unitPool = ServiceLocator.Resolve<GameObjectPool<UnitBehaviour>>();
             _gameManager = ServiceLocator.Resolve<GameManager>();
             if (_unitPool == null)
@@ -50,9 +56,16 @@ namespace Features.Enemies
         
         private void Spawn()
         {
+            if (!IsHost)
+            {
+                return;
+            }
+            
             _unit = _unitPool.Spawn(unitPrefab.gameObject, transform);
             _unit.Pool = _unitPool;
             _unit.Prefab = unitPrefab.gameObject;
+            
+            ServerManager.Spawn(_unit.gameObject, LocalConnection);
             
             _unit.transform.position = transform.position;
             

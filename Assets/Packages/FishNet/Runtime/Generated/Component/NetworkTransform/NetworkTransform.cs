@@ -824,7 +824,6 @@ namespace FishNet.Component.Transforming
                 {
                     bool isKinematic = CanMakeKinematic();
                     c.isKinematic = isKinematic;
-                    c.simulated = !isKinematic;
                     c.interpolation = RigidbodyInterpolation2D.None;
                 }
             }

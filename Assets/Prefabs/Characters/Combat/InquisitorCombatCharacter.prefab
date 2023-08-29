@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 4321574877219388106}
   - component: {fileID: 8607411321128366024}
   - component: {fileID: 1407979810049844556}
+  - component: {fileID: 4718427215877751156}
   m_Layer: 9
   m_Name: InquisitorCombatCharacter
   m_TagString: Untagged
@@ -820,7 +821,6 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 4321574877219388119}
   - {fileID: 1407979810049844556}
-  - {fileID: 0}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   SerializedTransformProperties:
@@ -852,7 +852,7 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 8607411321128366024}
   _networkObjectCache: {fileID: 8607411321128366024}
-  _componentConfiguration: 0
+  _componentConfiguration: 3
   _synchronizeParent: 0
   _packing:
     Position: 1
@@ -882,6 +882,21 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!114 &4718427215877751156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321574877219388125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71fd7f855ec523429999fc4e14a1928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _overrideType: 2
+  _updateHostVisibility: 1
+  _observerConditions: []
 --- !u!1 &4321574877355199758
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4321574877355199757}
   - component: {fileID: 4321574877355199756}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: MeleeAttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

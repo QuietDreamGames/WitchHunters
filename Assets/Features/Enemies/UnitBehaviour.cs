@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Features.BTrees.Core;
 using Features.Damage.Core;
 using Features.Enemies.Extensions;
@@ -6,12 +7,15 @@ using Features.Health;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.ObjectPools.Core;
+using FishNet;
+using FishNet.Connection;
+using FishNet.Object;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Features.Enemies
 {
-    public class UnitBehaviour : MonoBehaviour
+    public class UnitBehaviour : NetworkBehaviour
     {
         [Header("State Machine")] 
         [SerializeField] private UnitStateMachine stateMachine;
@@ -41,11 +45,19 @@ namespace Features.Enemies
         
         public bool IsEnabled => gameObject.activeSelf;
 
-        private void Start()
+        public override void OnStartClient()
         {
             if (spawnOnStart)
             {
                 Spawn();
+            }
+
+            if (!IsOwner)
+            {
+                if (IsEnabled)
+                {
+                    Spawn();
+                }
             }
         }
 

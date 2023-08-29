@@ -364,6 +364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c3c64515be4755a22f39d58c6f247b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 2124892241672639131}
+  _networkObjectCache: {fileID: 2124892241672639131}
   presentationState: {fileID: 1120850074467645130}
   combatState: {fileID: 8045525177028605152}
   hitState: {fileID: 1360396035654586588}
@@ -1850,6 +1853,9 @@ GameObject:
   - component: {fileID: 2997860240470501448}
   - component: {fileID: 3227145182740907849}
   - component: {fileID: 194270229523748305}
+  - component: {fileID: 2124892241672639131}
+  - component: {fileID: 7774643280970556234}
+  - component: {fileID: 5043428943104008170}
   m_Layer: 10
   m_Name: Gecko.Elder
   m_TagString: Untagged
@@ -1886,6 +1892,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2cde57ba5bcf241ae2e2b2dcf2b295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 2124892241672639131}
+  _networkObjectCache: {fileID: 2124892241672639131}
   stateMachine: {fileID: 1629640707889877301}
   shaderController: {fileID: 1597186600527248996}
   baseModifiersContainer: {fileID: 11400000, guid: 0d9fc4487f95866419a48ccca63522bb, type: 2}
@@ -2005,6 +2014,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   category: GamePlay
+--- !u!114 &2124892241672639131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9000107042699113519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdaptiveInterpolationValue: 4
+  <IsNested>k__BackingField: 0
+  <ComponentIndex>k__BackingField: 0
+  <PredictedSpawn>k__BackingField: {fileID: 0}
+  _networkBehaviours:
+  - {fileID: 2364442413459671290}
+  - {fileID: 5043428943104008170}
+  - {fileID: 1629640707889877301}
+  <ParentNetworkObject>k__BackingField: {fileID: 0}
+  <ChildNetworkObjects>k__BackingField: []
+  SerializedTransformProperties:
+    Position: {x: -0.55, y: -9.88, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
+  _isNetworked: 1
+  _isGlobal: 0
+  _initializeOrder: 0
+  _defaultDespawnType: 0
+  NetworkObserver: {fileID: 0}
+  <PrefabId>k__BackingField: 15
+  <SpawnableCollectionId>k__BackingField: 0
+  _scenePathHash: 0
+  <SceneId>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 13652079821755480986
+--- !u!114 &7774643280970556234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9000107042699113519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71fd7f855ec523429999fc4e14a1928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _overrideType: 2
+  _updateHostVisibility: 1
+  _observerConditions: []
+--- !u!114 &5043428943104008170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9000107042699113519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 2124892241672639131}
+  _networkObjectCache: {fileID: 2124892241672639131}
+  _componentConfiguration: 3
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _interpolation: 1
+  _extrapolation: 2
+  _enableTeleport: 1
+  _teleportThreshold: 5
+  _scaleThreshold: 0
+  _clientAuthoritative: 1
+  _sendToOwner: 0
+  _enableNetworkLod: 0
+  _interval: 1
+  _synchronizePosition: 1
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 1
+  _synchronizeRotation: 0
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 0
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0
 --- !u!1001 &1064273987344740958
 PrefabInstance:
   m_ObjectHideFlags: 0
