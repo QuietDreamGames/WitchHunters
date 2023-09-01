@@ -37,6 +37,7 @@ namespace Features.Skills.Core
             _shieldRegenRate = _modifiersContainer.GetValue(ModifierType.ShieldRegenRate, baseModifiersContainer.GetBaseValue(ModifierType.ShieldRegenRate));
             _shieldRegenDelay = _modifiersContainer.GetValue(ModifierType.ShieldRegenDelay, baseModifiersContainer.GetBaseValue(ModifierType.ShieldRegenDelay));
             _modifiersContainer.OnUpdateModifier += OnUpdateModifiers;
+            
             _isShieldUpdateActive = true;
         }
         
