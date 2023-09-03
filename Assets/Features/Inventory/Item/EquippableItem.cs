@@ -7,16 +7,10 @@ namespace Features.Inventory.Item
     [Serializable]
     public class EquippableItem : InventoryItem
     {
-        public EquippableType equippableType;
-        
         public List<ItemModifier> itemModifiers;
+        public bool isEquipped;
         
         public int upgradeLevel;
-        
-        public EquippableItem()
-        {
-            ResetModifiers();
-        }
 
         public void ResetModifiers()
         {
@@ -29,7 +23,5 @@ namespace Features.Inventory.Item
                 itemModifiers.Add(baseItemModifier.CopyModifiers());
             }
         }
-        
-        
     }
 }

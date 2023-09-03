@@ -22,5 +22,15 @@ MonoBehaviour:
     Value: Play
   - Key: quit
     Value: Quit
+  - Key: base_helmet
+    Value: Old Helmet
+  - Key: base_arms
+    Value: Old Gloves
+  - Key: base_legs
+    Value: Old Panties
+  - Key: base_chest
+    Value: Old Chest
+  - Key: 
+    Value: 
   - Key: 
     Value: 

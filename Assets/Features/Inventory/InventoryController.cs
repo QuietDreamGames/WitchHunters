@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Features.Character;
 using Features.Inventory.Data;
 using Features.Inventory.Item;
@@ -6,6 +7,7 @@ using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.SaveSystems.Interfaces;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Features.Inventory
@@ -15,12 +17,18 @@ namespace Features.Inventory
         [SerializeField] private GameplayCharacterSaver _gameplayCharacterSaver;
         [SerializeField] private InventoryData _inventoryData;
         
+        public Action<EquippableItem> OnEquipItem;
+        public Action<EquippableItem> OnUnequipItem;
+        
+        public InventoryData InventoryData => _inventoryData;
+        
         private float _maxWeight;
         private float _weight;
         private bool _isOverweight;
         
         private BaseModifiersContainer _baseModifiersContainer;
         private ModifiersContainer _modifiersContainer;
+        
         
         private ModifierData _overweightModifierData;
         
@@ -42,7 +50,7 @@ namespace Features.Inventory
         public void Initiate(ModifiersContainer modifiersContainer, BaseModifiersContainer baseModifiersContainer)
         {
             _gameplayCharacterSaver.Load();
-            
+
             _baseModifiersContainer = baseModifiersContainer;
             _modifiersContainer = modifiersContainer;
 
@@ -76,6 +84,22 @@ namespace Features.Inventory
             OnOverweight(_weight > _maxWeight);
         }
         
+        public void EquipItem(EquippableItem item)
+        {
+            item.isEquipped = true;
+            _gameplayCharacterSaver.Save();
+            
+            OnEquipItem?.Invoke(item);
+        }
+        
+        public void UnequipItem(EquippableItem item)
+        {
+            item.isEquipped = false;
+            _gameplayCharacterSaver.Save();
+            
+            OnUnequipItem?.Invoke(item);
+        }
+        
         private void RecalculateWeight()
         {
             _weight = 0;
@@ -91,19 +115,19 @@ namespace Features.Inventory
         private void OnOverweight(bool isOverweight)
         {
             
-            if (_isOverweight == isOverweight) return;
-            
-            if (isOverweight)
-            {
-                _modifiersContainer.Add(ModifierType.MoveSpeed, _overweightModifierData);
-            }
-            else
-            {
-                _modifiersContainer.Remove(ModifierType.MoveSpeed, _overweightModifierData);
-            }
-            
-            _isOverweight = isOverweight;
-            Debug.Log($"Is Overweight: {_isOverweight}");
+            // if (_isOverweight == isOverweight) return;
+            //
+            // if (isOverweight)
+            // {
+            //     _modifiersContainer.Add(ModifierType.MoveSpeed, _overweightModifierData);
+            // }
+            // else
+            // {
+            //     _modifiersContainer.Remove(ModifierType.MoveSpeed, _overweightModifierData);
+            // }
+            //
+            // _isOverweight = isOverweight;
+            // Debug.Log($"Is Overweight: {_isOverweight}");
         }
         
         private void OnUpdateModifier(ModifierType type)

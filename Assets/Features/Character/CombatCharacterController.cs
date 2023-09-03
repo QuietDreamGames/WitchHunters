@@ -76,7 +76,7 @@ namespace Features.Character
             _talentsController.Initiate(_levelController, ModifiersContainer);
             
             _inventoryController.Initiate(ModifiersContainer, _baseModifiersContainer);
-            _equipmentController.Initiate(ModifiersContainer, _baseModifiersContainer);
+            _equipmentController.Initiate(InventoryController, ModifiersContainer);
             
             HealthComponent = new HealthComponent(ModifiersContainer, _baseModifiersContainer);
             ShieldHealthController = new ShieldHealthController(ModifiersContainer, _baseModifiersContainer);

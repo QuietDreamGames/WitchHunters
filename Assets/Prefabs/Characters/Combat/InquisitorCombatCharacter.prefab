@@ -1047,12 +1047,47 @@ MonoBehaviour:
   _gameplayCharacterSaver: {fileID: 8829038583385556657}
   _inventoryData:
     scrapItems: []
-    armorItems:
-    - itemData: {fileID: 11400000, guid: d0e2df82bceab0046b7a62e9903e5ca2, type: 2}
+    equipabbleItems:
+    - itemData: {fileID: 11400000, guid: 788a34500c77c6a48be4071a54ddb86f, type: 2}
       amount: 1
+      itemModifiers:
+      - modifierType: 8
+        modifierData:
+          modificatorValue: 1
+          duration: Infinity
+          spec: 0
+      isEquipped: 1
       upgradeLevel: 0
-      hasModifier: 0
-    jewelryItems: []
+    - itemData: {fileID: 11400000, guid: f1305d4d626cdf24fbb3f7b3d9f1c77c, type: 2}
+      amount: 1
+      itemModifiers:
+      - modifierType: 8
+        modifierData:
+          modificatorValue: 1
+          duration: Infinity
+          spec: 0
+      isEquipped: 1
+      upgradeLevel: 0
+    - itemData: {fileID: 11400000, guid: d817d44973268d8478a9e617d8e1f6d2, type: 2}
+      amount: 1
+      itemModifiers:
+      - modifierType: 8
+        modifierData:
+          modificatorValue: 1
+          duration: Infinity
+          spec: 0
+      isEquipped: 1
+      upgradeLevel: 0
+    - itemData: {fileID: 11400000, guid: d9944d4117416e04b917b165b719b3c6, type: 2}
+      amount: 1
+      itemModifiers:
+      - modifierType: 8
+        modifierData:
+          modificatorValue: 1
+          duration: Infinity
+          spec: 0
+      isEquipped: 1
+      upgradeLevel: 0
 --- !u!114 &2716021410798686377
 MonoBehaviour:
   m_ObjectHideFlags: 0
