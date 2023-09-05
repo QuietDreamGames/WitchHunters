@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 2608631810822666073}
   - component: {fileID: 2263684913889622248}
   - component: {fileID: 3733355739870500065}
+  - component: {fileID: 5935509871644831069}
   - component: {fileID: 7333809379459540306}
   m_Layer: 10
   m_Name: Undead.Anchor
@@ -186,7 +187,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394715997976533199}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ea4903ae4eebe654692126b592453db0, type: 2}
   m_CullingMode: 0
@@ -242,6 +243,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitView: {fileID: 1090748437873983784}
+--- !u!114 &5935509871644831069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394715997976533199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd26d3aace345efa7ba334212d4ad59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4425026492377572204}
 --- !u!114 &7333809379459540306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,8 +1238,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitEffectController: {fileID: 0}
   _hitShaderController: {fileID: 0}
-  _origin: {fileID: 5970334408483334875}
-  _activeOnStart: 0
 --- !u!70 &2807152140542631503
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

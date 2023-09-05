@@ -1,4 +1,5 @@
 ﻿using System;
+using Features.GameManagers;
 using Features.Input;
 using Features.ServiceLocators.Core;
 using Features.TimeSystems.Interfaces.Handlers;
@@ -15,6 +16,7 @@ namespace Features.UI.TabSystem
         
         private TabButton _selectedTabButton;
         private PlayerInput _playerInput;
+        private GameStateManager _gameStateManager;
         
         
         private void Start()
@@ -26,6 +28,7 @@ namespace Features.UI.TabSystem
             
             var inputData = ServiceLocator.Resolve<InputData>();
             _playerInput = inputData.playerInput;
+            _gameStateManager = ServiceLocator.Resolve<GameStateManager>();
         }
 
         public void OnUpdate(float deltaTime)
@@ -109,7 +112,8 @@ namespace Features.UI.TabSystem
         {
             _tabGroupParent.SetActive(false);
             _selectedTabButton = null;
-            _playerInput.SwitchCurrentActionMap("Player");
+            
+            _gameStateManager.SetGameState(GameStates.Gameplay);
         }
         
         private void OpenSelectedTab()
@@ -129,7 +133,8 @@ namespace Features.UI.TabSystem
                     tabContent.OnDeselect();
                 }
             }
-            _playerInput.SwitchCurrentActionMap("UI");
+            
+            _gameStateManager.SetGameState(GameStates.Menu);
         }
 
         #region Called by buttons

@@ -1004,8 +1004,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitEffectController: {fileID: 0}
   _hitShaderController: {fileID: 0}
-  _origin: {fileID: 2603634300447566530}
-  _activeOnStart: 0
 --- !u!70 &7738559880463070434
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1221,6 +1219,7 @@ GameObject:
   - component: {fileID: 3081768816776100693}
   - component: {fileID: 7780795493464911315}
   - component: {fileID: 7101386147308201366}
+  - component: {fileID: 926878972162479898}
   - component: {fileID: 1668376728048512034}
   m_Layer: 10
   m_Name: Undead.Dog
@@ -1307,7 +1306,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5941294641897714233}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: fe45f38880024194698ed00f735f9d44, type: 2}
   m_CullingMode: 0
@@ -1363,6 +1362,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitView: {fileID: 577447247674719655}
+--- !u!114 &926878972162479898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5941294641897714233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd26d3aace345efa7ba334212d4ad59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7781358326257750154}
 --- !u!114 &1668376728048512034
 MonoBehaviour:
   m_ObjectHideFlags: 0

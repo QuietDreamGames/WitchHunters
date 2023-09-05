@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 9098025469775953096}
+  renderer: {fileID: 8939133192925926442}
   collider: {fileID: 4537773307894682964}
   damageableMask:
     serializedVersion: 2
@@ -57,6 +58,7 @@ MonoBehaviour:
   speed: 4
   damage: 1
   lifetime: 5
+  fadeDuration: 0.25
 --- !u!114 &2514779041281345352
 MonoBehaviour:
   m_ObjectHideFlags: 0

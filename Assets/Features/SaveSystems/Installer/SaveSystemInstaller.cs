@@ -15,6 +15,13 @@ namespace Features.SaveSystems.Installer
         
         public override void Install()
         {
+            var exist = ServiceLocator.Resolve<SaveSystem>();
+            if (exist != null)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            
             var savablePathBuilder = new SavablePathBuilder();
             var savableSerializer = new SavableJsonSerializer();
             
@@ -23,6 +30,9 @@ namespace Features.SaveSystems.Installer
             ServiceLocator.Register<SaveSystem>(saveSystemSystem);
             
             saveSystemSystem.Construct();
+            
+            saveSystemSystem.transform.parent = null;
+            DontDestroyOnLoad(saveSystemSystem);
         }
     }
 }
