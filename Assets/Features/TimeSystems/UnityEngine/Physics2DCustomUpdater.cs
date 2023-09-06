@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Features.TimeSystems.UnityEngine
 {
-    public class Physics2DCustomUpdater : SingleService<Physics2DCustomUpdater>, IFixedUpdateHandler
+    public class Physics2DCustomUpdater : MonoBehaviour, IFixedUpdateHandler
     {
         private SimulationMode2D _simulationMode2D;
         
