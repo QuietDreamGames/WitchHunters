@@ -15,6 +15,7 @@ MonoBehaviour:
   id: base_arms
   displayName: '[old_gloves]'
   icon: {fileID: 1030720758, guid: 9806bce90a49f6449bd603bf175308fc, type: 3}
+  sortType: 1
   stackSize: 1
   weight: 2
   equippableType: 2

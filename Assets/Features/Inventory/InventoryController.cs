@@ -59,7 +59,9 @@ namespace Features.Inventory
 
             _overweightModifierData =
                 new ModifierData(0.1f, float.PositiveInfinity, ModifierSpec.PercentageMultiplicative);
-            
+
+            _maxWeight = _modifiersContainer.GetValue(ModifierType.MaxWeight,
+                _baseModifiersContainer.GetBaseValue(ModifierType.MaxWeight));
             _isOverweight = false;
             RecalculateWeight();
         }
@@ -74,12 +76,32 @@ namespace Features.Inventory
             OnOverweight(_weight > _maxWeight);
         }
         
+        public void AddItem(ItemData itemData)
+        {
+            _inventoryData.AddItem(itemData);
+            _gameplayCharacterSaver.Save();
+            
+            _weight += itemData.weight;
+            
+            OnOverweight(_weight > _maxWeight);
+        }
+        
         public void RemoveItem(InventoryItem item)
         {
             _inventoryData.RemoveItem(item);
             _gameplayCharacterSaver.Save();
             
             _weight -= item.itemData.weight;
+            
+            OnOverweight(_weight > _maxWeight);
+        }
+        
+        public void RemoveItem(ItemData itemData)
+        {
+            _inventoryData.RemoveItem(itemData);
+            _gameplayCharacterSaver.Save();
+            
+            _weight -= itemData.weight;
             
             OnOverweight(_weight > _maxWeight);
         }
@@ -115,27 +137,27 @@ namespace Features.Inventory
         private void OnOverweight(bool isOverweight)
         {
             
-            // if (_isOverweight == isOverweight) return;
-            //
-            // if (isOverweight)
-            // {
-            //     _modifiersContainer.Add(ModifierType.MoveSpeed, _overweightModifierData);
-            // }
-            // else
-            // {
-            //     _modifiersContainer.Remove(ModifierType.MoveSpeed, _overweightModifierData);
-            // }
-            //
-            // _isOverweight = isOverweight;
-            // Debug.Log($"Is Overweight: {_isOverweight}");
+            if (_isOverweight == isOverweight) return;
+            
+            if (isOverweight)
+            {
+                _modifiersContainer.Add(ModifierType.MoveSpeed, _overweightModifierData);
+            }
+            else
+            {
+                _modifiersContainer.Remove(ModifierType.MoveSpeed, _overweightModifierData);
+            }
+            
+            _isOverweight = isOverweight;
+            Debug.Log($"Is Overweight: {_isOverweight}");
         }
         
         private void OnUpdateModifier(ModifierType type)
         {
             if (type != ModifierType.MaxWeight) return;
-            
-            _maxWeight = _baseModifiersContainer.GetBaseValue(ModifierType.MaxWeight) +
-                         _modifiersContainer.GetValue(ModifierType.MaxWeight, 0);
+
+            _maxWeight = _modifiersContainer.GetValue(ModifierType.MaxWeight,
+                _baseModifiersContainer.GetBaseValue(ModifierType.MaxWeight));
             
             OnOverweight(_weight > _maxWeight);
         }

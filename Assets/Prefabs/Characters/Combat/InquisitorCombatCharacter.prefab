@@ -1046,7 +1046,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameplayCharacterSaver: {fileID: 8829038583385556657}
   _inventoryData:
-    scrapItems: []
+    stackableItems:
+    - itemData: {fileID: 11400000, guid: 4670b2aded0a1c846a7aa64e309ced60, type: 2}
+      amount: 1
+    - itemData: {fileID: 11400000, guid: d74660021eaeb5d4ea375b3beed5eb47, type: 2}
+      amount: 1
     equipabbleItems:
     - itemData: {fileID: 11400000, guid: 788a34500c77c6a48be4071a54ddb86f, type: 2}
       amount: 1
@@ -1087,6 +1091,16 @@ MonoBehaviour:
           duration: Infinity
           spec: 0
       isEquipped: 1
+      upgradeLevel: 0
+    - itemData: {fileID: 11400000, guid: ea4df8c4837c65b45a3f2abcffd3507e, type: 2}
+      amount: 1
+      itemModifiers:
+      - modifierType: 8
+        modifierData:
+          modificatorValue: 1
+          duration: Infinity
+          spec: 0
+      isEquipped: 0
       upgradeLevel: 0
 --- !u!114 &2716021410798686377
 MonoBehaviour:

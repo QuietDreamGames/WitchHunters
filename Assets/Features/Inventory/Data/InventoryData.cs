@@ -1,46 +1,119 @@
 ﻿using System;
 using System.Collections.Generic;
 using Features.Inventory.Item;
+using UnityEngine.Serialization;
 
 namespace Features.Inventory.Data
 {
     [Serializable]
     public class InventoryData
     {
-        public List<InventoryItem> scrapItems;
+        public List<InventoryItem> stackableItems;
         public List<EquippableItem> equipabbleItems;
 
-        public void AddItem(InventoryItem item)
+        public void AddItem(ItemData itemData)
         {
-            switch (item)
+            switch (itemData)
+            {
+                case EquippableData equippableData:
+                    var equippableItem = new EquippableItem
+                    {
+                        itemData = equippableData,
+                        isEquipped = false,
+                        upgradeLevel = 0
+                    };
+                    
+                    equippableItem.ResetModifiers();
+                    
+                    equipabbleItems.Add(equippableItem);
+                    return;
+                default:
+                    for (var i = 0; i < stackableItems.Count; i++)
+                    {
+                        if (stackableItems[i].itemData == itemData)
+                        {
+                            stackableItems[i].amount++;
+                            return;
+                        }
+                    }
+                    var item = new InventoryItem
+                    {
+                        itemData = itemData,
+                        amount = 1
+                    };
+                    
+                    stackableItems.Add(item);
+                    break;
+            }
+        }
+
+        public void AddItem(InventoryItem inventoryItem)
+        {
+            switch (inventoryItem)
             {
                 case EquippableItem equippableItem:
                     equipabbleItems.Add(equippableItem);
                     return;
                 default:
-                    scrapItems.Add(item);
-                    break;
+                    AddItem(inventoryItem.itemData);
+                    return;
             }
         }
         
-        public void RemoveItem(InventoryItem item)
+        public void RemoveItem(ItemData itemData)
         {
-            switch (item)
+            switch (itemData)
             {
-                case EquippableItem equippableItem:
-                    equipabbleItems.Remove(equippableItem);
-                    return;
+                case EquippableData equippableData:
+                    for (var i = 0; i < equipabbleItems.Count; i++)
+                    {
+                        if (equipabbleItems[i].itemData == equippableData)
+                        {
+                            equipabbleItems.RemoveAt(i);
+                            return;
+                        }
+                    }
+                    break;
                 default:
-                    scrapItems.Remove(item);
+                    for (var i = 0; i < stackableItems.Count; i++)
+                    {
+                        if (stackableItems[i].itemData == itemData)
+                        {
+                            stackableItems[i].amount--;
+                            if (stackableItems[i].amount <= 0)
+                                stackableItems.RemoveAt(i);
+                            return;
+                        }
+                    }
                     break;
             }
         }
 
+        public void RemoveItem(InventoryItem inventoryItem)
+        {
+            switch (inventoryItem)
+            {
+                case EquippableItem equippableItem:
+                    for (var i = 0; i < equipabbleItems.Count; i++)
+                    {
+                        if (equipabbleItems[i] == equippableItem)
+                        {
+                            equipabbleItems.RemoveAt(i);
+                            return;
+                        }
+                    }
+                    break;
+                default:
+                    RemoveItem(inventoryItem.itemData);
+                    break;
+            }
+        }
+        
         public List<InventoryItem> GetAllItems()
         {
             var items = new List<InventoryItem>();
             items.AddRange(equipabbleItems);
-            items.AddRange(scrapItems);
+            items.AddRange(stackableItems);
 
             return items;
         }

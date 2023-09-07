@@ -15,6 +15,7 @@ MonoBehaviour:
   id: base_legs
   displayName: '[base_legs]'
   icon: {fileID: -258929796, guid: 9806bce90a49f6449bd603bf175308fc, type: 3}
+  sortType: 1
   stackSize: 1
   weight: 4
   equippableType: 3

@@ -15,6 +15,7 @@ MonoBehaviour:
   id: base_chest
   displayName: '[base_chest]'
   icon: {fileID: -1829400880, guid: 9806bce90a49f6449bd603bf175308fc, type: 3}
+  sortType: 1
   stackSize: 1
   weight: 7
   equippableType: 1

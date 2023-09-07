@@ -9,7 +9,8 @@ namespace Features.Inventory.Data
         public string displayName;
         public Sprite icon;
         
-        public int stackSize;
+        public ItemSortType sortType;
+        
         public float weight;
     }
 }
