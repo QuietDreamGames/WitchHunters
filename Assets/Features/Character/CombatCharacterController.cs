@@ -4,6 +4,7 @@ using Features.Experience;
 using Features.FiniteStateMachine;
 using Features.Health;
 using Features.Input;
+using Features.Inventory;
 using Features.Knockback;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
@@ -39,6 +40,10 @@ namespace Features.Character
         [SerializeField] protected LevelController _levelController;
         [SerializeField] protected StatsController _statsController;
         [SerializeField] protected TalentsController _talentsController;
+        
+        [SerializeField] protected InventoryController _inventoryController;
+        [SerializeField] protected EquipmentController _equipmentController;
+        
         public ModifiersContainer ModifiersContainer { get; protected set; }
         public HealthComponent HealthComponent { get; protected set; }
         public ShieldHealthController ShieldHealthController { get; protected set; }
@@ -49,6 +54,8 @@ namespace Features.Character
         public LevelController LevelController => _levelController;
         public StatsController StatsController => _statsController;
         public TalentsController TalentsController => _talentsController;
+        public InventoryController InventoryController => _inventoryController;
+        public EquipmentController EquipmentController => _equipmentController;
         
         
         protected PlayerInput _playerInput;
@@ -67,6 +74,9 @@ namespace Features.Character
             ModifiersContainer = new ModifiersContainer();
             _statsController.Initiate(_levelController, ModifiersContainer);
             _talentsController.Initiate(_levelController, ModifiersContainer);
+            
+            _inventoryController.Initiate(ModifiersContainer, _baseModifiersContainer);
+            _equipmentController.Initiate(InventoryController, ModifiersContainer);
             
             HealthComponent = new HealthComponent(ModifiersContainer, _baseModifiersContainer);
             ShieldHealthController = new ShieldHealthController(ModifiersContainer, _baseModifiersContainer);

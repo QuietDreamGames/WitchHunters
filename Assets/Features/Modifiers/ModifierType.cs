@@ -35,5 +35,6 @@
         SecondarySkillMaxSize = 36,
         MoveSpeed = 37,
         CastSpeed = 38,
+        MaxWeight = 39,
     }
 }
