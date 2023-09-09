@@ -109,17 +109,17 @@ namespace Features.Inventory
         public void EquipItem(EquippableItem item)
         {
             item.isEquipped = true;
-            _gameplayCharacterSaver.Save();
-            
             OnEquipItem?.Invoke(item);
+            
+            _gameplayCharacterSaver.Save();
         }
         
         public void UnequipItem(EquippableItem item)
         {
             item.isEquipped = false;
-            _gameplayCharacterSaver.Save();
-            
             OnUnequipItem?.Invoke(item);
+            
+            _gameplayCharacterSaver.Save();
         }
         
         private void RecalculateWeight()
