@@ -13,17 +13,21 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             _draggableItemController.SetupItem(item);
         }
 
-        protected virtual void GetDraggableItem(DraggableItemController draggableItemController)
+        protected virtual void GetDraggableItem(DraggableItemController dropped)
         {
-            draggableItemController.parentAfterDrag.GetComponent<ItemSlotController>()
-                .OnSwap(_draggableItemController);
-            draggableItemController.parentAfterDrag = transform;
-            _draggableItemController = draggableItemController;
+            var droppedParent = dropped.parentAfterDrag.GetComponent<ItemSlotController>();
+            if (!droppedParent.AskForSwap(_draggableItemController))
+                return;
+            
+            droppedParent.OnSwap(_draggableItemController);
+            dropped.parentAfterDrag = transform;
+            _draggableItemController = dropped;
         }
 
         public void OnDrop(PointerEventData eventData)
         {
             var dropped = eventData.pointerDrag.GetComponent<DraggableItemController>();
+            
             GetDraggableItem(dropped);
         }
         
@@ -32,6 +36,11 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             swapTo.transform.SetParent(transform);
             swapTo.transform.localPosition = Vector3.zero;
             _draggableItemController = swapTo;
+        }
+        
+        public virtual bool AskForSwap(DraggableItemController swapTo)
+        {
+            return true;
         }
     }
 }

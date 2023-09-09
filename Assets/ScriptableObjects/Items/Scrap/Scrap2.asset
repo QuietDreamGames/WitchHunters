@@ -15,5 +15,5 @@ MonoBehaviour:
   id: scrap2
   displayName: scrap2
   icon: {fileID: 661256411, guid: 9806bce90a49f6449bd603bf175308fc, type: 3}
-  sortType: 4
+  sortType: 3
   weight: 1

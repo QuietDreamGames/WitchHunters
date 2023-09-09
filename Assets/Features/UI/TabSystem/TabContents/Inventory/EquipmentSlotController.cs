@@ -10,35 +10,63 @@ namespace Features.UI.TabSystem.TabContents.Inventory
         [SerializeField] private EquippableType _equippableType;
         public EquippableType EquippableType => _equippableType;
         
-        private InventoryController _inventoryController;
+        private InventoryTabContent _inventoryTabContent;
 
-        public void Initiate(InventoryController inventoryController)
+        public void Initiate(InventoryTabContent inventoryTabContent)
         {
-            _inventoryController = inventoryController;
+            _inventoryTabContent = inventoryTabContent;
         }
 
-        protected override void GetDraggableItem(DraggableItemController draggableItemController)
+        protected override void GetDraggableItem(DraggableItemController dropped) //triggered when something is dragged in this slot
         {
-            var item = draggableItemController.CurrentItem;
+            if (dropped == _draggableItemController) //same item
+                return;
             
-            if (item is not EquippableItem equippableItem)
+            var droppedParent = dropped.parentAfterDrag.GetComponent<ItemSlotController>();
+            if (!droppedParent.AskForSwap(_draggableItemController)) //previous item slot doesnt want to swap
+                return;
+            
+            if (!AskForSwap(dropped)) //this slot doesnt want to swap
                 return;
 
-            item = equippableItem;
-            var itemData = (EquippableData) item.itemData;
-            if (itemData.equippableType != _equippableType)
-                return;
+            if (_draggableItemController.CurrentItem != null)
+                _inventoryTabContent.OnUnequipItem((EquippableItem)_draggableItemController.CurrentItem);
             
-            _inventoryController.UnequipItem((EquippableItem)_draggableItemController.CurrentItem);
-            _inventoryController.EquipItem((EquippableItem)draggableItemController.CurrentItem);
-            base.GetDraggableItem(draggableItemController);
+            droppedParent.OnSwap(_draggableItemController);
+            dropped.parentAfterDrag = transform;
+            _draggableItemController = dropped;
+            
+            _inventoryTabContent.OnEquipItem((EquippableItem)_draggableItemController.CurrentItem);
         }
 
-        public override void OnSwap(DraggableItemController swapTo)
+        public override void OnSwap(DraggableItemController swapTo) //triggered when from this slot something is dragged out
         {
-            _inventoryController.UnequipItem((EquippableItem)_draggableItemController.CurrentItem);
-            _inventoryController.EquipItem((EquippableItem)swapTo.CurrentItem);
-            base.OnSwap(swapTo);
+            if (swapTo == _draggableItemController) //same item
+                return;
+            
+            if (_draggableItemController.CurrentItem != null)
+                _inventoryTabContent.OnUnequipItem((EquippableItem)_draggableItemController.CurrentItem);
+            
+            swapTo.transform.SetParent(transform);
+            swapTo.transform.localPosition = Vector3.zero;
+            _draggableItemController = swapTo;
+            
+            if (_draggableItemController.CurrentItem != null)
+                _inventoryTabContent.OnEquipItem((EquippableItem)_draggableItemController.CurrentItem);
+        }
+
+        public override bool AskForSwap(DraggableItemController swapTo)
+        {
+            if (swapTo.CurrentItem == null)
+                return true;
+            
+            if (swapTo.CurrentItem is not EquippableItem equipItemToSwap)
+                return false;
+            
+            if (((EquippableData)equipItemToSwap.itemData).equippableType != _equippableType)
+                return false;
+            
+            return base.AskForSwap(swapTo);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Features.Character;
 using Features.Character.Spawn;
@@ -35,11 +36,9 @@ namespace Features.UI.TabSystem.TabContents.Inventory
         {
             _currentSortType = ItemSortType.Armor;
             
-            var inventoryController = _combatCharacterController.InventoryController;
-
             for (int i = 0; i < _equipmentSlotControllers.Length; i++)
             {
-                _equipmentSlotControllers[i].Initiate(inventoryController);
+                _equipmentSlotControllers[i].Initiate(this);
             }
             
             RefreshEquippedItems();
@@ -118,17 +117,35 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             }
         }
         
-        public void OnSortTypeChanged(ItemSortType sortType)
+        public void OnSortTypeChanged(int sortType)
         {
-            _currentSortType = sortType;
+            _currentSortType = (ItemSortType)sortType;
             RefreshCurrentItemsList();
         }
         
         public void OnEquipItem(EquippableItem item)
         {
             _combatCharacterController.InventoryController.EquipItem(item);
+            
+            // StartCoroutine(OnRefreshInventory());
+        }
+        
+        public void OnUnequipItem(EquippableItem item)
+        {
+            _combatCharacterController.InventoryController.UnequipItem(item);
+
+            if (_currentSortType == item.itemData.sortType) return;
+            
+            _currentSortType = item.itemData.sortType;
+            StartCoroutine(OnRefreshInventory());
+        }
+        
+        private IEnumerator OnRefreshInventory()
+        {
+            yield return new WaitForEndOfFrame();
+            
             RefreshEquippedItems();
             RefreshCurrentItemsList();
-        }
+        } 
     }
 }

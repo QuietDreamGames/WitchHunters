@@ -5,7 +5,7 @@
         Any = -1,
         Armor = 1,
         Jewelry = 2,
-        Quest = 3,
-        Scrap = 4,
+        Scrap = 3,
+        Quest = 4,
     }
 }
