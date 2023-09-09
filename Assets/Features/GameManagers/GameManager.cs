@@ -54,7 +54,7 @@ namespace Features.GameManagers
             var isLoaded = IsSceneLoaded(masterSceneName);
             if (!isLoaded)
             {
-                _gameStateManager.SetGameState(GameStates.None);
+                _gameStateManager.SetGameState(GameStates.Menu);
                 SceneManager.LoadScene(masterSceneName, LoadSceneMode.Single);
             }
         }
@@ -94,7 +94,7 @@ namespace Features.GameManagers
             _loadingScreenUI.Reset();
             yield return _loadingScreenUI.SetAlphaCoroutine(1);
             
-            _gameStateManager.SetGameState(GameStates.None);
+            _gameStateManager.SetGameState(GameStates.Menu);
             
             OnSceneChange?.Invoke();
             

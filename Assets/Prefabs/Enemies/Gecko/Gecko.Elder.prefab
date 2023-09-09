@@ -1849,6 +1849,7 @@ GameObject:
   - component: {fileID: 5779780071306074440}
   - component: {fileID: 2997860240470501448}
   - component: {fileID: 3227145182740907849}
+  - component: {fileID: 8134432300944266140}
   - component: {fileID: 194270229523748305}
   m_Layer: 10
   m_Name: Gecko.Elder
@@ -1935,7 +1936,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9000107042699113519}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4af1acbdfbb30f34ea24aad020d8cb5c, type: 2}
   m_CullingMode: 0
@@ -1991,6 +1992,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitView: {fileID: 5591641192506979588}
+--- !u!114 &8134432300944266140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9000107042699113519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd26d3aace345efa7ba334212d4ad59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2185749621710272319}
 --- !u!114 &194270229523748305
 MonoBehaviour:
   m_ObjectHideFlags: 0
