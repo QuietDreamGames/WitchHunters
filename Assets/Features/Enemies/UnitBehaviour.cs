@@ -1,13 +1,10 @@
 using System;
-using Features.BTrees.Core;
 using Features.Damage.Core;
-using Features.Enemies.Extensions;
 using Features.Health;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.ObjectPools.Core;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Features.Enemies
 {
@@ -41,6 +38,8 @@ namespace Features.Enemies
         
         public bool IsEnabled => gameObject.activeSelf;
 
+        public Action OnDeath { get; private set; }
+
         private void Start()
         {
             if (spawnOnStart)
@@ -70,6 +69,8 @@ namespace Features.Enemies
             {
                 Pool.Despawn(Prefab, this);
             }
+            
+            OnDeath = null;
         }
         
         private void ConfigureShader()
@@ -111,6 +112,8 @@ namespace Features.Enemies
             shaderController.FadeOut();
             
             damageController.SetActive(false);
+            
+            OnDeath?.Invoke();
         }
     }
 }
