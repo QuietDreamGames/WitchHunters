@@ -162,6 +162,12 @@ MonoBehaviour:
   _explosionAnimator: {fileID: 6065375341759100840}
   _ashAnimator: {fileID: 6065375340800766020}
   _hitboxCollider: {fileID: 5097788243634406183}
+  _cameraShakeData:
+    duration: 0.15
+    amplitude: 0.15
+    frequency: 40
+    shakeDirection: 0
+    comment: on meteor fall
 --- !u!114 &5982269560720534839
 MonoBehaviour:
   m_ObjectHideFlags: 0
