@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Features.Character;
 using Features.Inventory.Data;
 using Features.Inventory.Item;
@@ -7,7 +6,6 @@ using Features.Modifiers;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.SaveSystems.Interfaces;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Features.Inventory
@@ -28,7 +26,6 @@ namespace Features.Inventory
         
         private BaseModifiersContainer _baseModifiersContainer;
         private ModifiersContainer _modifiersContainer;
-        
         
         private ModifierData _overweightModifierData;
         
@@ -65,6 +62,8 @@ namespace Features.Inventory
             _isOverweight = false;
             RecalculateWeight();
         }
+
+        #region Items
 
         public void AddItem(InventoryItem item)
         {
@@ -151,6 +150,35 @@ namespace Features.Inventory
             _isOverweight = isOverweight;
             Debug.Log($"Is Overweight: {_isOverweight}");
         }
+
+        #endregion
+
+        #region Currency
+
+        public void AddCurrency(int amount)
+        {
+            _inventoryData.currency += amount;
+            _gameplayCharacterSaver.Save();
+        }
+        
+        public bool TryRemoveCurrency(int amount)
+        {
+            if (_inventoryData.currency < amount)
+            {
+                return false;
+            }
+            
+            _inventoryData.currency -= amount;
+            _gameplayCharacterSaver.Save();
+            return true;
+        }
+        
+        public bool CheckCurrencyAmount(int amount)
+        {
+            return amount <= _inventoryData.currency;
+        }
+
+        #endregion
         
         private void OnUpdateModifier(ModifierType type)
         {

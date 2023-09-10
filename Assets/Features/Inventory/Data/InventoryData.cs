@@ -8,6 +8,7 @@ namespace Features.Inventory.Data
     [Serializable]
     public class InventoryData
     {
+        public int currency;
         public List<InventoryItem> stackableItems;
         public List<EquippableItem> equipabbleItems;
 

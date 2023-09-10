@@ -81,19 +81,19 @@ namespace Features.UI.TabSystem
 
                 OpenCertainTab(TabType.SkillsAndStats);
             }
-            else if (_playerInput.actions["Map"].WasPressedThisFrame())
-            {
-                if (_selectedTabButton != null)
-                {
-                    if (_selectedTabButton.TabType == TabType.Map)
-                    {
-                        CloseTabGroup();
-                        return;
-                    }
-                }
-
-                OpenCertainTab(TabType.Map);
-            }
+            // else if (_playerInput.actions["Map"].WasPressedThisFrame())
+            // {
+            //     if (_selectedTabButton != null)
+            //     {
+            //         if (_selectedTabButton.TabType == TabType.Map)
+            //         {
+            //             CloseTabGroup();
+            //             return;
+            //         }
+            //     }
+            //
+            //     OpenCertainTab(TabType.Map);
+            // }
             else if (_playerInput.actions["Escape"].WasPressedThisFrame())
             {
                 if (_selectedTabButton != null)
