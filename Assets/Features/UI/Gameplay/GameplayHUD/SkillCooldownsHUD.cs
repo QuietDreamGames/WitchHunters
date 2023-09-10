@@ -42,24 +42,24 @@ namespace Features.UI.Gameplay.GameplayHUD
             
             if (_skillsController.Ultimate.IsOnCooldown)
             {
-                _ultimateSlider.fillAmount = 1f -
+                _ultimateSlider.fillAmount = 
                                              _skillsController.Ultimate.CurrentCooldown /
                                              _skillsController.Ultimate.MaxCooldown;
             }
             else
             {
-                _ultimateSlider.fillAmount = 1f;
+                _ultimateSlider.fillAmount = 0f;
             }
             
             if (_skillsController.Secondary.IsOnCooldown)
             {
-                _secondarySlider.fillAmount = 1f -
+                _secondarySlider.fillAmount = 
                                               _skillsController.Secondary.CurrentCooldown /
                                               _skillsController.Secondary.MaxCooldown;
             }
             else
             {
-                _secondarySlider.fillAmount = 1f;
+                _secondarySlider.fillAmount = 0f;
             }
         }
     }
