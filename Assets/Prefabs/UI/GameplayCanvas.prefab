@@ -5388,6 +5388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tabGroupParent: {fileID: 8752203749600870417}
+  _hudParent: {fileID: 1115071527793655699}
   _tabButtons:
   - {fileID: 1769291094647380372}
   - {fileID: 7187557041330767617}
