@@ -36,6 +36,16 @@ namespace Features.Experience
                 OnLevelUp?.Invoke();
             }
         }
+        
+        public float GetExpPercentage()
+        {
+            var currentLevelExp = _levelsData.GetExpForLevel(_currentLevel);
+            var nextLevelExp = _levelsData.GetExpForLevel(_currentLevel + 1);
+            var currentExp = _experienceController.ExpAmount - currentLevelExp;
+            var expNeeded = nextLevelExp - currentLevelExp;
+            
+            return Mathf.Clamp01((float) currentExp / expNeeded);
+        }
 
         #region Debug
 

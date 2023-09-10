@@ -26,6 +26,19 @@ namespace Features.Experience
 
             return level;
         }
+        
+        public int GetExpForLevel(int level)
+        {
+            for (int i = 0; i < _levelsData.Length; i++)
+            {
+                if (_levelsData[i].level == level)
+                {
+                    return _levelsData[i].expAmount;
+                }
+            }
+
+            return 0;
+        }
     }
     
     [Serializable]

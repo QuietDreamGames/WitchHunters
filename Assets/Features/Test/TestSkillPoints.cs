@@ -19,5 +19,12 @@ namespace Features.Test
             
             character.TalentsController.AddTalentPoint();
         }
+        
+        public void AddExp()
+        {
+            var character = ServiceLocator.Resolve<CharacterHolder>().CurrentCharacter;
+            
+            character.LevelController.AddExperience(50);
+        }
     }
 }
