@@ -46,7 +46,7 @@ namespace Features.Enemies.Nodes
             projectile.Speed = speed;
             projectile.Lifetime = lifeTime;
 
-            projectile.Spawn(target.position);
+            projectile.Spawn(target);
             
             return Status.Success;
         }

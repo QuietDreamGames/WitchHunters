@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Features.Enemies.Nodes
 {
-    public class InTargetBoundsLeaf : LeafNode
+    public class InTargetBoundsLeaf : AInTargetMeasureLeaf
     {
         [SerializeField] private Vector3 offset;
         [SerializeField] private Vector3 size;
@@ -59,7 +59,7 @@ namespace Features.Enemies.Nodes
                 : Status.Failure;
         }
 
-        public Vector3 GetClosestPoint(Vector3 origin)
+        public override Vector3 GetClosestPoint(Vector3 origin)
         {
             return currentBounds.ClosestPoint(origin);
         }

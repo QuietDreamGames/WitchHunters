@@ -11,7 +11,17 @@ namespace Features.TimeSystems.Installer
         
         public override void Install()
         {
+            var exist = ServiceLocator.Resolve<TimeSystem>();
+            if (exist != null)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            
             ServiceLocator.Register<TimeSystem>(timeSystem);
+            
+            timeSystem.transform.parent = null;
+            DontDestroyOnLoad(timeSystem);
         }
     }
 }

@@ -10,13 +10,12 @@ namespace Features.Enemies.Extensions
     public class UnitView : MonoBehaviour,IUpdateHandler
     {
         [Header("Face Parameters")]
-        [SerializeField] private AnimationCurve faceDirectionCurve;
         [SerializeField] private float faceDirectionTime = .125f;
         
         [Header("Dependencies")]
         [SerializeField] private Transform view;
         
-        [SerializeField] private Renderer renderer;
+        [SerializeField] private new Renderer renderer;
         [SerializeField] private Animator animator;
 
         [SerializeField] private UnitConfig config;

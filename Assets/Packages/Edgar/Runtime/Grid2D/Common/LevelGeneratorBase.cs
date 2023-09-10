@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Random = System.Random;
 
@@ -14,6 +17,9 @@ namespace Edgar.Unity
         private readonly Random seedsGenerator = new Random();
 
         protected readonly PipelineRunner<TPayload> PipelineRunner = new PipelineRunner<TPayload>();
+
+        [Obsolete("The ThrowExceptionImmediately is no longer used. It was previously used inside SmartCoroutine but that piece of code was removed.")]
+        protected abstract bool ThrowExceptionImmediately { get; }
 
         public bool EnableDiagnostics = false;
 
@@ -43,6 +49,32 @@ namespace Edgar.Unity
             Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
 
             return payload;
+        }
+
+        public virtual IEnumerator GenerateCoroutine()
+        {
+            Debug.Log("--- Generator started ---");
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            var (pipelineItems, payload) = GetPipelineItemsAndPayload();
+
+            var pipelineIterator = PipelineRunner.GetEnumerator(pipelineItems, payload, EnableDiagnostics);
+
+            if (Application.isPlaying)
+            {
+                yield return pipelineIterator;
+            }
+            else
+            {
+                while (pipelineIterator.MoveNext())
+                {
+                }
+            }
+            
+            yield return payload;
+
+            Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
         }
 
         protected abstract (List<IPipelineTask<TPayload>> pipelineItems, TPayload payload) GetPipelineItemsAndPayload();

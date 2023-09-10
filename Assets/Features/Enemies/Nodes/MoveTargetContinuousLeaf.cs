@@ -11,9 +11,9 @@ namespace Features.Enemies.Nodes
     public class MoveTargetContinuousLeaf : LeafNode, IFixedUpdateHandler
     {
         [Header("Dependencies")] 
-        [SerializeField] private InTargetBoundsLeaf targetBounds;
+        [SerializeField] private AInTargetMeasureLeaf targetBounds;
  
-        private Rigidbody2D _rigidbody2D;
+        private RigidbodyAdapter _rigidbody2D;
         private UnitConfig _unitConfig;
         private UnitNavigation _unitNavigation;
         private ContextSteering _contextSteering;
@@ -25,7 +25,7 @@ namespace Features.Enemies.Nodes
         {
             base.Construct(stateMachine);
             
-            _rigidbody2D = stateMachine.GetExtension<Rigidbody2D>();
+            _rigidbody2D = stateMachine.GetExtension<RigidbodyAdapter>();
             _unitConfig = stateMachine.GetExtension<UnitConfig>();
             _unitNavigation = stateMachine.GetExtension<UnitNavigation>();
             _contextSteering = stateMachine.GetExtension<ContextSteering>();
@@ -40,7 +40,7 @@ namespace Features.Enemies.Nodes
         protected override void OnExit()
         {
             _unitNavigation.SetActive(false);
-            _rigidbody2D.velocity = Vector2.zero;
+            _rigidbody2D.Velocity = Vector2.zero;
         }
                             
         protected override Status OnUpdate(float deltaTime)
@@ -60,8 +60,8 @@ namespace Features.Enemies.Nodes
             {
                 return;
             }
-            
-            var origin = _rigidbody2D.position;
+
+            var origin = _rigidbody2D.Origin;
             Vector2 target = targetBounds == null 
                 ? _currentTarget.position 
                 : targetBounds.GetClosestPoint(origin);
@@ -80,7 +80,7 @@ namespace Features.Enemies.Nodes
             var steering = _contextSteering.GetSteering();
             
             var velocity = steering * (_unitConfig.BaseSpeed * deltaTime);
-            _rigidbody2D.velocity = velocity;
+            _rigidbody2D.Velocity = velocity;
         }
     }
 }

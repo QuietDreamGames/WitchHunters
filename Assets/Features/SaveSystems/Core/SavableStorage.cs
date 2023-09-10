@@ -89,6 +89,25 @@ namespace Features.SaveSystems.Core
             _storage = _serializer.Deserialize<SerializableDictionary<string, ArrayCollection<byte>>>(data);
         }
 
+        public void Clear(SaveCategory saveCategory)
+        {
+            var directoryPath = _pathBuilder.GetDirectoryPath(saveCategory); 
+            if (!Directory.Exists(directoryPath))
+            {
+                Debug.LogWarning($"Directory {directoryPath} not found");
+                return;
+            }
+            
+            var extension = saveCategory.extension.TrimStart('.');
+            var filePath = Path.Combine(directoryPath, $"{saveCategory.category}.{extension}");
+            if (!File.Exists(filePath))
+            {
+                return;
+            } 
+            
+            File.Delete(filePath);
+        }
+
         [Serializable]
         public class ArrayCollection<T>
         {

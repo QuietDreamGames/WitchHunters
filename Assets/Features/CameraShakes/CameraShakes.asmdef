@@ -1,0 +1,19 @@
+{
+    "name": "CameraShakes",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:c2397ab22be3f4246ab2ca332c684946",
+        "GUID:79baffac70b4ae84ca26bfbcd54ef3a6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

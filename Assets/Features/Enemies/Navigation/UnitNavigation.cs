@@ -29,6 +29,8 @@ namespace Features.Enemies.Navigation
         {
             _navigationComputer = new NavigationComputer(tickRate, UpdatePath);
         }
+        
+        public bool IsActive => _isActive;
 
         public void SetActive(bool active)
         {

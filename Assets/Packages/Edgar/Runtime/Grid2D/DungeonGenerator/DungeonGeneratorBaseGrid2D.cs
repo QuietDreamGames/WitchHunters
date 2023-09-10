@@ -13,6 +13,17 @@ namespace Edgar.Unity
     /// </summary>
     public abstract class DungeonGeneratorBaseGrid2D : LevelGeneratorBase<DungeonGeneratorPayloadGrid2D>
     {
+        // PRO
+        public DungeonGeneratorInputTypeGrid2D InputType;
+
+        // PRO
+        [ExpandableScriptableObject]
+        public DungeonGeneratorInputBaseGrid2D CustomInputTask;
+
+        // PRO
+        [Obsolete("The ThrowExceptionsImmediately is no longer used. It was previously used inside SmartCoroutine but that piece of code was removed.")]
+        protected override bool ThrowExceptionImmediately => ThrowExceptionsImmediately;
+
         [Expandable]
         public FixedLevelGraphConfigGrid2D FixedLevelGraphConfig;
 
@@ -50,6 +61,7 @@ namespace Edgar.Unity
         /// </summary>
         public bool GenerateOnStart = true;
 
+        [Obsolete("The ThrowExceptionsImmediately is no longer used. It was previously used inside SmartCoroutine but that piece of code was removed.")]
         public bool ThrowExceptionsImmediately = false;
 
         /// <summary>
@@ -84,7 +96,15 @@ namespace Edgar.Unity
 
         protected virtual IPipelineTask<DungeonGeneratorPayloadGrid2D> GetInputTask()
         {
-            return new FixedLevelGraphInputTaskGrid2D(FixedLevelGraphConfig);
+            if (InputType == DungeonGeneratorInputTypeGrid2D.CustomInput)
+            {
+                // PRO
+                return CustomInputTask;
+            }
+            else
+            {
+                return new FixedLevelGraphInputTaskGrid2D(FixedLevelGraphConfig);
+            }
         }
 
         protected virtual IPipelineTask<DungeonGeneratorPayloadGrid2D> GetGeneratorTask()

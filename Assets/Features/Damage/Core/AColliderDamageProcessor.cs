@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Features.Damage.Interfaces;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
+using Features.ServiceLocators.Core;
 using Features.Skills.Core;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ namespace Features.Damage.Core
 
         private bool _isActive;
         private List<Collider2D> _collidersDamaged;
+        
+        private DamageableCache _damageableCache;
 
         public Action OnHitObstacle;
         
@@ -48,6 +51,7 @@ namespace Features.Damage.Core
         {
             _isActive = true;
             _collidersDamaged = new List<Collider2D>();
+            _damageableCache = ServiceLocator.Resolve<DamageableCache>();
         }
         
         public void Stop()
@@ -69,7 +73,10 @@ namespace Features.Damage.Core
             for (int j = 0; j < colliderCount; j++)
             {
                 if (_collidersDamaged.Contains(colliders[j])) continue;
-                var damageable = colliders[j].GetComponent<IDamageable>();
+                var target = colliders[j].transform;
+                if (target == null)
+                    continue;
+                var damageable = _damageableCache.GetDamageable(target);
                 if (damageable == null) continue;
                 _collidersDamaged.Add(colliders[j]);
                 ProcessDamage(damageable, colliders[j].transform.position);
@@ -78,6 +85,7 @@ namespace Features.Damage.Core
 
         public void InstantProcessDamage()
         {
+            _damageableCache = ServiceLocator.Resolve<DamageableCache>();
             var colliders = new Collider2D[10];
             ContactFilter2D contactFilter2D = new ContactFilter2D();
             contactFilter2D.SetLayerMask(hittableLayerMask);
@@ -86,7 +94,10 @@ namespace Features.Damage.Core
 
             for (int j = 0; j < colliderCount; j++)
             {
-                var damageable = colliders[j].GetComponent<IDamageable>();
+                var target = colliders[j].transform;
+                if (target == null)
+                    continue;
+                var damageable = _damageableCache.GetDamageable(target);
                 if (damageable == null) continue;
                 ProcessDamage(damageable, colliders[j].transform.position);
             }

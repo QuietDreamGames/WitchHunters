@@ -1,7 +1,9 @@
-﻿using Features.Damage.Core;
+﻿using Features.CameraShakes.Core;
+using Features.Damage.Core;
 using Features.Modifiers.SOLID.Core;
 using Features.Modifiers.SOLID.Helpers;
 using Features.ObjectPools.Core;
+using Features.ServiceLocators.Core;
 using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 
@@ -19,6 +21,9 @@ namespace Features.Skills.Implementations
         [SerializeField] private Animator _ashAnimator;
         
         [SerializeField] private Collider2D _hitboxCollider;
+        
+        [SerializeField] private CameraShakeData _cameraShakeData;
+        private IShakeDirector _shakeDirector;
         
         private Transform _meteorTransform;
 
@@ -46,6 +51,7 @@ namespace Features.Skills.Implementations
             _isFalling = true;
             _timer = _timeBeforeHit;
             _meteorAnimator.SetTrigger(Start);
+            _shakeDirector = ServiceLocator.Resolve<IShakeDirector>();
         }
 
         public void OnUpdate(float deltaTime)
@@ -66,6 +72,7 @@ namespace Features.Skills.Implementations
                     _explosionAnimator.SetTrigger(Start);
                     _ashAnimator.SetTrigger(Start);
                     _damageProcessor.InstantProcessDamage();
+                    _shakeDirector.RegisterShakeData(_cameraShakeData);
                     break;
                 case <= 0:
                     _isUpdating = false;

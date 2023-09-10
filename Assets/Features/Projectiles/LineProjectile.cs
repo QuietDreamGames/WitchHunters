@@ -8,7 +8,7 @@ namespace Features.Projectiles
         
         protected override void OnSpawn()
         {
-            _direction = (Target - transform.position).normalized;
+            _direction = (Target.position - transform.position).normalized;
             
             RotateView(_direction);
         }

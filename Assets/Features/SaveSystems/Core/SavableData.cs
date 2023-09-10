@@ -62,5 +62,10 @@ namespace Features.SaveSystems.Core
         {
             Storage.LoadFromDisk(saveCategory);
         }
+        
+        public void Clear(SaveCategory saveCategory)
+        {
+            Storage.Clear(saveCategory);
+        }
     }
 }

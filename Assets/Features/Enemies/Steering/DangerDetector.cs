@@ -71,6 +71,11 @@ namespace Features.Enemies.Steering
                     continue;
                 }
                 
+                if (hit.collider.isTrigger)
+                {
+                    continue;
+                }
+                
                 if (hit.collider.attachedRigidbody == rigidbody2D)
                 {
                     continue;
