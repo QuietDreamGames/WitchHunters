@@ -11,6 +11,7 @@ namespace Features.UI.TabSystem
     public class TabGroup : MonoBehaviour, IUpdateHandler
     {
         [SerializeField] private GameObject _tabGroupParent;
+        [SerializeField] private GameObject _hudParent;
         [SerializeField] private TabButton[] _tabButtons;
         [SerializeField] private TabContent[] _tabContents;
         
@@ -114,6 +115,7 @@ namespace Features.UI.TabSystem
             _selectedTabButton = null;
             
             _gameStateManager.SetGameState(GameStates.Gameplay);
+            _hudParent.SetActive(true);
         }
         
         private void OpenSelectedTab()
@@ -135,6 +137,7 @@ namespace Features.UI.TabSystem
             }
             
             _gameStateManager.SetGameState(GameStates.Menu);
+            _hudParent.SetActive(false);
         }
 
         #region Called by buttons
