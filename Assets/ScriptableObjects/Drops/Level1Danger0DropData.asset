@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleDrops:
   - itemData: {fileID: 11400000, guid: d817d44973268d8478a9e617d8e1f6d2, type: 2}
-    dropChance: 0.5
+    dropChance: 0.2
   - itemData: {fileID: 11400000, guid: 4670b2aded0a1c846a7aa64e309ced60, type: 2}
-    dropChance: 0.3
+    dropChance: 0.15
+  rollsAmount: 2
   possibleArmorModifiers:
   - modifierType: 37
     modifierData:

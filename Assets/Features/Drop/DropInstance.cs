@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Features.Inventory.Item;
 using UnityEngine;
 
@@ -6,41 +7,45 @@ namespace Features.Drop
 {
     public class DropInstance : MonoBehaviour
     {
-        private InventoryItem _item;
-        private int _currency;
+        [SerializeField] private GameObject _indicator;
         
-        public void Configure(InventoryItem item, int currency)
+        private List<InventoryItem> _items;
+        private int _currency;
+
+        public void Configure(List<InventoryItem> items, int currency)
         {
-            _item = item;
+            _items = items;
             _currency = currency;
+            _indicator.SetActive(false);
+        }
+        
+        public void SetDetected(bool isDetected)
+        {
+            _indicator.SetActive(isDetected);
         }
 
-        public (InventoryItem, int) GetDrops()
+        public (List<InventoryItem>, int) GetDrops()
         {
-            return (_item, _currency);
+            return (_items, _currency);
         }
         
-        public InventoryItem GrabItem()
+        public void OnGrabItem(InventoryItem item)
         {
-            var item = _item;
-            _item = null;
+            _items.Remove(item);
             StartCoroutine(CheckForDestruction());
-            return item;
         }
         
-        public int GrabCurrency()
+        public void OnGrabCurrency()
         {
-            var currency = _currency;
             _currency = 0;
             StartCoroutine(CheckForDestruction());
-            return currency;
         }
         
         private IEnumerator CheckForDestruction()
         {
             yield return new WaitForEndOfFrame();
             
-            if (_item == null && _currency == 0)
+            if (_items.Count == 0 && _currency == 0)
             {
                 Destroy(gameObject);
             }

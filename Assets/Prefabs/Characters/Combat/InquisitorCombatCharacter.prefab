@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2004532626511358952}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ---
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4321574876289465450}
   - component: {fileID: 4321574876289465449}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: InqMeteorsUltimateController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 4321574876678655477}
   - component: {fileID: 4321574876678655479}
   - component: {fileID: 4321574876678655476}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WaveController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,6 +503,7 @@ GameObject:
   - component: {fileID: 4321574877219388105}
   - component: {fileID: 824366123938292658}
   - component: {fileID: 4321574877219388106}
+  - component: {fileID: 659611524375473357}
   m_Layer: 9
   m_Name: InquisitorCombatCharacter
   m_TagString: Untagged
@@ -884,6 +885,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   category: GamePlay
+--- !u!114 &659611524375473357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321574877219388125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce93a5a8a3794876a299d5166ae105c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 2
+  _dropMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!1 &4321574877355199758
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4321574877355199757}
   - component: {fileID: 4321574877355199756}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: MeleeAttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4321574877766656718}
   - component: {fileID: 4321574877766656717}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: InqSolarSecondaryController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,6 +1053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameplayCharacterSaver: {fileID: 8829038583385556657}
   _inventoryData:
+    currency: 0
     stackableItems:
     - itemData: {fileID: 11400000, guid: 4670b2aded0a1c846a7aa64e309ced60, type: 2}
       amount: 1
@@ -1130,7 +1148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7289700092931727937}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: HitEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1210,7 +1228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477321814149653201}
   - component: {fileID: 9082766118918690539}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ShakeHitEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1408,15 +1426,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9066779043219335516, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779043258518420, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779043285183085, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779043370919781, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Name
@@ -1468,35 +1486,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9066779043391370948, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779044090199443, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779044248180299, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779044784339623, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779044805839405, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779044832100541, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779045076331646, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9066779045207774200, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd5ec33c8669534b8f7ff1306d88561, type: 3}
@@ -1577,7 +1595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3322751019882025708, guid: eb2b4ea333e8f514da3aa32103f165df, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb2b4ea333e8f514da3aa32103f165df, type: 3}

@@ -26,13 +26,13 @@ namespace Features.Drop
             var characterController = ServiceLocator.Resolve<CharacterHolder>().CurrentCharacter;
             characterController.LevelController.AddExperience(_dropData.GetExperience());
             
-            var item = _dropData.GetRandomDrop();
+            var items = _dropData.GetDrops();
             var currency = _dropData.GetCurrency();
             
-            if (item == null && currency == 0) return;
+            if (items.Count == 0 && currency == 0) return;
             
             var dropInstance = Instantiate(_dropInstancePrefab, transform.position, Quaternion.identity);
-            dropInstance.Configure(item, currency);
+            dropInstance.Configure(items, currency);
         }
     }
     
