@@ -896,6 +896,7 @@ GameObject:
   - component: {fileID: 9176817455103414777}
   - component: {fileID: 6452438943550822794}
   - component: {fileID: 5846140804361077601}
+  - component: {fileID: 4208269080759166604}
   m_Layer: 10
   m_Name: Gecko.Thrower
   m_TagString: Untagged
@@ -1064,6 +1065,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   category: GamePlay
+--- !u!114 &4208269080759166604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419718671918686879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9b0fce6ce54ac09f291bd0a0588e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitBehaviour: {fileID: 8305669543494688330}
+  _dropData: {fileID: 11400000, guid: 7461080ecd354dd4886cbcfea2d87f78, type: 2}
+  _dropInstancePrefab: {fileID: 2211008259636180898, guid: f2126c19f7bc8934f80a48635acfca58, type: 3}
 --- !u!1 &3498905258952316429
 GameObject:
   m_ObjectHideFlags: 0

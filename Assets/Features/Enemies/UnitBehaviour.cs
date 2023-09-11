@@ -38,7 +38,7 @@ namespace Features.Enemies
         
         public bool IsEnabled => gameObject.activeSelf;
 
-        public Action OnDeath { get; private set; }
+        public Action OnDeath;
 
         private void Start()
         {
