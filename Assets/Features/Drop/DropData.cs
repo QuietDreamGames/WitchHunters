@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Features.Inventory;
 using Features.Inventory.Data;
 using Features.Inventory.Item;
@@ -12,6 +13,8 @@ namespace Features.Drop
     public class DropData : ScriptableObject
     {
         public DropItem[] possibleDrops;
+        public int rollsAmount;
+        
         public DropModifierArmor[] possibleArmorModifiers;
         public DropModifierJewelry[] possibleJewelryModifiers;
         
@@ -22,15 +25,36 @@ namespace Features.Drop
         public int minimumExperience;
         public int maximumExperience;
         
-        public InventoryItem GetRandomDrop()
+        public List<InventoryItem> GetDrops()
+        {
+            var drops = new List<InventoryItem>(rollsAmount);
+            for (int i = 0; i < rollsAmount; i++)
+            {
+                var item = GetRandomDrop(drops);
+                if (item == null) continue;
+                drops.Add(item);
+            }
+
+            return drops;
+        }
+        
+        private InventoryItem GetRandomDrop(List<InventoryItem> containedDrops)
         {
             var random = UnityEngine.Random.Range(0f, 1f);
-            Debug.Log($"random: {random}");
             var currentChance = 1f;
             foreach (var drop in possibleDrops)
             {
                 currentChance -= drop.dropChance;
                 if (random < currentChance) continue;
+                var isContained = false;
+                foreach (var containedDrop in containedDrops)
+                {
+                    if (containedDrop.itemData.id != drop.itemData.id) continue;
+                    isContained = true;
+                    break;
+                }
+                
+                if (isContained) continue;
                 
                 switch (drop.itemData.sortType)
                 {
@@ -45,7 +69,6 @@ namespace Features.Drop
                         newItem.ResetModifiers();
                         
                         var modifierRandom = UnityEngine.Random.Range(0f, 1f);
-                        Debug.Log($"modifierRandom: {modifierRandom}");
                         var modifierCurrentChance = 1f;
                         for (int i = 0; i < possibleArmorModifiers.Length; i++)
                         {
@@ -115,8 +138,7 @@ namespace Features.Drop
         public int GetCurrency()
         {
             var random = UnityEngine.Random.Range(0f, 1f);
-            if (random < currencyDropChance) return 0;
-            
+            if (currencyDropChance < random) return 0;
             return UnityEngine.Random.Range(minimumCurrency, maximumCurrency);
         } 
     }
