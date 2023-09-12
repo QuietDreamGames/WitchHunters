@@ -138,8 +138,7 @@ namespace Features.Drop
         public int GetCurrency()
         {
             var random = UnityEngine.Random.Range(0f, 1f);
-            if (random < currencyDropChance) return 0;
-            
+            if (currencyDropChance < random) return 0;
             return UnityEngine.Random.Range(minimumCurrency, maximumCurrency);
         } 
     }

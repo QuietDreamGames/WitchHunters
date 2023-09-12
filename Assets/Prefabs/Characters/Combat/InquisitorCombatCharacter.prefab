@@ -562,6 +562,7 @@ MonoBehaviour:
   _talentsController: {fileID: 7003949222348020243}
   _inventoryController: {fileID: 1803193677740648709}
   _equipmentController: {fileID: 5196496055969279623}
+  _dropDetector: {fileID: 659611524375473357}
   _secondComboAttackStartPercentage: 0.3
   _secondComboAttackEndPercentage: 0.9
   _secondComboAttackDistance: 0.9

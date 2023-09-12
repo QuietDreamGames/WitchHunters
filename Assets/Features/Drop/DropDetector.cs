@@ -1,4 +1,5 @@
-﻿using Features.TimeSystems.Interfaces.Handlers;
+﻿using System;
+using Features.TimeSystems.Interfaces.Handlers;
 using UnityEngine;
 
 namespace Features.Drop
@@ -10,7 +11,8 @@ namespace Features.Drop
         
         private Collider2D _lastDropCollider;
         private DropInstance _lastDropInstance; 
-        private bool _isLastDropDetected;
+
+        public Action<bool, DropInstance> OnDropDetected;
         
         public void OnFixedUpdate(float deltaTime)
         {
@@ -19,7 +21,7 @@ namespace Features.Drop
         
         private void DetectDrop()
         {
-            if (_isLastDropDetected)
+            if (_lastDropInstance != null)
             {
                 _lastDropInstance.SetDetected(false);
             }
@@ -30,8 +32,8 @@ namespace Features.Drop
             if (count == 0)
             {
                 _lastDropInstance = null;
-                _isLastDropDetected = false;
                 _lastDropCollider = null;
+                OnDropDetected?.Invoke(false, _lastDropInstance);
                 return;
             }
 
@@ -41,7 +43,7 @@ namespace Features.Drop
             }
             
             _lastDropInstance.SetDetected(true);
-            _isLastDropDetected = true;
+            OnDropDetected?.Invoke(true, _lastDropInstance);
         }
 
         public void OnDrawGizmosSelected()

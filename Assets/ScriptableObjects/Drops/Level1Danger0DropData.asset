@@ -40,6 +40,6 @@ MonoBehaviour:
   possibleJewelryModifiers: []
   minimumCurrency: 10
   maximumCurrency: 20
-  currencyDropChance: 0.75
+  currencyDropChance: 0.99
   minimumExperience: 10
   maximumExperience: 16
