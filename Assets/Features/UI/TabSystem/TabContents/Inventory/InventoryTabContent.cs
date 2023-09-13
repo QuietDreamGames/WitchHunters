@@ -16,6 +16,8 @@ namespace Features.UI.TabSystem.TabContents.Inventory
         [SerializeField] private EquipmentSlotController[] _equipmentSlotControllers;
         [SerializeField] private ItemSlotController[] _inventorySlotControllers;
         
+        [SerializeField] private InventoryTabButton[] _tabButtons;
+        
         private CombatCharacterController _combatCharacterController;
         
         private ItemSortType _currentSortType;
@@ -40,6 +42,13 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             {
                 _equipmentSlotControllers[i].Initiate(this);
             }
+
+            for (int i = 0; i < _tabButtons.Length; i++)
+            {
+                _tabButtons[i].Initiate(this);
+            }
+            
+            _tabButtons[0].OnSelect();
             
             RefreshEquippedItems();
             
@@ -117,9 +126,22 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             }
         }
         
-        public void OnSortTypeChanged(int sortType)
+        public void OnSortTypeChanged(InventoryTabButton tabButton)
         {
-            _currentSortType = (ItemSortType)sortType;
+            _currentSortType = tabButton.TabType;
+
+            for (int i = 0; i < _tabButtons.Length; i++)
+            {
+                if (_tabButtons[i] == tabButton)
+                {
+                    _tabButtons[i].OnSelect();
+                }
+                else
+                {
+                    _tabButtons[i].OnDeselect();
+                }
+            }
+            
             RefreshCurrentItemsList();
         }
         
