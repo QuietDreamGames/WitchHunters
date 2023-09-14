@@ -48,7 +48,25 @@ namespace Features.UI.Gameplay.Loot
 
                 ShowLootPanel();
             }
+            
+            var scrollInput = _playerInput.actions["ScrollWheel"].ReadValue<Vector2>();
+            
+            if (scrollInput.normalized.magnitude > 0.1f)
+            {
+                var scrollValue = scrollInput.y;
+                var index = _lootItems.IndexOf(_selectedLootItem);
+                index += scrollValue > 0 ? -1 : 1;
+                index = Mathf.Clamp(index, 0, _lootItems.Count - 1);
+                
+                _selectedLootItem = _lootItems[index];
+                _selectedLootItem.Select();
 
+                for (int i = 0; i < _lootItems.Count; i++)
+                {
+                    if (_selectedLootItem != _lootItems[i]) 
+                        _lootItems[i].Deselect();
+                }
+            }
         }
         
         public void ShowLootPanel()
@@ -76,6 +94,11 @@ namespace Features.UI.Gameplay.Loot
             
             _selectedLootItem = _lootItems[0];
             _selectedLootItem.Select();
+            for (int i = 0; i < _lootItems.Count; i++)
+            {
+                if (_selectedLootItem != _lootItems[i]) 
+                    _lootItems[i].Deselect();
+            }
             
             _lootPanel.SetActive(true);
         }
@@ -104,14 +127,43 @@ namespace Features.UI.Gameplay.Loot
             }
             
             _selectedLootItem = _lootItems.Count > index ? _lootItems[index] : _lootItems[index - 1];
-            _selectedLootItem.Select(); 
+            
+            _selectedLootItem.Select();
+
+            for (int i = 0; i < _lootItems.Count; i++)
+            {
+                if (_selectedLootItem != _lootItems[i]) 
+                    _lootItems[i].Deselect();
+            }
         }
 
         private void OnDropDetected(bool isDetected, DropInstance dropInstance)
         {
             _isAllowedShowLootPanel = isDetected;
+            if (_lastDropInstance != dropInstance)
+                _lootPanel.SetActive(false);
             _lastDropInstance = dropInstance;
         }
+
+        // private void OnScrollMove(InputAction.CallbackContext callbackContext)
+        // {
+        //     Debug.Log("?");
+        //     if (!_lootPanel.activeSelf) return;
+        //     
+        //     var scrollValue = _playerInput.actions["ScrollWheel"].ReadValue<float>();
+        //     var index = _lootItems.IndexOf(_selectedLootItem);
+        //     index += scrollValue > 0 ? 1 : -1;
+        //     index = Mathf.Clamp(index, 0, _lootItems.Count - 1);
+        //         
+        //     _selectedLootItem = _lootItems[index];
+        //     _selectedLootItem.Select();
+        //
+        //     for (int i = 0; i < _lootItems.Count; i++)
+        //     {
+        //         if (_selectedLootItem != _lootItems[i]) 
+        //             _lootItems[i].Deselect();
+        //     }
+        // }
         
         private void OnEnable()
         {
@@ -127,6 +179,7 @@ namespace Features.UI.Gameplay.Loot
         
         private void OnDisable()
         {
+            // _playerInput.actions["ScrollWheel"].performed -= OnScrollMove;
             _characterHolder.OnCharacterChanged -= OnCharacterChanged;
             if (_characterHolder.CurrentCharacter == null) return;
             _dropDetector.OnDropDetected -= OnDropDetected;
