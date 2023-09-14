@@ -140,6 +140,8 @@ namespace Features.UI.Gameplay.Loot
         private void OnDropDetected(bool isDetected, DropInstance dropInstance)
         {
             _isAllowedShowLootPanel = isDetected;
+            if (_lastDropInstance != dropInstance)
+                _lootPanel.SetActive(false);
             _lastDropInstance = dropInstance;
         }
 
