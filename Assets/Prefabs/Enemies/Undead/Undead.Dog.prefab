@@ -1221,6 +1221,7 @@ GameObject:
   - component: {fileID: 7101386147308201366}
   - component: {fileID: 926878972162479898}
   - component: {fileID: 1668376728048512034}
+  - component: {fileID: 3747010477393869135}
   m_Layer: 10
   m_Name: Undead.Dog
   m_TagString: Untagged
@@ -1336,7 +1337,7 @@ MonoBehaviour:
   attackIDParam: AttackID
   baseSpeed: 1.35
   speedMultiplier: 100
-  baseDamage: 1
+  baseDamage: 11
 --- !u!114 &7780795493464911315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1389,6 +1390,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   category: GamePlay
+--- !u!114 &3747010477393869135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5941294641897714233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9b0fce6ce54ac09f291bd0a0588e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitBehaviour: {fileID: 271464729524598529}
+  _dropData: {fileID: 11400000, guid: 7461080ecd354dd4886cbcfea2d87f78, type: 2}
+  _dropInstancePrefab: {fileID: 2211008259636180898, guid: f2126c19f7bc8934f80a48635acfca58, type: 3}
 --- !u!1 &6001290160992806090
 GameObject:
   m_ObjectHideFlags: 0

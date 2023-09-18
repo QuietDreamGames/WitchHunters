@@ -68,9 +68,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: 667e0424d7b32514da6a423076f5c38f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -92,9 +92,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tabType: 0
   _background: {fileID: 7627355530226568159}
-  _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColor: {r: 1, g: 0, b: 0, a: 1}
-  _hoverColor: {r: 1, g: 0.5801887, b: 0.5801887, a: 1}
+  _normalColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 1}
+  _selectedColor: {r: 1, g: 1, b: 1, a: 1}
+  _hoverColor: {r: 0.9254902, g: 0.9254902, b: 0.9254902, a: 1}
 --- !u!1 &8599738993846755522
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,8 +163,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tab Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2237e1d818ba1b742982fc506817aff9, type: 2}
-  m_sharedMaterial: {fileID: 2224340796673299899, guid: 2237e1d818ba1b742982fc506817aff9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 296d925b55532b94c9237dc1292ef669, type: 2}
+  m_sharedMaterial: {fileID: -7523593904369715368, guid: 296d925b55532b94c9237dc1292ef669, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -188,8 +188,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseModifiers:
   - data:
-      modificatorValue: 1
+      modificatorValue: 0
       duration: Infinity
       spec: 0
     type: 8

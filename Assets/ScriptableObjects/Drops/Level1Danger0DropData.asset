@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eca2d5679e1487390829150fae73698, type: 3}
+  m_Name: Level1Danger0DropData
+  m_EditorClassIdentifier: 
+  possibleDrops:
+  - itemData: {fileID: 11400000, guid: 777a13c26c9d91d4b8dbeb7479142ac0, type: 2}
+    dropChance: 0.05
+  - itemData: {fileID: 11400000, guid: 8e0d9597dac5fa041aa1fbf76005912f, type: 2}
+    dropChance: 0.05
+  - itemData: {fileID: 11400000, guid: bde07933335c9bf4e837036a912b7dd3, type: 2}
+    dropChance: 0.05
+  - itemData: {fileID: 11400000, guid: a3d9817d253f48e4189200d4f36fbcb9, type: 2}
+    dropChance: 0.05
+  - itemData: {fileID: 11400000, guid: 4670b2aded0a1c846a7aa64e309ced60, type: 2}
+    dropChance: 0.05
+  - itemData: {fileID: 11400000, guid: 73f8d73dd1542e1469b7c94c37dc2ec1, type: 2}
+    dropChance: 0.05
+  - itemData: {fileID: 11400000, guid: 96e5f7582b159c94a971e6ac34f2aeac, type: 2}
+    dropChance: 0.05
+  rollsAmount: 2
+  possibleArmorModifiers:
+  - modifierType: 37
+    modifierData:
+      modificatorValue: 0.01
+      duration: Infinity
+      spec: 1
+    dropChance: 0.5
+  - modifierType: 1
+    modifierData:
+      modificatorValue: 0.01
+      duration: Infinity
+      spec: 1
+    dropChance: 0.1
+  - modifierType: 3
+    modifierData:
+      modificatorValue: 1
+      duration: Infinity
+      spec: 0
+    dropChance: 0.1
+  possibleJewelryModifiers: []
+  minimumCurrency: 10
+  maximumCurrency: 20
+  currencyDropChance: 0.99
+  minimumExperience: 10
+  maximumExperience: 16

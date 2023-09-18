@@ -1,5 +1,6 @@
 ﻿using Features.ColliderController.Core;
 using Features.Damage.Core;
+using Features.Drop;
 using Features.Experience;
 using Features.FiniteStateMachine;
 using Features.Health;
@@ -43,6 +44,8 @@ namespace Features.Character
         
         [SerializeField] protected InventoryController _inventoryController;
         [SerializeField] protected EquipmentController _equipmentController;
+
+        [SerializeField] protected DropDetector _dropDetector;
         
         public ModifiersContainer ModifiersContainer { get; protected set; }
         public HealthComponent HealthComponent { get; protected set; }
@@ -56,7 +59,7 @@ namespace Features.Character
         public TalentsController TalentsController => _talentsController;
         public InventoryController InventoryController => _inventoryController;
         public EquipmentController EquipmentController => _equipmentController;
-        
+        public DropDetector DropDetector => _dropDetector;
         
         protected PlayerInput _playerInput;
         protected StateMachine stateMachine;
@@ -84,7 +87,7 @@ namespace Features.Character
             
             _damageController.Initiate(ModifiersContainer,  _baseModifiersContainer, HealthComponent, stateMachine, ShieldHealthController);
             _damageController.SetActive(true);
-
+            
             stateMachine.AddExtension(_playerInput);
             stateMachine.AddExtension(_characterView);
             stateMachine.AddExtension(_rigidbody);

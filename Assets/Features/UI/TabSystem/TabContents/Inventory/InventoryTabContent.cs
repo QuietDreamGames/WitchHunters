@@ -7,6 +7,7 @@ using Features.Inventory;
 using Features.Inventory.Data;
 using Features.Inventory.Item;
 using Features.ServiceLocators.Core;
+using TMPro;
 using UnityEngine;
 
 namespace Features.UI.TabSystem.TabContents.Inventory
@@ -15,6 +16,11 @@ namespace Features.UI.TabSystem.TabContents.Inventory
     {
         [SerializeField] private EquipmentSlotController[] _equipmentSlotControllers;
         [SerializeField] private ItemSlotController[] _inventorySlotControllers;
+        
+        [SerializeField] private InventoryTabButton[] _tabButtons;
+        
+        [SerializeField] private TextMeshProUGUI _currencyText;
+        [SerializeField] private TextMeshProUGUI _weightText;
         
         private CombatCharacterController _combatCharacterController;
         
@@ -40,11 +46,27 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             {
                 _equipmentSlotControllers[i].Initiate(this);
             }
+
+            for (int i = 0; i < _tabButtons.Length; i++)
+            {
+                _tabButtons[i].Initiate(this);
+            }
+            
+            _tabButtons[0].OnSelect();
             
             RefreshEquippedItems();
             
             RefreshCurrentItemsList();
-            
+
+            RefreshResources();
+        }
+        
+        private void RefreshResources()
+        {
+            _currencyText.text = _combatCharacterController.InventoryController.InventoryData.currency.ToString();
+            _weightText.text = $"{_combatCharacterController.InventoryController.Weight}/" +
+                               $"{_combatCharacterController.InventoryController.MaxWeight}";
+            _weightText.color = _combatCharacterController.InventoryController.IsOverweight ? Color.red : Color.white;
         }
 
         private void RefreshEquippedItems()
@@ -117,9 +139,22 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             }
         }
         
-        public void OnSortTypeChanged(int sortType)
+        public void OnSortTypeChanged(InventoryTabButton tabButton)
         {
-            _currentSortType = (ItemSortType)sortType;
+            _currentSortType = tabButton.TabType;
+
+            for (int i = 0; i < _tabButtons.Length; i++)
+            {
+                if (_tabButtons[i] == tabButton)
+                {
+                    _tabButtons[i].OnSelect();
+                }
+                else
+                {
+                    _tabButtons[i].OnDeselect();
+                }
+            }
+            
             RefreshCurrentItemsList();
         }
         
