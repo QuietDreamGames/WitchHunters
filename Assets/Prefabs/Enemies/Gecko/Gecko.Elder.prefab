@@ -1967,7 +1967,7 @@ MonoBehaviour:
   attackIDParam: AttackID
   baseSpeed: 1.85
   speedMultiplier: 100
-  baseDamage: 1
+  baseDamage: 11
 --- !u!114 &2997860240470501448
 MonoBehaviour:
   m_ObjectHideFlags: 0

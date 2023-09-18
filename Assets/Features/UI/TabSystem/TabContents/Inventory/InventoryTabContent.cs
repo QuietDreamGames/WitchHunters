@@ -7,6 +7,7 @@ using Features.Inventory;
 using Features.Inventory.Data;
 using Features.Inventory.Item;
 using Features.ServiceLocators.Core;
+using TMPro;
 using UnityEngine;
 
 namespace Features.UI.TabSystem.TabContents.Inventory
@@ -17,6 +18,9 @@ namespace Features.UI.TabSystem.TabContents.Inventory
         [SerializeField] private ItemSlotController[] _inventorySlotControllers;
         
         [SerializeField] private InventoryTabButton[] _tabButtons;
+        
+        [SerializeField] private TextMeshProUGUI _currencyText;
+        [SerializeField] private TextMeshProUGUI _weightText;
         
         private CombatCharacterController _combatCharacterController;
         
@@ -53,7 +57,16 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             RefreshEquippedItems();
             
             RefreshCurrentItemsList();
-            
+
+            RefreshResources();
+        }
+        
+        private void RefreshResources()
+        {
+            _currencyText.text = _combatCharacterController.InventoryController.InventoryData.currency.ToString();
+            _weightText.text = $"{_combatCharacterController.InventoryController.Weight}/" +
+                               $"{_combatCharacterController.InventoryController.MaxWeight}";
+            _weightText.color = _combatCharacterController.InventoryController.IsOverweight ? Color.red : Color.white;
         }
 
         private void RefreshEquippedItems()

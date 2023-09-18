@@ -24,6 +24,10 @@ namespace Features.Inventory
         private float _weight;
         private bool _isOverweight;
         
+        public float MaxWeight => _maxWeight;
+        public float Weight => _weight;
+        public bool IsOverweight => _isOverweight;
+        
         private BaseModifiersContainer _baseModifiersContainer;
         private ModifiersContainer _modifiersContainer;
         

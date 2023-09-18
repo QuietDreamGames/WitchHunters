@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a59f4130594bc6bb41acbdc0fb842c, type: 3}
+  m_Name: t1_medium_helmet
+  m_EditorClassIdentifier: 
+  id: t1_medium_chest
+  displayName: '[t1_medium_chest]'
+  icon: {fileID: 21300000, guid: cd9af0b781e8d144981d2a5b952a3b95, type: 3}
+  sortType: 1
+  weight: 3
+  equippableType: 0
+  baseItemModifiers:
+  - modifierType: 8
+    modifierData:
+      modificatorValue: 2
+      duration: Infinity
+      spec: 0
