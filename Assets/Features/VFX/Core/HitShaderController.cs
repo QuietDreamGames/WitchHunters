@@ -13,7 +13,7 @@ namespace Features.VFX.Core
 
         private Material _material;
         private bool _isHit;
-        private static readonly int FlashAmount = Shader.PropertyToID("_FlashAmount");
+        private static readonly int FlashAmount = Shader.PropertyToID("_HitProgress");
         
         private float _currentFlashAmount;
 

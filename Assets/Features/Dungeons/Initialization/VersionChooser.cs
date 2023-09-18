@@ -8,25 +8,22 @@ namespace Features.Dungeons.Initialization
     {
         private const string IgnoreChild = "BASE";
         
-        private void Awake()
+        private void Start()
         {
             var origin = transform;
             var children = new List<GameObject>();
             
             for (var i = 0; i < origin.childCount; i++)
             {
-                var child = origin.GetChild(i);
+                var child = origin.GetChild(i).gameObject;
+                child.SetActive(false);
                 if (child.name == IgnoreChild) 
                     continue;
-                children.Add(child.gameObject);
+                children.Add(child);
             }
             
             var currentChildIndex = Random.Range(0, children.Count);
-            for (var i = 0; i < children.Count; i++)
-            {
-                var child = children[i];
-                child.SetActive(i == currentChildIndex);
-            }
+            children[currentChildIndex].SetActive(true);
         }
     }
 }

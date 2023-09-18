@@ -12,32 +12,31 @@ Shader "Unlit/SH_Unit"
 
     SubShader
     {
-        Tags
+        Tags 
         {
-            "Queue" = "Transparent"
-            "IgnoreProjector" = "True"
-            "RenderType" = "Transparent"
-            "PreviewType" = "Plane"
-            "CanUseSpriteAtlas"="True"
+            "Queue" = "Transparent" 
+            "RenderType" = "Transparent" 
+            "RenderPipeline" = "UniversalPipeline" 
         }
-
+ 
+        Blend SrcAlpha OneMinusSrcAlpha
         Cull Off
-        Lighting Off
         ZWrite Off
-        Blend One OneMinusSrcAlpha
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+ 
             #pragma vertex vert
             #pragma fragment frag
-            #include "UnityCG.cginc"
 
             struct appdata_t
             {
                 float4 vertex : POSITION;
                 float2 texcoord : TEXCOORD0;
                 float4 color : COLOR;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             struct v2f
@@ -45,20 +44,23 @@ Shader "Unlit/SH_Unit"
                 float4 vertex : SV_POSITION;
                 half2 texcoord : TEXCOORD0;
                 float4 color : COLOR;
+                UNITY_VERTEX_OUTPUT_STEREO
             };
 
             sampler2D _MainTex;
 
             half _Alpha;
 
-            fixed4 _HitTint;
+            float4 _HitTint;
             half _HitProgress;
 
             v2f vert(appdata_t IN)
             {
                 v2f OUT;
+                UNITY_SETUP_INSTANCE_ID(IN);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
 
-                OUT.vertex = UnityObjectToClipPos(IN.vertex);
+                OUT.vertex = TransformObjectToHClip(IN.vertex);
                 OUT.texcoord = IN.texcoord;
                 OUT.color = IN.color;
                 
@@ -82,7 +84,7 @@ Shader "Unlit/SH_Unit"
 
                 return color * alpha;
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Edgar.Unity
     {
         [Layer]
         public int Layer = 0;
+        public Material Material;
 
         public bool UseMultipleTilemaps = true;
 
@@ -44,8 +45,7 @@ namespace Edgar.Unity
             CheckLayerValidity();
 
             // Create new tilemap layers for the minimap
-            var firstMaterial = Layers.Select(x => x.Material).FirstOrDefault(x => x != null);
-            var mainTilemap = !UseMultipleTilemaps ? CreateTilemap("Minimap", level, 0, firstMaterial) : null;
+            var mainTilemap = !UseMultipleTilemaps ? CreateTilemap("Minimap", level, 0, Material) : null;
 
             var usedTiles = new HashSet<Vector3Int>();
 
@@ -55,7 +55,7 @@ namespace Edgar.Unity
             {
                 // Create a new minimap if UseMultipleTilemaps is set to true
                 var tilemap = UseMultipleTilemaps
-                    ? CreateTilemap($"Minimap {minimapLayer.Tilemaps}", level, -20 + tilemaps.Count, minimapLayer.Material)
+                    ? CreateTilemap($"Minimap {minimapLayer.Tilemaps}", level, -20 + tilemaps.Count, Material)
                     : mainTilemap;
 
                 tilemaps.Add(tilemap);
