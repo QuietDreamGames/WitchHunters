@@ -55,6 +55,22 @@ namespace Features.Enemies.Extensions
                 }
             }
         }
+        
+        public void SetMovementValueParams(float horizontal, float vertical, float dumpTime = 0.1f)
+        {
+            if (!config.UseMovementValueParam) 
+                return;
+            
+            if (!IsZero(horizontal))
+            {
+                animator.SetFloat(config.HorizontalValueParam, horizontal, dumpTime, Time.deltaTime);
+            }
+                
+            if (!IsZero(vertical))
+            {
+                animator.SetFloat(config.VerticalValueParam, vertical, dumpTime, Time.deltaTime);
+            }
+        }
 
         public void SetVelocity(Vector2 direction)
         {
@@ -65,6 +81,8 @@ namespace Features.Enemies.Extensions
             
             animator.SetBool(config.HorizontalMoveParam, horizontal != 0);
             animator.SetBool(config.VerticalMoveParam, vertical != 0);
+            
+            SetMovementValueParams(horizontal, vertical);
         }
         
         public void SetAttack(int attackID)
@@ -111,6 +129,11 @@ namespace Features.Enemies.Extensions
             view.localScale = localScale;
             
             _faceDirectionCoroutine = null;
+        }
+        
+        private bool IsZero(float value)
+        {
+            return math.abs(value) < float.Epsilon;
         }
     }
 }

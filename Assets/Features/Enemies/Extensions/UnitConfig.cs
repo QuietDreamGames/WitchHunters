@@ -10,6 +10,12 @@ namespace Features.Enemies.Extensions
         [SerializeField] private string horizontalMoveParam = "Horizontal";
         [SerializeField] private string verticalMoveParam = "Vertical";
         
+        [Space]
+        [SerializeField] private bool useMovementValueParam = false;
+        [SerializeField] private string horizontalValueParam = "HorizontalValue";
+        [SerializeField] private string verticalValueParam = "VerticalValue";
+        
+        [Space]
         [SerializeField] private string attackParam = "Attack";
         [SerializeField] private string attackIDParam = "AttackID";
         
@@ -28,6 +34,10 @@ namespace Features.Enemies.Extensions
         
         public string HorizontalMoveParam => horizontalMoveParam;
         public string VerticalMoveParam => verticalMoveParam;
+        
+        public bool UseMovementValueParam => useMovementValueParam;
+        public string HorizontalValueParam => horizontalValueParam;
+        public string VerticalValueParam => verticalValueParam;
         
         public string AttackParam => attackParam;
         public string AttackIDParam => attackIDParam;

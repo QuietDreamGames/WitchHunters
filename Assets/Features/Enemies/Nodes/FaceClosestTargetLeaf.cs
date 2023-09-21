@@ -29,6 +29,7 @@ namespace Features.Enemies.Nodes
             
             var direction = currentTarget.position - origin;
             unitView.SetFacingDirection(direction.x);
+            unitView.SetMovementValueParams(direction.x, direction.y, 0);
         }
                             
         protected override void OnExit()
