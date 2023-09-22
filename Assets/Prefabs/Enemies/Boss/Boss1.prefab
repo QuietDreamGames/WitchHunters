@@ -2520,7 +2520,7 @@ MonoBehaviour:
   baseModifiersContainer: {fileID: 11400000, guid: ad8cbe79a5a45c14e8ec78c4298679a6, type: 2}
   damageController: {fileID: 6637228987951410766}
   type: 2
-  level: 0
+  level: 5
   spawnOnStart: 0
 --- !u!50 &4972369679798549278
 Rigidbody2D:
