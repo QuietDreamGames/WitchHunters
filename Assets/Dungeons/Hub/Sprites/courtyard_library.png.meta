@@ -1,0 +1,306 @@
+fileFormatVersion: 2
+guid: fedd4e047c6da674c95fbb190c938074
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: courtyard_library_0
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 835
+        width: 1121
+        height: 755
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e849bb058fcc3f46833c086240bddb3
+      internalID: 615351005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: courtyard_library_1
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 1576
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a7fd7902c50deb4aa9714e032da0fc1
+      internalID: 485472598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: courtyard_library_2
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 1578
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb03d4f361822ab4ba8e83fb370bd9d5
+      internalID: 1514812977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: courtyard_library_20
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 397
+        width: 252
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8057313de13f7a4459627cac4ebde3c6
+      internalID: 315309067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: courtyard_library_25
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 439
+        width: 227
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f80282d601438449d30317db965d38
+      internalID: -2096580552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: courtyard_library_5
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 300
+        width: 308
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7567404586b17d24cbe11082cb1184a2
+      internalID: 859185635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      courtyard_library_0: 615351005
+      courtyard_library_1: 485472598
+      courtyard_library_10: 1210820939
+      courtyard_library_11: -36825105
+      courtyard_library_12: 555868610
+      courtyard_library_13: 860146929
+      courtyard_library_14: -1770024997
+      courtyard_library_15: -1351039359
+      courtyard_library_16: -1628007000
+      courtyard_library_17: -819868244
+      courtyard_library_18: -1804262039
+      courtyard_library_19: 1548809459
+      courtyard_library_2: 1514812977
+      courtyard_library_20: 315309067
+      courtyard_library_21: -1355570762
+      courtyard_library_22: -1891730025
+      courtyard_library_23: 1389694171
+      courtyard_library_24: 2022366577
+      courtyard_library_25: -2096580552
+      courtyard_library_26: 1124617592
+      courtyard_library_27: 866384371
+      courtyard_library_28: -1097643436
+      courtyard_library_29: -1367874996
+      courtyard_library_3: -1053955317
+      courtyard_library_30: -503044334
+      courtyard_library_31: -77790357
+      courtyard_library_32: 762835805
+      courtyard_library_33: 1157494758
+      courtyard_library_34: 639084493
+      courtyard_library_35: 916031102
+      courtyard_library_36: -504453740
+      courtyard_library_37: 1755171931
+      courtyard_library_38: 1647379702
+      courtyard_library_39: -2042458253
+      courtyard_library_4: 1600397179
+      courtyard_library_40: -1209768991
+      courtyard_library_41: 678400085
+      courtyard_library_42: 1831387801
+      courtyard_library_43: -2057344638
+      courtyard_library_44: -1226143709
+      courtyard_library_45: 1394066560
+      courtyard_library_46: -1437056657
+      courtyard_library_47: -831500350
+      courtyard_library_48: -638663645
+      courtyard_library_49: -985545656
+      courtyard_library_5: 859185635
+      courtyard_library_50: -1210534806
+      courtyard_library_51: 718906888
+      courtyard_library_52: -2122339996
+      courtyard_library_6: -1806011249
+      courtyard_library_7: 713903073
+      courtyard_library_8: -286926700
+      courtyard_library_9: 695904444
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
