@@ -1,4 +1,5 @@
 using System;
+using Features.Enemies.Extensions;
 using Features.ObjectPools.Core;
 using Features.ServiceLocators.Core;
 using Features.ServiceLocators.Core.Service;
@@ -20,6 +21,9 @@ namespace Features.Projectiles.Installers
                 var projectileData = data[i];
                 projectilePool.Prewarm(projectileData.prefab, projectileData.prewarmCount);
             }
+            
+            var damageableObstaclePool = new GameObjectPool<DamageableObstacle>(transform);
+            ServiceLocator.Register<GameObjectPool<DamageableObstacle>>(damageableObstaclePool);
         }
         
         [Serializable]

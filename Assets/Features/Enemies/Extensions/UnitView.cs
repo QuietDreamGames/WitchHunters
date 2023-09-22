@@ -60,15 +60,31 @@ namespace Features.Enemies.Extensions
         {
             if (!config.UseMovementValueParam) 
                 return;
+
+            var instant = IsZero(dumpTime);
             
             if (!IsZero(horizontal))
             {
-                animator.SetFloat(config.HorizontalValueParam, horizontal, dumpTime, Time.deltaTime);
+                if (instant)
+                {
+                    animator.SetFloat(config.HorizontalValueParam, horizontal);
+                }
+                else
+                {
+                    animator.SetFloat(config.HorizontalValueParam, horizontal, dumpTime, Time.deltaTime);
+                }
             }
                 
             if (!IsZero(vertical))
             {
-                animator.SetFloat(config.VerticalValueParam, vertical, dumpTime, Time.deltaTime);
+                if (instant)
+                {
+                    animator.SetFloat(config.VerticalValueParam, vertical);
+                }
+                else
+                {
+                    animator.SetFloat(config.VerticalValueParam, vertical, dumpTime, Time.deltaTime);
+                }
             }
         }
 

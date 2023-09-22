@@ -26,17 +26,11 @@ namespace Features.BTrees.Nodes.Composite
                 switch (child.UpdateCustom(deltaTime))
                 {
                     case Status.Running:
-                        var currentChildIndex = i + 1;
-                        if (currentChildIndex <= previousChildIndex)
-                        {
-                            for (var j = currentChildIndex; j < previousChildIndex + 1; j++)
-                            {
-                                children[j].Abort();
-                            }
-                        }
+                        FinishChildren(i);
                         previousChildIndex = i;
                         return Status.Running;
                     case Status.Success:
+                        FinishChildren(i);
                         return Status.Success;
                     case Status.Failure:
                         child.Abort();
@@ -45,6 +39,18 @@ namespace Features.BTrees.Nodes.Composite
             }
 
             return Status.Failure;
+        }
+
+        private void FinishChildren(int currentChildIndex)
+        {
+            var nextChildIndex = currentChildIndex + 1;
+            if (nextChildIndex <= previousChildIndex)
+            {
+                for (var j = nextChildIndex; j < previousChildIndex + 1; j++)
+                {
+                    children[j].Abort();
+                }
+            } 
         }
     }
 }

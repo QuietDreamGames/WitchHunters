@@ -283,6 +283,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.4375
+    functionName: EventInvoke
+    data: cast
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.5625
     functionName: CompleteAnimation
     data: 

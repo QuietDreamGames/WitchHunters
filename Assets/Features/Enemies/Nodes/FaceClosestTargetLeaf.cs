@@ -1,6 +1,7 @@
 using Features.BTrees.Core;
 using Features.BTrees.Interfaces;
 using Features.Enemies.Extensions;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Features.Enemies.Nodes
@@ -27,8 +28,9 @@ namespace Features.Enemies.Nodes
             var origin = rigidbody2D.transform.position;
             currentTarget = targetCollection.GetClosestTarget();
             
-            var direction = currentTarget.position - origin;
+            float3 direction = currentTarget.position - origin;
             unitView.SetFacingDirection(direction.x);
+            direction = math.sign(direction);
             unitView.SetMovementValueParams(direction.x, direction.y, 0);
         }
                             

@@ -239,7 +239,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 2048
-  speed: 4
+  speed: 10
   damage: 1
   lifetime: 5
   fadeDuration: 0.25

@@ -1,29 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Features.Damage.Core;
-using Features.Damage.Interfaces;
 using Features.ServiceLocators.Core;
+using Features.TimeSystems.Interfaces.Handlers;
 using Features.VFX.Core;
 using UnityEngine;
 
 namespace Features.Test
 {
-    public class DamageDealAoe : MonoBehaviour
+    public class DamageDealAoe : MonoBehaviour, IUpdateHandler
     {
         [SerializeField] private float _damage;
         [SerializeField] private Collider2D _collider2D;
         [SerializeField] private float _delay;
         [SerializeField] private LayerMask _layerMask;
         
-        private List<Collider2D> _collidersDamaged = new List<Collider2D>();
+        [Header("DEBUG")]
+        [SerializeField] private bool _onAwake;
+        
+        private List<Collider2D> _collidersDamaged = new();
         
         private DamageableCache _damageableCache;
 
         private float _timer;
+        
+        private bool _isRunning;
+
+        public float Damage 
+        {
+            get => _damage; 
+            set => _damage = value;
+        }
+        
+        public float Delay 
+        {
+            get => _delay; 
+            set => _delay = value;
+        }
+        
+        public LayerMask LayerMask 
+        {
+            get => _layerMask; 
+            set => _layerMask = value;
+        }
 
         private void Awake()
         {
             _damageableCache = ServiceLocator.Resolve<DamageableCache>();
+            
+            if (_onAwake)
+            {
+                SetActive(true);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (_onAwake)
+            {
+                SetActive(false);
+            }
+        }
+
+        public void SetActive(bool active)
+        {
+            _isRunning = active;
         }
 
         private void DealDamage()
@@ -46,17 +86,19 @@ namespace Features.Test
                 _collidersDamaged.Add(colliders[i]);
             }
         }
-        
-        
-        private void Update()
+
+        public void OnUpdate(float deltaTime)
         {
-            _timer += Time.deltaTime;
+            if (_isRunning == false) 
+                return;
+
+            _timer += deltaTime;
             if (_timer >= _delay)
             {
                 _collidersDamaged.Clear();
                 DealDamage();
                 _timer = 0;
-            }
+            } 
         }
     }
 }
