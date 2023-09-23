@@ -3,13 +3,13 @@
     {
       "Key": {
         "Id": 0,
-        "Name": "Spawn"
+        "Name": "ENTER"
       },
       "Value": {
         "IsCorridor": false,
         "RoomTemplates": [
           {
-            "Name": "Circled Room 9x9",
+            "Name": "ENTER_1",
             "Outline": {
               "points": [
                 {
@@ -285,6 +285,306 @@
             "AllowedTransformations": [
               0
             ]
+          },
+          {
+            "$id": "68",
+            "Name": "SMALL_2",
+            "Outline": {
+              "points": [
+                {
+                  "X": -2,
+                  "Y": -1
+                },
+                {
+                  "X": -1,
+                  "Y": -1
+                },
+                {
+                  "X": -1,
+                  "Y": 0
+                },
+                {
+                  "X": 1,
+                  "Y": 0
+                },
+                {
+                  "X": 1,
+                  "Y": 2
+                },
+                {
+                  "X": 7,
+                  "Y": 2
+                },
+                {
+                  "X": 7,
+                  "Y": 1
+                },
+                {
+                  "X": 10,
+                  "Y": 1
+                },
+                {
+                  "X": 10,
+                  "Y": -6
+                },
+                {
+                  "X": 9,
+                  "Y": -6
+                },
+                {
+                  "X": 9,
+                  "Y": -9
+                },
+                {
+                  "X": 8,
+                  "Y": -9
+                },
+                {
+                  "X": 8,
+                  "Y": -10
+                },
+                {
+                  "X": 0,
+                  "Y": -10
+                },
+                {
+                  "X": 0,
+                  "Y": -8
+                },
+                {
+                  "X": -2,
+                  "Y": -8
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": null,
+              "DoorLines": [
+                {
+                  "Line": {
+                    "From": {
+                      "X": 10,
+                      "Y": -3
+                    },
+                    "To": {
+                      "X": 10,
+                      "Y": -2
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 1
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -2,
+                      "Y": -4
+                    },
+                    "To": {
+                      "X": -2,
+                      "Y": -5
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 1
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 4,
+                      "Y": 2
+                    },
+                    "To": {
+                      "X": 4,
+                      "Y": 2
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 0
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 3,
+                      "Y": -10
+                    },
+                    "To": {
+                      "X": 5,
+                      "Y": -10
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 2
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                }
+              ]
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
+          },
+          {
+            "$id": "103",
+            "Name": "SMALL_3",
+            "Outline": {
+              "points": [
+                {
+                  "X": -2,
+                  "Y": 0
+                },
+                {
+                  "X": 5,
+                  "Y": 0
+                },
+                {
+                  "X": 5,
+                  "Y": 2
+                },
+                {
+                  "X": 9,
+                  "Y": 2
+                },
+                {
+                  "X": 9,
+                  "Y": 0
+                },
+                {
+                  "X": 11,
+                  "Y": 0
+                },
+                {
+                  "X": 11,
+                  "Y": -2
+                },
+                {
+                  "X": 12,
+                  "Y": -2
+                },
+                {
+                  "X": 12,
+                  "Y": -8
+                },
+                {
+                  "X": 11,
+                  "Y": -8
+                },
+                {
+                  "X": 11,
+                  "Y": -10
+                },
+                {
+                  "X": 10,
+                  "Y": -10
+                },
+                {
+                  "X": 10,
+                  "Y": -11
+                },
+                {
+                  "X": 0,
+                  "Y": -11
+                },
+                {
+                  "X": 0,
+                  "Y": -10
+                },
+                {
+                  "X": -2,
+                  "Y": -10
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": null,
+              "DoorLines": [
+                {
+                  "Line": {
+                    "From": {
+                      "X": -2,
+                      "Y": -5
+                    },
+                    "To": {
+                      "X": -2,
+                      "Y": -7
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 2
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 3,
+                      "Y": -11
+                    },
+                    "To": {
+                      "X": 7,
+                      "Y": -11
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 4
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 12,
+                      "Y": -5
+                    },
+                    "To": {
+                      "X": 12,
+                      "Y": -5
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 0
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 1,
+                      "Y": 0
+                    },
+                    "To": {
+                      "X": 2,
+                      "Y": 0
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 1
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                }
+              ]
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
           }
         ]
       }
@@ -299,6 +599,12 @@
         "RoomTemplates": [
           {
             "$ref": "45"
+          },
+          {
+            "$ref": "68"
+          },
+          {
+            "$ref": "103"
           }
         ]
       }
@@ -313,6 +619,12 @@
         "RoomTemplates": [
           {
             "$ref": "45"
+          },
+          {
+            "$ref": "68"
+          },
+          {
+            "$ref": "103"
           }
         ]
       }
@@ -326,7 +638,663 @@
         "IsCorridor": false,
         "RoomTemplates": [
           {
-            "$ref": "45"
+            "$id": "144",
+            "Name": "MEDIUM_1",
+            "Outline": {
+              "points": [
+                {
+                  "X": -3,
+                  "Y": -3
+                },
+                {
+                  "X": -1,
+                  "Y": -3
+                },
+                {
+                  "X": -1,
+                  "Y": 0
+                },
+                {
+                  "X": 3,
+                  "Y": 0
+                },
+                {
+                  "X": 3,
+                  "Y": 1
+                },
+                {
+                  "X": 4,
+                  "Y": 1
+                },
+                {
+                  "X": 4,
+                  "Y": 2
+                },
+                {
+                  "X": 16,
+                  "Y": 2
+                },
+                {
+                  "X": 16,
+                  "Y": 0
+                },
+                {
+                  "X": 18,
+                  "Y": 0
+                },
+                {
+                  "X": 18,
+                  "Y": -1
+                },
+                {
+                  "X": 19,
+                  "Y": -1
+                },
+                {
+                  "X": 19,
+                  "Y": -10
+                },
+                {
+                  "X": 14,
+                  "Y": -10
+                },
+                {
+                  "X": 14,
+                  "Y": -12
+                },
+                {
+                  "X": 2,
+                  "Y": -12
+                },
+                {
+                  "X": 2,
+                  "Y": -11
+                },
+                {
+                  "X": -1,
+                  "Y": -11
+                },
+                {
+                  "X": -1,
+                  "Y": -9
+                },
+                {
+                  "X": -3,
+                  "Y": -9
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": null,
+              "DoorLines": [
+                {
+                  "Line": {
+                    "From": {
+                      "X": 7,
+                      "Y": 2
+                    },
+                    "To": {
+                      "X": 13,
+                      "Y": 2
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 6
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 19,
+                      "Y": -4
+                    },
+                    "To": {
+                      "X": 19,
+                      "Y": -7
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 3
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 11,
+                      "Y": -12
+                    },
+                    "To": {
+                      "X": 5,
+                      "Y": -12
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 6
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -3,
+                      "Y": -6
+                    },
+                    "To": {
+                      "X": -3,
+                      "Y": -6
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 0
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                }
+              ]
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
+          },
+          {
+            "$id": "183",
+            "Name": "MEDIUM_2",
+            "Outline": {
+              "points": [
+                {
+                  "X": -4,
+                  "Y": -3
+                },
+                {
+                  "X": -3,
+                  "Y": -3
+                },
+                {
+                  "X": -3,
+                  "Y": 0
+                },
+                {
+                  "X": -2,
+                  "Y": 0
+                },
+                {
+                  "X": -2,
+                  "Y": 2
+                },
+                {
+                  "X": 0,
+                  "Y": 2
+                },
+                {
+                  "X": 0,
+                  "Y": 3
+                },
+                {
+                  "X": 3,
+                  "Y": 3
+                },
+                {
+                  "X": 3,
+                  "Y": 4
+                },
+                {
+                  "X": 5,
+                  "Y": 4
+                },
+                {
+                  "X": 5,
+                  "Y": 5
+                },
+                {
+                  "X": 13,
+                  "Y": 5
+                },
+                {
+                  "X": 13,
+                  "Y": 4
+                },
+                {
+                  "X": 14,
+                  "Y": 4
+                },
+                {
+                  "X": 14,
+                  "Y": 1
+                },
+                {
+                  "X": 12,
+                  "Y": 1
+                },
+                {
+                  "X": 12,
+                  "Y": -3
+                },
+                {
+                  "X": 15,
+                  "Y": -3
+                },
+                {
+                  "X": 15,
+                  "Y": -9
+                },
+                {
+                  "X": 17,
+                  "Y": -9
+                },
+                {
+                  "X": 17,
+                  "Y": -12
+                },
+                {
+                  "X": 18,
+                  "Y": -12
+                },
+                {
+                  "X": 18,
+                  "Y": -16
+                },
+                {
+                  "X": 12,
+                  "Y": -16
+                },
+                {
+                  "X": 12,
+                  "Y": -17
+                },
+                {
+                  "X": 11,
+                  "Y": -17
+                },
+                {
+                  "X": 11,
+                  "Y": -18
+                },
+                {
+                  "X": 5,
+                  "Y": -18
+                },
+                {
+                  "X": 5,
+                  "Y": -17
+                },
+                {
+                  "X": 4,
+                  "Y": -17
+                },
+                {
+                  "X": 4,
+                  "Y": -15
+                },
+                {
+                  "X": 2,
+                  "Y": -15
+                },
+                {
+                  "X": 2,
+                  "Y": -16
+                },
+                {
+                  "X": -1,
+                  "Y": -16
+                },
+                {
+                  "X": -1,
+                  "Y": -15
+                },
+                {
+                  "X": -2,
+                  "Y": -15
+                },
+                {
+                  "X": -2,
+                  "Y": -11
+                },
+                {
+                  "X": -3,
+                  "Y": -11
+                },
+                {
+                  "X": -3,
+                  "Y": -10
+                },
+                {
+                  "X": -4,
+                  "Y": -10
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": null,
+              "DoorLines": [
+                {
+                  "Line": {
+                    "From": {
+                      "X": -4,
+                      "Y": -6
+                    },
+                    "To": {
+                      "X": -4,
+                      "Y": -7
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 1
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 8,
+                      "Y": 5
+                    },
+                    "To": {
+                      "X": 10,
+                      "Y": 5
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 2
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 15,
+                      "Y": -6
+                    },
+                    "To": {
+                      "X": 15,
+                      "Y": -6
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 0
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 8,
+                      "Y": -18
+                    },
+                    "To": {
+                      "X": 8,
+                      "Y": -18
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 0
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                }
+              ]
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
+          },
+          {
+            "$id": "242",
+            "Name": "MEDIUM_3",
+            "Outline": {
+              "points": [
+                {
+                  "X": -7,
+                  "Y": -13
+                },
+                {
+                  "X": -6,
+                  "Y": -13
+                },
+                {
+                  "X": -6,
+                  "Y": -11
+                },
+                {
+                  "X": -5,
+                  "Y": -11
+                },
+                {
+                  "X": -5,
+                  "Y": -4
+                },
+                {
+                  "X": -6,
+                  "Y": -4
+                },
+                {
+                  "X": -6,
+                  "Y": -1
+                },
+                {
+                  "X": -5,
+                  "Y": -1
+                },
+                {
+                  "X": -5,
+                  "Y": 2
+                },
+                {
+                  "X": -4,
+                  "Y": 2
+                },
+                {
+                  "X": -4,
+                  "Y": 6
+                },
+                {
+                  "X": -3,
+                  "Y": 6
+                },
+                {
+                  "X": -3,
+                  "Y": 10
+                },
+                {
+                  "X": -2,
+                  "Y": 10
+                },
+                {
+                  "X": -2,
+                  "Y": 11
+                },
+                {
+                  "X": 5,
+                  "Y": 11
+                },
+                {
+                  "X": 5,
+                  "Y": 9
+                },
+                {
+                  "X": 6,
+                  "Y": 9
+                },
+                {
+                  "X": 6,
+                  "Y": -2
+                },
+                {
+                  "X": 9,
+                  "Y": -2
+                },
+                {
+                  "X": 9,
+                  "Y": -8
+                },
+                {
+                  "X": 5,
+                  "Y": -8
+                },
+                {
+                  "X": 5,
+                  "Y": -7
+                },
+                {
+                  "X": 3,
+                  "Y": -7
+                },
+                {
+                  "X": 3,
+                  "Y": -10
+                },
+                {
+                  "X": 5,
+                  "Y": -10
+                },
+                {
+                  "X": 5,
+                  "Y": -11
+                },
+                {
+                  "X": 6,
+                  "Y": -11
+                },
+                {
+                  "X": 6,
+                  "Y": -17
+                },
+                {
+                  "X": 4,
+                  "Y": -17
+                },
+                {
+                  "X": 4,
+                  "Y": -18
+                },
+                {
+                  "X": 3,
+                  "Y": -18
+                },
+                {
+                  "X": 3,
+                  "Y": -19
+                },
+                {
+                  "X": -6,
+                  "Y": -19
+                },
+                {
+                  "X": -6,
+                  "Y": -17
+                },
+                {
+                  "X": -7,
+                  "Y": -17
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": null,
+              "DoorLines": [
+                {
+                  "Line": {
+                    "From": {
+                      "X": -3,
+                      "Y": -19
+                    },
+                    "To": {
+                      "X": 0,
+                      "Y": -19
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 3
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 6,
+                      "Y": -14
+                    },
+                    "To": {
+                      "X": 6,
+                      "Y": -14
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 0
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 6,
+                      "Y": 2
+                    },
+                    "To": {
+                      "X": 6,
+                      "Y": 6
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 4
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 1,
+                      "Y": 11
+                    },
+                    "To": {
+                      "X": 2,
+                      "Y": 11
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 1
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -5,
+                      "Y": -7
+                    },
+                    "To": {
+                      "X": -5,
+                      "Y": -8
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 1
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                }
+              ]
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
           }
         ]
       }
@@ -341,6 +1309,12 @@
         "RoomTemplates": [
           {
             "$ref": "45"
+          },
+          {
+            "$ref": "68"
+          },
+          {
+            "$ref": "103"
           }
         ]
       }
@@ -354,7 +1328,268 @@
         "IsCorridor": false,
         "RoomTemplates": [
           {
-            "$ref": "45"
+            "Name": "BIG_1",
+            "Outline": {
+              "points": [
+                {
+                  "X": -8,
+                  "Y": -3
+                },
+                {
+                  "X": -7,
+                  "Y": -3
+                },
+                {
+                  "X": -7,
+                  "Y": 2
+                },
+                {
+                  "X": 3,
+                  "Y": 2
+                },
+                {
+                  "X": 3,
+                  "Y": 4
+                },
+                {
+                  "X": 11,
+                  "Y": 4
+                },
+                {
+                  "X": 11,
+                  "Y": 3
+                },
+                {
+                  "X": 13,
+                  "Y": 3
+                },
+                {
+                  "X": 13,
+                  "Y": 2
+                },
+                {
+                  "X": 14,
+                  "Y": 2
+                },
+                {
+                  "X": 14,
+                  "Y": -4
+                },
+                {
+                  "X": 13,
+                  "Y": -4
+                },
+                {
+                  "X": 13,
+                  "Y": -6
+                },
+                {
+                  "X": 12,
+                  "Y": -6
+                },
+                {
+                  "X": 12,
+                  "Y": -9
+                },
+                {
+                  "X": 11,
+                  "Y": -9
+                },
+                {
+                  "X": 11,
+                  "Y": -15
+                },
+                {
+                  "X": 13,
+                  "Y": -15
+                },
+                {
+                  "X": 13,
+                  "Y": -18
+                },
+                {
+                  "X": 14,
+                  "Y": -18
+                },
+                {
+                  "X": 14,
+                  "Y": -24
+                },
+                {
+                  "X": 9,
+                  "Y": -24
+                },
+                {
+                  "X": 9,
+                  "Y": -25
+                },
+                {
+                  "X": 1,
+                  "Y": -25
+                },
+                {
+                  "X": 1,
+                  "Y": -24
+                },
+                {
+                  "X": -2,
+                  "Y": -24
+                },
+                {
+                  "X": -2,
+                  "Y": -23
+                },
+                {
+                  "X": -3,
+                  "Y": -23
+                },
+                {
+                  "X": -3,
+                  "Y": -22
+                },
+                {
+                  "X": -4,
+                  "Y": -22
+                },
+                {
+                  "X": -4,
+                  "Y": -21
+                },
+                {
+                  "X": -8,
+                  "Y": -21
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": null,
+              "DoorLines": [
+                {
+                  "Line": {
+                    "From": {
+                      "X": 6,
+                      "Y": 4
+                    },
+                    "To": {
+                      "X": 8,
+                      "Y": 4
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 2
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -4,
+                      "Y": 2
+                    },
+                    "To": {
+                      "X": 0,
+                      "Y": 2
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 4
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -8,
+                      "Y": -6
+                    },
+                    "To": {
+                      "X": -8,
+                      "Y": -18
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 12
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 4,
+                      "Y": -25
+                    },
+                    "To": {
+                      "X": 6,
+                      "Y": -25
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 2
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 11,
+                      "Y": -12
+                    },
+                    "To": {
+                      "X": 11,
+                      "Y": -12
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 0
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 14,
+                      "Y": -1
+                    },
+                    "To": {
+                      "X": 14,
+                      "Y": -1
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 0
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 14,
+                      "Y": -21
+                    },
+                    "To": {
+                      "X": 14,
+                      "Y": -21
+                    },
+                    "degeneratedDirection": 0,
+                    "Length": 0
+                  },
+                  "Length": 0,
+                  "DoorSocket": null,
+                  "Type": 0
+                }
+              ]
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
           }
         ]
       }
@@ -369,6 +1604,12 @@
         "RoomTemplates": [
           {
             "$ref": "45"
+          },
+          {
+            "$ref": "68"
+          },
+          {
+            "$ref": "103"
           }
         ]
       }
@@ -383,6 +1624,12 @@
         "RoomTemplates": [
           {
             "$ref": "45"
+          },
+          {
+            "$ref": "68"
+          },
+          {
+            "$ref": "103"
           }
         ]
       }
@@ -397,6 +1644,12 @@
         "RoomTemplates": [
           {
             "$ref": "45"
+          },
+          {
+            "$ref": "68"
+          },
+          {
+            "$ref": "103"
           }
         ]
       }
@@ -410,7 +1663,49 @@
         "IsCorridor": false,
         "RoomTemplates": [
           {
-            "$ref": "45"
+            "Name": "BOSS_1",
+            "Outline": {
+              "points": [
+                {
+                  "X": -2,
+                  "Y": -12
+                },
+                {
+                  "X": -2,
+                  "Y": 2
+                },
+                {
+                  "X": 12,
+                  "Y": 2
+                },
+                {
+                  "X": 12,
+                  "Y": -12
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": [
+                {
+                  "From": {
+                    "X": 5,
+                    "Y": -12
+                  },
+                  "To": {
+                    "X": 5,
+                    "Y": -12
+                  },
+                  "Socket": null,
+                  "Type": 0
+                }
+              ],
+              "DoorLines": null
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
           }
         ]
       }
@@ -425,6 +1720,12 @@
         "RoomTemplates": [
           {
             "$ref": "45"
+          },
+          {
+            "$ref": "68"
+          },
+          {
+            "$ref": "103"
           }
         ]
       }
@@ -438,7 +1739,13 @@
         "IsCorridor": false,
         "RoomTemplates": [
           {
-            "$ref": "45"
+            "$ref": "144"
+          },
+          {
+            "$ref": "183"
+          },
+          {
+            "$ref": "242"
           }
         ]
       }
@@ -453,6 +1760,12 @@
         "RoomTemplates": [
           {
             "$ref": "45"
+          },
+          {
+            "$ref": "68"
+          },
+          {
+            "$ref": "103"
           }
         ]
       }
@@ -466,7 +1779,13 @@
         "IsCorridor": false,
         "RoomTemplates": [
           {
-            "$ref": "45"
+            "$ref": "144"
+          },
+          {
+            "$ref": "183"
+          },
+          {
+            "$ref": "242"
           }
         ]
       }
@@ -476,7 +1795,7 @@
     {
       "Room1": {
         "Id": 0,
-        "Name": "Spawn"
+        "Name": "ENTER"
       },
       "Room2": {
         "Id": 1,
