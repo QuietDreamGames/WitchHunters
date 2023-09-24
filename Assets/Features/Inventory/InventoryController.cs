@@ -59,7 +59,7 @@ namespace Features.Inventory
             _modifiersContainer.OnUpdateModifier += OnUpdateModifier;
 
             _overweightModifierData =
-                new ModifierData(0.1f, float.PositiveInfinity, ModifierSpec.PercentageMultiplicative);
+                new ModifierData(0.5f, float.PositiveInfinity, ModifierSpec.PercentageMultiplicative);
 
             _maxWeight = _modifiersContainer.GetValue(ModifierType.MaxWeight,
                 _baseModifiersContainer.GetBaseValue(ModifierType.MaxWeight));
@@ -94,7 +94,7 @@ namespace Features.Inventory
             _inventoryData.RemoveItem(item);
             _gameplayCharacterSaver.Save();
             
-            _weight -= item.itemData.weight;
+            RecalculateWeight();
             
             OnOverweight(_weight > _maxWeight);
         }
@@ -104,7 +104,7 @@ namespace Features.Inventory
             _inventoryData.RemoveItem(itemData);
             _gameplayCharacterSaver.Save();
             
-            _weight -= itemData.weight;
+            RecalculateWeight();
             
             OnOverweight(_weight > _maxWeight);
         }

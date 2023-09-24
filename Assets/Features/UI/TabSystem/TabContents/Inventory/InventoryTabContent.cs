@@ -12,12 +12,14 @@ using UnityEngine;
 
 namespace Features.UI.TabSystem.TabContents.Inventory
 {
-    public class InventoryTabContent : TabContent
+    public class InventoryTabContent : TabContent, IRemoveItemProcessor
     {
         [SerializeField] private EquipmentSlotController[] _equipmentSlotControllers;
         [SerializeField] private ItemSlotController[] _inventorySlotControllers;
         
         [SerializeField] private InventoryTabButton[] _tabButtons;
+        
+        [SerializeField] private InventoryDropArea[] _inventoryDropAreas;
         
         [SerializeField] private TextMeshProUGUI _currencyText;
         [SerializeField] private TextMeshProUGUI _weightText;
@@ -53,6 +55,11 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             }
             
             _tabButtons[0].OnSelect();
+
+            for (int i = 0; i < _inventoryDropAreas.Length; i++)
+            {
+                _inventoryDropAreas[i].Initiate(this);
+            }
             
             RefreshEquippedItems();
             
@@ -137,15 +144,10 @@ namespace Features.UI.TabSystem.TabContents.Inventory
                 
                 _inventorySlotControllers[i].SetupItem(_currentInventoryItems[i]);
             }
-        }
-        
-        public void OnSortTypeChanged(InventoryTabButton tabButton)
-        {
-            _currentSortType = tabButton.TabType;
-
+            
             for (int i = 0; i < _tabButtons.Length; i++)
             {
-                if (_tabButtons[i] == tabButton)
+                if (_tabButtons[i].TabType == _currentSortType)
                 {
                     _tabButtons[i].OnSelect();
                 }
@@ -154,6 +156,23 @@ namespace Features.UI.TabSystem.TabContents.Inventory
                     _tabButtons[i].OnDeselect();
                 }
             }
+        }
+        
+        public void OnSortTypeChanged(InventoryTabButton tabButton)
+        {
+            _currentSortType = tabButton.TabType;
+
+            // for (int i = 0; i < _tabButtons.Length; i++)
+            // {
+            //     if (_tabButtons[i].TabType == _currentSortType)
+            //     {
+            //         _tabButtons[i].OnSelect();
+            //     }
+            //     else
+            //     {
+            //         _tabButtons[i].OnDeselect();
+            //     }
+            // }
             
             RefreshCurrentItemsList();
         }
@@ -181,6 +200,19 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             
             RefreshEquippedItems();
             RefreshCurrentItemsList();
-        } 
+        }
+
+        public void RemoveItem(InventoryItem item)
+        {
+            _combatCharacterController.InventoryController.RemoveItem(item);
+            RefreshResources();
+            
+            StartCoroutine(OnRefreshInventory());
+        }
+
+        public void RemoveItem(ItemData item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

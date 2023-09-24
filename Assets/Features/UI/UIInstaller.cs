@@ -1,5 +1,6 @@
 using Features.ServiceLocators.Core;
 using Features.ServiceLocators.Core.Service;
+using Features.UI.Gameplay;
 using UnityEngine;
 
 namespace Features.UI
@@ -7,14 +8,15 @@ namespace Features.UI
     public class UIInstaller : ServiceInstaller
     {
         [SerializeField] private LoadingScreenUI loadingScreenUIPrefab;
-        [SerializeField] private Canvas hudPrefab;
+        [SerializeField] private GameplayCanvasContainer gameplayCanvasContainerPrefab;
         
         public override void Install()
         {
             var loadingScreenUI = Instantiate(loadingScreenUIPrefab, transform, false);
             ServiceLocator.Register<LoadingScreenUI>(loadingScreenUI);
             
-            var hud = Instantiate(hudPrefab, transform, false);
+            var gameplayCanvasContainer = Instantiate(gameplayCanvasContainerPrefab, transform, false);
+            ServiceLocator.Register<GameplayCanvasContainer>(gameplayCanvasContainer);
         }
     }
 }

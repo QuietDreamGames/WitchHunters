@@ -107,7 +107,7 @@ namespace Features.Inventory
             RecalculateModifiers();
         }
 
-        private void RecalculateModifiers()
+        public void RecalculateModifiers()
         {
             foreach ((ModifierType, ModifierData) entry in _modifiersData)
             {
