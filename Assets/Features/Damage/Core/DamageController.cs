@@ -31,6 +31,8 @@ namespace Features.Damage.Core
         public Action<Vector3, HitEffectType> OnDamageHit;
         public Action OnDeath;
         
+        public HealthComponent HealthComponent => _healthComponent;
+        
         private bool _isDead;
 
         private bool _isActive;

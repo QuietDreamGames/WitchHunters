@@ -4175,7 +4175,7 @@ MonoBehaviour:
   _heathBarParent: {fileID: 3610933591269122208}
   _healthSliderLeftHalf: {fileID: 5884165845706146562}
   _healthSliderRightHalf: {fileID: 2999163286603886451}
-  _bossNameText: {fileID: 8962155608907480664}
+  _bossNameText: {fileID: 7858127510185789839}
 --- !u!1 &4107937270410704980
 GameObject:
   m_ObjectHideFlags: 0

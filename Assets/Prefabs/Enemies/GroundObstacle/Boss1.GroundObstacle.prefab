@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5495231158667926077}
-  fadeDuration: 0.25
+  fadeDuration: 0.5
   lifeTime: 3
   damageDealAoe: {fileID: 4197178920202386388}
 --- !u!114 &4197178920202386388

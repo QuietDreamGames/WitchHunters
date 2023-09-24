@@ -38,6 +38,9 @@ namespace Features.Enemies
         
         public bool IsEnabled => gameObject.activeSelf;
 
+        public Action OnSpawn;
+        public Action OnDespawn;
+        
         public Action OnDeath;
 
         private void Start()
@@ -55,6 +58,8 @@ namespace Features.Enemies
             ConfigureDamageable();
             
             ConfigureStateMachine();
+            
+            OnSpawn?.Invoke();
         }
 
         public void Despawn()
@@ -70,6 +75,10 @@ namespace Features.Enemies
                 Pool.Despawn(Prefab, this);
             }
             
+            OnDespawn?.Invoke();
+            
+            OnSpawn = null;
+            OnDespawn = null;
             OnDeath = null;
         }
         
