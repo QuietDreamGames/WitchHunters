@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5495231158667926077}
   fadeDuration: 0.5
-  lifeTime: 3
+  lifeTime: 2.25
   damageDealAoe: {fileID: 4197178920202386388}
 --- !u!114 &4197178920202386388
 MonoBehaviour:
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 20
   _collider2D: {fileID: 913829760791885355}
-  _delay: 1
+  _delay: 0.5
   _layerMask:
     serializedVersion: 2
     m_Bits: 512

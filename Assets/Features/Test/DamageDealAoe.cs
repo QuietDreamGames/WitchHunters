@@ -64,6 +64,7 @@ namespace Features.Test
         public void SetActive(bool active)
         {
             _isRunning = active;
+            _timer = 0;
         }
 
         private void DealDamage()
@@ -92,12 +93,12 @@ namespace Features.Test
             if (_isRunning == false) 
                 return;
 
-            _timer += deltaTime;
-            if (_timer >= _delay)
+            _timer -= deltaTime;
+            if (_timer <= 0)
             {
                 _collidersDamaged.Clear();
                 DealDamage();
-                _timer = 0;
+                _timer = Delay;
             } 
         }
     }
