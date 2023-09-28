@@ -1,4 +1,5 @@
 ﻿using Features.Inventory.Item;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -11,6 +12,7 @@ namespace Features.UI.TabSystem.TabContents.Inventory
         [SerializeField] private Canvas _canvas;
         [HideInInspector] public Transform parentAfterDrag;
         [SerializeField] private Image _icon;
+        [SerializeField] private TextMeshProUGUI _amountText;
         
         private InventoryItem _currentItem;
         private bool _isDraggable;
@@ -32,6 +34,8 @@ namespace Features.UI.TabSystem.TabContents.Inventory
             _icon.sprite = _currentItem.itemData.icon;
             _isDraggable = true;
             _icon.gameObject.SetActive(true);
+            
+            _amountText.text = _currentItem.amount > 1 ? _currentItem.amount.ToString() : "";
         }
         
         public void OnBeginDrag(PointerEventData eventData)
