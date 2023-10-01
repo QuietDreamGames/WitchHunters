@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Features.Activator
+namespace Features.Activator.Core
 {
     public class GroupActivator : MonoBehaviour
     {

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff291ca87fb0243419104f7ed605a41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelGraph: {fileID: 11400000, guid: 08a30c9f73ae34842afafc85f2bfce11, type: 2}
+  levelGraph: {fileID: 11400000, guid: f270c259c94f5c9408171ca4147d6284, type: 2}
   floorData:
     isReached: 0
     isCompleted: 0

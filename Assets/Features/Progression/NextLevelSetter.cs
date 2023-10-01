@@ -5,12 +5,13 @@ using UnityEngine;
 
 namespace Features.Progression
 {
-    public class LevelCompleteInvoker : MonoBehaviour, IActivator
+    public class NextLevelSetter : MonoBehaviour, IActivator
     {
         public void Activate()
         {
             var gameProgression = ServiceLocator.Resolve<GameProgression>();
-            gameProgression.InvokeComplete();
+            var (dungeonID, floorID) = gameProgression.GetCurrent();
+            gameProgression.SetCurrent(dungeonID, floorID + 1);
         }
 
         public void Deactivate()

@@ -1,4 +1,4 @@
-namespace Features.Activator
+namespace Features.Activator.Core
 {
     public enum ActivatorType : byte
     {

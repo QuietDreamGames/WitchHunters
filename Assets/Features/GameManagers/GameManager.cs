@@ -38,8 +38,6 @@ namespace Features.GameManagers
         
         public void Restart()
         {
-            StartMasterScene();
-            
             StartDungeon();
         }
         
@@ -61,7 +59,13 @@ namespace Features.GameManagers
         
         public void StartDungeon()
         {
-            ChangeScene(dungeonSceneName);
+            StartGameplayScene(dungeonSceneName);
+        }
+        
+        public void StartGameplayScene(string gameplaySceneName)
+        {
+            StartMasterScene();
+            ChangeScene(gameplaySceneName);
         }
         
         private bool IsSceneLoaded(string sceneName)

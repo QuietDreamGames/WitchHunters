@@ -1,5 +1,6 @@
 using System;
 using Features.Activator;
+using Features.Activator.Core;
 using Features.GameManagers;
 using Features.ObjectPools.Core;
 using Features.ServiceLocators.Core;
