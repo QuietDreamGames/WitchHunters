@@ -52,6 +52,7 @@ namespace Features.Structs
             }
         }
 
+        [ContextMenu("Generate ID")]
         private void GenerateID()
         {
             var go = gameObject;

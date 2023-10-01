@@ -16,7 +16,7 @@ namespace Features.Enemies.Extensions
         
         private BossHealthHUD _healthBarHUD;
 
-        private void Awake()
+        private void OnEnable()
         {
             var gameplayCanvasContainer = ServiceLocator.Resolve<GameplayCanvasContainer>();
             _healthBarHUD = gameplayCanvasContainer.bossHealthHUD;

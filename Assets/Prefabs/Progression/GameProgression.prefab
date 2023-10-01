@@ -1,84 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1162129970448466860
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1610939275496778512}
-  - component: {fileID: 8302561921356020284}
-  - component: {fileID: 8011081676694851529}
-  - component: {fileID: 1191117560671352554}
-  m_Layer: 0
-  m_Name: L-1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1610939275496778512
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162129970448466860}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1464569865398561145}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8302561921356020284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162129970448466860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff291ca87fb0243419104f7ed605a41e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelGraph: {fileID: 11400000, guid: 08a30c9f73ae34842afafc85f2bfce11, type: 2}
-  floorData:
-    isReached: 0
-    isCompleted: 0
---- !u!114 &8011081676694851529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162129970448466860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bef93a7f6e4473496fd8fd81686b5ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueID: 
-  useCustomID: 0
---- !u!114 &1191117560671352554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162129970448466860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8d72f86e2048268b2a4843d57ea2b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  category: Gameplay
-  uniqueID: {fileID: 6114939438290718714}
-  customSavable: {fileID: 3342485460248348488}
 --- !u!1 &3357076382268683552
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,8 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bef93a7f6e4473496fd8fd81686b5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 
-  useCustomID: 0
+  uniqueID: GameProgression_Boss_b9da5728-8712-4cb8-bf0f-442a2192ccbc
+  useCustomID: 1
 --- !u!114 &7720697036115730343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,85 +71,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3357076382268683552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8d72f86e2048268b2a4843d57ea2b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  category: Gameplay
-  uniqueID: {fileID: 6114939438290718714}
-  customSavable: {fileID: 3342485460248348488}
---- !u!1 &6234001272163153406
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1237485090416408075}
-  - component: {fileID: 6317512439605804761}
-  - component: {fileID: 7565922987714269477}
-  - component: {fileID: 2680230909185840070}
-  m_Layer: 0
-  m_Name: L-2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1237485090416408075
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234001272163153406}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1464569865398561145}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6317512439605804761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234001272163153406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff291ca87fb0243419104f7ed605a41e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelGraph: {fileID: 11400000, guid: 08a30c9f73ae34842afafc85f2bfce11, type: 2}
-  floorData:
-    isReached: 0
-    isCompleted: 0
---- !u!114 &7565922987714269477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234001272163153406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bef93a7f6e4473496fd8fd81686b5ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueID: 
-  useCustomID: 0
---- !u!114 &2680230909185840070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234001272163153406}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8d72f86e2048268b2a4843d57ea2b6, type: 3}
@@ -362,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bef93a7f6e4473496fd8fd81686b5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 
-  useCustomID: 0
+  uniqueID: GameProgression_L-0_5f790a3a-b435-49f9-b035-d7364fb0d004
+  useCustomID: 1
 --- !u!114 &5700369012715119396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,8 +254,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7674613367999689041}
-  - {fileID: 1610939275496778512}
-  - {fileID: 1237485090416408075}
   - {fileID: 6143906733060679314}
   m_Father: {fileID: 4414312880368019824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -431,8 +271,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floors:
   - {fileID: 8085665372343166216}
-  - {fileID: 8302561921356020284}
-  - {fileID: 6317512439605804761}
   - {fileID: 3342485460248348488}
   dungeonData:
     isReached: 1
@@ -450,8 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bef93a7f6e4473496fd8fd81686b5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 
-  useCustomID: 0
+  uniqueID: GameProgression_Plains_54589ff8-ee1a-4c52-ab90-c79f59432b0d
+  useCustomID: 1
 --- !u!114 &3150732130442078801
 MonoBehaviour:
   m_ObjectHideFlags: 0

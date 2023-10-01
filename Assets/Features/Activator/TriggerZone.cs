@@ -14,8 +14,25 @@ namespace Features.Activator
         [Header("Data")]
         [SerializeField] private Data data;
         
+        private bool _isRunning;
+        
+        private void Start()
+        {
+            _isRunning = true;
+        }
+        
+        private void OnDestroy()
+        {
+            _isRunning = false;
+        }
+        
         public void OnTriggerEnter2D(Collider2D other)
         {
+            if (!_isRunning)
+            {
+                return;
+            }
+            
             if (data.wasTriggered)
             {
                 return;
