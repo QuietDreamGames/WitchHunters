@@ -3,6 +3,7 @@ using Features.Damage.Core;
 using Features.Drop;
 using Features.Experience;
 using Features.FiniteStateMachine;
+using Features.GameManagers;
 using Features.Health;
 using Features.Input;
 using Features.Inventory;
@@ -108,6 +109,10 @@ namespace Features.Character
             
             _shieldEffectController.Initiate();
             stateMachine.AddExtension(_shieldEffectController);
+            
+            var gameManager = ServiceLocator.Resolve<GameManager>();
+            gameManager.OnSceneChange -= Restart;
+            gameManager.OnSceneChange += Restart;
         }
 
         public void Restart()

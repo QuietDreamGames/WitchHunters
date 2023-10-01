@@ -19,6 +19,7 @@ namespace Features.GameManagers
         [SerializeField] private string masterSceneName;
         
         [Space]
+        [SerializeField] private string hubSceneName;
         [SerializeField] private string dungeonSceneName;
         
         [Header("Time Categories")]
@@ -38,7 +39,7 @@ namespace Features.GameManagers
         
         public void Restart()
         {
-            StartDungeon();
+            StartHub();
         }
         
         public void StartMainMenu()
@@ -55,6 +56,11 @@ namespace Features.GameManagers
                 _gameStateManager.SetGameState(GameStates.Menu);
                 SceneManager.LoadScene(masterSceneName, LoadSceneMode.Single);
             }
+        }
+        
+        public void StartHub()
+        {
+            StartGameplayScene(hubSceneName);
         }
         
         public void StartDungeon()
@@ -122,6 +128,9 @@ namespace Features.GameManagers
                 yield return null;
             }
 
+            yield return null;
+            yield return null;
+            yield return null;
             yield return null;
             
             _gameStateManager.SetGameState(GameStates.Gameplay);
