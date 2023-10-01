@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 204681510}
+  - component: {fileID: 204681514}
   - component: {fileID: 204681512}
   - component: {fileID: 204681513}
   m_Layer: 0
@@ -192,6 +193,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomInstances: []
+--- !u!114 &204681514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204681508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadf91efd2c6c2145aa8c3b4dfc922d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generator: {fileID: 753681703}
 --- !u!1 &513152769
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonGenerator: {fileID: 753681703}
   roomConfigurator: {fileID: 204681512}
+  levelGraphConfigurator: {fileID: 204681514}
   astarPath: {fileID: 513152771}
 --- !u!4 &1667730479 stripped
 Transform:
