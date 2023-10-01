@@ -1,4 +1,6 @@
 ﻿using System;
+using Features.SaveSystems.Core;
+using Features.ServiceLocators.Core;
 using UnityEngine;
 
 namespace Features.Character.Spawn
@@ -8,6 +10,8 @@ namespace Features.Character.Spawn
         [SerializeField] private CharacterData[] characters;
         
         private CharacterData _currentCharacterData;
+        
+        private SaveSystem _saveSystem;
         
         public CombatCharacterController CurrentCharacter => _currentCharacterData.character;
         
@@ -33,6 +37,13 @@ namespace Features.Character.Spawn
             characterData.character.Initiate();
             
             _currentCharacterData = characterData;
+            
+            if (_saveSystem == null)
+            {
+                _saveSystem = ServiceLocator.Resolve<SaveSystem>();
+            }
+            
+            _saveSystem.SetCharacterIndex((int)_currentCharacterData.type);
             
             OnCharacterChanged?.Invoke(_currentCharacterData.character);
         }

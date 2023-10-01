@@ -4,7 +4,8 @@ namespace Features.SaveSystems.Interfaces
 {
     public interface ISavablePathBuilder
     {
-        public int Index { get; set; }
+        public int SaveSlotIndex { get; set; }
+        public int CharacterIndex { get; set; }
         
         public string GetDirectoryPath(SaveCategory saveCategory);
     }

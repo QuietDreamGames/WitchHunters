@@ -1,7 +1,7 @@
 namespace Features.Character.Spawn
 {
-    public enum CharacterType
+    public enum CharacterType : byte
     {
-        Inquisitor,
+        Inquisitor = 0,
     }
 }

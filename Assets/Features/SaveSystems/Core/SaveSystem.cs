@@ -146,9 +146,14 @@ namespace Features.SaveSystems.Core
             }
         }
 
-        public void SetIndex(int index)
+        public void SetSaveSlotIndex(int index)
         {
-            _pathBuilder.Index = index;
+            _pathBuilder.SaveSlotIndex = index;
+        }
+        
+        public void SetCharacterIndex(int index)
+        {
+            _pathBuilder.CharacterIndex = index;
         }
         
         #endregion

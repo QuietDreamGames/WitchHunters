@@ -14,14 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveCategories:
   - category: Settings
-    indexed: 0
     useUser: 0
-    extension: .data
-  - category: Gameplay
-    indexed: 1
-    useUser: 1
+    useSaveSlot: 0
+    useCharacter: 0
     extension: .data
   - category: GameSlots
-    indexed: 0
     useUser: 1
+    useSaveSlot: 0
+    useCharacter: 0
+    extension: .data
+  - category: Gameplay
+    useUser: 1
+    useSaveSlot: 1
+    useCharacter: 0
+    extension: .data
+  - category: Progression
+    useUser: 1
+    useSaveSlot: 1
+    useCharacter: 1
     extension: .data

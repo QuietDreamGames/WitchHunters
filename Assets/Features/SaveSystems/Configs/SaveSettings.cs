@@ -3,6 +3,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Features.SaveSystems.Configs
 {
@@ -12,8 +13,9 @@ namespace Features.SaveSystems.Configs
             new()
             {
                 category = "Settings",
-                indexed = false,
                 useUser = false,
+                useSaveSlot = false,
+                useCharacter = false,
                 extension = ".data"
             }
         };
@@ -46,8 +48,9 @@ namespace Features.SaveSystems.Configs
     public class SaveCategory
     {
         public string category;
-        public bool indexed;
         public bool useUser;
+        public bool useSaveSlot;
+        public bool useCharacter;
         
         public string extension = ".data";
     }

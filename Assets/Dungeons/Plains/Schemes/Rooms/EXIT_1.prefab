@@ -2707,19 +2707,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7403919401688203905, guid: e17643479cbacb54c8a4c07114cfa221, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 3.49575
+      value: 3.4966
       objectReference: {fileID: 0}
     - target: {fileID: 7403919401688203905, guid: e17643479cbacb54c8a4c07114cfa221, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -1.50065
+      value: -1.49905
       objectReference: {fileID: 0}
     - target: {fileID: 7403919401688203905, guid: e17643479cbacb54c8a4c07114cfa221, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 4.00555
+      value: 3.9991
       objectReference: {fileID: 0}
     - target: {fileID: 7403919401688203905, guid: e17643479cbacb54c8a4c07114cfa221, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 4.0061502
+      value: 3.99715
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3210,6 +3210,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7250634461565353602}
     m_Modifications:
+    - target: {fileID: 1093522095719146360, guid: 43a7bc8cfe9e21d48a17ddbb409c8612, type: 3}
+      propertyPath: saveCategory
+      value: Progression
+      objectReference: {fileID: 0}
     - target: {fileID: 1627205267549452816, guid: 43a7bc8cfe9e21d48a17ddbb409c8612, type: 3}
       propertyPath: m_Name
       value: SaverActivator

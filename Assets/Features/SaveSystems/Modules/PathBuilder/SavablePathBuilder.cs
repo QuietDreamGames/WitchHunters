@@ -7,7 +7,8 @@ namespace Features.SaveSystems.Modules.PathBuilder
 {
     public class SavablePathBuilder : ISavablePathBuilder
     {
-        public int Index { get; set; } = 0;
+        public int SaveSlotIndex { get; set; } = 0;
+        public int CharacterIndex { get; set; } = 0;
 
         private readonly string _absolutePath;
         
@@ -21,12 +22,17 @@ namespace Features.SaveSystems.Modules.PathBuilder
             var path = _absolutePath;
             if (saveCategory.useUser)
             {
-                path = Path.Combine(path, "Player");
+                path = Path.Combine(path, "PLAYER");
             }
             
-            if (saveCategory.indexed)
+            if (saveCategory.useSaveSlot)
             {
-                path = Path.Combine(path, $"{Index}");
+                path = Path.Combine(path, $"SAVE_SLOT_{SaveSlotIndex}");
+            }
+            
+            if (saveCategory.useCharacter)
+            {
+                path = Path.Combine(path, $"CHARACTER_{CharacterIndex}");
             }
             
             return path;

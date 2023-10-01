@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8d72f86e2048268b2a4843d57ea2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: Gameplay
+  category: Progression
   uniqueID: {fileID: 6114939438290718714}
   customSavable: {fileID: 3342485460248348488}
 --- !u!1 &6243592755362765865
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8d72f86e2048268b2a4843d57ea2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: Gameplay
+  category: Progression
   uniqueID: {fileID: 6114939438290718714}
   customSavable: {fileID: 3342485460248348488}
 --- !u!1 &8860537515561849314
@@ -302,6 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8d72f86e2048268b2a4843d57ea2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: Gameplay
+  category: Progression
   uniqueID: {fileID: 4704993028579302922}
   customSavable: {fileID: 2483276684397236817}
